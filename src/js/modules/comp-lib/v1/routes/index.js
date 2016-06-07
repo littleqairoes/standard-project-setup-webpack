@@ -1,4 +1,4 @@
-import Page from './../components/page.jsx';
+import Page from './../components/templates/page.jsx';
 import React from 'react';
 import atomicDesign from './atomic-design';
 
