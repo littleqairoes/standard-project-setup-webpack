@@ -1,10 +1,10 @@
-// import Page from './../components/page.jsx';
-// import React from 'react';
-// import root from './root';
+import Page from './../components/page.jsx';
+import React from 'react';
+import atomicDesign from './atomic-design';
 
-// export default (injectDeps, context) => {
-//   const {mount, page, qs} = context;
-//   const PageCtx = injectDeps(Page);
+export default (injectDeps, context) => {
+  const {mount, page} = context;
+  const PageCtx = injectDeps(Page);
 
-//   root(React, PageCtx, mount, page, qs);
-// };
+  atomicDesign(React, PageCtx, mount, page);
+};
