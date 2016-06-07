@@ -33609,62 +33609,70 @@
 
 	var _generalGrid2 = _interopRequireDefault(_generalGrid);
 
+	var _generalLayout = __webpack_require__(397);
+
+	var _generalLayout2 = _interopRequireDefault(_generalLayout);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (React, PageCtx, mount, page) {
 	  page('/atomic-design', function () {
 	    mount(PageCtx, {
-	      sections: [function () {
-	        return React.createElement(_generalGrid2.default, {
-	          columns: 4,
-	          elements: [function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'red',
-	              color: 'white'
+	      template: function template() {
+	        return React.createElement(_generalLayout2.default, {
+	          sections: [function () {
+	            return React.createElement(_generalGrid2.default, {
+	              columns: 4,
+	              elements: [function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'red',
+	                  color: 'white'
+	                });
+	              }, function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'blue',
+	                  color: 'white'
+	                });
+	              }, function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'green',
+	                  color: 'white'
+	                });
+	              }, function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'black',
+	                  color: 'white'
+	                });
+	              }, function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'yellow',
+	                  color: 'black'
+	                });
+	              }, function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'purple',
+	                  color: 'white'
+	                });
+	              }, function () {
+	                return React.createElement(_testDiv2.default, {
+	                  backgroundColor: 'pink',
+	                  color: 'white'
+	                });
+	              }]
 	            });
 	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'blue',
-	              color: 'white'
+	            return React.createElement(_inputText2.default, {
+	              pattern: '-?[0-9]*(\\.[0-9]+)?',
+	              shouldFloat: true
 	            });
 	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'green',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'black',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'yellow',
-	              color: 'black'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'purple',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'pink',
-	              color: 'white'
+	            return React.createElement(_button2.default, {
+	              withRipple: true,
+	              label: 'Zydrick'
 	            });
 	          }]
 	        });
-	      }, function () {
-	        return React.createElement(_inputText2.default, {
-	          pattern: '-?[0-9]*(\\.[0-9]+)?',
-	          shouldFloat: true
-	        });
-	      }, function () {
-	        return React.createElement(_button2.default, {
-	          withRipple: true,
-	          label: 'Zydrick'
-	        });
-	      }]
+	      }
 	    });
 	  });
 	};
@@ -33719,63 +33727,14 @@
 	      }
 	    }
 	  }, {
-	    key: 'renderSection',
-	    value: function renderSection(section, key) {
-	      return _react2.default.createElement(
-	        'div',
-	        {
-	          className: 'mdl-cell mdl-cell--12-col section',
-	          key: key
-	        },
-	        section && typeof section === 'function' ? section() : null
-	      );
-	    }
-	  }, {
-	    key: 'renderSections',
-	    value: function renderSections() {
-	      var _this2 = this;
-
-	      var sections = this.props.sections;
-
-	      if (typeof sections === 'function') {
-	        return this.renderSection([sections]);
-	      } else if (!sections) {
-	        return null;
-	      }
-	      return sections.map(function (section, key) {
-	        return _this2.renderSection(section, key);
-	      });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var header = _props.header;
-	      var drawer = _props.drawer;
-	      var footer = _props.footer;
+	      var template = this.props.template;
 
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'main-v1-page-core-root' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'mdl-layout mdl-js-layout mdl-layout--fixed-header main-v1-page' },
-	          header && typeof header === 'function' ? header() : null,
-	          drawer && typeof drawer === 'function' ? drawer() : null,
-	          _react2.default.createElement(
-	            'main',
-	            {
-	              className: 'v1-page-content mdl-layout__content',
-	              id: 'main-content'
-	            },
-	            _react2.default.createElement(
-	              'div',
-	              { className: 'mdl-grid mdl-grid--no-spacing' },
-	              this.renderSections()
-	            ),
-	            footer ? footer() : null
-	          )
-	        )
+	        template && typeof template === 'function' ? template() : null
 	      );
 	    }
 	  }]);
@@ -34183,6 +34142,107 @@
 	}(_react2.default.Component);
 
 	exports.default = GeneralGrid;
+
+/***/ },
+/* 397 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(392);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var GeneralLayout = function (_React$Component) {
+	  _inherits(GeneralLayout, _React$Component);
+
+	  function GeneralLayout() {
+	    _classCallCheck(this, GeneralLayout);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GeneralLayout).apply(this, arguments));
+	  }
+
+	  _createClass(GeneralLayout, [{
+	    key: 'renderSection',
+	    value: function renderSection(section, key) {
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: 'mdl-cell mdl-cell--12-col section',
+	          key: key
+	        },
+	        section && typeof section === 'function' ? section() : null
+	      );
+	    }
+	  }, {
+	    key: 'renderSections',
+	    value: function renderSections() {
+	      var _this2 = this;
+
+	      var sections = this.props.sections;
+
+	      if (typeof sections === 'function') {
+	        return this.renderSection([sections]);
+	      } else if (!sections) {
+	        return null;
+	      }
+	      return sections.map(function (section, key) {
+	        return _this2.renderSection(section, key);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var fixedHeader = _props.fixedHeader;
+	      var fixedDrawer = _props.fixedDrawer;
+	      var header = _props.header;
+	      var drawer = _props.drawer;
+	      var classes = _props.classes;
+	      var id = _props.id;
+
+	      var className = (0, _classnames2.default)('mdl-layout mdl-js-layout', classes && typeof id === 'string' ? classes : null, {
+	        'mdl-layout--fixed-header': fixedHeader,
+	        'mdl-layout--fixed-drawer': fixedDrawer
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: className
+	        },
+	        header && typeof header === 'function' ? header() : null,
+	        drawer && typeof drawer === 'function' ? drawer() : null,
+	        _react2.default.createElement(
+	          'main',
+	          { className: 'mdl-layout__content' },
+	          this.renderSections()
+	        )
+	      );
+	    }
+	  }]);
+
+	  return GeneralLayout;
+	}(_react2.default.Component);
+
+	exports.default = GeneralLayout;
 
 /***/ }
 /******/ ]);
