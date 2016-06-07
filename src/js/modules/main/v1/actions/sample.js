@@ -1,7 +1,7 @@
 export default {
-  sample: (context) => {
-    const {mainStore} = context;
-    console.log(context);
-    console.log(mainStore);
+  sample: () => {
+    // const {mainStore} = context;
+    // console.log(context);
+    // console.log(mainStore);
   }
 };
