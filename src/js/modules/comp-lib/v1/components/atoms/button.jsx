@@ -7,6 +7,7 @@ class Button extends React.Component {
     const className = classNames('mdl-button mdl-js-button',
       withRipple ? 'mdl-js-ripple-effect' : null,
       isRaised ? 'mdl-button--raised' : null,
+      'comp-lib-atom-button',
       classes && typeof classes === 'string' ? classes : null
     );
     return (
@@ -23,14 +24,3 @@ class Button extends React.Component {
 }
 
 export default Button;
-
-/* <ReactElement
-    attr1 = string
-    attr2 = number
-    ...
-  >
-    <p> </p>
-    <br/>
-    <div></div>
-  </ReactElement>
-*/

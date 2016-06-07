@@ -33597,16 +33597,24 @@
 
 	var _button2 = _interopRequireDefault(_button);
 
+	var _inputText = __webpack_require__(393);
+
+	var _inputText2 = _interopRequireDefault(_inputText);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (React, PageCtx, mount, page) {
 	  page('/atomic-design', function () {
 	    mount(PageCtx, {
 	      sections: [function () {
+	        return React.createElement(_inputText2.default, {
+	          pattern: '-?[0-9]*(\\.[0-9]+)?',
+	          shouldFloat: true
+	        });
+	      }, function () {
 	        return React.createElement(_button2.default, {
 	          withRipple: true,
-	          label: 'Zydrick',
-	          isDisabled: true
+	          label: 'Zydrick'
 	        });
 	      }]
 	    });
@@ -33778,7 +33786,7 @@
 	      var actionHandler = _props.actionHandler;
 	      var id = _props.id;
 
-	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, classes && typeof classes === 'string' ? classes : null);
+	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, 'comp-lib-atom-button', classes && typeof classes === 'string' ? classes : null);
 	      return _react2.default.createElement(
 	        'button',
 	        {
@@ -33796,17 +33804,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Button;
-
-	/* <ReactElement
-	    attr1 = string
-	    attr2 = number
-	    ...
-	  >
-	    <p> </p>
-	    <br/>
-	    <div></div>
-	  </ReactElement>
-	*/
 
 /***/ },
 /* 392 */
@@ -33861,6 +33858,102 @@
 		}
 	}());
 
+
+/***/ },
+/* 393 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(392);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var InputText = function (_React$Component) {
+	  _inherits(InputText, _React$Component);
+
+	  function InputText() {
+	    _classCallCheck(this, InputText);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(InputText).apply(this, arguments));
+	  }
+
+	  _createClass(InputText, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var label = _props.label;
+	      var errorLabel = _props.errorLabel;
+	      var pattern = _props.pattern;
+	      var classes = _props.classes;
+	      var shouldFloat = _props.shouldFloat;
+	      var id = _props.id;
+
+	      var inputId = id && typeof id === 'string' ? 'input-text-' + id : 'input-text-default';
+	      var className = (0, _classnames2.default)('mdl-textfield mdl-js-textfield', shouldFloat ? 'mdl-textfield--floating-label' : null, 'comp-lib-atom-input-text', classes && typeof classes === 'string' ? classes : null);
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: className
+	        },
+	        _react2.default.createElement('input', {
+	          className: 'mdl-textfield__input',
+	          type: 'text',
+	          id: inputId,
+	          pattern: pattern && typeof pattern === 'string' ? pattern : null
+	        }),
+	        _react2.default.createElement(
+	          'label',
+	          {
+	            className: 'mdl-textfield__label',
+	            htmlFor: inputId
+	          },
+	          label && typeof label === 'string' ? label : 'Placeholder Text'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          {
+	            className: 'mdl-textfield__error'
+	          },
+	          errorLabel && typeof errorLabel === 'string' ? errorLabel : 'Placeholder Error'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return InputText;
+	}(_react2.default.Component);
+
+	exports.default = InputText;
+
+	/*
+	<button
+	        className = {className}
+	        onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
+	        disabled = {isDisabled}
+	        id = {id}
+	      >
+	        {label && typeof label === 'string' ? label : 'Button'}
+	      </button>
+	      */
 
 /***/ }
 /******/ ]);
