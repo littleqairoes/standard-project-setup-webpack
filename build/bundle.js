@@ -33601,12 +33601,60 @@
 
 	var _inputText2 = _interopRequireDefault(_inputText);
 
+	var _testDiv = __webpack_require__(394);
+
+	var _testDiv2 = _interopRequireDefault(_testDiv);
+
+	var _generalGrid = __webpack_require__(396);
+
+	var _generalGrid2 = _interopRequireDefault(_generalGrid);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (React, PageCtx, mount, page) {
 	  page('/atomic-design', function () {
 	    mount(PageCtx, {
 	      sections: [function () {
+	        return React.createElement(_generalGrid2.default, {
+	          columns: 4,
+	          elements: [function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'red',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'blue',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'green',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'black',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'yellow',
+	              color: 'black'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'purple',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'pink',
+	              color: 'white'
+	            });
+	          }]
+	        });
+	      }, function () {
 	        return React.createElement(_inputText2.default, {
 	          pattern: '-?[0-9]*(\\.[0-9]+)?',
 	          shouldFloat: true
@@ -33786,7 +33834,7 @@
 	      var actionHandler = _props.actionHandler;
 	      var id = _props.id;
 
-	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, 'comp-lib-atom-button', classes && typeof classes === 'string' ? classes : null);
+	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, classes && typeof classes === 'string' ? classes : null);
 	      return _react2.default.createElement(
 	        'button',
 	        {
@@ -33804,6 +33852,17 @@
 	}(_react2.default.Component);
 
 	exports.default = Button;
+
+	/* <ReactElement
+	    attr1 = string
+	    attr2 = number
+	    ...
+	  >
+	    <p> </p>
+	    <br/>
+	    <div></div>
+	  </ReactElement>
+	*/
 
 /***/ },
 /* 392 */
@@ -33954,6 +34013,176 @@
 	        {label && typeof label === 'string' ? label : 'Button'}
 	      </button>
 	      */
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TestDiv = function (_React$Component) {
+	  _inherits(TestDiv, _React$Component);
+
+	  function TestDiv() {
+	    _classCallCheck(this, TestDiv);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TestDiv).apply(this, arguments));
+	  }
+
+	  _createClass(TestDiv, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var backgroundColor = _props.backgroundColor;
+	      var color = _props.color;
+	      var text = _props.text;
+
+	      var style = {
+	        backgroundColor: backgroundColor,
+	        color: color,
+	        height: 200,
+	        width: '100%'
+	      };
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          style: style
+	        },
+	        text ? text : 'Placeholder'
+	      );
+	    }
+	  }]);
+
+	  return TestDiv;
+	}(_react2.default.Component);
+
+	exports.default = TestDiv;
+
+/***/ },
+/* 395 */,
+/* 396 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(392);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var GeneralGrid = function (_React$Component) {
+	  _inherits(GeneralGrid, _React$Component);
+
+	  function GeneralGrid() {
+	    _classCallCheck(this, GeneralGrid);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GeneralGrid).apply(this, arguments));
+	  }
+
+	  _createClass(GeneralGrid, [{
+	    key: 'renderElement',
+	    value: function renderElement(element, size, column, key) {
+	      var className = (0, _classnames2.default)('mdl-cell', {
+	        'mdl-cell--12-col': column === 1,
+	        'mdl-cell--6-col-desktop': column === 2,
+	        'mdl-cell--4-col-desktop': column === 3 || column === 4 && size % 4 === 1 && key === size - 1 || column === 4 && size % 4 === 3 && key === size - 2,
+	        'mdl-cell--3-col-desktop': column === 4 && !(size % 4 === 1 && key === size - 1) && !(size % 4 === 3 && key === size - 2),
+	        'mdl-cell--4-col-tablet': column >= 2,
+	        'mdl-cell--2-col-phone': column >= 2,
+	        'mdl-cell--3-offset-desktop': column === 2 && size % 2 === 1 && key === size - 1 || column === 4 && size % 4 === 2 && key === size - 2,
+	        'mdl-cell--4-offset-desktop': column === 3 && size % 3 === 1 && key === size - 1 || column === 4 && size % 4 === 1 && key === size - 1,
+	        'mdl-cell--2-offset-desktop': column === 3 && size % 3 === 2 && key === size - 2,
+	        'mdl-cell--1-offset-desktop': column === 4 && size % 4 === 3 && key === size - 3,
+	        'mdl-cell--2-offset-tablet': column >= 2 && size % 2 === 1 && key === size - 1,
+	        'mdl-cell--1-offset-phone': column >= 2 && size % 2 === 1 && key === size - 1
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: className,
+	          key: key
+	        },
+	        element && typeof element === 'function' ? element() : null
+	      );
+	    }
+	  }, {
+	    key: 'renderGrid',
+	    value: function renderGrid(columns, elements) {
+	      var _this2 = this;
+
+	      if (typeof elements === 'function') {
+	        return this.renderElement(elements, 1, 0);
+	      } else if (!elements) {
+	        return null;
+	      }
+	      return elements.map(function (element, key) {
+	        return _this2.renderElement(element, elements.length, columns, key);
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var noSpacing = _props.noSpacing;
+	      var _props$columns = _props.columns;
+	      var columns = _props$columns === undefined ? 1 : _props$columns;
+	      var elements = _props.elements;
+	      var classes = _props.classes;
+	      var id = _props.id;
+
+	      var maxColumns = columns >= 4 ? 4 : columns;
+	      var elemId = id && typeof id === 'string' ? 'general-grid-' + id : 'general-grid-default';
+	      var className = (0, _classnames2.default)('mdl-grid', noSpacing ? 'mdl-grid--no-spacing' : null, 'comp-lib-template-general-grid', classes && typeof classes === 'string' ? classes : null);
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: className,
+	          id: elemId
+	        },
+	        this.renderGrid(maxColumns, elements)
+	      );
+	    }
+	  }]);
+
+	  return GeneralGrid;
+	}(_react2.default.Component);
+
+	exports.default = GeneralGrid;
 
 /***/ }
 /******/ ]);
