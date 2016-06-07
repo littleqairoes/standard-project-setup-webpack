@@ -33601,12 +33601,106 @@
 
 	var _inputText2 = _interopRequireDefault(_inputText);
 
+	var _testDiv = __webpack_require__(394);
+
+	var _testDiv2 = _interopRequireDefault(_testDiv);
+
+	var _nColumn = __webpack_require__(395);
+
+	var _nColumn2 = _interopRequireDefault(_nColumn);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = function (React, PageCtx, mount, page) {
 	  page('/atomic-design', function () {
 	    mount(PageCtx, {
 	      sections: [function () {
+	        return React.createElement(_nColumn2.default, {
+	          columns: [function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'red',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'blue',
+	              color: 'white'
+	            });
+	          }]
+	        });
+	      }, function () {
+	        return React.createElement(_nColumn2.default, {
+	          columns: [function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'red',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'blue',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'green',
+	              color: 'white'
+	            });
+	          }]
+	        });
+	      }, function () {
+	        return React.createElement(_nColumn2.default, {
+	          columns: [function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'red',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'blue',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'green',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'black',
+	              color: 'white'
+	            });
+	          }]
+	        });
+	      }, function () {
+	        return React.createElement(_nColumn2.default, {
+	          columns: [function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'red',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'blue',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'green',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'black',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'yellow',
+	              color: 'black'
+	            });
+	          }]
+	        });
+	      }, function () {
 	        return React.createElement(_inputText2.default, {
 	          pattern: '-?[0-9]*(\\.[0-9]+)?',
 	          shouldFloat: true
@@ -33786,7 +33880,7 @@
 	      var actionHandler = _props.actionHandler;
 	      var id = _props.id;
 
-	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, 'comp-lib-atom-button', classes && typeof classes === 'string' ? classes : null);
+	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, classes && typeof classes === 'string' ? classes : null);
 	      return _react2.default.createElement(
 	        'button',
 	        {
@@ -33804,6 +33898,17 @@
 	}(_react2.default.Component);
 
 	exports.default = Button;
+
+	/* <ReactElement
+	    attr1 = string
+	    attr2 = number
+	    ...
+	  >
+	    <p> </p>
+	    <br/>
+	    <div></div>
+	  </ReactElement>
+	*/
 
 /***/ },
 /* 392 */
@@ -33954,6 +34059,161 @@
 	        {label && typeof label === 'string' ? label : 'Button'}
 	      </button>
 	      */
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var TestDiv = function (_React$Component) {
+	  _inherits(TestDiv, _React$Component);
+
+	  function TestDiv() {
+	    _classCallCheck(this, TestDiv);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TestDiv).apply(this, arguments));
+	  }
+
+	  _createClass(TestDiv, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var backgroundColor = _props.backgroundColor;
+	      var color = _props.color;
+	      var text = _props.text;
+
+	      var style = {
+	        backgroundColor: backgroundColor,
+	        color: color,
+	        height: 200,
+	        width: '100%'
+	      };
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          style: style
+	        },
+	        text ? text : 'Placeholder'
+	      );
+	    }
+	  }]);
+
+	  return TestDiv;
+	}(_react2.default.Component);
+
+	exports.default = TestDiv;
+
+/***/ },
+/* 395 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(392);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NColumn = function (_React$Component) {
+	  _inherits(NColumn, _React$Component);
+
+	  function NColumn() {
+	    _classCallCheck(this, NColumn);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NColumn).apply(this, arguments));
+	  }
+
+	  _createClass(NColumn, [{
+	    key: 'renderColumn',
+	    value: function renderColumn(column, size, key) {
+	      var className = (0, _classnames2.default)('mdl-cell', size === 1 ? 'mdl-cell--12-col' : null, size === 2 ? 'mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone' : null, size === 3 && key < 2 ? 'mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--2-col-phone' : null, size === 3 && key === 2 ? 'mdl-cell--4-col mdl-cell-4-col-tablet\n        mdl-cell--2-offset-tablet mdl-cell--2-col-phone mdl-cell--1-offset-phone' : null, size === 4 || size > 4 && key < 4 ? 'mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--4-col-phone' : null, size % 4 === 1 && size > 4 && key % 4 === 0 && key >= 4 ? 'mdl-cell--4-col-desktop mdl-cell--4-offset-desktop mdl-cell--2-col-tablet\n          mdl-cell--3-offset-tablet mdl-cell-4-col-phone' : null);
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: className,
+	          key: key
+	        },
+	        column && typeof column === 'function' ? column() : null
+	      );
+	    }
+	  }, {
+	    key: 'renderColumns',
+	    value: function renderColumns(columns) {
+	      var _this2 = this;
+
+	      if (typeof columns === 'function') {
+	        return this.renderColumn(columns, 1, 0);
+	      } else if (!columns) {
+	        return null;
+	      } else if (columns.length && columns.length > 4) {
+	        return 'Exceeded limit for columns';
+	      }
+	      return columns.map(function (column, key) {
+	        return key < 4 ? _this2.renderColumn(column, columns.length, key) : null;
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var noSpacing = _props.noSpacing;
+	      var columns = _props.columns;
+	      var classes = _props.classes;
+	      var id = _props.id;
+
+	      var elemId = id && typeof id === 'string' ? 'n-column-' + id : 'n-column-default';
+	      var className = (0, _classnames2.default)('mdl-grid', noSpacing ? 'mdl-grid--no-spacing' : null, 'comp-lib-template-n-column', classes && typeof classes === 'string' ? classes : null);
+	      return _react2.default.createElement(
+	        'div',
+	        {
+	          className: className,
+	          id: elemId
+	        },
+	        this.renderColumns(columns)
+	      );
+	    }
+	  }]);
+
+	  return NColumn;
+	}(_react2.default.Component);
+
+	exports.default = NColumn;
 
 /***/ }
 /******/ ]);
