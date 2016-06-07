@@ -33593,9 +33593,9 @@
 	  value: true
 	});
 
-	var _sampleAtom = __webpack_require__(389);
+	var _button = __webpack_require__(391);
 
-	var _sampleAtom2 = _interopRequireDefault(_sampleAtom);
+	var _button2 = _interopRequireDefault(_button);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33603,62 +33603,18 @@
 	  page('/atomic-design', function () {
 	    mount(PageCtx, {
 	      sections: [function () {
-	        return React.createElement(_sampleAtom2.default);
+	        return React.createElement(_button2.default, {
+	          withRipple: true,
+	          label: 'Zydrick',
+	          isDisabled: true
+	        });
 	      }]
 	    });
 	  });
 	};
 
 /***/ },
-/* 389 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(50);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var SampleAtom = function (_React$Component) {
-	  _inherits(SampleAtom, _React$Component);
-
-	  function SampleAtom() {
-	    _classCallCheck(this, SampleAtom);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SampleAtom).apply(this, arguments));
-	  }
-
-	  _createClass(SampleAtom, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'sample-atom' },
-	        'Sample Hello World'
-	      );
-	    }
-	  }]);
-
-	  return SampleAtom;
-	}(_react2.default.Component);
-
-	exports.default = SampleAtom;
-
-/***/ },
+/* 389 */,
 /* 390 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33772,6 +33728,139 @@
 	}(_react2.default.Component);
 
 	exports.default = Page;
+
+/***/ },
+/* 391 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(50);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(392);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Button = function (_React$Component) {
+	  _inherits(Button, _React$Component);
+
+	  function Button() {
+	    _classCallCheck(this, Button);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Button).apply(this, arguments));
+	  }
+
+	  _createClass(Button, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var withRipple = _props.withRipple;
+	      var isRaised = _props.isRaised;
+	      var isDisabled = _props.isDisabled;
+	      var label = _props.label;
+	      var classes = _props.classes;
+	      var actionHandler = _props.actionHandler;
+	      var id = _props.id;
+
+	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, classes && typeof classes === 'string' ? classes : null);
+	      return _react2.default.createElement(
+	        'button',
+	        {
+	          className: className,
+	          onClick: actionHandler && typeof actionHandler === 'function' ? actionHandler : null,
+	          disabled: isDisabled,
+	          id: id
+	        },
+	        label && typeof label === 'string' ? label : 'Button'
+	      );
+	    }
+	  }]);
+
+	  return Button;
+	}(_react2.default.Component);
+
+	exports.default = Button;
+
+	/* <ReactElement
+	    attr1 = string
+	    attr2 = number
+	    ...
+	  >
+	    <p> </p>
+	    <br/>
+	    <div></div>
+	  </ReactElement>
+	*/
+
+/***/ },
+/* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
 
 /***/ }
 /******/ ]);
