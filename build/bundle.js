@@ -33605,9 +33605,9 @@
 
 	var _testDiv2 = _interopRequireDefault(_testDiv);
 
-	var _nColumn = __webpack_require__(395);
+	var _generalGrid = __webpack_require__(396);
 
-	var _nColumn2 = _interopRequireDefault(_nColumn);
+	var _generalGrid2 = _interopRequireDefault(_generalGrid);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33615,65 +33615,9 @@
 	  page('/atomic-design', function () {
 	    mount(PageCtx, {
 	      sections: [function () {
-	        return React.createElement(_nColumn2.default, {
-	          columns: [function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'red',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'blue',
-	              color: 'white'
-	            });
-	          }]
-	        });
-	      }, function () {
-	        return React.createElement(_nColumn2.default, {
-	          columns: [function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'red',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'blue',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'green',
-	              color: 'white'
-	            });
-	          }]
-	        });
-	      }, function () {
-	        return React.createElement(_nColumn2.default, {
-	          columns: [function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'red',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'blue',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'green',
-	              color: 'white'
-	            });
-	          }, function () {
-	            return React.createElement(_testDiv2.default, {
-	              backgroundColor: 'black',
-	              color: 'white'
-	            });
-	          }]
-	        });
-	      }, function () {
-	        return React.createElement(_nColumn2.default, {
-	          columns: [function () {
+	        return React.createElement(_generalGrid2.default, {
+	          columns: 4,
+	          elements: [function () {
 	            return React.createElement(_testDiv2.default, {
 	              backgroundColor: 'red',
 	              color: 'white'
@@ -33697,6 +33641,16 @@
 	            return React.createElement(_testDiv2.default, {
 	              backgroundColor: 'yellow',
 	              color: 'black'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'purple',
+	              color: 'white'
+	            });
+	          }, function () {
+	            return React.createElement(_testDiv2.default, {
+	              backgroundColor: 'pink',
+	              color: 'white'
 	            });
 	          }]
 	        });
@@ -34123,7 +34077,8 @@
 	exports.default = TestDiv;
 
 /***/ },
-/* 395 */
+/* 395 */,
+/* 396 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34150,42 +34105,53 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var NColumn = function (_React$Component) {
-	  _inherits(NColumn, _React$Component);
+	var GeneralGrid = function (_React$Component) {
+	  _inherits(GeneralGrid, _React$Component);
 
-	  function NColumn() {
-	    _classCallCheck(this, NColumn);
+	  function GeneralGrid() {
+	    _classCallCheck(this, GeneralGrid);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NColumn).apply(this, arguments));
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GeneralGrid).apply(this, arguments));
 	  }
 
-	  _createClass(NColumn, [{
-	    key: 'renderColumn',
-	    value: function renderColumn(column, size, key) {
-	      var className = (0, _classnames2.default)('mdl-cell', size === 1 ? 'mdl-cell--12-col' : null, size === 2 ? 'mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone' : null, size === 3 && key < 2 ? 'mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--2-col-phone' : null, size === 3 && key === 2 ? 'mdl-cell--4-col mdl-cell-4-col-tablet\n        mdl-cell--2-offset-tablet mdl-cell--2-col-phone mdl-cell--1-offset-phone' : null, size === 4 || size > 4 && key < 4 ? 'mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--4-col-phone' : null, size % 4 === 1 && size > 4 && key % 4 === 0 && key >= 4 ? 'mdl-cell--4-col-desktop mdl-cell--4-offset-desktop mdl-cell--2-col-tablet\n          mdl-cell--3-offset-tablet mdl-cell-4-col-phone' : null);
+	  _createClass(GeneralGrid, [{
+	    key: 'renderElement',
+	    value: function renderElement(element, size, column, key) {
+	      var className = (0, _classnames2.default)('mdl-cell', {
+	        'mdl-cell--12-col': column === 1,
+	        'mdl-cell--6-col-desktop': column === 2,
+	        'mdl-cell--4-col-desktop': column === 3 || column === 4 && size % 4 === 1 && key === size - 1 || column === 4 && size % 4 === 3 && key === size - 2,
+	        'mdl-cell--3-col-desktop': column === 4 && !(size % 4 === 1 && key === size - 1) && !(size % 4 === 3 && key === size - 2),
+	        'mdl-cell--4-col-tablet': column >= 2,
+	        'mdl-cell--2-col-phone': column >= 2,
+	        'mdl-cell--3-offset-desktop': column === 2 && size % 2 === 1 && key === size - 1 || column === 4 && size % 4 === 2 && key === size - 2,
+	        'mdl-cell--4-offset-desktop': column === 3 && size % 3 === 1 && key === size - 1 || column === 4 && size % 4 === 1 && key === size - 1,
+	        'mdl-cell--2-offset-desktop': column === 3 && size % 3 === 2 && key === size - 2,
+	        'mdl-cell--1-offset-desktop': column === 4 && size % 4 === 3 && key === size - 3,
+	        'mdl-cell--2-offset-tablet': column >= 2 && size % 2 === 1 && key === size - 1,
+	        'mdl-cell--1-offset-phone': column >= 2 && size % 2 === 1 && key === size - 1
+	      });
 	      return _react2.default.createElement(
 	        'div',
 	        {
 	          className: className,
 	          key: key
 	        },
-	        column && typeof column === 'function' ? column() : null
+	        element && typeof element === 'function' ? element() : null
 	      );
 	    }
 	  }, {
-	    key: 'renderColumns',
-	    value: function renderColumns(columns) {
+	    key: 'renderGrid',
+	    value: function renderGrid(columns, elements) {
 	      var _this2 = this;
 
-	      if (typeof columns === 'function') {
-	        return this.renderColumn(columns, 1, 0);
-	      } else if (!columns) {
+	      if (typeof elements === 'function') {
+	        return this.renderElement(elements, 1, 0);
+	      } else if (!elements) {
 	        return null;
-	      } else if (columns.length && columns.length > 4) {
-	        return 'Exceeded limit for columns';
 	      }
-	      return columns.map(function (column, key) {
-	        return key < 4 ? _this2.renderColumn(column, columns.length, key) : null;
+	      return elements.map(function (element, key) {
+	        return _this2.renderElement(element, elements.length, columns, key);
 	      });
 	    }
 	  }, {
@@ -34193,27 +34159,30 @@
 	    value: function render() {
 	      var _props = this.props;
 	      var noSpacing = _props.noSpacing;
-	      var columns = _props.columns;
+	      var _props$columns = _props.columns;
+	      var columns = _props$columns === undefined ? 1 : _props$columns;
+	      var elements = _props.elements;
 	      var classes = _props.classes;
 	      var id = _props.id;
 
-	      var elemId = id && typeof id === 'string' ? 'n-column-' + id : 'n-column-default';
-	      var className = (0, _classnames2.default)('mdl-grid', noSpacing ? 'mdl-grid--no-spacing' : null, 'comp-lib-template-n-column', classes && typeof classes === 'string' ? classes : null);
+	      var maxColumns = columns >= 4 ? 4 : columns;
+	      var elemId = id && typeof id === 'string' ? 'general-grid-' + id : 'general-grid-default';
+	      var className = (0, _classnames2.default)('mdl-grid', noSpacing ? 'mdl-grid--no-spacing' : null, 'comp-lib-template-general-grid', classes && typeof classes === 'string' ? classes : null);
 	      return _react2.default.createElement(
 	        'div',
 	        {
 	          className: className,
 	          id: elemId
 	        },
-	        this.renderColumns(columns)
+	        this.renderGrid(maxColumns, elements)
 	      );
 	    }
 	  }]);
 
-	  return NColumn;
+	  return GeneralGrid;
 	}(_react2.default.Component);
 
-	exports.default = NColumn;
+	exports.default = GeneralGrid;
 
 /***/ }
 /******/ ]);

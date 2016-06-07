@@ -1,62 +1,15 @@
 import Sample from './../components/atoms/button.jsx';
 import InputText from './../components/atoms/input-text.jsx';
 import TestDiv from './../components/atoms/test-div.jsx';
-import NColumn from './../components/templates/n-column.jsx';
+import GeneralGrid from './../components/templates/general-grid.jsx';
 
 export default (React, PageCtx, mount, page) => {
   page('/atomic-design', () => {
     mount(PageCtx, {
       sections: [
-        () => (React.createElement(NColumn, {
-          columns: [
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'red',
-              color: 'white'
-            })),
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'blue',
-              color: 'white'
-            }))
-          ]
-        })),
-        () => (React.createElement(NColumn, {
-          columns: [
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'red',
-              color: 'white'
-            })),
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'blue',
-              color: 'white'
-            })),
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'green',
-              color: 'white'
-            }))
-          ]
-        })),
-        () => (React.createElement(NColumn, {
-          columns: [
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'red',
-              color: 'white'
-            })),
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'blue',
-              color: 'white'
-            })),
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'green',
-              color: 'white'
-            })),
-            () => (React.createElement(TestDiv, {
-              backgroundColor: 'black',
-              color: 'white'
-            }))
-          ]
-        })),
-        () => (React.createElement(NColumn, {
-          columns: [
+        () => (React.createElement(GeneralGrid, {
+          columns: 4,
+          elements: [
             () => (React.createElement(TestDiv, {
               backgroundColor: 'red',
               color: 'white'
@@ -76,6 +29,14 @@ export default (React, PageCtx, mount, page) => {
             () => (React.createElement(TestDiv, {
               backgroundColor: 'yellow',
               color: 'black'
+            })),
+            () => (React.createElement(TestDiv, {
+              backgroundColor: 'purple',
+              color: 'white'
+            })),
+            () => (React.createElement(TestDiv, {
+              backgroundColor: 'pink',
+              color: 'white'
             }))
           ]
         })),
