@@ -29,6 +29,7 @@ class Header extends React.Component {
       );
     return (
       <header className = {classNames} id = {id}>
+        'Header here'
         <div className='mdl-layout__header-row'>
           {topLeft && typeof topLeft === 'function' ? topLeft() : null}
           {topRight && typeof topRight === 'function' ? topRight() : null}
