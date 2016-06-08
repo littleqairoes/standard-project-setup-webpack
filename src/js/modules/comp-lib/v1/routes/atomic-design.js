@@ -1,5 +1,5 @@
 import GeneralLayout from './../components/templates/general-layout.jsx';
-import Header from './../components/molecules/header.jsx';
+import Header from './../components/organisms/header.jsx';
 
 export default (React, PageCtx, page, mount) => {
   page('/atomic-design', () => {

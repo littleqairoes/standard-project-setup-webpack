@@ -1,5 +1,5 @@
 import React from 'react';
-// import classNames from 'classnames';
+import classNames from 'classnames';
 import random from 'random-js';
 
 class NavLink extends React.Component {
@@ -7,13 +7,20 @@ class NavLink extends React.Component {
     return links ? links.map((link, key) => {
       const {url, name, actionHandler} = link;
       return (
-        <li className="mdl-menu__item mdl-menu__item--full-bleed-divider">
-          {this.renderLink(url, name, actionHandler)}
+        <li className="mdl-menu__item">
+          {this.renderLink(url, name, actionHandler, true)}
         </li>
       );
     }) : null;
   }
-  renderLink(url, name, actionHandler) {
+  renderLink(url, name, actionHandler, isSubMenu) {
+    const {navpos} = this.props;
+    const className = classNames(
+      {
+        'mdl-navigation__link': !isSubMenu,
+        'nav-bar-header-submenu-nav-link': navpos === 'header' && isSubMenu
+      }
+    );
     return (
       <a
         href = {
@@ -22,7 +29,7 @@ class NavLink extends React.Component {
           url &&
           typeof url === 'string' ? '#' : url
         }
-        className = 'mdl-navigation__link'
+        className = {className}
         onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : () => {} }
       >
         {name && typeof name === 'string' ? name : 'Link'}
@@ -33,7 +40,8 @@ class NavLink extends React.Component {
     const {navpos, link, id} = this.props;
     const {url, name, actionHandler, links} = link;
     const r = random();
-    const idFor = `nav-link-${id}-${r.string(5)}`;
+    const idFor = `nav-link-${id ? id : ''}-${r.string(5)}`;
+    // console.log(links)
     if (navpos === 'header') {
       return links ? (
         <span>
@@ -46,13 +54,20 @@ class NavLink extends React.Component {
           </a>
           <ul
             className="mdl-menu mdl-js-menu mdl-js-ripple-effect"
-            htmlFor="demo-menu-lower-left"
+            htmlFor={idFor}
           >
             {this.renderSubMenu(links)}
           </ul>
         </span>
       ) : this.renderLink(url, name, actionHandler);
+    } else if (navpos === 'drawer') {
+      return (
+        <span></span>
+      );
     }
+    return (
+      <span></span>
+    );
   }
 }
 

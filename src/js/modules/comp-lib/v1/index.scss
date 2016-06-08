@@ -7,11 +7,14 @@
 @import './components/atoms/input-text';
 @import './components/atoms/tooltip';
 @import './components/atoms/spinner';
+@import './components/atoms/nav-link';
 
 // Molecules
+@import './components/molecules/nav';
 
 // Organisms
 @import './components/organisms/drawer';
+@import './components/organisms/header';
 
 // Templates
 @import './components/templates/general-grid';
