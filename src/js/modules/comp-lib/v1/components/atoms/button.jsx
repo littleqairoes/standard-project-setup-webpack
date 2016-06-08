@@ -1,20 +1,46 @@
 import React from 'react';
+import Tooltip from './tooltip.jsx';
 import classNames from 'classnames';
+import random from 'random-js';
 
 class Button extends React.Component {
-  renderFabLabel() {
+  renderTooltip(id) {
+    const {tooltip, tooltipClasses} = this.props;
+    return tooltip && typeof tooltip === 'string' ? (
+      <Tooltip
+        tooltip = {tooltip}
+        classes = {tooltipClasses}
+        idFor = {id}
+      />
+    ) : null;
+  }
+  renderFabLabel(id) {
     const {label, isIcon, isFab, isMiniFab, materialIcon, fontIcon} = this.props;
+    const r = random();
+    const idFor = `button-${id}-${r.string(5)}`;
     if (materialIcon && (isIcon || isFab || isMiniFab)) {
       return (
-        <i className='material-icons'>
-          {materialIcon}
-        </i>
+        <span>
+          <i
+            className='material-icons'
+            id = {idFor}
+          >
+            {materialIcon}
+          </i>
+          {this.renderTooltip(idFor)}
+        </span>
       );
     } else if (fontIcon && (isIcon || isFab || isMiniFab)) {
       const className = `fa ${fontIcon}`;
       return (
-        <i className={className}>
-        </i>
+        <span>
+          <i
+            className={className}
+            id = {idFor}
+          >
+          </i>
+          {this.renderTooltip(idFor)}
+        </span>
       );
     }
     return label && typeof label === 'string' ? label : 'Button';
@@ -27,8 +53,6 @@ class Button extends React.Component {
       isFab,
       isMiniFab,
       isIcon,
-      fabIcon,
-      fontIcon,
       classes,
       actionHandler,
       id
@@ -52,7 +76,7 @@ class Button extends React.Component {
         disabled = {isDisabled}
         id = {id}
       >
-        {this.renderFabLabel()}
+        {this.renderFabLabel(id)}
       </button>
     );
   }
