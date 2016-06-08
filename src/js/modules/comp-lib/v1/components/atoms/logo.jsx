@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class Logo extends React.Component {
   renderTitle() {
@@ -8,13 +9,22 @@ class Logo extends React.Component {
         <img src={image} />
       );
     }
-    return label && typeof label === 'string' ? label : 'Logo';
+    return (
+      <h1>
+        {label && typeof label === 'string' ? label : 'Logo'}
+      </h1>
+    );
   }
   render() {
-    const {url} = this.props;
+    const {url, classes} = this.props;
+    const className = classNames(
+      'mdl-layout-title',
+      'comp-lib-v1-logo',
+      classes && typeof classes === 'string' ? classes : null
+    );
     return (
       <span
-        className="mdl-layout-title"
+        className={className}
       >
         <a href={url && typeof url === 'string' ? url : '/'}>
           {this.renderTitle()}
