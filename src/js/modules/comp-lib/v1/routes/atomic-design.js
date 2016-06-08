@@ -4,7 +4,7 @@ import TestDiv from './../components/atoms/test-div.jsx';
 import GeneralGrid from './../components/templates/general-grid.jsx';
 import GeneralLayout from './../components/templates/general-layout.jsx';
 
-export default (React, PageCtx, mount, page) => {
+export default (React, PageCtx, page, mount) => {
   page('/atomic-design', () => {
     mount(PageCtx, {
       template: () => (React.createElement(GeneralLayout, {
