@@ -4,8 +4,6 @@ class Header extends React.Component {
   renderContent(topLeft, topRight, bottomLeft, bottomRight) {
     return (
       <div className='mdl-layout__header-row'>
-        {topLeft && typeof topLeft === 'function' ? topLeft() : null}
-        {topRight && typeof topRight === 'function' ? topRight() : null}
         {bottomLeft && typeof bottomLeft === 'function' ? bottomLeft() : null}
         {bottomRight && typeof bottomRight === 'function' ? bottomRight() : null}
       </div>
@@ -30,11 +28,12 @@ class Header extends React.Component {
       isWaterfall ? 'mdl-layout__header--waterfall' : null
       );
     return (
-      <header
-        className = {classNames}
-        id = {id}
-      >
-        {this.renderContent(topLeft, topRight, bottomLeft, bottomRight)}
+      <header className = {classNames} id = {id}>
+        <div className='mdl-layout__header-row'>
+          {topLeft && typeof topLeft === 'function' ? topLeft() : null}
+          {topRight && typeof topRight === 'function' ? topRight() : null}
+        </div>
+        {bottomLeft || bottomRight ? this.renderContent(bottomLeft, bottomRight) : null}
       </header>
     );
   }
