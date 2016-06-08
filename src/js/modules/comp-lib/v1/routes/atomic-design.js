@@ -5,10 +5,8 @@ export default (React, PageCtx, page, mount) => {
   page('/atomic-design', () => {
     mount(PageCtx, {
       template: () => (React.createElement(GeneralLayout, {
-        header: () => (React.createElement(Header, {
-          isWaterfall: true,
-          isTransparent: true,
-          id: 'header1'
+        fixedDrawer: false,
+        drawer: () => (React.createElement(Drawer, {
         }))
       }))
     });
