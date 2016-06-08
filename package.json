@@ -63,9 +63,5 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "zenscroll": "^3.1.0"
-  },
-  "dependencies": {
-    "lodash": "^4.13.1",
-    "material-design-lite": "^1.1.3"
   }
 }
