@@ -17,17 +17,24 @@ class Header extends React.Component {
       isTransparent,
       isScrollable,
       isWaterfall,
+      isSeamed,
       topLeft,
       topRight,
       bottomLeft,
-      bottomRight
+      bottomRight,
+      classes
     } = this.props;
     const className = classNames(
       'mdl-layout__header',
-      isTransparent ? 'mdl-layout__header--transparent' : null,
-      isScrollable ? 'mdl-layout__header--scroll' : null,
-      isWaterfall ? 'mdl-layout__header--waterfall' : null
-      );
+      'comp-lib-v1-header',
+      classes && typeof classes === 'string' ? classes : null,
+      {
+        'mdl-layout__header--transparent': isTransparent,
+        'mdl-layout__header--scroll': isScrollable,
+        'mdl-layout__header--waterfall': isWaterfall,
+        'mdl-layout__header--seamed': isSeamed
+      }
+    );
     return (
       <header
         className = {className}

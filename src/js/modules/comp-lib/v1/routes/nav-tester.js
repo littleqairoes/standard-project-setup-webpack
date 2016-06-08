@@ -61,7 +61,9 @@ export default (React, PageCtx, page, mount) => {
   page('/nav-tester', () => {
     mount(PageCtx, {
       template: () => (React.createElement(GeneralLayout, {
-        drawer: () => (React.createElement(Drawer, {
+        fixedHeader: true,
+        drawer: (fixedDrawer) => (React.createElement(Drawer, {
+          fixedDrawer,
           logo,
           nav
         })),

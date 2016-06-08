@@ -45,7 +45,7 @@ class GeneralLayout extends React.Component {
         className={className}
       >
         {header && typeof header === 'function' ? header() : null}
-        {drawer && typeof drawer === 'function' ? drawer() : null}
+        {drawer && typeof drawer === 'function' ? drawer(fixedDrawer) : null}
         <main className="mdl-layout__content">
           {this.renderSections()}
         </main>
