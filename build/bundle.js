@@ -53,8 +53,6 @@
 
 	'use strict';
 
-	__webpack_require__(404);
-
 	__webpack_require__(2);
 
 	__webpack_require__(7);
@@ -78,9 +76,7 @@
 	// Import React and JS
 
 
-	var context = (0, _context.initContext)();
-
-	// Import CSS
+	var context = (0, _context.initContext)(); // Import CSS
 
 	var app = (0, _mantraCore.createApp)(context);
 
@@ -39082,12 +39078,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Drawer;
-
-/***/ },
-/* 404 */
-/***/ function(module, exports) {
-
-	"use strict";
 
 /***/ }
 /******/ ]);
