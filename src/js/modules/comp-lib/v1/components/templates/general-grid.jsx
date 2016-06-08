@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 class GeneralGrid extends React.Component {
-  renderElement(element, size, column, key) {
+  renderSection(section, size, column, key) {
     const className = classNames(
       'mdl-cell',
       {
@@ -35,22 +35,22 @@ class GeneralGrid extends React.Component {
         className = {className}
         key = {key}
       >
-        {element && typeof element === 'function' ? element() : null}
+        {section && typeof section === 'function' ? section() : null}
       </div>
     );
   }
-  renderGrid(columns, elements) {
-    if (typeof elements === 'function') {
-      return this.renderElement(elements, 1, 0);
-    } else if (!elements) {
+  renderGrid(columns, sections) {
+    if (typeof sections === 'function') {
+      return this.renderSlement(sections, 1, 0);
+    } else if (!sections) {
       return null;
     }
-    return elements.map((element, key) => {
-      return this.renderElement(element, elements.length, columns, key);
+    return sections.map((section, key) => {
+      return this.renderSection(section, sections.length, columns, key);
     });
   }
   render() {
-    const {noSpacing, columns = 1, elements, classes, id} = this.props;
+    const {noSpacing, columns = 1, sections, classes, id} = this.props;
     const maxColumns = columns >= 4 ? 4 : columns;
     const elemId = id && typeof id === 'string' ? `general-grid-${id}` : 'general-grid-default';
     const className = classNames(
@@ -64,7 +64,7 @@ class GeneralGrid extends React.Component {
         className={className}
         id = {elemId}
       >
-        {this.renderGrid(maxColumns, elements)}
+        {this.renderGrid(maxColumns, sections)}
       </div>
     );
   }
