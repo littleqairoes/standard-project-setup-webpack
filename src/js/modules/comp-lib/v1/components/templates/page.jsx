@@ -7,7 +7,6 @@ class Page extends React.Component {
     }
   }
   componentDidUpdate() {
-    console.log('update page');
     if (componentHandler) {
       componentHandler.upgradeDom();
     }

@@ -1,4 +1,4 @@
-import './experiment'
+import './experiment';
 
 // Import CSS
 import '../css/master.scss';
