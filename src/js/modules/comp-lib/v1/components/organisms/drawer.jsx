@@ -5,8 +5,8 @@ class Drawer extends React.Component {
     const {nav, logo} = this.props;
     return (
       <div className="mdl-layout__drawer">
-        {logo && typeof logo === 'function' ? logo() : null}
-        {nav && typeof nav === 'function' ? nav() : null}
+        {logo && typeof logo === 'function' ? logo('drawer') : null}
+        {nav && typeof nav === 'function' ? nav('drawer') : null}
       </div>
     );
   }
