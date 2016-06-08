@@ -33783,18 +33783,51 @@
 	  }
 
 	  _createClass(Button, [{
+	    key: 'renderFabLabel',
+	    value: function renderFabLabel() {
+	      var _props = this.props;
+	      var label = _props.label;
+	      var isIcon = _props.isIcon;
+	      var isFab = _props.isFab;
+	      var isMiniFab = _props.isMiniFab;
+	      var materialIcon = _props.materialIcon;
+	      var fontIcon = _props.fontIcon;
+
+	      if (materialIcon && (isIcon || isFab || isMiniFab)) {
+	        return _react2.default.createElement(
+	          'i',
+	          { className: 'material-icons' },
+	          materialIcon
+	        );
+	      } else if (fontIcon && (isIcon || isFab || isMiniFab)) {
+	        var className = 'fa ' + fontIcon;
+	        return _react2.default.createElement('i', { className: className });
+	      }
+	      return label && typeof label === 'string' ? label : 'Button';
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _props = this.props;
-	      var withRipple = _props.withRipple;
-	      var isRaised = _props.isRaised;
-	      var isDisabled = _props.isDisabled;
-	      var label = _props.label;
-	      var classes = _props.classes;
-	      var actionHandler = _props.actionHandler;
-	      var id = _props.id;
+	      var _props2 = this.props;
+	      var withRipple = _props2.withRipple;
+	      var isRaised = _props2.isRaised;
+	      var isDisabled = _props2.isDisabled;
+	      var isFab = _props2.isFab;
+	      var isMiniFab = _props2.isMiniFab;
+	      var isIcon = _props2.isIcon;
+	      var fabIcon = _props2.fabIcon;
+	      var fontIcon = _props2.fontIcon;
+	      var classes = _props2.classes;
+	      var actionHandler = _props2.actionHandler;
+	      var id = _props2.id;
 
-	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', withRipple ? 'mdl-js-ripple-effect' : null, isRaised ? 'mdl-button--raised' : null, classes && typeof classes === 'string' ? classes : null);
+	      var className = (0, _classnames2.default)('mdl-button mdl-js-button', 'comp-lib-atom-button', classes && typeof classes === 'string' ? classes : null, {
+	        'mdl-js-ripple-effect': withRipple,
+	        'mdl-button--raised': isRaised,
+	        'mdl-button--fab': isFab || isMiniFab,
+	        'mdl-button--icon': isIcon,
+	        'mdl-button--mini-fab': isMiniFab
+	      });
 	      return _react2.default.createElement(
 	        'button',
 	        {
@@ -33803,7 +33836,7 @@
 	          disabled: isDisabled,
 	          id: id
 	        },
-	        label && typeof label === 'string' ? label : 'Button'
+	        this.renderFabLabel()
 	      );
 	    }
 	  }]);
@@ -33812,17 +33845,6 @@
 	}(_react2.default.Component);
 
 	exports.default = Button;
-
-	/* <ReactElement
-	    attr1 = string
-	    attr2 = number
-	    ...
-	  >
-	    <p> </p>
-	    <br/>
-	    <div></div>
-	  </ReactElement>
-	*/
 
 /***/ },
 /* 392 */
