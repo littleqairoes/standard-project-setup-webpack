@@ -61,9 +61,23 @@ class NavLink extends React.Component {
         </span>
       ) : this.renderLink(url, name, actionHandler);
     } else if (navpos === 'drawer') {
-      return (
-        <span></span>
-      );
+      return links ? (
+        <span>
+          <a
+            href='#'
+            className='mdl-navigation__link'
+            id = {idFor}
+          >
+            {name}
+          </a>
+          <ul
+            className="mdl-menu mdl-js-menu mdl-js-ripple-effect"
+            htmlFor={idFor}
+          >
+            {this.renderSubMenu(links)}
+          </ul>
+        </span>
+      ) : this.renderLink(url, name, actionHandler);
     }
     return (
       <span></span>
