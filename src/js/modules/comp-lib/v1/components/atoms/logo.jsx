@@ -7,7 +7,10 @@ class Logo extends React.Component {
     const {image, label} = this.props;
     if (image) {
       return (
-        <img src={image} />
+        <img
+          src={image}
+          alt={label}
+        />
       );
     }
     return (
