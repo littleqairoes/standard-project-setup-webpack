@@ -1,21 +1,49 @@
 import React from 'react';
 import classNames from 'classnames';
+import _ from 'underscore';
+const {debounce} = _;
 
-class textField extends React.Component {
+class TextField extends React.Component {
+  constructor() {
+    super();
+    this.getElement = this.getElement.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
+  getElement() {
+    return this.textfield;
+  }
+  onChangeHandler(e) {
+    const {onChangeHandler} = this.props;
+    onChangeHandler(this.textfield);
+  }
   renderTextField(type, inputId, pattern) {
+    const {name, rows} = this.props;
+    const textfieldRef = (c) => {
+      this.textfield = c;
+    };
     if (type === 'textarea') {
       return (
-        <span>
-
-        </span>
+        <textarea
+          className="mdl-textfield__input"
+          type="text"
+          rows= {rows && !isNaN(rows) ? rows : 1}
+          id={inputId}
+          ref = {textfieldRef}
+          name = {name}
+          onChange = {debounce(this.onChangeHandler, 250)}
+        >
+        </textarea>
       );
     }
     return (
       <input
         className="mdl-textfield__input"
-        type={type && typeof type === 'string' ? type : 'text'}
+        type={type}
         id={inputId}
+        name = {name}
+        ref = {textfieldRef}
         pattern = {pattern && typeof pattern === 'string' ? pattern : null}
+        onChange = {debounce(this.onChangeHandler, 250)}
       />
     );
   }
@@ -29,7 +57,7 @@ class textField extends React.Component {
         className="mdl-button mdl-js-button mdl-button--icon"
         htmlFor={id}
       >
-        <i class={className}>
+        <i className={className}>
           {expandingMaterialIcon ? expandingMaterialIcon : ''}
         </i>
       </label>
@@ -45,40 +73,56 @@ class textField extends React.Component {
       classes,
       shouldFloat,
       id,
-      type,
-      name
+      type
     } = this.props;
-    const inputId = id && typeof id === 'string' ? `input-text-${id}` : 'input-text-default';
+    const inputId = id && typeof id === 'string' ? `text-field-${id}` : 'text-field-default';
     const className = classNames(
       'mdl-textfield mdl-js-textfield',
-      'comp-lib-v1-atom-input-text',
+      'comp-lib-v1-atom-text-field',
       classes && typeof classes === 'string' ? classes : null,
       {
         'mdl-textfield--floating-label': shouldFloat,
         'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon
       }
     );
-
+    const trueType = type &&
+      typeof type === 'string' && (
+        type === 'text' ||
+        type === 'number' ||
+        type === 'textarea' ||
+        type === 'email' ||
+        type === 'number' ||
+        type === 'password' ||
+        type === 'search' ||
+        type === 'url'
+      ) ? type : 'text';
     return (
       <div
         className={className}
       >
         {this.renderExpandingIcon(inputId)}
-        {this.renderTextField(type, inputId, pattern, name)}
-        <label
-          className="mdl-textfield__label"
-          htmlFor={inputId}
+        <div
+          className = {expandingFontIcon || expandingMaterialIcon ?
+            'mdl-textfield__expandable-holder' :
+            null
+          }
         >
-          {placeholder && typeof placeholder === 'string' ? placeholder : 'Placeholder Text'}
-        </label>
-        <span
-          className="mdl-textfield__error"
-        >
-          {errorLabel && typeof errorLabel === 'string' ? errorLabel : 'Placeholder Error'}
-        </span>
+          {this.renderTextField(trueType, inputId, pattern)}
+          <label
+            className="mdl-textfield__label"
+            htmlFor={inputId}
+          >
+            {placeholder && typeof placeholder === 'string' ? placeholder : 'Placeholder Text'}
+          </label>
+          <span
+            className="mdl-textfield__error"
+          >
+            {errorLabel && typeof errorLabel === 'string' ? errorLabel : 'Placeholder Error'}
+          </span>
+        </div>
       </div>
     );
   }
 }
 
-export default textField;
+export default TextField;

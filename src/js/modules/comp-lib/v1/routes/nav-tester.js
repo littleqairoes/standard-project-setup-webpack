@@ -3,6 +3,7 @@ import Header from './../components/organisms/header.jsx';
 import Drawer from './../components/organisms/drawer.jsx';
 import Nav from './../components/molecules/nav.jsx';
 import Logo from './../components/atoms/logo.jsx';
+import Textfield from './../components/atoms/text-field.jsx';
 
 export default (React, PageCtx, page, mount) => {
 
@@ -69,7 +70,15 @@ export default (React, PageCtx, page, mount) => {
           logo,
           topLeft: nav,
           topRight: nav
-        }))
+        })),
+        sections: [
+          () => (React.createElement(Textfield, {
+            onChangeHandler: (el) => {
+              console.log(el.value);
+            },
+            expandingMaterialIcon: 'search'
+          }))
+        ]
       }))
     });
   });
