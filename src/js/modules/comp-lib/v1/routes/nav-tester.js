@@ -66,8 +66,9 @@ export default (React, PageCtx, page, mount) => {
           nav
         })),
         header: () => (React.createElement(Header, {
-          topLeft: logo,
-          persistentTopRight: nav
+          logo,
+          topLeft: nav,
+          topRight: nav
         }))
       }))
     });
