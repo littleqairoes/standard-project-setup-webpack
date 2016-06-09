@@ -15,29 +15,25 @@ class Button extends React.Component {
     ) : null;
   }
   renderFabLabel(id) {
-    const {label, isIcon, isFab, isMiniFab, materialIcon, fontIcon} = this.props;
+    const {
+      label,
+      isIcon,
+      isFab,
+      isMiniFab,
+      materialIcon,
+      fontIcon
+    } = this.props;
     const r = random();
     const idFor = `button-${id}-${r.string(5)}`;
-    if (materialIcon && (isIcon || isFab || isMiniFab)) {
-      return (
-        <span>
-          <i
-            className='material-icons'
-            id = {idFor}
-          >
-            {materialIcon}
-          </i>
-          {this.renderTooltip(idFor)}
-        </span>
-      );
-    } else if (fontIcon && (isIcon || isFab || isMiniFab)) {
-      const className = `fa ${fontIcon}`;
+    const className = materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`;
+    if (isIcon || isFab || isMiniFab) {
       return (
         <span>
           <i
             className={className}
             id = {idFor}
           >
+            {materialIcon ? materialIcon : ''}
           </i>
           {this.renderTooltip(idFor)}
         </span>

@@ -36,6 +36,7 @@ class GeneralLayout extends React.Component {
     } = this.props;
     const className = classNames(
       'mdl-layout mdl-js-layout',
+      'comp-lib-v1-template-general-layout',
       classes && typeof id === 'string' ? classes : null,
       {
         'mdl-layout--fixed-header': fixedHeader,
