@@ -2,6 +2,7 @@ import React from 'react';
 import Tooltip from './tooltip.jsx';
 import classNames from 'classnames';
 import random from 'random-js';
+import {classList, prefix} from './../../libs';
 
 class Button extends React.Component {
   renderTooltip(id) {
@@ -25,8 +26,8 @@ class Button extends React.Component {
     } = this.props;
     const r = random();
     const idFor = `button-${id}-${r.string(5)}`;
-    const className = materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`;
     if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
+      const className = materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`;
       return (
         <span>
           <i
@@ -49,21 +50,25 @@ class Button extends React.Component {
       isFab,
       isMiniFab,
       isIcon,
+      colored,
       classes,
       actionHandler,
       id
     } = this.props;
+    const suffix = `${prefix}-button`;
     const className = classNames(
       'mdl-button mdl-js-button',
-      'comp-lib-atom-button',
-      classes && typeof classes === 'string' ? classes : null,
       {
         'mdl-js-ripple-effect': withRipple,
         'mdl-button--raised': isRaised,
         'mdl-button--fab': isFab || isMiniFab,
         'mdl-button--icon': isIcon,
         'mdl-button--mini-fab': isMiniFab
-      }
+      },
+      suffix,
+      colored && colored === 'primary' ? `${suffix}-primary mdl-button--colored` : null,
+      colored && colored === 'accent' ? `${suffix}-accent mdl-button--accent` : null,
+      classList(classes, suffix)
     );
     return (
       <button

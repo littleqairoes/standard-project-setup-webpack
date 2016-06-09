@@ -1,25 +1,33 @@
 import React from 'react';
 import classNames from 'classnames';
 import random from 'random-js';
+import {classList, prefix} from './../../libs';
 
 class NavLink extends React.Component {
-  renderSubMenu(links) {
+  renderSubMenu(links, classes) {
     return links ? links.map((link, key) => {
       const {url, name, actionHandler} = link;
+      const className = classNames(
+        'mdl-menu__item',
+        `${prefix}-nav-sub-link-item`,
+        classes
+      );
       return (
-        <li className="mdl-menu__item">
-          {this.renderLink(url, name, actionHandler, true)}
+        <li className= {className}>
+          {this.renderLink(url, name, actionHandler, classes, true)}
         </li>
       );
     }) : null;
   }
-  renderLink(url, name, actionHandler, isSubMenu) {
+  renderLink(url, name, actionHandler, classes, isSubMenu) {
     const {navpos} = this.props;
     const className = classNames(
       {
-        'mdl-navigation__link': !isSubMenu,
-        'nav-bar-header-submenu-nav-link': navpos === 'header' && isSubMenu
-      }
+        'mdl-navigation__link': !isSubMenu
+      },
+      classes,
+      isSubMenu ? `${prefix}-nav-sub-link` : null,
+      navpos === 'header' && isSubMenu ? `${prefix}-nav-sub-link-header` : null
     );
     return (
       <a
@@ -37,47 +45,61 @@ class NavLink extends React.Component {
     );
   }
   render() {
-    const {navpos, link, id} = this.props;
+    const {navpos, link, id, classes} = this.props;
     const {url, name, actionHandler, links} = link;
     const r = random();
     const idFor = `nav-link-${id ? id : ''}-${r.string(5)}`;
-    // console.log(links)
+    const suffix = `${prefix}-nav-link`;
+    const className = classNames(
+      suffix,
+      classList(classes, suffix)
+    );
+    const classNameGroupHeader = classNames(
+      'mdl-menu mdl-js-menu mdl-js-ripple-effect',
+      `${suffix}-group-header`,
+      classList(classes, `${suffix}-group-header`)
+    );
+    const classNameGroupDrawer = classNames(
+      'mdl-menu mdl-js-menu mdl-js-ripple-effect',
+      `${suffix}-group-drawer`,
+      classList(classes, `${suffix}-group-drawer`)
+    );
     if (navpos === 'header') {
       return links ? (
         <span>
           <a
             href='#'
-            className='mdl-navigation__link'
+            className={`mdl-navigation__link ${className}`}
             id = {idFor}
           >
             {name}
           </a>
           <ul
-            className="mdl-menu mdl-js-menu mdl-js-ripple-effect"
+            className={classNameGroupHeader}
             htmlFor={idFor}
           >
-            {this.renderSubMenu(links)}
+            {this.renderSubMenu(links, className)}
           </ul>
         </span>
-      ) : this.renderLink(url, name, actionHandler);
+      ) : this.renderLink(url, name, actionHandler, className);
     } else if (navpos === 'drawer') {
       return links ? (
         <span>
           <a
             href='#'
-            className='mdl-navigation__link'
+            className={`mdl-navigation__link ${className}`}
             id = {idFor}
           >
             {name}
           </a>
           <ul
-            className="mdl-menu mdl-js-menu mdl-js-ripple-effect"
+            className={classNameGroupDrawer}
             htmlFor={idFor}
           >
-            {this.renderSubMenu(links)}
+            {this.renderSubMenu(links, className)}
           </ul>
         </span>
-      ) : this.renderLink(url, name, actionHandler);
+      ) : this.renderLink(url, name, actionHandler, className);
     }
     return (
       <span></span>

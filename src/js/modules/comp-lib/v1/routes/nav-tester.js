@@ -4,6 +4,7 @@ import Drawer from './../components/organisms/drawer.jsx';
 import Nav from './../components/molecules/nav.jsx';
 import Logo from './../components/atoms/logo.jsx';
 import Textfield from './../components/atoms/text-field.jsx';
+import Button from './../components/atoms/button.jsx';
 
 export default (React, PageCtx, page, mount) => {
 
@@ -72,6 +73,12 @@ export default (React, PageCtx, page, mount) => {
           topRight: nav
         })),
         sections: [
+          () => (React.createElement(Button, {
+            isFab: true,
+            materialIcon: 'search',
+            withRipple: true,
+            colored: 'accent'
+          })),
           () => (React.createElement(Textfield, {
             onChangeHandler: (el) => {
               console.log(el.value);

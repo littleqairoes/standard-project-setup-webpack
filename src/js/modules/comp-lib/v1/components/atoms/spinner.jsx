@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {classList, prefix} from './../../libs';
 
 class Spinner extends React.Component {
   render() {

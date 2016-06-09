@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {classList, prefix} from './../../libs';
 
 class Header extends React.Component {
   renderContent(topLeft, topRight, bottomLeft, bottomRight) {
@@ -27,17 +28,18 @@ class Header extends React.Component {
       bottomRight,
       classes
     } = this.props;
+    const suffix = `${prefix}-header`;
     const className = classNames(
       'mdl-layout__header',
-      'comp-lib-v1-organism-header',
-      classes && typeof classes === 'string' ? classes : null,
       {
         'mdl-layout__header--transparent': isTransparent,
         'mdl-layout__header--scroll': isScrollable,
         'mdl-layout__header--waterfall': isWaterfall,
         'mdl-layout__header--waterfall-hide-top': hideTopOnWaterfall,
         'mdl-layout__header--seamed': isSeamed
-      }
+      },
+      suffix,
+      classList(classes, suffix)
     );
     return (
       <header

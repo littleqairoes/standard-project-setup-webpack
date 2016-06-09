@@ -1,0 +1,7 @@
+@import './../prefix';
+@import 'src/css/palette.scss';
+
+.#{$prefix}-header {
+  background-color: $primary-color;
+  color: $primary-color-text;
+}
