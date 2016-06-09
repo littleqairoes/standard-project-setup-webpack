@@ -4,8 +4,6 @@ import Drawer from './../components/organisms/drawer.jsx';
 import Nav from './../components/molecules/nav.jsx';
 import Logo from './../components/atoms/logo.jsx';
 
-
-
 export default (React, PageCtx, page, mount) => {
 
   const logo = (navpos) => (React.createElement(Logo, {
@@ -53,23 +51,23 @@ export default (React, PageCtx, page, mount) => {
     }
   ];
 
-  const nav = (navpos) => (React.createElement(Nav, {
+  const nav = (navpos, alwaysVisible) => (React.createElement(Nav, {
     navpos,
-    links
+    links,
+    alwaysVisible
   }));
 
   page('/nav-tester', () => {
     mount(PageCtx, {
       template: () => (React.createElement(GeneralLayout, {
         fixedHeader: true,
-        drawer: (fixedDrawer) => (React.createElement(Drawer, {
-          fixedDrawer,
+        drawer: () => (React.createElement(Drawer, {
           logo,
           nav
         })),
         header: () => (React.createElement(Header, {
           topLeft: logo,
-          topRight: nav
+          persistentTopRight: nav
         }))
       }))
     });

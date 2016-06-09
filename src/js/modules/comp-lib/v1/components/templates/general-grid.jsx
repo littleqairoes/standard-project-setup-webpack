@@ -55,9 +55,11 @@ class GeneralGrid extends React.Component {
     const elemId = id && typeof id === 'string' ? `general-grid-${id}` : 'general-grid-default';
     const className = classNames(
       'mdl-grid',
-      noSpacing ? 'mdl-grid--no-spacing' : null,
       'comp-lib-template-general-grid',
-      classes && typeof classes === 'string' ? classes : null
+      classes && typeof classes === 'string' ? classes : null,
+      {
+        'mdl-grid--no-spacing': noSpacing
+      }
     );
     return (
       <div

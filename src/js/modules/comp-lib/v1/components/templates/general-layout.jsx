@@ -27,6 +27,8 @@ class GeneralLayout extends React.Component {
     const {
       fixedHeader,
       fixedDrawer,
+      hideDrawerButtonWhenDesktop = true,
+      hideDrawerButton,
       header,
       drawer,
       classes,
@@ -37,7 +39,9 @@ class GeneralLayout extends React.Component {
       classes && typeof id === 'string' ? classes : null,
       {
         'mdl-layout--fixed-header': fixedHeader,
-        'mdl-layout--fixed-drawer': fixedDrawer
+        'mdl-layout--fixed-drawer': fixedDrawer,
+        'mdl-layout--no-desktop-drawer-button': hideDrawerButtonWhenDesktop,
+        'mdl-layout--no-drawer-button': hideDrawerButton
       }
     );
     return (
@@ -45,7 +49,7 @@ class GeneralLayout extends React.Component {
         className={className}
       >
         {header && typeof header === 'function' ? header() : null}
-        {drawer && typeof drawer === 'function' ? drawer(fixedDrawer) : null}
+        {drawer && typeof drawer === 'function' ? drawer() : null}
         <main className="mdl-layout__content">
           {this.renderSections()}
         </main>

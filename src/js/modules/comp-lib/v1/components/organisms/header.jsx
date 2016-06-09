@@ -20,6 +20,7 @@ class Header extends React.Component {
       isSeamed,
       topLeft,
       topRight,
+      persistentTopRight,
       bottomLeft,
       bottomRight,
       classes
@@ -44,6 +45,8 @@ class Header extends React.Component {
           {topLeft && typeof topLeft === 'function' ? topLeft('header') : null}
           <div className="mdl-layout-spacer"></div>
           {topRight && typeof topRight === 'function' ? topRight('header') : null}
+          {persistentTopRight && typeof persistentTopRight === 'function' ?
+            persistentTopRight('header', true) : null}
         </div>
         {bottomLeft || bottomRight ? this.renderContent(bottomLeft, bottomRight) : null}
       </header>

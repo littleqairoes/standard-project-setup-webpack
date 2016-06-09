@@ -16,12 +16,12 @@ class Nav extends React.Component {
     }) : null;
   }
   render() {
-    const {navpos, links, classes, id} = this.props;
+    const {navpos, links, classes, id, alwaysVisible} = this.props;
     const className = classNames(
       'mdl-navigation',
       classes && typeof classes === 'string' ? classes : null,
       {
-        'mdl-layout--large-screen-only': navpos && navpos === 'header'
+        'mdl-layout--large-screen-only': navpos && navpos === 'header' && !alwaysVisible
       }
     );
     return (
