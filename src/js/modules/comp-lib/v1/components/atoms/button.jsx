@@ -26,7 +26,7 @@ class Button extends React.Component {
     const r = random();
     const idFor = `button-${id}-${r.string(5)}`;
     const className = materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`;
-    if (isIcon || isFab || isMiniFab) {
+    if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
       return (
         <span>
           <i
