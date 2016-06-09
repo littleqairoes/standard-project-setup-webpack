@@ -2,6 +2,19 @@ import React from 'react';
 import classNames from 'classnames';
 
 class List extends React.Component {
+  renderIcon(avatarFontIcon, avatarMaterialIcon) {
+    if (avatarFontIcon || avatarMaterialIcon) {
+      const className = avatarMaterialIcon ? 'material-icons mdl-list__item-icon' :
+    `fa ${avatarFontIcon ? avatarFontIcon : 'fa-search'}`;
+      return (
+        <i
+          className = {className}
+        >
+          {avatarMaterialIcon ? avatarMaterialIcon : ''}
+        </i>
+      );
+    }
+  }
   renderItems(items) {
     return items ? items.map((link, key) => {
       const {
@@ -34,6 +47,7 @@ class List extends React.Component {
           <span
             className = 'mdl-list__item-primary-content'
           >
+            {this.renderIcon(avatarFontIcon, avatarMaterialIcon)}
             {primary}
           </span>
         </li>

@@ -6,7 +6,8 @@ import List from './../components/molecules/list.jsx';
 export default (React, PageCtx, page, mount) => {
   const items = [
     {
-      primary: 'gauven'
+      primary: 'gauven',
+      avatarMaterialIcon: 'person'
     },
     {
       primary: 'zydrick'
