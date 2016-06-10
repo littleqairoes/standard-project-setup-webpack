@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import Button from './../atoms/button.jsx';
 
 class CardAction extends React.Component {
   renderIcon(icon) {
@@ -13,28 +12,22 @@ class CardAction extends React.Component {
     );
   }
   render() {
-    const {text, action, icon, withBorder} = this.props;
+    const {icon, withBorder, button} = this.props;
     const className = classNames(
-      'mdl-card__actions',
+      'mdl-card__action',
       withBorder ? 'mdl-card--border' : null
-    );
-    const buttonClass = classNames(
-      'mdl-button'
     );
     return (
       <div
         className={className}
-        onClick={action}
       >
-        <Button
-          className={buttonClass}
-          id={text}
-          anchor={true}
-        />
+        {button && typeof button === 'function' ? button() : null}
+        {icon && typeof icon === 'string' ? (
         <div
           className="mdl-layout-spacer"
         >
         </div>
+        ) : null}
         {icon && typeof icon === 'string' ? this.renderIcon(icon) : null}
       </div>
     );

@@ -1,5 +1,11 @@
 import GeneralLayout from './../components/templates/general-layout.jsx';
 import Card from './../components/organisms/card.jsx';
+import CardTitle from './../components/atoms/card-title.jsx';
+import CardMedia from './../components/atoms/card-media.jsx';
+import CardText from './../components/atoms/card-text.jsx';
+import CardAction from './../components/molecules/card-action.jsx';
+import CardMenu from './../components/molecules/card-menu.jsx';
+import Button from './../components/atoms/button.jsx';
 
 
 export default (React, PageCtx, page, mount) => {
@@ -8,19 +14,38 @@ export default (React, PageCtx, page, mount) => {
       template: () => (React.createElement(GeneralLayout, {
         sections: [
           () => (React.createElement(Card, {
-            titleAttr: {
-              text: 'Card Example'
-            },
-            mediaAttr: {
+            title: () => (React.createElement(CardTitle, {
+              title: 'Card Example'
+            })),
+            media: () => (React.createElement(CardMedia, {
               src: 'https://goo.gl/hQBL66',
               width: 330,
               alt: 'Image Not Found'
-            },
-            text: 'Checking if you are ok.',
-            actionAttr: {
-            },
-            menuAttr: {
-            }
+            })),
+            cardText: () => (React.createElement(CardText, {
+              text: 'Checking if you are ok.'
+            })),
+            action: () => (React.createElement(CardAction, {
+              icon: 'event',
+              withBorder: true,
+              button: () => (React.createElement(Button, {
+                colored: true,
+                actionHandler: () => {
+                  alert('Thank You');
+                },
+                id: 'Add Calendar'
+              }))
+            })),
+            menu: () => (React.createElement(CardMenu, {
+              button: () => (React.createElement(Button, {
+                isIcon: true,
+                materialIcon: 'share',
+                colored: true,
+                actionHandler: () => {
+                  alert('welcome');
+                }
+              }))
+            }))
           }))
         ]
       }))
