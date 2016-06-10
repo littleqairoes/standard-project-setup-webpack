@@ -42,7 +42,7 @@ export default (React, PageCtx, page, mount) => {
                 materialIcon: 'share',
                 colored: true,
                 actionHandler: () => {
-                  alert('welcome');
+                  alert('Good Day');
                 }
               }))
             }))
