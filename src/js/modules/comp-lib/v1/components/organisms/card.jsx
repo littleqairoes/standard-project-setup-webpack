@@ -1,9 +1,52 @@
 import React from 'react';
 import classNames from 'classnames';
+import CardTitle from './../atoms/card-title.jsx';
+import CardMedia from './../atoms/card-media.jsx';
+import CardText from './../atoms/card-text.jsx';
+import CardAction from './../molecules/card-action.jsx';
+// import CardMenu from './../atoms/card-menu.jsx';
 
 class Card extends React.Component {
+  renderTitle(titleAttr) {
+    return (
+      <CardTitle
+        title = {titleAttr.text}
+        expand = {titleAttr.expand}
+      />
+    );
+  }
+  renderMedia(mediaAttr) {
+    return (
+      <CardMedia
+        src={mediaAttr.src}
+        width={mediaAttr.width}
+        height={mediaAttr.height}
+        alt={mediaAttr.alt}
+        style={mediaAttr.style}
+      />
+    );
+  }
+  renderText(text) {
+    return (
+      <CardText
+        text={text}
+      />
+    );
+  }
+  renderAction(actionAttr) {
+    return (
+      <CardAction
+      />
+    );
+  }
+  // renderMenu(menuAttr) {
+  //   return (
+  //     <CardMenu
+  //     />
+  //   );
+  // }
   render() {
-    const {id, title, media, supportingText, action, shadow, classes} = this.props;
+    const {id, titleAttr, mediaAttr, text, actionAttr, menuAttr, shadow, classes} = this.props;
     const className = classNames(
       'mdl-card',
       shadow &&
@@ -18,10 +61,9 @@ class Card extends React.Component {
         id = {id}
         className={className}
       >
-        {title && typeof title === 'function' ? title() : null}
-        {media && typeof media === 'function' ? media() : null}
-        {supportingText && typeof supportingText === 'function' ? supportingText() : null}
-        {action && typeof action === 'function' ? action() : null}
+        {titleAttr && typeof titleAttr === 'object' ? this.renderTitle(titleAttr) : null}
+        {mediaAttr && typeof mediaAttr === 'object' ? this.renderMedia(mediaAttr) : null}
+        {text && typeof text === 'string' ? this.renderText(text) : null}
       </div>
     );
   }

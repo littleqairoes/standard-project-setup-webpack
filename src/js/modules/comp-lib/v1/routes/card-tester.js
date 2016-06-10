@@ -1,5 +1,5 @@
 import GeneralLayout from './../components/templates/general-layout.jsx';
-import Card from './../components/molecules/card.jsx';
+import Card from './../components/organisms/card.jsx';
 
 
 export default (React, PageCtx, page, mount) => {
