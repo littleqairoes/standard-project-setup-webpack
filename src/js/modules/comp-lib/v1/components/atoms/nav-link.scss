@@ -1,11 +1,13 @@
 @import './../prefix';
 
 .#{$prefix}-nav-link {
-
+  color: inherit !important;
 }
 
 .#{$prefix}-nav-link-group-header {
+  background-color: $primary-color;
   .#{$prefix}-nav-sub-link-item {
+    background-color: inherit !important;
     .#{$prefix}-nav-sub-link {
 
     }

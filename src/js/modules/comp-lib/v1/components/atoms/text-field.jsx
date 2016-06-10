@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import _ from 'underscore';
 const {debounce} = _;
+import {classList, prefix} from './../../libs';
 
 class TextField extends React.Component {
   constructor() {
@@ -76,14 +77,15 @@ class TextField extends React.Component {
       type
     } = this.props;
     const inputId = id && typeof id === 'string' ? `text-field-${id}` : 'text-field-default';
+    const suffix = `${prefix}-text-field`;
     const className = classNames(
       'mdl-textfield mdl-js-textfield',
-      'comp-lib-v1-atom-text-field',
-      classes && typeof classes === 'string' ? classes : null,
       {
         'mdl-textfield--floating-label': shouldFloat,
         'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon
-      }
+      },
+      suffix,
+      classList(classes, suffix)
     );
     const trueType = type &&
       typeof type === 'string' && (

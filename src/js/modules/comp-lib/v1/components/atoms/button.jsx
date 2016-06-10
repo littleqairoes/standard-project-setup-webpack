@@ -6,11 +6,11 @@ import {classList, prefix} from './../../libs';
 
 class Button extends React.Component {
   renderTooltip(id) {
-    const {tooltip, tooltipClasses} = this.props;
+    const {tooltip, classes} = this.props;
     return tooltip && typeof tooltip === 'string' ? (
       <Tooltip
         tooltip = {tooltip}
-        classes = {tooltipClasses}
+        classes = {classes}
         idFor = {id}
       />
     ) : null;
