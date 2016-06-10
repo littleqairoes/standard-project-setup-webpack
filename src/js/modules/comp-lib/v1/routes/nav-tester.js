@@ -5,6 +5,7 @@ import Nav from './../components/molecules/nav.jsx';
 import Logo from './../components/atoms/logo.jsx';
 import Textfield from './../components/atoms/text-field.jsx';
 import Button from './../components/atoms/button.jsx';
+import MarkdownEditor from './../components/molecules/markdown-editor.jsx';
 
 export default (React, PageCtx, page, mount) => {
 
@@ -80,6 +81,10 @@ export default (React, PageCtx, page, mount) => {
           topRight: nav
         })),
         sections: [
+          (classes) => (React.createElement(MarkdownEditor, {
+            placeholder: 'This text here',
+            rows: 5
+          })),
           (classes) => (React.createElement(Button, {
             classes,
             isFab: true,
@@ -89,14 +94,15 @@ export default (React, PageCtx, page, mount) => {
             tooltip: 'Search',
             anchor: true,
             isLarge: true,
-            tooltipPos: 'right'
+            // tooltipPos: 'right'
           })),
           (classes) => (React.createElement(Textfield, {
             classes,
             onChangeHandler: (el) => {
               console.log(el.value);
+
             },
-            expandingMaterialIcon: 'search'
+            shouldFloat: true
           }))
         ]
       }))
