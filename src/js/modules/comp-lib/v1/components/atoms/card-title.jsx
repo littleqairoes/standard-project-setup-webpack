@@ -2,18 +2,26 @@ import React from 'react';
 import classNames from 'classnames';
 
 class CardTitle extends React.Component {
+  renderTitle(title) {
+    return (
+      <h2
+        className='mdl-card__title-text'
+      >
+        {title}
+      </h2>
+    );
+  }
   render() {
-    const {id, title, classes} = this.props;
+    const {title, expand} = this.props;
     const className = classNames(
       'mdl-card__title',
-      classes && typeof classes === 'string' ? classes : null
+      expand ? 'mdl-card--expand' : null
     );
     return (
       <div
-        id = {id}
         className={className}
       >
-        {}
+        {this.renderTitle(title)}
       </div>
     );
   }
