@@ -2,6 +2,7 @@ import GeneralLayout from './../components/templates/general-layout.jsx';
 import Drawer from './../components/organisms/drawer.jsx';
 import Logo from './../components/atoms/logo.jsx';
 import List from './../components/molecules/list.jsx';
+import Checkbox from './../components/atoms/checkbox.jsx';
 
 export default (React, PageCtx, page, mount) => {
   const items = [

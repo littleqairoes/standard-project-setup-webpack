@@ -2,6 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 class List extends React.Component {
+  renderAction(secondaryAction, secondaryActionHandler) {
+  }
   renderSecondaryIcon(secondaryFontIcon, secondaryMaterialIcon, secondaryHref) {
     const className = classNames(
       secondaryFontIcon ? secondaryFontIcon : null,
