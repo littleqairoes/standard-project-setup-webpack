@@ -5,7 +5,11 @@ import {classList, prefix} from './../../libs';
 
 class Nav extends React.Component {
   renderLinks(links) {
-    const {navpos, classes} = this.props;
+    const {
+      navpos,
+      classes,
+      optionalClassesNavLink
+    } = this.props;
     return links ? links.map((link, key) => {
       return (
         <NavLink
@@ -13,6 +17,7 @@ class Nav extends React.Component {
           key = {key}
           navpos = {navpos}
           classes = {classes}
+          optionalClasses = {optionalClassesNavLink}
         />
       );
     }) : null;
@@ -22,6 +27,7 @@ class Nav extends React.Component {
       navpos,
       links,
       classes,
+      optionalClasses,
       id,
       alwaysVisible
     } = this.props;
@@ -32,7 +38,8 @@ class Nav extends React.Component {
         'mdl-layout--large-screen-only': navpos && navpos === 'header' && !alwaysVisible
       },
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <nav

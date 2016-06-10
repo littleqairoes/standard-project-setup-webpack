@@ -4,12 +4,13 @@ import {classList, prefix} from './../../libs';
 
 class GeneralLayout extends React.Component {
   renderSection(section, key) {
-    const {classes} = this.props;
+    const {classes, optionalClasses} = this.props;
     const suffix = `${prefix}-general-layout-section`;
     const className = classNames(
       'mdl-cell mdl-cell--12-col',
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div
@@ -40,6 +41,7 @@ class GeneralLayout extends React.Component {
       header,
       drawer,
       classes,
+      optionalClasses,
       id
     } = this.props;
     const suffix = `${prefix}-general-layout`;
@@ -52,7 +54,8 @@ class GeneralLayout extends React.Component {
         'mdl-layout--no-drawer-button': hideDrawerButton
       },
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div

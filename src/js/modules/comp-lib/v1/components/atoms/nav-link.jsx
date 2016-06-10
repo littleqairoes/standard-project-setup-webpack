@@ -45,14 +45,26 @@ class NavLink extends React.Component {
     );
   }
   render() {
-    const {navpos, link, id, classes} = this.props;
-    const {url, name, actionHandler, links} = link;
+    const {
+      navpos,
+      link,
+      id,
+      classes,
+      optionalClasses
+    } = this.props;
+    const {
+      url,
+      name,
+      actionHandler,
+      links
+    } = link;
     const r = random();
     const idFor = `nav-link-${id ? id : ''}-${r.string(5)}`;
     const suffix = `${prefix}-nav-link`;
     const className = classNames(
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     const classNameGroupHeader = classNames(
       'mdl-menu mdl-js-menu mdl-js-ripple-effect',

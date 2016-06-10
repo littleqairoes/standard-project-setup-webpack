@@ -4,11 +4,15 @@ import {classList, prefix} from './../../libs';
 
 class Header extends React.Component {
   renderContent(rowClass, bottomLeft, bottomRight) {
-    const {classes} = this.props;
+    const {
+      classes,
+      optionalClasses
+    } = this.props;
     const className = classNames(
       rowClass,
       `${prefix}-header-row-bottom`,
-      classList(classes, `${prefix}-header-row-bottom`)
+      classList(classes, `${prefix}-header-row-bottom`),
+      classList(optionalClasses, `${prefix}-header-row-bottom`)
     );
     return (
       <div
@@ -34,7 +38,8 @@ class Header extends React.Component {
       persistentTopRight,
       bottomLeft,
       bottomRight,
-      classes
+      classes,
+      optionalClasses
     } = this.props;
     const suffix = `${prefix}-header`;
     const className = classNames(
@@ -47,12 +52,14 @@ class Header extends React.Component {
         'mdl-layout__header--seamed': isSeamed
       },
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     const rowClass = classNames(
       'mdl-layout__header-row',
       `${prefix}-header-row`,
-      classList(classes, `${prefix}-header-row`)
+      classList(classes, `${prefix}-header-row`),
+      classList(optionalClasses, `${prefix}-header-row`)
     );
     return (
       <header
