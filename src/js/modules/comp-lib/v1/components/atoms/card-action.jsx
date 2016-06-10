@@ -15,7 +15,7 @@ class CardAction extends React.Component {
     const {text, action, icon, withBorder} = this.props;
     const className = classNames(
       'mdl-card__actions',
-      withBorder ? 'mdl-card__actions' : null
+      withBorder ? 'mdl-card--border' : null
     );
     const buttonClass = classNames(
       'mdl-button'
