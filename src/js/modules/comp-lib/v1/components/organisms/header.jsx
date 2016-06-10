@@ -3,12 +3,20 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 class Header extends React.Component {
-  renderContent(topLeft, topRight, bottomLeft, bottomRight) {
+  renderContent(rowClass, bottomLeft, bottomRight) {
+    const {classes} = this.props;
+    const className = classNames(
+      rowClass,
+      `${prefix}-header-row-bottom`,
+      classList(classes, `${prefix}-header-row-bottom`)
+    );
     return (
-      <div className='mdl-layout__header-row comp-lib-v1-organism-header-row'>
-        {bottomLeft && typeof bottomLeft === 'function' ? bottomLeft('header') : null}
+      <div
+        className={className}
+      >
+        {bottomLeft && typeof bottomLeft === 'function' ? bottomLeft(classes, 'header') : null}
         <div class="mdl-layout-spacer"></div>
-        {bottomRight && typeof bottomRight === 'function' ? bottomRight('header') : null}
+        {bottomRight && typeof bottomRight === 'function' ? bottomRight(classes, 'header') : null}
       </div>
     );
   }
@@ -41,21 +49,34 @@ class Header extends React.Component {
       suffix,
       classList(classes, suffix)
     );
+    const rowClass = classNames(
+      'mdl-layout__header-row',
+      `${prefix}-header-row`,
+      classList(classes, `${prefix}-header-row`)
+    );
     return (
       <header
         className = {className}
         id = {id}
       >
-        <div className='mdl-layout__header-row comp-lib-v1-organism-header-row'>
+        <div
+          className={rowClass}
+        >
           <div className="mdl-layout-spacer mdl-layout--small-screen-only"></div>
-          {logo && typeof logo === 'function' ? logo('header') : null}
-          {topLeft && typeof topLeft === 'function' ? topLeft('header') : null}
+
+          {logo && typeof logo === 'function' ? logo(classes, 'header') : null}
+
+          {topLeft && typeof topLeft === 'function' ? topLeft(classes, 'header') : null}
+
           <div className="mdl-layout-spacer"></div>
-          {topRight && typeof topRight === 'function' ? topRight('header') : null}
+
+          {topRight && typeof topRight === 'function' ? topRight(classes, 'header') : null}
+
           {persistentTopRight && typeof persistentTopRight === 'function' ?
-            persistentTopRight('header', true) : null}
+            persistentTopRight(classes, 'header', true) : null}
+
         </div>
-        {bottomLeft || bottomRight ? this.renderContent(bottomLeft, bottomRight) : null}
+        {bottomLeft || bottomRight ? this.renderContent(rowClass, bottomLeft, bottomRight) : null}
       </header>
     );
   }

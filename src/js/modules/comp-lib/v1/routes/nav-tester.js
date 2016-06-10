@@ -8,7 +8,8 @@ import Button from './../components/atoms/button.jsx';
 
 export default (React, PageCtx, page, mount) => {
 
-  const logo = (navpos) => (React.createElement(Logo, {
+  const logo = (classes, navpos) => (React.createElement(Logo, {
+    classes,
     navpos,
     label: 'Title Logo'
   }));
@@ -53,7 +54,8 @@ export default (React, PageCtx, page, mount) => {
     }
   ];
 
-  const nav = (navpos, alwaysVisible) => (React.createElement(Nav, {
+  const nav = (classes, navpos, alwaysVisible) => (React.createElement(Nav, {
+    classes,
     navpos,
     links,
     alwaysVisible
@@ -62,24 +64,29 @@ export default (React, PageCtx, page, mount) => {
   page('/nav-tester', () => {
     mount(PageCtx, {
       template: () => (React.createElement(GeneralLayout, {
+        classes: 'testers',
         fixedHeader: true,
-        drawer: () => (React.createElement(Drawer, {
+        drawer: (classes) => (React.createElement(Drawer, {
+          classes,
           logo,
           nav
         })),
-        header: () => (React.createElement(Header, {
+        header: (classes) => (React.createElement(Header, {
+          classes,
           logo,
           topLeft: nav,
           topRight: nav
         })),
         sections: [
-          () => (React.createElement(Button, {
+          (classes) => (React.createElement(Button, {
+            classes,
             isFab: true,
             materialIcon: 'search',
             withRipple: true,
             colored: 'accent'
           })),
-          () => (React.createElement(Textfield, {
+          (classes) => (React.createElement(Textfield, {
+            classes,
             onChangeHandler: (el) => {
               console.log(el.value);
             },
