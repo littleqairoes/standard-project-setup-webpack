@@ -2,15 +2,19 @@ import React from 'react';
 import classNames from 'classnames';
 
 class List extends React.Component {
-  renderIcon(avatarFontIcon, avatarMaterialIcon) {
-    if (avatarFontIcon || avatarMaterialIcon) {
-      const className = avatarMaterialIcon ? 'material-icons mdl-list__item-icon' :
-    `fa ${avatarFontIcon ? avatarFontIcon : 'fa-search'}`;
+  renderIcon(avatarFontIcon, avatarMaterialIcon, avatar) {
+    if (avatarFontIcon || avatarMaterialIcon || avatar) {
+      const className = classNames(
+        avatarMaterialIcon ? 'material-icons mdl-list__item-icon' : null,
+        avatarFontIcon ? avatarFontIcon : null,
+        avatar ? 'material-icons mdl-list__item-avatar' : null
+      );
       return (
         <i
           className = {className}
         >
           {avatarMaterialIcon ? avatarMaterialIcon : ''}
+          {avatar ? avatar : ''}
         </i>
       );
     }
@@ -47,7 +51,7 @@ class List extends React.Component {
           <span
             className = 'mdl-list__item-primary-content'
           >
-            {this.renderIcon(avatarFontIcon, avatarMaterialIcon)}
+            {this.renderIcon(avatarFontIcon, avatarMaterialIcon, avatar)}
             {primary}
           </span>
         </li>

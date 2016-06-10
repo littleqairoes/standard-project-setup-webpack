@@ -7,7 +7,7 @@ export default (React, PageCtx, page, mount) => {
   const items = [
     {
       primary: 'gauven',
-      avatarMaterialIcon: 'person'
+      avatar: 'person'
     },
     {
       primary: 'zydrick'
