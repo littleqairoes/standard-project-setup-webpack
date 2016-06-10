@@ -53,6 +53,8 @@ class Button extends React.Component {
       colored,
       classes,
       actionHandler,
+      anchor,
+      href,
       id
     } = this.props;
     const suffix = `${prefix}-button`;
@@ -70,7 +72,17 @@ class Button extends React.Component {
       colored && colored === 'accent' ? `${suffix}-accent mdl-button--accent` : null,
       classList(classes, suffix)
     );
-    return (
+    return anchor ? (
+      <a
+        className = {className}
+        onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
+        disabled = {isDisabled}
+        id = {id}
+        href = {href && typeof href === 'string' ? href : '#'}
+      >
+        {this.renderFabLabel(id)}
+      </a>
+    ) : (
       <button
         className = {className}
         onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
