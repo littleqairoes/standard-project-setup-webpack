@@ -1,0 +1,17 @@
+@import './../prefix';
+@import 'src/css/palette.scss';
+
+.#{$prefix}-button {
+
+}
+
+.#{$prefix}-button-primary {
+  background-color: $primary-color;
+  color: $primary-color-text;
+}
+
+.#{$prefix}-button-accent {
+  background-color: $accent-color;
+  color: $secondary-text-color;
+}
+
