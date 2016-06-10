@@ -3,6 +3,7 @@ import Drawer from './../components/organisms/drawer.jsx';
 import Logo from './../components/atoms/logo.jsx';
 import List from './../components/molecules/list.jsx';
 import Checkbox from './../components/atoms/checkbox.jsx';
+import Toggle from './../components/atoms/toggle.jsx';
 
 export default (React, PageCtx, page, mount) => {
   const items = [
@@ -13,7 +14,8 @@ export default (React, PageCtx, page, mount) => {
       secondaryHref: 'https://google.com'
     },
     {
-      primary: 'zydrick'
+      primary: 'zydrick',
+      toggle: 'checkbox'
     }
   ];
   page('/testing', () => {
@@ -27,7 +29,16 @@ export default (React, PageCtx, page, mount) => {
         })),
         sections: [
           () => (React.createElement(List, {
-            items
+            items,
+            checkbox: () => (React.createElement(Checkbox, {
+              id: 'checkbox-1',
+              label: 'Jeedrick'
+            }))
+          })),
+          () => (React.createElement(Toggle, {
+            type: 'toggle',
+            label: 'Jauven',
+            materialIcon: 'format_bold'
           }))
         ]
       }))

@@ -1,8 +1,19 @@
 import React from 'react';
 import classNames from 'classnames';
+import Checkbox from './../atoms/checkbox.jsx';
 
 class List extends React.Component {
-  renderAction(secondaryAction, secondaryActionHandler) {
+  renderAction(toggle) {
+    if (toggle === 'checkbox') {
+      return (
+      <span
+        className = 'mdl-list__item-secondary-action'
+      >
+        <Checkbox
+        />
+      </span>
+    );
+    }
   }
   renderSecondaryIcon(secondaryFontIcon, secondaryMaterialIcon, secondaryHref) {
     const className = classNames(
@@ -54,7 +65,8 @@ class List extends React.Component {
         secondaryHref,
         secondaryActionHandler,
         secondaryAction,
-        classes
+        classes,
+        toggle
       } = link;
       const itemClass = classNames(
         'mdl-list__item',
@@ -85,7 +97,7 @@ class List extends React.Component {
             secondaryAction,
             secondaryActionHandler
           ) : null}
-
+          {toggle ? this.renderAction(toggle) : null}
         </li>
       );
     }) : null;
