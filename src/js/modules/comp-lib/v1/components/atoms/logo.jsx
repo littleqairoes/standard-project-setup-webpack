@@ -1,12 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
+import {classList, prefix} from './../../libs';
 
 class Logo extends React.Component {
   renderTitle() {
     const {image, label} = this.props;
     if (image) {
       return (
-        <img src={image} />
+        <img
+          src={image}
+          alt={label}
+        />
       );
     }
     return (
@@ -16,11 +20,17 @@ class Logo extends React.Component {
     );
   }
   render() {
-    const {url, classes} = this.props;
+    const {
+      url,
+      classes,
+      optionalClasses,
+    } = this.props;
+    const suffix = `${prefix}-logo`;
     const className = classNames(
       'mdl-layout-title',
-      'comp-lib-v1-logo',
-      classes && typeof classes === 'string' ? classes : null
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <span

@@ -2,17 +2,20 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
-class Drawer extends React.Component {
+class CardMedia extends React.Component {
   render() {
     const {
+      src,
+      width,
+      height,
+      alt,
+      style,
       classes,
-      optionalClasses,
-      nav,
-      logo
+      optionalClasses
     } = this.props;
-    const suffix = `${prefix}-drawer`;
+    const suffix = `${prefix}-card-media`;
     const className = classNames(
-      'mdl-layout__drawer',
+      'mdl-card__media',
       suffix,
       classList(classes, suffix),
       classList(optionalClasses, suffix)
@@ -21,11 +24,16 @@ class Drawer extends React.Component {
       <div
         className={className}
       >
-        {logo && typeof logo === 'function' ? logo(classes, 'drawer') : null}
-        {nav && typeof nav === 'function' ? nav(classes, 'drawer') : null}
+        <img
+          src={src}
+          width={width}
+          height={height}
+          alt={alt}
+          style={style}
+        />
       </div>
     );
   }
 }
 
-export default Drawer;
+export default CardMedia;

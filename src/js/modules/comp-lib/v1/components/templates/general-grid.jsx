@@ -1,8 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import {classList, prefix} from './../../libs';
 
 class GeneralGrid extends React.Component {
   renderSection(section, size, column, key) {
+    const {classes, optionalClasses} = this.props;
+    const suffix = `${prefix}-general-grid-cell`;
     const className = classNames(
       'mdl-cell',
       {
@@ -28,20 +31,23 @@ class GeneralGrid extends React.Component {
         'mdl-cell--1-offset-desktop': column === 4 && size % 4 === 3 && key === size - 3,
         'mdl-cell--2-offset-tablet': column >= 2 && size % 2 === 1 && key === size - 1,
         'mdl-cell--1-offset-phone': column >= 2 && size % 2 === 1 && key === size - 1
-      }
+      },
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div
         className = {className}
         key = {key}
       >
-        {section && typeof section === 'function' ? section() : null}
+        {section && typeof section === 'function' ? section(classes) : null}
       </div>
     );
   }
   renderGrid(columns, sections) {
     if (typeof sections === 'function') {
-      return this.renderSlement(sections, 1, 0);
+      return this.renderSection(sections, 1, 0);
     } else if (!sections) {
       return null;
     }
@@ -50,16 +56,25 @@ class GeneralGrid extends React.Component {
     });
   }
   render() {
-    const {noSpacing, columns = 1, sections, classes, id} = this.props;
+    const {
+      noSpacing,
+      columns = 1,
+      sections,
+      classes,
+      optionalClasses,
+      id
+    } = this.props;
     const maxColumns = columns >= 4 ? 4 : columns;
     const elemId = id && typeof id === 'string' ? `general-grid-${id}` : 'general-grid-default';
+    const suffix = `${prefix}-general-grid`;
     const className = classNames(
       'mdl-grid',
-      'comp-lib-v1-template-general-grid',
-      classes && typeof classes === 'string' ? classes : null,
       {
         'mdl-grid--no-spacing': noSpacing
-      }
+      },
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div

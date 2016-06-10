@@ -6,6 +6,7 @@ import Logo from './../components/atoms/logo.jsx';
 import Textfield from './../components/atoms/text-field.jsx';
 import Button from './../components/atoms/button.jsx';
 import MarkdownEditor from './../components/molecules/markdown-editor.jsx';
+import Form from './../components/organisms/form.jsx';
 
 export default (React, PageCtx, page, mount) => {
 
@@ -62,7 +63,7 @@ export default (React, PageCtx, page, mount) => {
     alwaysVisible
   }));
 
-  page('/nav-tester', () => {
+  page('/blog-editor-example', () => {
     mount(PageCtx, {
       classes: 'testers project-seven-eleven',
       template: (classNames) => (React.createElement(GeneralLayout, {
@@ -81,28 +82,24 @@ export default (React, PageCtx, page, mount) => {
           topRight: nav
         })),
         sections: [
-          (classes) => (React.createElement(MarkdownEditor, {
-            placeholder: 'This text here',
-            rows: 5
-          })),
-          (classes) => (React.createElement(Button, {
-            classes,
-            isFab: true,
-            materialIcon: 'search',
-            withRipple: true,
-            colored: 'accent',
-            tooltip: 'Search',
-            anchor: true,
-            isLarge: true,
-            // tooltipPos: 'right'
-          })),
-          (classes) => (React.createElement(Textfield, {
-            classes,
-            onChangeHandler: (el) => {
-              console.log(el.value);
-
-            },
-            shouldFloat: true
+          (classes) => (React.createElement(Form, {
+            sections: [
+              {
+                section: (c, name, value, onChangeHandler, ref) => (
+                  React.createElement(MarkdownEditor, {
+                    classes: c,
+                    ref,
+                    name,
+                    id: name,
+                    placeholder: 'This text here',
+                    rows: 5,
+                    onChangeHandler,
+                    value
+                  })
+                ),
+                name: 'body'
+              }
+            ]
           }))
         ]
       }))

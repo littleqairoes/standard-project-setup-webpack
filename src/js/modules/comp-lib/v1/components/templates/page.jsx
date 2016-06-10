@@ -1,4 +1,6 @@
 import React from 'react';
+import classNames from 'classnames';
+import {classList, prefix} from './../../libs';
 
 class Page extends React.Component {
   componentDidMount() {
@@ -12,10 +14,18 @@ class Page extends React.Component {
     }
   }
   render() {
-    const {template} = this.props;
+    const {template, classes, optionalClasses} = this.props;
+    const suffix = `${prefix}-page`;
+    const className = classNames(
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
+    );
     return (
-      <div className="main-v1-page-core-root">
-        {template && typeof template === 'function' ? template() : null}
+      <div
+        className={className}
+      >
+        {template && typeof template === 'function' ? template(classes) : null}
       </div>
     );
   }

@@ -2,15 +2,23 @@ import React from 'react';
 import Tooltip from './tooltip.jsx';
 import classNames from 'classnames';
 import random from 'random-js';
+import {classList, prefix} from './../../libs';
 
 class Button extends React.Component {
   renderTooltip(id) {
-    const {tooltip, tooltipClasses} = this.props;
+    const {
+      tooltip,
+      classes,
+      tooltipPos,
+      isLarge
+    } = this.props;
     return tooltip && typeof tooltip === 'string' ? (
       <Tooltip
         tooltip = {tooltip}
-        classes = {tooltipClasses}
+        classes = {classes}
         idFor = {id}
+        tooltipPos = {tooltipPos}
+        isLarge = {isLarge}
       />
     ) : null;
   }
@@ -23,20 +31,15 @@ class Button extends React.Component {
       materialIcon,
       fontIcon
     } = this.props;
-    const r = random();
-    const idFor = `button-${id}-${r.string(5)}`;
-    const className = materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`;
-    if (isIcon || isFab || isMiniFab) {
+
+    if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
+      const className = materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`;
       return (
-        <span>
-          <i
-            className={className}
-            id = {idFor}
-          >
-            {materialIcon ? materialIcon : ''}
-          </i>
-          {this.renderTooltip(idFor)}
-        </span>
+        <i
+          className={className}
+        >
+          {materialIcon ? materialIcon : ''}
+        </i>
       );
     }
     return label && typeof label === 'string' ? label : 'Button';
@@ -49,31 +52,57 @@ class Button extends React.Component {
       isFab,
       isMiniFab,
       isIcon,
+      colored,
       classes,
+      optionalClasses,
       actionHandler,
+      anchor,
+      href,
       id
     } = this.props;
+    const suffix = `${prefix}-button`;
     const className = classNames(
       'mdl-button mdl-js-button',
-      'comp-lib-atom-button',
-      classes && typeof classes === 'string' ? classes : null,
       {
         'mdl-js-ripple-effect': withRipple,
         'mdl-button--raised': isRaised,
         'mdl-button--fab': isFab || isMiniFab,
         'mdl-button--icon': isIcon,
         'mdl-button--mini-fab': isMiniFab
-      }
+      },
+      suffix,
+      colored && colored === 'primary' ? `${suffix}-primary mdl-button--colored` : null,
+      colored && colored === 'accent' ? `${suffix}-accent mdl-button--accent` : null,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
-    return (
-      <button
-        className = {className}
-        onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
-        disabled = {isDisabled}
-        id = {id}
-      >
-        {this.renderFabLabel(id)}
-      </button>
+    const r = random();
+    const idFor = `button-${id && typeof id === 'string' ? id : null}-${r.string(5)}`;
+    return anchor ? (
+      <span>
+        <a
+          className = {className}
+          onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
+          disabled = {isDisabled}
+          id = {idFor}
+          href = {href && typeof href === 'string' ? href : '#'}
+        >
+          {this.renderFabLabel(idFor)}
+        </a>
+        {this.renderTooltip(idFor)}
+      </span>
+    ) : (
+      <span>
+        <button
+          className = {className}
+          onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
+          disabled = {isDisabled}
+          id = {idFor}
+        >
+          {this.renderFabLabel(idFor)}
+        </button>
+        {this.renderTooltip(idFor)}
+      </span>
     );
   }
 }

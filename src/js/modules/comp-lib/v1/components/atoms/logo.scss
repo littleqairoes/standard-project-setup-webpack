@@ -1,4 +1,7 @@
-.comp-lib-v1-logo {
+@import './../prefix';
+
+.#{$prefix}-logo {
+  color: inherit;
   a {
     color: inherit;
     text-decoration: none;
