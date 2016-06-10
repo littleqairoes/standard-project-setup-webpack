@@ -22,8 +22,8 @@ class TextField extends React.Component {
     return this.textfield.value;
   }
   onChangeHandler(e) {
-    const {onChangeHandler = () => {}} = this.props;
-    onChangeHandler(this.textfield);
+    const {onChangeHandler = () => {}, name} = this.props;
+    onChangeHandler(this.textfield.value, name, e, this.textfield);
   }
   renderTextField(type, inputId, pattern) {
     const {

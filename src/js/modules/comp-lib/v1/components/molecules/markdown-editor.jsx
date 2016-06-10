@@ -105,6 +105,7 @@ class MarkdownEditor extends React.Component {
   render() {
     const {
       id = 'markdown-editor-id',
+      name,
       placeholder,
       value,
       rows,
@@ -143,6 +144,7 @@ class MarkdownEditor extends React.Component {
               maxCharacters = {maxCharacters}
               ref = {textfieldRef}
               onChangeHandler = {onChangeHandler}
+              name = {name}
             />
           </div>
         </div>
