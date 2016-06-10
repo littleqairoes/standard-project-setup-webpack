@@ -14,11 +14,12 @@ class Page extends React.Component {
     }
   }
   render() {
-    const {template, classes} = this.props;
+    const {template, classes, optionalClasses} = this.props;
     const suffix = `${prefix}-page`;
     const className = classNames(
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div

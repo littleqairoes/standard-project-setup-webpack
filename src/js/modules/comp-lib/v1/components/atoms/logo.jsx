@@ -20,12 +20,17 @@ class Logo extends React.Component {
     );
   }
   render() {
-    const {url, classes} = this.props;
+    const {
+      url,
+      classes,
+      optionalClasses,
+    } = this.props;
     const suffix = `${prefix}-logo`;
     const className = classNames(
       'mdl-layout-title',
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <span

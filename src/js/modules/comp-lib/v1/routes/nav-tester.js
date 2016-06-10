@@ -63,8 +63,9 @@ export default (React, PageCtx, page, mount) => {
 
   page('/nav-tester', () => {
     mount(PageCtx, {
-      template: () => (React.createElement(GeneralLayout, {
-        classes: 'testers',
+      classes: 'testers project-seven-eleven',
+      template: (classNames) => (React.createElement(GeneralLayout, {
+        classes: classNames,
         fixedHeader: true,
         drawer: (classes) => (React.createElement(Drawer, {
           classes,
@@ -72,6 +73,7 @@ export default (React, PageCtx, page, mount) => {
           nav
         })),
         header: (classes) => (React.createElement(Header, {
+          optionalClasses: 'tester-2',
           classes,
           logo,
           topLeft: nav,
@@ -83,7 +85,11 @@ export default (React, PageCtx, page, mount) => {
             isFab: true,
             materialIcon: 'search',
             withRipple: true,
-            colored: 'accent'
+            colored: 'accent',
+            tooltip: 'Search',
+            anchor: true,
+            isLarge: true,
+            tooltipPos: 'right'
           })),
           (classes) => (React.createElement(Textfield, {
             classes,

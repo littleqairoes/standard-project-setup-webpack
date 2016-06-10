@@ -18,7 +18,10 @@ class TextField extends React.Component {
     onChangeHandler(this.textfield);
   }
   renderTextField(type, inputId, pattern) {
-    const {name, rows} = this.props;
+    const {
+      name,
+      rows
+    } = this.props;
     const textfieldRef = (c) => {
       this.textfield = c;
     };
@@ -49,7 +52,10 @@ class TextField extends React.Component {
     );
   }
   renderExpandingIcon(id) {
-    const {expandingMaterialIcon, expandingFontIcon} = this.props;
+    const {
+      expandingMaterialIcon,
+      expandingFontIcon
+    } = this.props;
     const className = expandingMaterialIcon ? 'material-icons' :
       `fa ${expandingFontIcon ? expandingFontIcon : 'fa-search'}`;
     return (expandingMaterialIcon && typeof expandingMaterialIcon === 'string') ||
@@ -72,6 +78,7 @@ class TextField extends React.Component {
       errorLabel,
       pattern,
       classes,
+      optionalClasses,
       shouldFloat,
       id,
       type
@@ -85,7 +92,8 @@ class TextField extends React.Component {
         'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon
       },
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     const trueType = type &&
       typeof type === 'string' && (

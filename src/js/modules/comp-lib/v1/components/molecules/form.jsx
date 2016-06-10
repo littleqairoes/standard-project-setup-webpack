@@ -4,7 +4,11 @@ import {classList, prefix} from './../../libs';
 
 class Form extends React.Component {
   render() {
-    const {classes, shadow} = this.props;
+    const {
+      classes,
+      optionalClasses,
+      shadow
+    } = this.props;
     const suffix = `${prefix}-form`;
     const className = classNames(
       shadow && !isNaN(shadow) && (
@@ -15,7 +19,8 @@ class Form extends React.Component {
         parseInt(shadow, 10) === 16
       ) ? `mdl-shadow--${shadow}p` : null,
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div

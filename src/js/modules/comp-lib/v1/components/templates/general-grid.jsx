@@ -4,7 +4,7 @@ import {classList, prefix} from './../../libs';
 
 class GeneralGrid extends React.Component {
   renderSection(section, size, column, key) {
-    const {classes} = this.props;
+    const {classes, optionalClasses} = this.props;
     const suffix = `${prefix}-general-grid-cell`;
     const className = classNames(
       'mdl-cell',
@@ -33,7 +33,8 @@ class GeneralGrid extends React.Component {
         'mdl-cell--1-offset-phone': column >= 2 && size % 2 === 1 && key === size - 1
       },
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div
@@ -60,6 +61,7 @@ class GeneralGrid extends React.Component {
       columns = 1,
       sections,
       classes,
+      optionalClasses,
       id
     } = this.props;
     const maxColumns = columns >= 4 ? 4 : columns;
@@ -71,7 +73,8 @@ class GeneralGrid extends React.Component {
         'mdl-grid--no-spacing': noSpacing
       },
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div

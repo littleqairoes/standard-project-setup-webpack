@@ -4,12 +4,18 @@ import {classList, prefix} from './../../libs';
 
 class Drawer extends React.Component {
   render() {
-    const {classes, nav, logo} = this.props;
+    const {
+      classes,
+      optionalClasses,
+      nav,
+      logo
+    } = this.props;
     const suffix = `${prefix}-drawer`;
     const className = classNames(
       'mdl-layout__drawer',
       suffix,
-      classList(classes, suffix)
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <div
