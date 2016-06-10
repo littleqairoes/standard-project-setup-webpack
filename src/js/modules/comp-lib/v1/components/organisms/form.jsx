@@ -3,6 +3,10 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 class Form extends React.Component {
+  renderSections() {
+    const {data, sections} = this.props;
+
+  }
   render() {
     const {
       classes,

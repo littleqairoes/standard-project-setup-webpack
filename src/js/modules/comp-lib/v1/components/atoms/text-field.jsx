@@ -8,19 +8,28 @@ class TextField extends React.Component {
   constructor() {
     super();
     this.getElement = this.getElement.bind(this);
+    this.getValue = this.getValue.bind(this);
+    this.setValue = this.setValue.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
   getElement() {
     return this.textfield;
   }
+  setValue(value) {
+    this.textfield.value = value;
+  }
+  getValue() {
+    return this.textfield.value;
+  }
   onChangeHandler(e) {
-    const {onChangeHandler} = this.props;
+    const {onChangeHandler = () => {}} = this.props;
     onChangeHandler(this.textfield);
   }
   renderTextField(type, inputId, pattern) {
     const {
       name,
-      rows
+      rows,
+      maxRows
     } = this.props;
     const textfieldRef = (c) => {
       this.textfield = c;
@@ -31,6 +40,7 @@ class TextField extends React.Component {
           className="mdl-textfield__input"
           type="text"
           rows= {rows && !isNaN(rows) ? rows : 1}
+          maxrows = {maxRows && !isNaN(maxRows) ? maxRows : null}
           id={inputId}
           ref = {textfieldRef}
           name = {name}

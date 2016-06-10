@@ -87,7 +87,7 @@ class Button extends React.Component {
           id = {idFor}
           href = {href && typeof href === 'string' ? href : '#'}
         >
-          {this.renderFabLabel(id)}
+          {this.renderFabLabel(idFor)}
         </a>
         {this.renderTooltip(idFor)}
       </span>
@@ -97,9 +97,9 @@ class Button extends React.Component {
           className = {className}
           onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : null}
           disabled = {isDisabled}
-          id = {id}
+          id = {idFor}
         >
-          {this.renderFabLabel(id)}
+          {this.renderFabLabel(idFor)}
         </button>
         {this.renderTooltip(idFor)}
       </span>
