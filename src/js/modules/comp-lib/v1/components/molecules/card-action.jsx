@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import Button from './../atoms/button.jsx';
 
 class CardAction extends React.Component {
   renderIcon(icon) {
@@ -25,11 +26,11 @@ class CardAction extends React.Component {
         className={className}
         onClick={action}
       >
-        <a
+        <Button
           className={buttonClass}
-        >
-          {text}
-        </a>
+          id={text}
+          anchor={true}
+        />
         <div
           className="mdl-layout-spacer"
         >
