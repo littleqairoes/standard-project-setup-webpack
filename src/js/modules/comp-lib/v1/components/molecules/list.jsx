@@ -2,6 +2,24 @@ import React from 'react';
 import classNames from 'classnames';
 
 class List extends React.Component {
+  renderSecondaryIcon(secondaryFontIcon, secondaryMaterialIcon, secondaryHref) {
+    const className = classNames(
+      secondaryFontIcon ? secondaryFontIcon : null,
+      secondaryMaterialIcon ? 'material-icons' : null
+    );
+    return (
+      <a
+        className = 'mdl-list__item-secondary-action'
+        href = {secondaryHref ? secondaryHref : '#'}
+      >
+        <i
+          className = {className}
+        >
+          {secondaryMaterialIcon}
+        </i>
+      </a>
+    );
+  }
   renderIcon(avatarFontIcon, avatarMaterialIcon, avatar) {
     if (avatarFontIcon || avatarMaterialIcon || avatar) {
       const className = classNames(
@@ -33,7 +51,7 @@ class List extends React.Component {
         secondaryFontIcon,
         secondaryHref,
         secondaryActionHandler,
-        secondaryButton,
+        secondaryAction,
         classes
       } = link;
       const itemClass = classNames(
@@ -52,8 +70,20 @@ class List extends React.Component {
             className = 'mdl-list__item-primary-content'
           >
             {this.renderIcon(avatarFontIcon, avatarMaterialIcon, avatar)}
-            {primary}
+            <span>{primary}</span>
           </span>
+          {secondaryFontIcon || secondaryMaterialIcon || secondaryHref ?
+          this.renderSecondaryIcon(
+            secondaryFontIcon,
+            secondaryMaterialIcon,
+            secondaryHref
+          ) : null}
+          {secondaryAction || secondaryActionHandler ?
+          this.renderAction(
+            secondaryAction,
+            secondaryActionHandler
+          ) : null}
+
         </li>
       );
     }) : null;
