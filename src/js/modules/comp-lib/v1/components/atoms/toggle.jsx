@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
+import {classList, prefix} from './../../libs';
 
 class Toggle extends React.Component {
   renderLabel(type, label, materialIcon) {
@@ -8,61 +10,50 @@ class Toggle extends React.Component {
         'mdl-checkbox__label': type && type === 'checkbox',
         'mdl-radio__label': type && type === 'radio',
         'mdl-icon-toggle__label material-icons': type && type === 'toggle' &&
-        materialIcon,
-        'mdl-switch__label': type && type === 'toggle' && !materialIcon
+        materialIcon && typeof materialIcon === 'string',
+        'mdl-switch__label': type && type === 'switch'
       }
       );
-    if (materialIcon) {
-      return (
-          <i
-            className = {className}
-          >
-            {materialIcon}
-          </i>
-        );
-    }
-    return (
-          <span
-            className = {className}
-          >
-            {label && typeof label === 'string' ? label : null}
-          </span>
-        );
+    return materialIcon ? (
+      <i
+        className = {className}
+      >
+        {materialIcon}
+      </i>
+    ) : (
+      <span
+        className = {className}
+      >
+        {label && typeof label === 'string' ? label : null}
+      </span>
+    );
   }
-  renderInput(type, name, value, materialIcon) {
+  renderInput(id, type, name, value, materialIcon) {
     const className = classNames(
       {
         'mdl-checkbox__input': type && type === 'checkbox',
         'mdl-radio__button': type && type === 'radio',
-        'mdl-icon-toggle__input': type && type === 'toggle' && materialIcon,
-        'mdl-switch__input': type && type === 'toggle' && !materialIcon
+        'mdl-icon-toggle__input': type && type === 'toggle' && materialIcon &&
+          typeof materialIcon === 'string',
+        'mdl-switch__input': type && type === 'switch'
       }
-      );
-    if (type === 'toggle') {
-      const toggleType = 'checkbox';
-      return (
-        <input
-          type = {toggleType ? toggleType : type}
-          id = "id1"
-          name = {name && typeof name === 'string' ? name : null}
-          value = {value && typeof value === 'string' ? value : null}
-          className = {className}
-        />
-      );
-    } else if (type !== 'toggle') {
-      return (
-        <input
-          type = {type}
-          className = {className}
-        />
-      );
-    }
+    );
+    const inputType = type === 'toggle' || type === 'switch' ? 'checkbox' : type;
 
+    return (
+      <input
+        type = {inputType}
+        id = {id}
+        name = {name && typeof name === 'string' ? name : null}
+        value = {value && typeof value === 'string' ? value : null}
+        className = {className}
+      />
+    );
   }
   render() {
     const {
         id,
-        type,
+        type = 'checkbox',
         classes,
         optionalClasses,
         label,
@@ -70,6 +61,10 @@ class Toggle extends React.Component {
         value,
         materialIcon
     } = this.props;
+    const r = random();
+
+    const suffix = `${prefix}-${type}`;
+    const idFor = `${suffix}-${id && typeof id === 'string' ? id : null}-${r.string(10)}`;
     const className = classNames(
       {
         'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect':
@@ -79,15 +74,18 @@ class Toggle extends React.Component {
         'mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect':
         type && type === 'toggle' && materialIcon,
         'mdl-switch mdl-js-switch mdl-js-ripple-effect':
-        type && type === 'toggle' && !materialIcon
-      }
+        type && type === 'switch'
+      },
+      suffix,
+      classList(classes, suffix),
+      classList(optionalClasses, suffix)
     );
     return (
       <label
         className = {className}
-        htmlFor = "id1"
+        htmlFor = {idFor}
       >
-        {this.renderInput(type, name, value, materialIcon)}
+        {this.renderInput(idFor, type, name, value, materialIcon)}
         {this.renderLabel(type, label, materialIcon)}
       </label>
     );

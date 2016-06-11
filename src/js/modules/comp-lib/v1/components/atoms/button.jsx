@@ -77,7 +77,7 @@ class Button extends React.Component {
       classList(optionalClasses, suffix)
     );
     const r = random();
-    const idFor = `button-${id && typeof id === 'string' ? id : null}-${r.string(5)}`;
+    const idFor = `${suffix}-${id && typeof id === 'string' ? id : null}-${r.string(5)}`;
     return anchor ? (
       <span>
         <a
