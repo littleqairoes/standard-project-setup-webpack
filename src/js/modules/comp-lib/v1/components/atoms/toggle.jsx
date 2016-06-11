@@ -4,6 +4,29 @@ import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 class Toggle extends React.Component {
+  constructor() {
+    super();
+    this.getElement = this.getElement.bind(this);
+    this.getValue = this.getValue.bind(this);
+    this.getInputValue = this.getInputValue.bind(this);
+    this.setValue = this.setValue.bind(this);
+    this.setInputValue = this.setInputValue.bind(this);
+  }
+  getElement() {
+    return this.toggle;
+  }
+  getValue() {
+    return this.toggle.checked;
+  }
+  setValue(value) {
+    this.toggle.checked = Boolean(value);
+  }
+  setInputValue(value) {
+    this.toggle.value = value;
+  }
+  getInputValue() {
+    return this.toggle.value;
+  }
   renderLabel(type, label, materialIcon) {
     const className = classNames(
       {
@@ -28,28 +51,6 @@ class Toggle extends React.Component {
       </span>
     );
   }
-  renderInput(id, type, name, value, materialIcon) {
-    const className = classNames(
-      {
-        'mdl-checkbox__input': type && type === 'checkbox',
-        'mdl-radio__button': type && type === 'radio',
-        'mdl-icon-toggle__input': type && type === 'toggle' && materialIcon &&
-          typeof materialIcon === 'string',
-        'mdl-switch__input': type && type === 'switch'
-      }
-    );
-    const inputType = type === 'toggle' || type === 'switch' ? 'checkbox' : type;
-
-    return (
-      <input
-        type = {inputType}
-        id = {id}
-        name = {name && typeof name === 'string' ? name : null}
-        value = {value && typeof value === 'string' ? value : null}
-        className = {className}
-      />
-    );
-  }
   render() {
     const {
         id,
@@ -59,7 +60,8 @@ class Toggle extends React.Component {
         label,
         name,
         value,
-        materialIcon
+        materialIcon,
+        checked
     } = this.props;
     const r = random();
 
@@ -80,12 +82,37 @@ class Toggle extends React.Component {
       classList(classes, suffix),
       classList(optionalClasses, suffix)
     );
+
+    const inputClassName = classNames(
+      {
+        'mdl-checkbox__input': type && type === 'checkbox',
+        'mdl-radio__button': type && type === 'radio',
+        'mdl-icon-toggle__input': type && type === 'toggle' && materialIcon &&
+          typeof materialIcon === 'string',
+        'mdl-switch__input': type && type === 'switch'
+      }
+    );
+
+    const inputType = type === 'toggle' || type === 'switch' ? 'checkbox' : type;
+
+    const toggleRef = (c) => {
+      this.toggle = c;
+    };
+
     return (
       <label
         className = {className}
         htmlFor = {idFor}
       >
-        {this.renderInput(idFor, type, name, value, materialIcon)}
+        <input
+          type = {inputType}
+          id = {idFor}
+          name = {name && typeof name === 'string' ? name : null}
+          value = {value && typeof value === 'string' ? value : null}
+          className = {inputClassName}
+          checked = {Boolean(checked)}
+          ref = {toggleRef}
+        />
         {this.renderLabel(type, label, materialIcon)}
       </label>
     );
