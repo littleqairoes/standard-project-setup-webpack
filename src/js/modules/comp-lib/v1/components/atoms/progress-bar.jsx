@@ -3,11 +3,15 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 class ProgressBar extends React.Component {
+  renderValue() {
+  }
   render() {
     const {
+      value = 0,
       isIntermediate,
       classes,
-      optionalClasses
+      optionalClasses,
+      width
     } = this.props;
     const suffix = `${prefix}-ProgressBar`;
     const className = classNames(
@@ -17,8 +21,15 @@ class ProgressBar extends React.Component {
       classList(classes, suffix),
       classList(optionalClasses, suffix)
     );
+    const style = {
+      width
+    };
     return (
-      <div className = {className}>
+      <div
+        className = {className}
+        style = {style}
+      >
+        {value && typeof value === 'number' ? this.renderValue() : null}
       </div>
     );
   }
