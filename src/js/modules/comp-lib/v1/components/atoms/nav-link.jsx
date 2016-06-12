@@ -34,8 +34,8 @@ class NavLink extends React.Component {
         href = {
           actionHandler &&
           typeof actionHandler === 'function' &&
-          url &&
-          typeof url === 'string' ? '#' : url
+          !(url &&
+          typeof url === 'string') ? '#' : url
         }
         className = {className}
         onClick = {actionHandler && typeof actionHandler === 'function' ? actionHandler : () => {} }
