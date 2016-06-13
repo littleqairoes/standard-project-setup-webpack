@@ -52,6 +52,7 @@ class Toggle extends React.Component {
     } else if (type !== 'toggle') {
       return (
         <input
+          id = "id1"
           type = {type}
           className = {className}
         />
