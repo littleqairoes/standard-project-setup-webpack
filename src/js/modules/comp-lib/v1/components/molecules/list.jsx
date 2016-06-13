@@ -1,17 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
+import Toggle from './../../components/atoms/toggle.jsx';
 
 class List extends React.Component {
   renderAction(toggle) {
-    if (toggle === 'checkbox') {
-      return (
+    return (
       <span
         className = 'mdl-list__item-secondary-action'
       >
-
+        <Toggle
+          type = {toggle}
+        />
       </span>
     );
-    }
   }
   renderSecondaryIcon(secondaryFontIcon, secondaryMaterialIcon, secondaryHref) {
     const className = classNames(
