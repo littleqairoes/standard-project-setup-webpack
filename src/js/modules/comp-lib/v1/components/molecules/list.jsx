@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import Checkbox from './../atoms/checkbox.jsx';
 
 class List extends React.Component {
   renderAction(toggle) {
@@ -9,8 +8,7 @@ class List extends React.Component {
       <span
         className = 'mdl-list__item-secondary-action'
       >
-        <Checkbox
-        />
+
       </span>
     );
     }
