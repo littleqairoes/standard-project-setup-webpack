@@ -7,6 +7,7 @@ export default (React, PageCtx, page, mount) => {
       template: () => (React.createElement(GeneralLayout, {
         sections: [
           () => (React.createElement(ProgressBar, {
+            isIntermediate: true,
             value: 25,
             width: '250px'
           }))
