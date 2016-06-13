@@ -1,15 +1,16 @@
 import GeneralLayout from './../components/templates/general-layout.jsx';
-import ProgressBar from './../components/atoms/progress-bar.jsx';
+import Slider from './../components/atoms/slider.jsx';
 
 export default (React, PageCtx, page, mount) => {
-  page('/progress-bar-tester', () => {
+  page('/slider-tester', () => {
     mount(PageCtx, {
       template: () => (React.createElement(GeneralLayout, {
         sections: [
-          () => (React.createElement(ProgressBar, {
-            isIntermediate: true,
-            value: 25,
-            width: '250px'
+          () => (React.createElement(Slider, {
+            min: 0,
+            max: 100,
+            tabindex: 2,
+            value: 2
           }))
         ]
       }))
