@@ -33,7 +33,7 @@ import Page from './v1/components/templates/page.jsx';
 
 export {
   // Atoms
-  Blank,
+  // Blank,
   Button,
   CardMedia,
   CardText,
@@ -46,7 +46,7 @@ export {
   Tooltip,
 
   // Molecules
-  Banner,
+  // Banner,
   CardAction,
   CardMenu,
   List,
@@ -54,7 +54,7 @@ export {
   Nav,
 
   // Organisms
-  BannerSlider,
+  // BannerSlider,
   Card,
   Drawer,
   Form,
