@@ -3,7 +3,15 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 class ProgressBar extends React.Component {
-  renderValue() {
+  renderValue(progress, buffer) {
+    // return (
+    //   <script>
+    //     document.querySelector('#p3').addEventListener('mdl-componentupgraded', function() {
+    //       this.MaterialProgress.setProgress(33);
+    //       this.MaterialProgress.setBuffer(87);
+    //     });
+    //   </script>
+    // );
   }
   render() {
     const {
@@ -11,7 +19,9 @@ class ProgressBar extends React.Component {
       isIntermediate,
       classes,
       optionalClasses,
-      width
+      width,
+      progress,
+      buffer
     } = this.props;
     const suffix = `${prefix}-ProgressBar`;
     const className = classNames(
@@ -29,7 +39,7 @@ class ProgressBar extends React.Component {
         className = {className}
         style = {style}
       >
-        {value && typeof value === 'number' ? this.renderValue() : null}
+        {value && typeof value === 'number' ? this.renderValue(progress, buffer) : null}
       </div>
     );
   }
