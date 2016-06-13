@@ -7,7 +7,6 @@ import CardAction from './../components/molecules/card-action.jsx';
 import CardMenu from './../components/molecules/card-menu.jsx';
 import Button from './../components/atoms/button.jsx';
 
-
 export default (React, PageCtx, page, mount) => {
   page('/card-tester', () => {
     mount(PageCtx, {
@@ -15,15 +14,17 @@ export default (React, PageCtx, page, mount) => {
         sections: [
           () => (React.createElement(Card, {
             title: () => (React.createElement(CardTitle, {
-              title: 'Card Example'
+              title: 'Card Example',
+              background: 'rgba(255, 0, 0, 1)',
+              color: 'white'
             })),
             media: () => (React.createElement(CardMedia, {
               src: 'https://goo.gl/hQBL66',
-              width: 330,
+              width: '100%',
               alt: 'Image Not Found'
             })),
             cardText: () => (React.createElement(CardText, {
-              text: 'Checking if you are ok.'
+              body: 'Checking if you are ok.'
             })),
             action: () => (React.createElement(CardAction, {
               icon: 'event',

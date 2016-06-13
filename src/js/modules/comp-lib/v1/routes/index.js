@@ -6,6 +6,7 @@ import cardTester from './card-tester';
 import sliderTester from './slider-tester';
 import testing from './testing';
 import blogEditorExample from './blog-editor-example.js';
+import progressBar from './progress-bar-tester';
 
 export default (injectDeps, context) => {
   const {mount, page} = context;
@@ -15,6 +16,7 @@ export default (injectDeps, context) => {
   navTester(React, PageCtx, page, mount);
   cardTester(React, PageCtx, page, mount);
   sliderTester(React, PageCtx, page, mount);
+  progressBar(React, PageCtx, page, mount);
   testing(React, PageCtx, page, mount);
   blogEditorExample(React, PageCtx, page, mount);
 };
