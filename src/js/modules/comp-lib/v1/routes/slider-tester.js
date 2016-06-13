@@ -9,7 +9,8 @@ export default (React, PageCtx, page, mount) => {
           () => (React.createElement(Slider, {
             min: 0,
             max: 100,
-            tabindex: 2
+            tabindex: 2,
+            value: 2
           }))
         ]
       }))
