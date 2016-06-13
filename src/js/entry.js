@@ -9,6 +9,7 @@ import {initContext} from './configs/context';
 import coreModule from './modules/main';
 import compLib from './modules/comp-lib';
 import compLib2 from './modules/comp-lib-2';
+import test1 from './modules/test';
 
 const context = initContext();
 const app = createApp(context);
@@ -16,5 +17,6 @@ const app = createApp(context);
 app.loadModule(coreModule);
 app.loadModule(compLib);
 app.loadModule(compLib2);
+app.loadModule(test1);
 app.init();
 context.page();
