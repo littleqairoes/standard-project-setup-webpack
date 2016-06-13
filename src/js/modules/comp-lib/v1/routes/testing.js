@@ -28,9 +28,8 @@ export default (React, PageCtx, page, mount) => {
         })),
         sections: [
           () => (React.createElement(Toggle, {
-            type: 'toggle',
-            label: 'Jauven',
-            materialIcon: 'format_bold'
+            type: 'radio',
+            label: 'Jauven'
           }))
         ]
       }))
