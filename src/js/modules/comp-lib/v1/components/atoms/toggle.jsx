@@ -111,7 +111,6 @@ class Toggle extends React.Component {
           name = {name && typeof name === 'string' ? name : null}
           value = {value && typeof value === 'string' ? value : null}
           className = {inputClassName}
-          // checked = {Boolean(checked)}
           ref = {toggleRef}
         />
         {this.renderLabel(type, label, materialIcon)}
