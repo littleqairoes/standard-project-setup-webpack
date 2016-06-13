@@ -52,8 +52,9 @@ class Toggle extends React.Component {
     );
   }
   render() {
+    const r = random();
     const {
-        id,
+        id = r.string(10),
         type = 'checkbox',
         classes,
         optionalClasses,
@@ -63,7 +64,7 @@ class Toggle extends React.Component {
         materialIcon,
         checked
     } = this.props;
-    const r = random();
+    // const r = random();
 
     const suffix = `${prefix}-${type}`;
     const idFor = `${suffix}-${id && typeof id === 'string' ? id : null}-${r.string(10)}`;
@@ -110,7 +111,7 @@ class Toggle extends React.Component {
           name = {name && typeof name === 'string' ? name : null}
           value = {value && typeof value === 'string' ? value : null}
           className = {inputClassName}
-          checked = {Boolean(checked)}
+          // checked = {Boolean(checked)}
           ref = {toggleRef}
         />
         {this.renderLabel(type, label, materialIcon)}
