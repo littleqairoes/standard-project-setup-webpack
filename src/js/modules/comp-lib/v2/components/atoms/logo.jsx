@@ -56,7 +56,7 @@ export class CLLogo extends React.Component {
         <a href={url}>
           {
             image && typeof image === 'string' ? (<img {...imageAttribtues} />) :
-              (<h1>label</h1>)
+              (<h1>{label}</h1>)
           }
         </a>
       </span>

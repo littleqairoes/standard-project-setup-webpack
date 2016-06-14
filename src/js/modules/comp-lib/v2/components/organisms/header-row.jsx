@@ -31,7 +31,8 @@ export class CLHeaderRow extends React.Component {
       <div {...attributes} >
         {
           React.Children.map(children, child => (React.cloneElement(child, {
-            classes
+            classes,
+            navpos: 'header'
           })))
         }
       </div>
