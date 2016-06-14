@@ -7,7 +7,8 @@ export default (PageCtx, {page, mount}, {Components}) => {
       CLHeader,
       CLDrawer,
       CLBody,
-      CLLogo
+      CLLogo,
+      CLSpacer
     } = Components;
     mount(PageCtx, {
       content: (
