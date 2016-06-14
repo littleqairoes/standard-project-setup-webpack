@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
-class NavLink extends React.Component {
+export class CLNavLink extends React.Component {
   render() {
     const {
       navpos,
@@ -139,5 +139,3 @@ class NavLink extends React.Component {
     );
   }
 }
-
-export default NavLink;

@@ -22,7 +22,7 @@ class Button extends React.Component {
       />
     ) : null;
   }
-  renderFabLabel(id) {
+  renderFabLabel() {
     const {
       label,
       isIcon,

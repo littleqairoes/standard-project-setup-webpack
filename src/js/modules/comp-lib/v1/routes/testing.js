@@ -16,6 +16,18 @@ export default (React, PageCtx, page, mount) => {
     {
       primary: 'zydrick',
       toggle: 'checkbox'
+    },
+    {
+      primary: 'zydrick',
+      toggle: 'radio'
+    },
+    {
+      primary: 'zydrick',
+      toggle: 'switch'
+    },
+    {
+      primary: 'zydrick',
+      toggle: 'checkbox'
     }
   ];
   page('/testing', () => {
@@ -28,9 +40,8 @@ export default (React, PageCtx, page, mount) => {
           }))
         })),
         sections: [
-          () => (React.createElement(Toggle, {
-            type: 'radio',
-            label: 'Jauven'
+          () => (React.createElement(List, {
+            items
           }))
         ]
       }))
