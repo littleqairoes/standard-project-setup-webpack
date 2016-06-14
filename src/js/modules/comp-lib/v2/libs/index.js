@@ -1,11 +1,13 @@
 import classList from './class-list';
 import * as textareaLib from './textarea-lib';
 import windowSize from './window-size';
-const prefix = 'comp-lib-v1';
+import placeholders from './placeholders';
+const prefix = 'comp-lib-v2';
 
 export {
   classList,
   textareaLib,
   prefix,
-  windowSize
+  windowSize,
+  placeholders
 };

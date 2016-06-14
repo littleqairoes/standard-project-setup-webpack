@@ -2,43 +2,46 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
-export class CLCard extends React.Component {
+export class CLCardAction extends React.Component {
   render() {
     const {
-      shadow = 2,
-      width,
+      withBorder = false,
+      display,
+      boxSizing = 'border-box',
+      alignItems = 'center',
       height,
+      padding,
       background,
       classes,
       addClasses,
       id,
       children
     } = this.props;
-    const style = {
-      width,
-      height,
-      background,
-    };
-    const defaultClass = `${prefix}-card`;
+    const defaultClass = `${prefix}-card-action`;
     const className = classNames(
-      'mdl-card',
-      shadow > 0 && (
-        parseInt(shadow, 10) === 2,
-        parseInt(shadow, 10) === 3,
-        parseInt(shadow, 10) === 4,
-        parseInt(shadow, 10) === 8,
-        parseInt(shadow, 10) === 16
-      ) ? `mdl-shadow--${shadow}p` : null,
+      'mdl-card__actions',
+      {
+        'mdl-card--border': withBorder
+      },
+      defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );
+    const style = {
+      display,
+      boxSizing,
+      alignItems,
+      height,
+      padding,
+      background
+    };
     const attributes = {
       className,
       id,
       style
     };
     return (
-      <div {...attributes} >
+      <div {...attributes}>
         {
           React.Children.map(children, child => (React.cloneElement(child, {
             classes

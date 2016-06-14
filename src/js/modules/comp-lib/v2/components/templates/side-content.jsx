@@ -15,6 +15,8 @@ export class CLSideContent extends React.Component {
       children
     } = this.props;
     const defaultClass = `${prefix}-side-content`;
+    const [ left, right ] = children && React.Children.count(children) > 1 ?
+      children : mainContent === 'right' ? [ null , children ] : [ children ];
     const className = classNames(
       'mdl-grid',
       {
@@ -24,10 +26,6 @@ export class CLSideContent extends React.Component {
       classList(classes, defaultClass),
       addClasses
     );
-
-    const [ left, right ] = children && React.Children.count(children) > 1 ?
-      children : mainContent === 'right' ? [ null , children ] : [ children ];
-
     const sideContentClassName = classNames(
       'mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--4-col-phone',
       `${defaultClass}-side`,
@@ -41,8 +39,8 @@ export class CLSideContent extends React.Component {
       classList(addMainClasses, `${defaultClass}-main`)
     );
     const attributes = {
-      className,
-      id
+      id,
+      className
     };
     const leftAttributes = {
       className: mainContent === 'left' ? mainContentClassName : sideContentClassName
