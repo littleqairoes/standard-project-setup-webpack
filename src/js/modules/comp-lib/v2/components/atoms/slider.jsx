@@ -46,6 +46,8 @@ export class CLSlider extends React.Component {
       disabled = false,
       width = 300,
       name,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id
@@ -53,6 +55,10 @@ export class CLSlider extends React.Component {
     const defaultClass = `${prefix}-slider`;
     const className = classNames(
       'mdl-slider mdl-js-slider',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

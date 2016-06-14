@@ -14,6 +14,8 @@ export class CLCardTitle extends React.Component {
       color,
       display = 'block',
       background,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id
@@ -28,7 +30,9 @@ export class CLCardTitle extends React.Component {
     const className = classNames(
       'mdl-card__title',
       {
-        'mdl-card--expand': expand
+        'mdl-card--expand': expand,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

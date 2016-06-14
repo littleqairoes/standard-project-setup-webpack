@@ -83,6 +83,8 @@ export class CLTextField extends React.Component {
       expandingFontIcon,
       errorLabel = 'This is not a valid value',
       pattern,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       shouldFloat,
@@ -95,7 +97,9 @@ export class CLTextField extends React.Component {
       'mdl-textfield mdl-js-textfield',
       {
         'mdl-textfield--floating-label': shouldFloat,
-        'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon
+        'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

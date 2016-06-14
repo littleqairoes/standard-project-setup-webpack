@@ -5,6 +5,8 @@ import {classList, prefix} from './../../libs';
 export class CLCardText extends React.Component {
   render() {
     const {
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id,
@@ -13,6 +15,10 @@ export class CLCardText extends React.Component {
     const defaultClass = `${prefix}-header-row`;
     const className = classNames(
       'mdl-layout-spacer',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

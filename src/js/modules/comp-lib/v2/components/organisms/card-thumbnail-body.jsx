@@ -10,6 +10,8 @@ export class CLCardThumbnailBody extends React.Component {
       thumbnail: src = placeholders.image4x3,
       thumbnailHref: href = '#',
       noSpacing = false,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id,
@@ -19,7 +21,9 @@ export class CLCardThumbnailBody extends React.Component {
     const className = classNames(
       'mdl-grid',
       {
-        'mdl-grid--no-spacing': noSpacing
+        'mdl-grid--no-spacing': noSpacing,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

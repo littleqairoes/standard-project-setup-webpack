@@ -53,6 +53,8 @@ export class CLTable extends React.Component {
       shadow,
       classes,
       addClasses,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       id = r.string(10)
     } = this.props;
     var sort = [ 0, 0 ];
@@ -61,7 +63,9 @@ export class CLTable extends React.Component {
       'mdl-data-table',
       {
         'mdl-js-data-table': hasCheckbox,
-        'mdl-data-table--selectable': isSelectable
+        'mdl-data-table--selectable': isSelectable,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       shadow > 0 && (
         parseInt(shadow, 10) === 2,

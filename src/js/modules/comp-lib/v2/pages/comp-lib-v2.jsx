@@ -1,10 +1,23 @@
 import React from 'react';
 
-export default (PageCtx, {page, mount}) => {
-  page('/test-revamp-2', () => {
+export default (PageCtx, {page, mount}, {Components}) => {
+  page('/comp-lib-v2', () => {
+    const {
+      CLLayout,
+      CLHeader,
+      CLDrawer,
+      CLBody,
+      CLLogo
+    } = Components;
     mount(PageCtx, {
       content: (
-        <div></div>
+        <CLLayout>
+          <CLHeader>
+
+          </CLHeader>
+          <CLDrawer />
+          <CLBody />
+        </CLLayout>
       )
     });
   });

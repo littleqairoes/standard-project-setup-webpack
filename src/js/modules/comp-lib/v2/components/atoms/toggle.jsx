@@ -72,6 +72,8 @@ class Toggle extends React.Component {
         name,
         value,
         materialIcon,
+        hideOnLargeScreen,
+        hideOnSmallScreen,
         classes,
         addClasses,
         id = r.string(10),
@@ -88,7 +90,9 @@ class Toggle extends React.Component {
         'mdl-icon-toggle mdl-js-icon-toggle mdl-js-ripple-effect':
         type && type === 'toggle' && materialIcon,
         'mdl-switch mdl-js-switch mdl-js-ripple-effect':
-        type && type === 'switch'
+        type && type === 'switch',
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

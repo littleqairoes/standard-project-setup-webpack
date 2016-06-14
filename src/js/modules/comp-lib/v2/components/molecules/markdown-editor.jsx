@@ -124,7 +124,9 @@ export class CLMarkdownEditor extends React.Component {
       pattern,
       maxCharacters,
       shouldFloat,
-      onChangeHandler = () => {}
+      onChangeHandler = () => {},
+      hideOnLargeScreen,
+      hideOnSmallScreen
     } = this.props;
 
     const defaultClass = `${prefix}-markdown-editor`;
@@ -134,6 +136,10 @@ export class CLMarkdownEditor extends React.Component {
     };
 
     const className = classNames(
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

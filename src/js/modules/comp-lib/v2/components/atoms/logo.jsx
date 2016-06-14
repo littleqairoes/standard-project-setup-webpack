@@ -24,6 +24,8 @@ export class CLLogo extends React.Component {
       url = '/',
       image,
       label = 'Logo',
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id
@@ -31,6 +33,10 @@ export class CLLogo extends React.Component {
     const defaultClass = `${prefix}-logo`;
     const className = classNames(
       'mdl-layout-title',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

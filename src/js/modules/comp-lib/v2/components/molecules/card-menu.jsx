@@ -5,6 +5,8 @@ import {classList, prefix} from './../../libs';
 export class CLCardMenu extends React.Component {
   render() {
     const {
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id,
@@ -13,6 +15,10 @@ export class CLCardMenu extends React.Component {
     const defaultClass = `${prefix}-card-menu`;
     const className = classNames(
       'mdl-card__menu',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

@@ -8,8 +8,10 @@ export class CLCardMedia extends React.Component {
       src = placeholders.image16x9,
       width = '100%',
       height,
-      alt = src,
+      alt = 'Caption for image',
       style,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id
@@ -17,6 +19,10 @@ export class CLCardMedia extends React.Component {
     const defaultClass = `${prefix}-card-media`;
     const className = classNames(
       'mdl-card__media',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

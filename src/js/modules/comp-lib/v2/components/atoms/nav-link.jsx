@@ -9,6 +9,8 @@ export class CLNavLink extends React.Component {
       navpos,
       link,
       id,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses
     } = this.props;
@@ -63,7 +65,9 @@ export class CLNavLink extends React.Component {
         onClick: subActionHandler,
         className: classNames(
           {
-            'mdl-navigation__link': !isSubMenu
+            'mdl-navigation__link': !isSubMenu,
+            'mdl-layout--small-screen-only': hideOnLargeScreen,
+            'mdl-layout--large-screen-only': hideOnSmallScreen
           },
           subClasses,
           isSubMenu ? `${prefix}-nav-sub-link` : null,
