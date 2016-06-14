@@ -1,5 +1,5 @@
-import actions from './v1/actions';
-import routes from './v1/routes';
+import actions from './v2/actions';
+import routes from './v2/routes';
 export * from './v2';
 
 export default {
