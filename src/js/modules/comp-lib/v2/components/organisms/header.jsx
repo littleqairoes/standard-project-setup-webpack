@@ -15,16 +15,9 @@ export class CLHeader extends React.Component {
       id,
       children
     } = this.props;
-    const defaultClass = `${prefix}-layout`;
+    const defaultClass = `${prefix}-header`;
     const className = classNames(
       'mdl-layout__header',
-      {
-        'mdl-layout__header--transparent': isTransparent,
-        'mdl-layout__header--scroll': isScrollable,
-        'mdl-layout__header--waterfall': isWaterfall,
-        'mdl-layout__header--waterfall-hide-top': hideTopOnWaterfall,
-        'mdl-layout__header--seamed': isSeamed
-      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
