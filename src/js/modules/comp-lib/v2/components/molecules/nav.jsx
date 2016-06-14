@@ -3,6 +3,20 @@ import classNames from 'classnames';
 import NavLink from './../atoms/nav-link.jsx';
 import {classList, prefix} from './../../libs';
 
+/**
+ * CLNav
+ *
+ * params:
+ *    navpos
+ *    alwaysVisible
+ *    links
+ *    classes
+ *    addClasses
+ *    id
+ *    children
+ *
+ * */
+
 export class CLNav extends React.Component {
   render() {
     const {
