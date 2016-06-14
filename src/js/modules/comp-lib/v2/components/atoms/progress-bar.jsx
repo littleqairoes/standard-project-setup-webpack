@@ -4,17 +4,26 @@ import {classList, prefix} from './../../libs';
 
 export class CLProgressBar extends React.Component {
   componentDidMount() {
+    this.setProgressAndBuffer();
+  }
+  componentDidUpdate() {
+    this.setProgressAndBuffer();
+  }
+  setProgressAndBuffer() {
     const {
       progress,
       buffer,
       indeterminate
     } = this.props;
-    if (!indeterminate) {
+    if (!indeterminate && !this.progressBar.MaterialProgress) {
       this.progressBar.addEventListener('mdl-componentupgraded', () => {
         this.progressBar.MaterialProgress.setProgress(progress);
+        this.progressBar.MaterialProgress.setBuffer(progress);
       });
+    } else if (!indeterminate && this.progressBar.MaterialProgress) {
+      this.progressBar.MaterialProgress.setProgress(progress);
+      this.progressBar.MaterialProgress.setBuffer(buffer);
     }
-
   }
   render() {
     const {
@@ -24,7 +33,7 @@ export class CLProgressBar extends React.Component {
       addClasses,
       id
     } = this.props;
-    const defaultClass = `${prefix}-ProgressBar`;
+    const defaultClass = `${prefix}-progress-bar`;
     const className = classNames(
       'mdl-progress mdl-js-progress',
       {
@@ -47,7 +56,6 @@ export class CLProgressBar extends React.Component {
       style,
       ref
     };
-
 
     return (
       <div {...attributes}></div>
