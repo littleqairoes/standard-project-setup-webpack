@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
-class Toggle extends React.Component {
+export class CLToggle extends React.Component {
   constructor() {
     super();
     this.getElement = this.getElement.bind(this);
@@ -12,6 +12,7 @@ class Toggle extends React.Component {
     this.setValue = this.setValue.bind(this);
     this.setInputValue = this.setInputValue.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.checkValue = this.checkValue.bind(this);
   }
   componentDidMount() {
     const {checked} = this.props;
@@ -27,8 +28,23 @@ class Toggle extends React.Component {
   getValue() {
     return this.toggle.checked;
   }
+  checkValue(value) {
+    if (!this.toggle.MaterialCheckbox) {
+      this.toggle.addEventListener('mdl-componentupgraded', () => {
+        if (value) {
+          this.toggle.MaterialCheckbox.checked();
+        } else {
+          this.toggle.MaterialCheckbox.unchecked();
+        }
+      });
+    } else if (value) {
+      this.toggle.MaterialCheckbox.checked();
+    } else {
+      this.toggle.MaterialCheckbox.unchecked();
+    }
+  }
   setValue(value) {
-    this.toggle.checked = Boolean(value);
+    this.checkValue(value);
   }
   setInputValue(value) {
     this.toggle.value = value;
@@ -38,7 +54,7 @@ class Toggle extends React.Component {
   }
   onChangeHandler(e) {
     const {onChangeHandler = () => {}, name} = this.props;
-    onChangeHandler(this.slider.value, name, e, this.slider);
+    onChangeHandler(this.toggle.checked, name, e, this.toggle);
   }
   renderLabel(type, label, materialIcon) {
     const className = classNames(
@@ -75,6 +91,7 @@ class Toggle extends React.Component {
         hideOnLargeScreen,
         hideOnSmallScreen,
         inputRef = () => {},
+        data = {},
         classes,
         addClasses,
         id = r.string(10),
@@ -115,6 +132,10 @@ class Toggle extends React.Component {
     const ref = (c) => {
       this.toggle = c;
       inputRef(this, name);
+      if (data[name] || data[name] === value) {
+        this.checkValue(true);
+      }
+      this.onChangeHandler();
     };
 
     const labelAttributes = {
@@ -140,5 +161,3 @@ class Toggle extends React.Component {
     );
   }
 }
-
-export default Toggle;

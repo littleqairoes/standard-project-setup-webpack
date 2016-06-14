@@ -13,7 +13,9 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
       CLSpacer,
       CLGrid,
       CLMarkdownEditor,
-      CLForm
+      CLForm,
+      CLSlider,
+      CLToggle
     } = Components;
 
     mount(PageCtx, {
@@ -33,10 +35,24 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           </CLDrawer>
           <CLBody>
             <CLGrid columns={2}>
-              <CLForm onChangeDispatch={(data) => {console.log(data)}}>
+              <CLForm
+                onChangeDispatch={(data) => {console.log(data)}}
+                data = {{
+                  body: 'This is a text',
+                  slider: 76,
+                  yes: false
+                }}
+              >
                 <CLMarkdownEditor
                   name='body'
                   rows={10}
+                />
+                <CLSlider
+                  name='slider'
+                />
+                <CLToggle
+                  name='yes'
+                  label='Gauven'
                 />
               </CLForm>
             </CLGrid>

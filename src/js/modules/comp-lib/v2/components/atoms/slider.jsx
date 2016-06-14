@@ -47,6 +47,7 @@ export class CLSlider extends React.Component {
       width = 300,
       name,
       inputRef = () => {},
+      data,
       hideOnLargeScreen,
       hideOnSmallScreen,
       classes,
@@ -66,7 +67,11 @@ export class CLSlider extends React.Component {
     );
     const ref = (c) => {
       this.slider = c;
-      inputRef(this, name)
+      inputRef(this, name);
+      if (data[name]) {
+        this.setValue(data[name]);
+      }
+      this.onChangeHandler();
     };
     const pAttributes = {
       style: {

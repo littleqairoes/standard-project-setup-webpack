@@ -31,11 +31,16 @@ export class CLTextField extends React.Component {
       name,
       rows = 1,
       maxRows,
-      inputRef = () => {}
+      inputRef = () => {},
+      data
     } = this.props;
     const ref = (c) => {
       this.textfield = c;
       inputRef(this, name);
+      if (data[name]) {
+        this.textfield.value = data[name];
+      }
+      this.onChangeHandler();
     };
 
     const attributes = {
