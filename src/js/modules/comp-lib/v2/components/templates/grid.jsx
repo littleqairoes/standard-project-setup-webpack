@@ -37,7 +37,7 @@ export class CLGrid extends React.Component {
       },
       defaultClass,
       classList(classes, defaultClass),
-      addCellClasses
+      classList(addCellClasses, defaultClass)
     );
     const attributes = {
       className,
@@ -74,7 +74,7 @@ export class CLGrid extends React.Component {
       },
       defaultClass,
       classList(classes, defaultClass),
-      addClasses
+      classList(addClasses, defaultClass)
     );
     const attributes = {
       className,

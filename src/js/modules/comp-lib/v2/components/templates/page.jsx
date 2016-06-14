@@ -24,7 +24,7 @@ export class CLPage extends React.Component {
     const className = classNames(
       defaultClass,
       classList(classes, defaultClass),
-      addClasses
+      classList(addClasses, defaultClass)
     );
     const attributes = {
       className,

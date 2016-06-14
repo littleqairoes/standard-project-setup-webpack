@@ -25,7 +25,7 @@ export class CLLayout extends React.Component {
       },
       defaultClass,
       classList(classes, defaultClass),
-      addClasses
+      classList(addClasses, defaultClass)
     );
     const attributes = {
       className,
