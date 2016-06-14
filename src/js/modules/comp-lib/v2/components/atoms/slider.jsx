@@ -3,6 +3,13 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 export class CLSlider extends React.Component {
+  constructor() {
+    super();
+    this.getElement = this.getElement.bind(this);
+    this.getValue = this.getValue.bind(this);
+    this.setValue = this.setValue.bind(this);
+    this.onChangeHandler = this.onChangeHandler.bind(this);
+  }
   componentDidMount() {
     const {value} = this.props;
     this.setValue(value);
@@ -68,7 +75,8 @@ export class CLSlider extends React.Component {
       step,
       disabled,
       name,
-      ref
+      ref,
+      onChange: this.onChangeHandler
     };
     return (
       <p {...pAttributes}>

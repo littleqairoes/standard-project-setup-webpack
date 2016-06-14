@@ -8,3 +8,4 @@ export * from './logo.jsx';
 export * from './spinner.jsx';
 export * from './tooltip.jsx';
 export * from './progress-bar.jsx';
+export * from './slider.jsx';
