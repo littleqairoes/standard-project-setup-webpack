@@ -3,3 +3,7 @@ export * from './card-media.jsx';
 export * from './nav-link.jsx';
 export * from './button.jsx';
 export * from './card-title.jsx';
+export * from './card-text.jsx';
+export * from './logo.jsx';
+export * from './spinner.jsx';
+export * from './tooltip.jsx';

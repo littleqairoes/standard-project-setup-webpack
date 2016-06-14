@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
-export class CLCardAction extends React.Component {
+export class CLCardMenu extends React.Component {
   render() {
     const {
       classes,

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import NavLink from './../atoms/nav-link.jsx';
 import {classList, prefix} from './../../libs';
 
-class Nav extends React.Component {
+export class CLNav extends React.Component {
   render() {
     const {
       navpos,
@@ -51,5 +51,3 @@ class Nav extends React.Component {
     );
   }
 }
-
-export default Nav;

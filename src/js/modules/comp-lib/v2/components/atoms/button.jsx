@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
-class Button extends React.Component {
+export class CLButton extends React.Component {
   renderTooltip(id) {
     const {
       tooltip,
@@ -107,5 +107,3 @@ class Button extends React.Component {
     );
   }
 }
-
-export default Button;
