@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (PageCtx, {page, mount}, {Components}) => {
+export default (PageCtx, {page, mount}, {Components, links}) => {
   page('/comp-lib-v2', () => {
     const {
       CLLayout,
@@ -10,48 +10,11 @@ export default (PageCtx, {page, mount}, {Components}) => {
       CLDrawer,
       CLBody,
       CLLogo,
-      CLSpacer
+      CLSpacer,
+      CLGrid,
+      CLMarkdownEditor,
+      CLForm
     } = Components;
-
-    const links = [
-      {
-        url: '/',
-        name: 'Link 1'
-      },
-      {
-        url: '/',
-        name: 'Link 2'
-      },
-      {
-        url: '/atomic-design',
-        name: 'Link 3'
-      },
-      {
-        url: '#',
-        name: 'Link 4',
-        links: [
-          {
-            url: '/',
-            name: 'Link 1'
-          },
-          {
-            url: '/',
-            name: 'Link 2'
-          },
-          {
-            url: '/atomic-design',
-            name: 'Link 3'
-          }
-        ]
-      },
-      {
-        url: '/',
-        name: 'Link 5',
-        actionHandler: () => {
-          alert('Pink 5');
-        }
-      }
-    ];
 
     mount(PageCtx, {
       content: (
@@ -68,7 +31,16 @@ export default (PageCtx, {page, mount}, {Components}) => {
             <CLLogo />
             <CLNav links={links} />
           </CLDrawer>
-          <CLBody />
+          <CLBody>
+            <CLGrid columns={2}>
+              <CLForm onChangeDispatch={(data) => {console.log(data)}}>
+                <CLMarkdownEditor
+                  name='body'
+                  rows={10}
+                />
+              </CLForm>
+            </CLGrid>
+          </CLBody>
         </CLLayout>
       )
     });

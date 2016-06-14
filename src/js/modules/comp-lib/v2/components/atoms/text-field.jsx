@@ -30,10 +30,12 @@ export class CLTextField extends React.Component {
     const {
       name,
       rows = 1,
-      maxRows
+      maxRows,
+      inputRef = () => {}
     } = this.props;
     const ref = (c) => {
       this.textfield = c;
+      inputRef(this, name);
     };
 
     const attributes = {

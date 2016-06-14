@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import TextField from './../atoms/text-field.jsx';
-import Button from './../atoms/button.jsx';
+import {CLButton, CLTextField} from './../atoms';
 import random from 'random-js';
 import {classList, prefix, textareaLib} from './../../libs';
 
@@ -105,7 +104,7 @@ export class CLMarkdownEditor extends React.Component {
         isIcon: true
       };
       return (
-        <Button {...attributes}/>
+        <CLButton {...attributes}/>
       );
     });
   }
@@ -126,7 +125,8 @@ export class CLMarkdownEditor extends React.Component {
       shouldFloat,
       onChangeHandler = () => {},
       hideOnLargeScreen,
-      hideOnSmallScreen
+      hideOnSmallScreen,
+      inputRef
     } = this.props;
 
     const defaultClass = `${prefix}-markdown-editor`;
@@ -159,7 +159,8 @@ export class CLMarkdownEditor extends React.Component {
       maxCharacters,
       ref,
       onChangeHandler,
-      name
+      name,
+      inputRef
     };
 
     return (
@@ -169,7 +170,7 @@ export class CLMarkdownEditor extends React.Component {
             {this.renderButtons(id)}
           </div>
           <div className="mdl-cell mdl-cell--12-col">
-            <TextField {...attributes}/>
+            <CLTextField {...attributes}/>
           </div>
         </div>
       </div>

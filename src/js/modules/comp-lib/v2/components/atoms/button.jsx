@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from './tooltip.jsx';
+import {CLTooltip} from './tooltip.jsx';
 import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
@@ -22,7 +22,7 @@ export class CLButton extends React.Component {
     };
 
     return tooltip && typeof tooltip === 'string' ? (
-      <Tooltip {...attributes} />
+      <CLTooltip {...attributes} />
     ) : null;
   }
   renderFabLabel() {

@@ -74,6 +74,7 @@ class Toggle extends React.Component {
         materialIcon,
         hideOnLargeScreen,
         hideOnSmallScreen,
+        inputRef = () => {},
         classes,
         addClasses,
         id = r.string(10),
@@ -113,6 +114,7 @@ class Toggle extends React.Component {
 
     const ref = (c) => {
       this.toggle = c;
+      inputRef(this, name);
     };
 
     const labelAttributes = {
