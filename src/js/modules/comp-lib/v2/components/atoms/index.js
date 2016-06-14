@@ -9,3 +9,6 @@ export * from './spinner.jsx';
 export * from './tooltip.jsx';
 export * from './progress-bar.jsx';
 export * from './slider.jsx';
+export * from './text-field.jsx';
+export * from './toggle.jsx';
+export * from './table.jsx';
