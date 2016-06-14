@@ -2,9 +2,10 @@ import React from 'react';
 import classNames from 'classnames';
 import TextField from './../atoms/text-field.jsx';
 import Button from './../atoms/button.jsx';
+import random from 'random-js';
 import {classList, prefix, textareaLib} from './../../libs';
 
-class MarkdownEditor extends React.Component {
+export class CLMarkdownEditor extends React.Component {
   constructor() {
     super();
     this.getValue = this.getValue.bind(this);
@@ -90,71 +91,82 @@ class MarkdownEditor extends React.Component {
     } = this.props;
     return options.map((button, key) => {
       const option = this.optionActions(button);
-      const onCallback = () => {
+      const {label: tooltip, icon: materialIcon} = option;
+      const actionHandler = () => {
         option.onCallback();
         // this.textareaValueCheck();
       };
+      const attributes = {
+        actionHandler,
+        id: `${id}-${option.icon}-markdown-editor`,
+        key,
+        tooltip,
+        materialIcon,
+        isIcon: true
+      };
       return (
-        <Button
-          actionHandler={onCallback}
-          id={`${id}-${option.icon}-markdown-editor`}
-          key={key}
-          tooltip={option.label}
-          materialIcon={option.icon}
-          isIcon = {true}
-        />
+        <Button {...attributes}/>
       );
     });
   }
   render() {
+    const r = random();
     const {
-      id = 'markdown-editor-id',
+      id = r.string(10),
       name,
       placeholder,
       value,
       rows,
+      maxRows,
       classes,
+      addClasses,
       errorLabel,
       pattern,
       maxCharacters,
+      shouldFloat,
       onChangeHandler = () => {}
     } = this.props;
-    const suffix = `${prefix}-markdown-editor`;
-    const textfieldRef = (c) => {
+
+    const defaultClass = `${prefix}-markdown-editor`;
+
+    const ref = (c) => {
       this.textfield = c;
     };
+
     const className = classNames(
-      suffix,
-      classList(classes, suffix)
+      defaultClass,
+      classList(classes, defaultClass),
+      classList(addClasses, defaultClass)
     );
+
+    const attributes = {
+      shouldFloat,
+      classes,
+      type: 'textarea',
+      id,
+      placeholder,
+      errorLabel,
+      pattern,
+      rows,
+      maxRows,
+      value,
+      maxCharacters,
+      ref,
+      onChangeHandler,
+      name
+    };
+
     return (
-      <div
-        className = {className}
-      >
+      <div className = {className} >
         <div className="mdl-grid mdl-grid--no-spacing">
           <div className="mdl-cell mdl-cell--12-col">
             {this.renderButtons(id)}
           </div>
           <div className="mdl-cell mdl-cell--12-col">
-            <TextField
-              classes = {classes}
-              type = "textarea"
-              id = {id}
-              placeholder = {placeholder}
-              errorLabel = {errorLabel}
-              pattern = {pattern}
-              rows = {rows}
-              value = {value}
-              maxCharacters = {maxCharacters}
-              ref = {textfieldRef}
-              onChangeHandler = {onChangeHandler}
-              name = {name}
-            />
+            <TextField {...attributes}/>
           </div>
         </div>
       </div>
     );
   }
 }
-
-export default MarkdownEditor;

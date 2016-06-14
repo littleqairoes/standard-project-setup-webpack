@@ -88,6 +88,8 @@ export const replaceSelectedText = (el, text) => {
 
 export const bold = (el) => {
   const text = extractSelectedText(el);
+  console.log(el)
+  console.lot(text)
   if (text === '') {
     replaceSelectedText(el, '**strong text**');
   } else {
