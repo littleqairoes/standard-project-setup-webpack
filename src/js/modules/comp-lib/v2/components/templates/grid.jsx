@@ -3,12 +3,14 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 /**
- * Creates a Container to position the next element to center.
- * @param {Array} [addClasses] Adds classes.
+ * ## Creates a Container to align the next element to center.
+ * @param {String} [addClasses] Adds classes.
+ * @param {Number} [columns=1]
  * @param {string} id
- * @param {Boolean} hideOnLargeScreen if CLCenter is to hid on large screens.
- * @param {Boolean} hideOnSmallScreen if CLCenter is to hid on small screens.
- * @param {Number} spacing Collection of links that is placed on the NavBar
+ * @param {Boolean} hideOnLargeScreen parameter to hide CLCenter on large screens.
+ * @param {Boolean} hideOnSmallScreen parameter to hide CLCenter on small screens.
+ * @param {Boolean} noSpacing=false collection of links that is placed on the NavBar.
+ *
  */
 export class CLGrid extends React.Component {
   renderCell(child, column, size, key) {
