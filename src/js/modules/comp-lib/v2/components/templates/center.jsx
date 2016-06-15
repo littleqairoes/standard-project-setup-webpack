@@ -1,7 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
-
+/**
+ * Creates a Container to position the next element to center.
+ * @param {Array} [addClasses] Adds classes.
+ * @param {string} id
+ * @param {Boolean} hideOnLargeScreen if CLCenter is to hid on large screens.
+ * @param {Boolean} hideOnSmallScreen if CLCenter is to hid on small screens.
+ * @param {Number} spacing Collection of links that is placed on the NavBar
+ */
 export class CLCenter extends React.Component {
   render() {
     const {
