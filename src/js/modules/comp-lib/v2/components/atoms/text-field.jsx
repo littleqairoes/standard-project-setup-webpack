@@ -144,8 +144,17 @@ export class CLTextField extends React.Component {
     const innerClassName = expandingFontIcon || expandingMaterialIcon ?
       'mdl-textfield__expandable-holder' : null;
 
+    const style = {
+      width: '100%'
+    };
+
+    const attributes = {
+      className,
+      style
+    };
+
     return (
-      <div className={className} >
+      <div {...attributes} >
 
         {this.renderExpandingIcon(inputId)}
 
