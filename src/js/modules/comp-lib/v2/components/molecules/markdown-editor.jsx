@@ -4,6 +4,24 @@ import {CLButton, CLTextField} from './../atoms';
 import random from 'random-js';
 import {classList, prefix, textareaLib} from './../../libs';
 
+/**
+ * Creates a Markdown Editor form.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {string} [errorLabel]
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {Number} [maxCharacters]
+ * @param {Number} [maxRows]
+ * @param {string} [name]
+ * @param {Function} [onChangeHandler]
+ * @param {string} [pattern] Specifies a regex pattern for the editor to follow.
+ * @param {string} [placeholder]
+ * @param {Number} [rows] Specifies the editor's initial number of rows.
+ * @param {Boolean} [shouldFloat]
+ * @param {string} [value]
+ */
+
 export class CLMarkdownEditor extends React.Component {
   constructor() {
     super();

@@ -4,18 +4,13 @@ import {CLNavLink} from './../atoms';
 import {classList, prefix} from './../../libs';
 
 /**
- * CLNav
- *
- * params:
- *    navpos
- *    alwaysVisible
- *    links
- *    classes
- *    addClasses
- *    id
- *    children
- *
- * */
+ * Creates a NavBar which can be positioned on the header or drawer.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [alwaysVisible=true]
+ * @param {string} [id]
+ * @param {Object} [links] Collection of links that is placed on the NavBar
+ * @param {string} navpos "header" or "drawer" Sets the position of the NavBar.
+ */
 
 export class CLNav extends React.Component {
   render() {
