@@ -9,6 +9,8 @@ export class CLNavLink extends React.Component {
       navpos,
       link,
       id,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses
     } = this.props;
@@ -63,7 +65,9 @@ export class CLNavLink extends React.Component {
         onClick: subActionHandler,
         className: classNames(
           {
-            'mdl-navigation__link': !isSubMenu
+            'mdl-navigation__link': !isSubMenu,
+            'mdl-layout--small-screen-only': hideOnLargeScreen,
+            'mdl-layout--large-screen-only': hideOnSmallScreen
           },
           subClasses,
           isSubMenu ? `${prefix}-nav-sub-link` : null,
@@ -87,13 +91,19 @@ export class CLNavLink extends React.Component {
           <ul {...listHeaderAttributes} >
             {
               links ? links.map((item, key) => {
-                const {url: subUrl, name: subName, actionHandler: subActionHandler} = item;
+                const {
+                  url: subUrl,
+                  name: subName,
+                  actionHandler: subActionHandler
+                } = item;
+
                 const itemAttributes = {
                   className: classNames(
                     'mdl-menu__item',
                     `${prefix}-nav-sub-link-item`,
                     className
-                  )
+                  ),
+                  key
                 };
                 return (
                   <li {...itemAttributes} >
@@ -115,13 +125,18 @@ export class CLNavLink extends React.Component {
           <ul {...listDrawerAttributes} >
             {
               links ? links.map((item, key) => {
-                const {url: subUrl, name: subName, actionHandler: subActionHandler} = item;
+                const {
+                  url: subUrl,
+                  name: subName,
+                  actionHandler: subActionHandler
+                } = item;
                 const itemAttributes = {
                   className: classNames(
                     'mdl-menu__item',
                     `${prefix}-nav-sub-link-item`,
                     className
-                  )
+                  ),
+                  key
                 };
                 return (
                   <li {...itemAttributes} >

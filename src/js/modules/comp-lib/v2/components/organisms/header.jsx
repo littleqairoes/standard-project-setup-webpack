@@ -38,10 +38,12 @@ export class CLHeader extends React.Component {
     return (
       <header {...attributes} >
         {row1 ? React.cloneElement(row1, {
-          classes
+          classes,
+          navpos: 'header'
         }) : null}
         {row2 ? React.cloneElement(row2, {
-          classes
+          classes,
+          navpos: 'header'
         }) : null}
       </header>
     );

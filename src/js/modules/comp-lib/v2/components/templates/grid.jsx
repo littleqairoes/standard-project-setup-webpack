@@ -58,6 +58,8 @@ export class CLGrid extends React.Component {
   }
   render() {
     const {
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       noSpacing = false,
       columns = 1,
       classes,
@@ -70,7 +72,9 @@ export class CLGrid extends React.Component {
     const className = classNames(
       'mdl-grid',
       {
-        'mdl-grid--no-spacing': noSpacing
+        'mdl-grid--no-spacing': noSpacing,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

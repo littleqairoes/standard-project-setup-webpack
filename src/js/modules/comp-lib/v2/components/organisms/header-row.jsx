@@ -5,6 +5,8 @@ import {classList, prefix} from './../../libs';
 export class CLHeaderRow extends React.Component {
   render() {
     const {
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id,
@@ -13,6 +15,10 @@ export class CLHeaderRow extends React.Component {
     const defaultClass = `${prefix}-header-row`;
     const className = classNames(
       'mdl-layout__header-row',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
@@ -25,7 +31,8 @@ export class CLHeaderRow extends React.Component {
       <div {...attributes} >
         {
           React.Children.map(children, child => (React.cloneElement(child, {
-            classes
+            classes,
+            navpos: 'header'
           })))
         }
       </div>

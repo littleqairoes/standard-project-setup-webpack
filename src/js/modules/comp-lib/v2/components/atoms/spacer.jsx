@@ -2,16 +2,22 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
-export class CLHeaderSpacer extends React.Component {
+export class CLSpacer extends React.Component {
   render() {
     const {
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id
     } = this.props;
-    const defaultClass = `${prefix}-card-supporting-text`;
+    const defaultClass = `${prefix}-spacer`;
     const className = classNames(
-      'mdl-card__supporting-text',
+      'mdl-layout-spacer',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)

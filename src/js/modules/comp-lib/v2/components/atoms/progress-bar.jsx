@@ -29,6 +29,8 @@ export class CLProgressBar extends React.Component {
     const {
       indeterminate,
       width,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id
@@ -37,7 +39,9 @@ export class CLProgressBar extends React.Component {
     const className = classNames(
       'mdl-progress mdl-js-progress',
       {
-        'mdl-progress__indeterminate': indeterminate
+        'mdl-progress__indeterminate': indeterminate,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

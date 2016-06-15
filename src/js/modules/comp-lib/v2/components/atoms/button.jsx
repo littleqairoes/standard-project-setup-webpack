@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from './tooltip.jsx';
+import {CLTooltip} from './tooltip.jsx';
 import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
@@ -22,7 +22,7 @@ export class CLButton extends React.Component {
     };
 
     return tooltip && typeof tooltip === 'string' ? (
-      <Tooltip {...attributes} />
+      <CLTooltip {...attributes} />
     ) : null;
   }
   renderFabLabel() {
@@ -60,6 +60,8 @@ export class CLButton extends React.Component {
       actionHandler: onClick = () => {},
       anchor = true,
       href = '#',
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id = r.string(5)
@@ -73,7 +75,9 @@ export class CLButton extends React.Component {
         'mdl-button--raised': isRaised,
         'mdl-button--fab': isFab || isMiniFab,
         'mdl-button--icon': isIcon,
-        'mdl-button--mini-fab': isMiniFab
+        'mdl-button--mini-fab': isMiniFab,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       colored && colored === 'primary' ? `${defaultClass}-primary mdl-button--colored` : null,

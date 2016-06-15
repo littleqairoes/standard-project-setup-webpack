@@ -11,6 +11,8 @@ export class CLCardAction extends React.Component {
       alignItems = 'center',
       height,
       padding,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       background,
       classes,
       addClasses,
@@ -21,7 +23,9 @@ export class CLCardAction extends React.Component {
     const className = classNames(
       'mdl-card__actions',
       {
-        'mdl-card--border': withBorder
+        'mdl-card--border': withBorder,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

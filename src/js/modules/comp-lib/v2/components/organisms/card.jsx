@@ -9,6 +9,8 @@ export class CLCard extends React.Component {
       width,
       height,
       background,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id,
@@ -22,6 +24,10 @@ export class CLCard extends React.Component {
     const defaultClass = `${prefix}-card`;
     const className = classNames(
       'mdl-card',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       shadow > 0 && (
         parseInt(shadow, 10) === 2,
         parseInt(shadow, 10) === 3,
@@ -29,6 +35,7 @@ export class CLCard extends React.Component {
         parseInt(shadow, 10) === 8,
         parseInt(shadow, 10) === 16
       ) ? `mdl-shadow--${shadow}p` : null,
+      defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );

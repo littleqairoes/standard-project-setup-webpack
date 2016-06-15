@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import NavLink from './../atoms/nav-link.jsx';
+import {CLNavLink} from './../atoms';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -61,6 +61,7 @@ export class CLNav extends React.Component {
             component.
           */
           links ? links.map((link, key) => {
+
             const linkAttributes = {
               link,
               key,
@@ -68,8 +69,9 @@ export class CLNav extends React.Component {
               classes,
               addClasses
             };
+            // console.log(navLink)
             return navLink ? React.cloneElement(navLink, {...linkAttributes}) :
-              (<NavLink {...linkAttributes} />);
+              (<CLNavLink {...linkAttributes} />);
           }) : null
         }
       </nav>

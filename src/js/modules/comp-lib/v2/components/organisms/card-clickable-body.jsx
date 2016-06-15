@@ -7,6 +7,8 @@ export class CLCardClickableBody extends React.Component {
     const {
       cardHref: href = '#',
       cardActionHandler: onClick,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       classes,
       addClasses,
       id,
@@ -14,6 +16,11 @@ export class CLCardClickableBody extends React.Component {
     } = this.props;
     const defaultClass = `${prefix}-card-clickable-body`;
     const className = classNames(
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
+      defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );

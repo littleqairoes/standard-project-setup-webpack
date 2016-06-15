@@ -5,6 +5,8 @@ import {classList, prefix} from './../../libs';
 export class CLSideContent extends React.Component {
   render() {
     const {
+      hideOnLargeScreen,
+      hideOnSmallScreen,
       mainContent = 'right',
       noSpacing = false,
       classes,
@@ -21,6 +23,8 @@ export class CLSideContent extends React.Component {
       'mdl-grid',
       {
         'mdl-grid--no-spacing': noSpacing,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
       classList(classes, defaultClass),

@@ -1,4 +1,4 @@
-export * from './header-spacer.jsx';
+export * from './spacer.jsx';
 export * from './card-media.jsx';
 export * from './nav-link.jsx';
 export * from './button.jsx';
@@ -9,3 +9,6 @@ export * from './spinner.jsx';
 export * from './tooltip.jsx';
 export * from './progress-bar.jsx';
 export * from './slider.jsx';
+export * from './text-field.jsx';
+export * from './toggle.jsx';
+export * from './table.jsx';
