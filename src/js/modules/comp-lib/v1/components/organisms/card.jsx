@@ -37,7 +37,7 @@ class Card extends React.Component {
       classList(optionalClasses, suffix)
     );
     const style = {
-      width,
+      maxWidth: width,
       height,
       background,
     };

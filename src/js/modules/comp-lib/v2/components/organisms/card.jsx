@@ -6,7 +6,9 @@ export class CLCard extends React.Component {
   render() {
     const {
       shadow = 2,
-      width = '100%',
+      width: maxWidth = '100%',
+      minWidth,
+      forceWidth: width = '100%',
       height,
       background,
       hideOnLargeScreen,
@@ -17,9 +19,11 @@ export class CLCard extends React.Component {
       children
     } = this.props;
     const style = {
-      width,
+      maxWidth,
       height,
       background,
+      width,
+      minWidth
     };
     const defaultClass = `${prefix}-card`;
     const className = classNames(

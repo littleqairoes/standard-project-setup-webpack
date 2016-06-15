@@ -40,7 +40,7 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
-            <CLGrid columns={2}>
+            <CLGrid columns={2} forceSingleColumnPhone={true}>
               <CLCard width={300}>
                 <CLCardThumbnailBody>
                   <CLCardTitle title="title" subTitle="This is something"/>

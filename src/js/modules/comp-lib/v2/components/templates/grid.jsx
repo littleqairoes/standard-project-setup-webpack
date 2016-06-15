@@ -6,7 +6,8 @@ export class CLGrid extends React.Component {
   renderCell(child, column, size, key) {
     const {
       classes,
-      addCellClasses
+      addCellClasses,
+      forceSingleColumnPhone,
     } = this.props;
     const defaultClass = `${prefix}-cell`;
     const className = classNames(
@@ -23,7 +24,8 @@ export class CLGrid extends React.Component {
           !(size % 4 === 1 && key === size - 1) &&
           !(size % 4 === 3 && key === size - 2),
         'mdl-cell--4-col-tablet': column >= 2,
-        'mdl-cell--2-col-phone': column >= 2,
+        'mdl-cell--2-col-phone': column >= 2 && !forceSingleColumnPhone,
+        'mdl-cell--4-col-phone': column >= 2 && forceSingleColumnPhone,
         'mdl-cell--3-offset-desktop':
           (column === 2 && size % 2 === 1 && key === size - 1) ||
           (column === 4 && size % 4 === 2 && key === size - 2),
