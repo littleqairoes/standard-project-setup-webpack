@@ -20,8 +20,15 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     CLCardTitle,
     CLCardText,
     CLCardAction,
-    CLButton
+    CLButton,
+    CLSnackbar
   } = Components;
+
+  let snackbar;
+
+  const snackbarRef = (c) => {
+    snackbar = c;
+  };
 
   page('/comp-lib-v2', () => {
     mount(PageCtx, {
@@ -40,6 +47,7 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
+            <CLButton actionHandler={() => {if (snackbar) {snackbar.showNotification('Hello')}}} />
             <CLGrid columns={2} forceSingleColumnPhone={true}>
               <CLCard width={300}>
                 <CLCardThumbnailBody>
@@ -76,6 +84,7 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
               </CLForm>
             </CLGrid>
           </CLBody>
+          <CLSnackbar ref={snackbarRef}/>
         </CLLayout>
       )
     });
