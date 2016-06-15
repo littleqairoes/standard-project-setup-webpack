@@ -9,6 +9,7 @@ import {initContext} from './configs/context';
 import coreModule from './modules/main';
 import compLib from './modules/comp-lib';
 import test1 from './modules/test';
+import rokuto from './modules/Rokuto';
 
 const context = initContext();
 const app = createApp(context);
@@ -16,5 +17,6 @@ const app = createApp(context);
 app.loadModule(coreModule);
 app.loadModule(compLib);
 app.loadModule(test1);
+app.loadModule(rokuto);
 app.init();
 context.page();
