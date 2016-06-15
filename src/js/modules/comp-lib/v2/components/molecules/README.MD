@@ -1,10 +1,10 @@
 Molecule Components
 ===================
 
-- [CLCardAction](#CLCardAction)
-- [CLCardMenu](#CLCardMenu)
-- [CLMarkdownEditor](#CLMarkdownEditor)
-- [CLNav](#CLNav)
+- [CLCardAction](#clcardaction)
+- [CLCardMenu](#clcardmenu)
+- [CLMarkdownEditor](#clmarkdowneditor)
+- [CLNav](#clnav)
 
 
 ### CLCardAction
