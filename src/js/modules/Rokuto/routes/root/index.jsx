@@ -1,8 +1,8 @@
-import Layout from './../../components/layout.jsx';
-import Header from './../../components/header.jsx';
-import Drawer from './../../components/drawer.jsx';
-import Body from './../../components/body.jsx';
-import HeaderRow from './../../components/header-row.jsx';
+import Layout from './../../../comp-lib/v2/components/templates/layout.jsx';
+import Header from './../../../comp-lib/v2/components/organisms/header.jsx';
+import Drawer from './../../../comp-lib/v2/components/organisms/drawer.jsx';
+import Body from './../../../comp-lib/v2/components/organisms/body.jsx';
+import HeaderRow from './../../../comp-lib/v2/components/organisms/header-row.jsx';
 import React from 'react';
 
 export default (PageCtx, {page, mount}) => {
@@ -13,16 +13,15 @@ export default (PageCtx, {page, mount}) => {
           id='id-layout'
         >
           <Header
-            id='id-layout2'
+            id='id-header'
           >
-            <HeaderRow id='id-layout4'/>
-            <HeaderRow id='id-layout4'/>
+            <HeaderRow id='id-header-row1'/>
           </Header>
           <Drawer
-            id='id-layout3'
+            id='id-drawer'
           />
           <Body
-            id='id-layout4'
+            id='id-body'
           />
         </Layout>
       )
