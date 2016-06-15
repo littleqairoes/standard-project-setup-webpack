@@ -5,10 +5,10 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Creates a NavBar which can be positioned on the header or drawer.
- * @param {Array} addClasses Adds optional classes.
- * @param {Boolean} alwaysVisible
- * @param {string} id
- * @param {Object} links Collection of links that is placed on the NavBar
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [alwaysVisible=true]
+ * @param {string} [id]
+ * @param {Object} [links] Collection of links that is placed on the NavBar
  * @param {string} navpos "header" or "drawer" Sets the position of the NavBar.
  */
 
