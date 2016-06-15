@@ -1,23 +1,29 @@
 import React from 'react';
 
 export default (PageCtx, {page, mount}, {Components, links}) => {
-  page('/comp-lib-v2', () => {
-    const {
-      CLLayout,
-      CLHeader,
-      CLHeaderRow,
-      CLNav,
-      CLDrawer,
-      CLBody,
-      CLLogo,
-      CLSpacer,
-      CLGrid,
-      CLMarkdownEditor,
-      CLForm,
-      CLSlider,
-      CLToggle
-    } = Components;
+  const {
+    CLLayout,
+    CLHeader,
+    CLHeaderRow,
+    CLNav,
+    CLDrawer,
+    CLBody,
+    CLLogo,
+    CLSpacer,
+    CLGrid,
+    CLMarkdownEditor,
+    CLForm,
+    CLSlider,
+    CLToggle,
+    CLCard,
+    CLCardThumbnailBody,
+    CLCardTitle,
+    CLCardText,
+    CLCardAction,
+    CLButton
+  } = Components;
 
+  page('/comp-lib-v2', () => {
     mount(PageCtx, {
       content: (
         <CLLayout classes="this-additional-class">
@@ -35,6 +41,19 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           </CLDrawer>
           <CLBody>
             <CLGrid columns={2}>
+              <CLCard width={300}>
+                <CLCardThumbnailBody>
+                  <CLCardTitle title="title" subTitle="This is something"/>
+                  <CLCardText>
+                    <p>
+                      Hello this is a body of text
+                    </p>
+                  </CLCardText>
+                  <CLCardAction>
+                    <CLButton />
+                  </CLCardAction>
+                </CLCardThumbnailBody>
+              </CLCard>
               <CLForm
                 onChangeDispatch={(data) => {console.log(data)}}
                 data = {{

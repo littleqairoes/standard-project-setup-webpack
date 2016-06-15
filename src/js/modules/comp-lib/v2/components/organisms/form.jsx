@@ -46,12 +46,12 @@ export class CLForm extends React.Component {
     const defaultClass = `${prefix}-form`;
     const className = classNames(
       shadow && !isNaN(shadow) && (
-        parseInt(shadow, 10) === 2,
-        parseInt(shadow, 10) === 3,
-        parseInt(shadow, 10) === 4,
-        parseInt(shadow, 10) === 8,
+        parseInt(shadow, 10) === 2 ||
+        parseInt(shadow, 10) === 3 ||
+        parseInt(shadow, 10) === 4 ||
+        parseInt(shadow, 10) === 8 ||
         parseInt(shadow, 10) === 16
-      ) ? `mdl-shadow--${shadow}p` : null,
+      ) ? `mdl-shadow--${shadow}dp` : null,
       defaultClass,
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
