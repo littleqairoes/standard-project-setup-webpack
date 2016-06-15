@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import _ from 'underscore';
 import random from 'random-js';
-const {debounce} = _;
+const {debounce, isEqual} = _;
 import {classList, prefix} from './../../libs';
 
 export class CLTextField extends React.Component {
@@ -12,6 +12,25 @@ export class CLTextField extends React.Component {
     this.getValue = this.getValue.bind(this);
     this.setValue = this.setValue.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.updateForm = this.updateForm.bind(this);
+  }
+  componentDidMount() {
+    this.updateForm();
+  }
+  componentDidUpdate() {
+    this.updateForm();
+  }
+  updateForm() {
+    const {
+      data,
+      name,
+      inputRef = () => {}
+    } = this.props;
+    if (data[name]) {
+      this.textfield.value = data[name];
+    }
+    inputRef(this, name);
+    this.onChangeHandler();
   }
   getElement() {
     return this.textfield;
@@ -30,17 +49,10 @@ export class CLTextField extends React.Component {
     const {
       name,
       rows = 1,
-      maxRows,
-      inputRef = () => {},
-      data
+      maxRows
     } = this.props;
     const ref = (c) => {
       this.textfield = c;
-      inputRef(this, name);
-      if (data[name]) {
-        this.textfield.value = data[name];
-      }
-      this.onChangeHandler();
     };
 
     const attributes = {

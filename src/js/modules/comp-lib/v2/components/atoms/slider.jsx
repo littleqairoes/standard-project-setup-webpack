@@ -11,12 +11,22 @@ export class CLSlider extends React.Component {
     this.onChangeHandler = this.onChangeHandler.bind(this);
   }
   componentDidMount() {
-    const {value} = this.props;
-    this.setValue(value);
+    this.updateForm();
   }
   componentDidUpdate() {
-    const {value} = this.props;
-    this.setValue(value);
+    this.updateForm();
+  }
+  updateForm() {
+    const {
+      data,
+      name,
+      inputRef = () => {}
+    } = this.props;
+    if (data[name]) {
+      this.setValue(data[name]);
+    }
+    inputRef(this, name);
+    this.onChangeHandler();
   }
   setValue(value) {
     if (!this.slider.MaterialSlider) {
@@ -67,11 +77,6 @@ export class CLSlider extends React.Component {
     );
     const ref = (c) => {
       this.slider = c;
-      inputRef(this, name);
-      if (data[name]) {
-        this.setValue(data[name]);
-      }
-      this.onChangeHandler();
     };
     const pAttributes = {
       style: {

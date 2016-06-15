@@ -13,14 +13,27 @@ export class CLToggle extends React.Component {
     this.setInputValue = this.setInputValue.bind(this);
     this.onChangeHandler = this.onChangeHandler.bind(this);
     this.checkValue = this.checkValue.bind(this);
+    this.updateForm = this.updateForm.bind(this);
   }
   componentDidMount() {
-    const {checked} = this.props;
-    this.setValue(checked);
+    this.updateForm();
   }
   componentDidUpdate() {
-    const {checked} = this.props;
-    this.setValue(checked);
+    this.updateForm();
+  }
+  updateForm() {
+    const {
+      data,
+      name,
+      inputRef = () => {},
+      checked,
+      value
+    } = this.props;
+    inputRef(this, name);
+    if (checked || data[name] || data[name] === value) {
+      this.checkValue(true);
+    }
+    this.onChangeHandler();
   }
   getElement() {
     return this.toggle;
@@ -131,11 +144,6 @@ export class CLToggle extends React.Component {
 
     const ref = (c) => {
       this.toggle = c;
-      inputRef(this, name);
-      if (data[name] || data[name] === value) {
-        this.checkValue(true);
-      }
-      this.onChangeHandler();
     };
 
     const labelAttributes = {
