@@ -9,7 +9,7 @@ Molecule Components
 
 ### CLCardAction
 
-**Extends **
+
 
 Adds an action component to CLCard.
 
@@ -29,7 +29,7 @@ Adds an action component to CLCard.
 
 ### CLCardMenu
 
-**Extends **
+
 
 Adds a menu component to CLCard.
 
@@ -42,7 +42,7 @@ Adds a menu component to CLCard.
 
 ### CLMarkdownEditor
 
-**Extends **
+
 
 Creates a Markdown Editor form.
 
@@ -65,7 +65,7 @@ Creates a Markdown Editor form.
 
 ### CLNav
 
-**Extends **
+
 
 Creates a NavBar which can be positioned on the header or drawer.
 
