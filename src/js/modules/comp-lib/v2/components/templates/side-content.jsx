@@ -2,6 +2,18 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Creates a Container to split two child elements to their desired size.
+ * @param {String} [addMainClasses]
+ * @param {String} [addSideClasses]
+ * @param {Number} [columns=1]
+ * @param {string} id
+ * @param {Boolean} hideOnLargeScreen parameter to hide CLCenter on large screens.
+ * @param {Boolean} hideOnSmallScreen parameter to hide CLCenter on small screens.
+ * @param {Boolean} [noSpacing=false] Collection of links that is placed on the NavBar.
+ *
+ *
+ */
 export class CLSideContent extends React.Component {
   render() {
     const {
