@@ -48,6 +48,7 @@ export default (PageCtx, {page, mount}, {Components}) => {
             <CLGrid columns={1}>
               <CLButton actionHandler={() => {if (modal) {modal.openModal()}}} />
               <CLModal ref={modalRef} id="1">
+                <h3>Title 2</h3>
                 <CLCard>
                   <CLCardThumbnailBody>
                     <CLCardTitle title="title" subTitle="This is something"/>

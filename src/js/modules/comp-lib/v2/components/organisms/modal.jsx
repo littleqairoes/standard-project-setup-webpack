@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {CLButton} from './../atoms';
 import {classList, prefix} from './../../libs';
 
 export class CLModal extends React.Component {
@@ -32,6 +33,7 @@ export class CLModal extends React.Component {
   }
   render() {
     const {
+      width = '50%',
       classes,
       addClasses,
       id,
@@ -43,7 +45,7 @@ export class CLModal extends React.Component {
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );
-    const closeClass = `${prefix}-close`;
+    // const closeClass = `${prefix}-close`;
     const contentClassName = classNames(
       `${defaultClass}-content`,
       classList(classes, `${defaultClass}-content`),
@@ -57,10 +59,26 @@ export class CLModal extends React.Component {
       id,
       ref
     };
+    const closeAttributes = {
+      materialIcon: 'close',
+      isIcon: true,
+      classes: `${classes} modal-close`,
+      actionHandler: this.closeModal,
+      tooltip: 'close'
+    };
+    const contentAttributes = {
+      className: contentClassName,
+      style: {
+        width,
+        maxHeight: '90%',
+        overflow: 'auto'
+      }
+    };
+
     return (
       <div {...attributes} >
-        <div className={contentClassName} >
-           <span className={closeClass} onClick={this.closeModal}>x</span>
+        <div {...contentAttributes} >
+          <CLButton {...closeAttributes} />
           {
             React.Children.map(children, child => (typeof child === 'string' ? child :
               React.cloneElement(child, {

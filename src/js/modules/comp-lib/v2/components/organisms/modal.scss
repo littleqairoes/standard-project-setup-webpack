@@ -18,23 +18,16 @@
 }
 
 .#{$prefix}-modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+   /* Could be more or less, depending on screen size */
 
-.#{$prefix}-close {
-    color: #aaa;
+  .modal-close-#{$prefix}-button {
+    position: relative;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.#{$prefix}-close:hover,
-.#{$prefix}-close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+    right: 0;
+    top: 0;
+  }
 }
