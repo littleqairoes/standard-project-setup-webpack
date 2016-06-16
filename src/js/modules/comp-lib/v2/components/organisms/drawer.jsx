@@ -2,6 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a drawer component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {string} [id]
+ */
+
 export class CLDrawer extends React.Component {
   render() {
     const {
