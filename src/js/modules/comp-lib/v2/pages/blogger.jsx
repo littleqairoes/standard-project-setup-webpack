@@ -31,7 +31,10 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           <CLHeader>
             <CLHeaderRow>
               <CLSpacer hideOnLargeScreen="true" />
-              <CLLogo image="http://image000.flaticon.com/teams/1-freepik.jpg" />
+              <CLLogo image="http://image000.flaticon.com/teams/1-freepik.jpg"
+                width="100px"
+                length="100px"
+              />
               <CLSpacer />
               <CLNav links={links} />
             </CLHeaderRow>
