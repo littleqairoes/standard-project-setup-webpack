@@ -43,13 +43,17 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           <CLBody>
             <CLBanner
               id='1'
-              headLineText='HEADLINE'
+              headlineText='HEADLINE'
               title='TITLE GOES HERE'
-              subtitle='And subs....'
-              textpos='left'
-              gradient='linear-gradient(red, yellow) 50%'
-              bgImageUrl='url("https://goo.gl/Gqx9oS")'
-              imageUrl='url("http://goo.gl/ZLiGjA")'
+              subtitle={`Lorem Ipsum is simply dummy text of the
+              printing and typesetting industry. Lorem Ipsum has been
+              the industry's standard dummy
+              text ever since the 1500s, when an unknown printer took
+              a galley of type and scrambled it to make a type specimen book.`}
+              textpos='right'
+              backgroundImage='url("http://tiny.cc/mtw9by")'
+              imageUrl='http://goo.gl/ZLiGjA'
+              color='white'
             >
             </CLBanner>
           </CLBody>

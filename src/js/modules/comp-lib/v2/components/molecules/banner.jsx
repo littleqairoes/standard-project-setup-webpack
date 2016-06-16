@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import CLGrid from './../templates/grid.jsx';
-import CLSpacer from './../atoms/spacer.jsx';
+import {CLMarkdownRenderer} from './../atoms';
 import {classList, prefix, windowSize} from './../../libs';
 
 /**
@@ -9,6 +8,10 @@ import {classList, prefix, windowSize} from './../../libs';
  *
  */
 export class CLBanner extends React.Component {
+  constructor() {
+    super();
+    this.bannerResize = this.bannerResize.bind(this);
+  }
   componentDidMount() {
     if (window) {
       this.bannerResize();
@@ -26,85 +29,41 @@ export class CLBanner extends React.Component {
     const minHeight = (height - 16) * winHeight;
     this.banner.style['min-height'] = `${minHeight}px`;
   }
-  renderImage(image, size) {
-    const className = `mdl-cell mdl-cell--${size}-col`;
-    const url = image;
-    return (
-      <div className={className}>
-        <img src={url} />
-      </div>
-      );
-  }
-  renderBannerContent(
-    textpos, headLineStyle, headLineText, headLineImage, title, subtitle, children
-  ) {
-    const url = headLineImage ? headLineImage : null;
-    const textClassName = classNames(
-      'mdl-cell',
-      'mdl-cell--12-col-desktop',
-      'mdl-cell--8-col-tablet',
-      'mdl-cell-4-col-phone'
-    );
-    return (
-      <div>
-        <div
-          style={headLineStyle}
-        >
-          <img url={url}/>
-          <span>
-            {headLineText}
-          </span>
-        </div>
-        <h2 className={textClassName}>
-          {title}
-        </h2>
-        <span className={textClassName}>
-          {subtitle}
-        </span>
-        {children && React.Children.count(children) > 1 ?
-          React.Children.map(children, child => (React.cloneElement(child, {
-          }))) : null}
-      </div>
-    );
-  }
   render() {
     const {
       id,
       addClasses,
       classes,
       noSpacing,
-      background,
-      gradient,
-      headLineText,
-      headLineImage,
-      bgImageUrl,
-      headLineStyle,
-      imageUrl,
-      title = 'Title',
-      subtitle = 'Subtitle',
-      textpos = 'center',
+      backgroundGradient = '',
+      backgroundColor = '',
+      backgroundImage = '',
+      backgroundPosition = 'center',
+      backgroundSize = 'cover',
+      backgroundRepeat = 'no-repeat',
+      backgroundAttachment = '',
+      background = `${backgroundGradient}
+        ${backgroundGradient.trim() !== '' ? ', ' : ''}${backgroundImage}
+        ${backgroundPosition}/${backgroundSize} ${backgroundRepeat}
+        ${backgroundAttachment} ${backgroundColor}`.replace('\n',''),
       contentWidth = 'half',
+      textpos = 'center',
+      headlineText,
+      headlineImage,
+      headlineImageHeight = 30,
+      headlinepos = textpos,
+      imageUrl,
+      width = '100%',
+      color,
+      title,
+      subtitle,
       children
     } = this.props;
-    console.log(bgImageUrl);
-    const gradientExist = gradient && typeof gradient === 'string' ? gradient : null;
-    const bgImageUrlExist = bgImageUrl && typeof bgImageUrl === 'string' ? bgImageUrl : null;
-    const imageGradient = `${bgImageUrlExist}, ${gradientExist}`;
-    const bg = classNames(
-      gradientExist && bgImageUrlExist === null ? gradient : null,
-      gradientExist === null && bgImageUrlExist ? bgImageUrl : null,
-      gradientExist && bgImageUrlExist ? imageGradient : null,
-      'no-repeat'
-    );
-    console.log(bg);
-    console.log(`imageURL=${imageUrl}`);
-    console.log(`textPOS=${textpos}`);
+
     const style = {
-      background: bg,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-      gradient,
-      minWidth: '100%'
+      background,
+      width,
+      color
     };
     const ref = (c) => {
       this.banner = c;
@@ -129,9 +88,13 @@ export class CLBanner extends React.Component {
         'mdl-cell--4-col-desktop': contentWidth === 'quarter',
         'mdl-cell--4-col-tablet': contentWidth === 'half',
         'mdl-cell--8-col-tablet': contentWidth === 'quarter' || contentWidth === 'full',
-        'mdl-cell--2-col-phone': contentWidth === 'half',
-        'mdl-cell--4-col-phone': contentWidth === 'quarter' || contentWidth === 'full'
-      }
+        // 'mdl-cell--2-col-phone': contentWidth === 'half',
+        // 'mdl-cell--4-col-phone': contentWidth === 'quarter' || contentWidth === 'full'
+      },
+      'mdl-cell--middle',
+      `${defaultClass}-image`,
+      classList(classes, `${defaultClass}-image`),
+      classList(addClasses, `${defaultClass}-image`)
     );
     const contentClassName = classNames(
       'mdl-cell',
@@ -141,13 +104,17 @@ export class CLBanner extends React.Component {
         'mdl-cell--8-col-desktop': contentWidth === 'quarter',
         'mdl-cell--4-col-tablet': contentWidth === 'half',
         'mdl-cell--8-col-tablet': contentWidth === 'quarter' || contentWidth === 'full',
-        'mdl-cell--2-col-phone': contentWidth === 'half',
-        'mdl-cell--4-col-phone': contentWidth === 'quarter' || contentWidth === 'full',
+        // 'mdl-cell--2-col-phone': contentWidth === 'half',
+        // 'mdl-cell--4-col-phone': contentWidth === 'quarter' || contentWidth === 'full',
         'mdl-cell--3-offset-desktop': textpos === 'center' && contentWidth === 'half',
         'mdl-cell--2-offset-tablet': textpos === 'center' && contentWidth === 'half',
-        'mdl-cell--1-offset-phone': textpos === 'center' && contentWidth === 'half',
+        // 'mdl-cell--1-offset-phone': textpos === 'center' && contentWidth === 'half',
         'mdl-cell--2-offset-desktop': textpos === 'center' && contentWidth === 'quarter'
-      }
+      },
+      'mdl-cell--middle',
+      `${defaultClass}-content`,
+      classList(classes, `${defaultClass}-content`),
+      classList(addClasses, `${defaultClass}-content`)
     );
     const innerStyle = {
       textAlign: textpos
@@ -163,38 +130,119 @@ export class CLBanner extends React.Component {
       style: innerStyle
     };
     const imageAttributes = {
-      className: imageClassName,
+      className: imageClassName
+    };
+    const imageTagAttributes = {
+      src: imageUrl,
+      style: {
+        width: '100%'
+      }
     };
     const contentAttributes = {
       className: contentClassName
     };
+    const headlineAttributes = {
+      className: classNames(
+        'mdl-cell mdl-cell--12-col',
+        `${defaultClass}-headline`,
+        classList(classes, `${defaultClass}-headline`),
+        classList(addClasses, `${defaultClass}-headline`)
+      ),
+      style: {
+        textAlign: headlinepos
+      }
+    };
+    const headlineImageAttributes = {
+      src: headlineImage,
+      style: {
+        height: headlineImageHeight
+      }
+    };
+    const titleAttributes = {
+      className: classNames(
+        'mdl-cell mdl-cell--12-col',
+        `${defaultClass}-title`,
+        classList(classes, `${defaultClass}-title`),
+        classList(addClasses, `${defaultClass}-title`)
+      )
+    };
+    const subtitleAttributes = {
+      className: classNames(
+        'mdl-cell mdl-cell--12-col',
+        `${defaultClass}-sub-title`,
+        classList(classes, `${defaultClass}-sub-title`),
+        classList(addClasses, `${defaultClass}-sub-title`)
+      )
+    };
+
     return (
       <div {...attributes}>
         <div {...innerAttributes} >
           {
             textpos === 'right' ? (
               <div {...imageAttributes}>
-                <img src={imageUrl} />
+                <img {...imageTagAttributes} />
               </div>
             ) : null
           }
           <div {...contentAttributes} >
             <div className='mdl-grid mdl-grid--no-spacing'>
-              {this.renderBannerContent(
-                textpos,
-                headLineStyle,
-                headLineText,
-                headLineImage,
-                title,
-                subtitle,
-                children
-              )}
+              {
+                (headlineText && typeof headlineText === 'string') ||
+                (headlineImage && typeof headlineImage === 'string') ? (
+                  <div {...headlineAttributes} >
+                    {
+                      headlineImage ? (
+                        <img {...headlineImageAttributes} />
+                      ) : null
+                    }
+                    {
+                      headlineText ? (
+                        <span>{headlineText}</span>
+                      ) : null
+                    }
+                  </div>
+                ) : null
+              }
+
+              {
+                (title && typeof title === 'string') ? (
+                  <div {...titleAttributes} >
+                    {
+                      title ? (
+                        <h1>{title}</h1>
+                      ) : null
+                    }
+                  </div>
+                ) : null
+              }
+
+              {
+                (subtitle && typeof subtitle === 'string') ? (
+                  <div {...subtitleAttributes} >
+                    {
+                      subtitle ? (
+                        <CLMarkdownRenderer markdown={subtitle}/>
+                      ) : null
+                    }
+                  </div>
+                ) : null
+              }
+              <div className='mdl-cell mdl-cell--12-col'>
+                {
+                  React.Children.map(children, child => (typeof child === 'string' ? child :
+                    React.cloneElement(child, {
+                      classes
+                    })
+                  ))
+                }
+              </div>
             </div>
           </div>
           {
             textpos === 'left' ? (
               <div {...imageAttributes}>
-                <img src={imageUrl} />
+                <img {...imageTagAttributes} />
               </div>
             ) : null
           }
