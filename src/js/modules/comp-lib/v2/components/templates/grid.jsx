@@ -47,7 +47,7 @@ export class CLGrid extends React.Component {
     };
     return (
       <div {...attributes} >
-        { React.cloneElement(child, {classes}) }
+        { typeof child === 'string' ? React.cloneElement(child, {classes}) : child }
       </div>
     );
   }

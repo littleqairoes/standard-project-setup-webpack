@@ -56,16 +56,16 @@ export class CLSideContent extends React.Component {
       <div {...attributes} >
         <div {...leftAttributes} >
           {
-            left ? React.cloneElement(left, {
+            left && typeof left !== 'string' ? React.cloneElement(left, {
               classes
-            }) : null
+            }) : left
           }
         </div>
         <div {...rightAttributes} >
           {
-            right ? React.cloneElement(right, {
+            right && typeof right !== 'string' ? React.cloneElement(right, {
               classes
-            }) : null
+            }) : right
           }
         </div>
       </div>

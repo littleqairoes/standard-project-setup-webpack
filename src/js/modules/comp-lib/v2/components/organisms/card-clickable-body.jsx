@@ -33,9 +33,11 @@ export class CLCardClickableBody extends React.Component {
     return (
       <a {...attributes} >
         {
-          React.Children.map(children, child => (React.cloneElement(child, {
-            classes
-          })))
+          React.Children.map(children, child => (typeof child === 'string' ? child :
+            React.cloneElement(child, {
+              classes
+            })
+          ))
         }
       </a>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import {classList, prefix, placeholders} from './../../libs';
+import {classList, prefix} from './../../libs';
 
 export class CLLogo extends React.Component {
   renderTitle() {

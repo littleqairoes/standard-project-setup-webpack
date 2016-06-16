@@ -63,12 +63,14 @@ export class CLForm extends React.Component {
     return (
       <div {...attribtues} >
         {
-          React.Children.map(children, child => (React.cloneElement(child, {
-            classes,
-            inputRef: this.inputRef,
-            onChangeHandler: this.onChangeHandler,
-            data
-          })))
+          React.Children.map(children, child => (typeof child === 'string' ? child :
+            React.cloneElement(child, {
+              classes,
+              inputRef: this.inputRef,
+              onChangeHandler: this.onChangeHandler,
+              data
+            })
+          ))
         }
       </div>
     );

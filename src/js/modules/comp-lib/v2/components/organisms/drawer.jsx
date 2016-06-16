@@ -24,10 +24,12 @@ export class CLDrawer extends React.Component {
     return (
       <div {...attributes} >
         {
-          React.Children.map(children, child => (React.cloneElement(child, {
-            classes,
-            navpos: 'drawer'
-          })))
+          React.Children.map(children, child => (typeof child === 'string' ? child :
+            React.cloneElement(child, {
+              classes,
+              navpos: 'drawer'
+            })
+          ))
         }
       </div>
     );

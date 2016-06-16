@@ -30,6 +30,10 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     snackbar = c;
   };
 
+  const text = `
+  Hello world
+  `;
+
   page('/comp-lib-v2', () => {
     mount(PageCtx, {
       content: (
@@ -47,6 +51,7 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
+            Text
             <CLButton actionHandler={() => {if (snackbar) {snackbar.showNotification('Hello')}}} />
             <CLGrid columns={2} forceSingleColumnPhone={true}>
               <CLCard width={300}>

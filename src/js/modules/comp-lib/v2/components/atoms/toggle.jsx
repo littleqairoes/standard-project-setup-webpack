@@ -103,8 +103,6 @@ export class CLToggle extends React.Component {
         materialIcon,
         hideOnLargeScreen,
         hideOnSmallScreen,
-        inputRef = () => {},
-        data = {},
         classes,
         addClasses,
         id = r.string(10),
