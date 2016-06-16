@@ -46,9 +46,10 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
               headLineText='HEADLINE'
               title='TITLE GOES HERE'
               subtitle='And subs....'
-              textPos={1}
+              textpos='left'
               gradient='linear-gradient(red, yellow) 50%'
-              imageUrl='url("https://goo.gl/Gqx9oS") 30%'
+              bgImageUrl='url("https://goo.gl/Gqx9oS")'
+              imageUrl='url("http://goo.gl/ZLiGjA")'
             >
             </CLBanner>
           </CLBody>

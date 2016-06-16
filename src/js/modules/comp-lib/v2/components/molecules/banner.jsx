@@ -77,6 +77,7 @@ export class CLBanner extends React.Component {
       gradient,
       headLineText,
       headLineImage,
+      bgImageUrl,
       headLineStyle,
       imageUrl,
       title = 'Title',
@@ -85,24 +86,19 @@ export class CLBanner extends React.Component {
       contentWidth = 'half',
       children
     } = this.props;
-    console.log(imageUrl);
+    console.log(bgImageUrl);
     const gradientExist = gradient && typeof gradient === 'string' ? gradient : null;
-    const imageUrlExist = imageUrl && typeof imageUrl === 'string' ? imageUrl : null;
-    const imageGradient = `${imageUrlExist}, ${gradientExist}`;
+    const bgImageUrlExist = bgImageUrl && typeof bgImageUrl === 'string' ? bgImageUrl : null;
+    const imageGradient = `${bgImageUrlExist}, ${gradientExist}`;
     const bg = classNames(
-      gradientExist && imageUrlExist === null ? gradient : null,
-      gradientExist === null && imageUrlExist ? imageUrl : null,
-      gradientExist && imageUrlExist ? imageGradient : null,
+      gradientExist && bgImageUrlExist === null ? gradient : null,
+      gradientExist === null && bgImageUrlExist ? bgImageUrl : null,
+      gradientExist && bgImageUrlExist ? imageGradient : null,
       'no-repeat'
     );
     console.log(bg);
-    bg.includes(imageGradient) ? console.log('IMGGRADIENT') : null;
-    const imageStyle =
-      bg.includes(imageGradient) ? {
-        zIndex: -1,
-        position: 'relative',
-        display: 'block'
-      } : null;
+    console.log(`imageURL=${imageUrl}`);
+    console.log(`textPOS=${textpos}`);
     const style = {
       background: bg,
       backgroundSize: 'cover',
@@ -168,7 +164,6 @@ export class CLBanner extends React.Component {
     };
     const imageAttributes = {
       className: imageClassName,
-      style: imageStyle
     };
     const contentAttributes = {
       className: contentClassName
