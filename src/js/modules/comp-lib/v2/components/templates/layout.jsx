@@ -5,7 +5,7 @@ import {classList, prefix} from './../../libs';
 /**
  * Creates a Layout Container containing the header and drawer.
  * @param {String} [addClasses] Adds classes.
- * @param {string} id
+ * @param {string} [id]
  * @param {Boolean} [fixedDrawer=false]
  * @param {Boolean} [fixedHeader=true]
  * @param {Boolean} [noSpacing=false] Collection of links that is placed on the NavBar.
