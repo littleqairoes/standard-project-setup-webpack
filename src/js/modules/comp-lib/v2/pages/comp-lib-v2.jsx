@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default (PageCtx, {page, mount}, {Components, links}) => {
+export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) => {
   const {
     CLLayout,
     CLHeader,
@@ -21,7 +21,8 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     CLCardText,
     CLCardAction,
     CLButton,
-    CLSnackbar
+    CLSnackbar,
+    CLMarkdownRenderer
   } = Components;
 
   let snackbar;
@@ -30,8 +31,12 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     snackbar = c;
   };
 
-  const text = `
-  Hello world
+  const text = `# Hello world
+  this is a text | this is a long text | text 3
+  --- | :---: | :---
+  text | text2 | xyz
+
+  [link](link)
   `;
 
   page('/comp-lib-v2', () => {
@@ -51,7 +56,12 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
-            Text
+            <CLMarkdownRenderer
+              markdown={text} marked={marked}
+              renderer={renderer}
+              useRenderer={true}
+            />
+
             <CLButton actionHandler={() => {if (snackbar) {snackbar.showNotification('Hello')}}} />
             <CLGrid columns={2} forceSingleColumnPhone={true}>
               <CLCard width={300}>

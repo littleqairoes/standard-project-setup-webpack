@@ -4,7 +4,7 @@ import page from 'page';
 import qs from 'qs';
 import mainStore from './main-store';
 import _ from 'underscore';
-import {marked} from './marked';
+import {marked, renderer} from './marked';
 
 export const initContext = () => {
 
@@ -20,6 +20,7 @@ export const initContext = () => {
   return {
     mount,
     marked,
+    renderer,
     // firebase,
     mainStore,
     page,

@@ -13,3 +13,4 @@ export * from './text-field.jsx';
 export * from './toggle.jsx';
 export * from './table.jsx';
 export * from './snackbar.jsx';
+export * from './markdown-renderer.jsx';
