@@ -14,7 +14,7 @@ be as customizable and reactive as possible.
   - [Template](#template)
 - [Creators](#creators)
 
-## Installation
+##Installation
 
 Just install all of the dependencies.
 
@@ -35,7 +35,7 @@ And start your server. Enjoy.
 node index
 ```
 
-## Usage
+##Usage
 
 Using a React component has never been this easy. Every part of your UI can be
 formed as follows: Import, Customize, and Assemble.
@@ -83,7 +83,7 @@ Combinations of atoms *and* molecules e.g. Headers and Drawers.
 Groups of organisms that together forms a page. Templates maybe layouts
 or full page design.
 
-## Creators
+### Creators
 
 Toni-Jan Keith Monserrat @github.com/tjmonsi
 
