@@ -1,4 +1,4 @@
-import marked from 'react-marked';
+import marked from 'marked';
 
 marked.setOptions({
   renderer: new marked.Renderer(),
