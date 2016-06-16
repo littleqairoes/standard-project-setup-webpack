@@ -1,5 +1,6 @@
 import * as Components from './index';
 import compLibV2 from './pages/comp-lib-v2.jsx';
+import modalTester from './pages/modal-tester.jsx';
 
 export default (injectDeps, context) => {
   const {CLPage} = Components;
@@ -46,4 +47,5 @@ export default (injectDeps, context) => {
   ];
 
   compLibV2(PageCtx, context, {Components, links});
+  modalTester(PageCtx, context, {Components});
 };
