@@ -1,7 +1,6 @@
 import * as Components from './../components/index.js';
 import root from './root/index.jsx';
 
-
 export default (injectDeps, context) => {
   const {CLPage} = Components;
   const PageCtx = injectDeps(CLPage);

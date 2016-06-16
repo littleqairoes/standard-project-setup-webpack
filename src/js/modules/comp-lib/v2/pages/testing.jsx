@@ -64,6 +64,7 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
                   </CLCardText>
                   <CLCardAction>
                     <CLButton />
+                    <CLButton />
                   </CLCardAction>
                 </CLCardThumbnailBody>
               </CLCard>
