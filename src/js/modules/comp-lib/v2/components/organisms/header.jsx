@@ -2,6 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLHeader component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hideTopOnWaterfall=false] Makes the top row of the header disappear on slide instead of the bottom. `isWaterfall` should be set to true.
+ * @param {string} [id]
+ * @param {Boolean} [isScrollable=false] The header disappears on scroll.
+ * @param {Boolean} [isSeamed=false] The header loses its shadow beneath.
+ * @param {Boolean} [isTransparent=false] Makes the header transparent.
+ * @param {Boolean} [isWaterfall=false] The header slides up and disappears upon scrolling down.
+ */
+
 export class CLHeader extends React.Component {
   render() {
     const {
