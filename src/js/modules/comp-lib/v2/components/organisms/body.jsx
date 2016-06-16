@@ -2,6 +2,12 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Serves as container of the components of a CLLayout.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {string} [id]
+ */
+
 export class CLBody extends React.Component {
   render() {
     const {
