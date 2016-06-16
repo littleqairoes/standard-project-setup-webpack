@@ -2,6 +2,18 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a Card component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {string} [background] Specifies the background color of the card.
+ * @param {Number} [forceWidth="100%"] Specifies the card width in px regardless of the elements around it
+ * @param {Number} [height]
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param
+ */
+
 export class CLCard extends React.Component {
   render() {
     const {
