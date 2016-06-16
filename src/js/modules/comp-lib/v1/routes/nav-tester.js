@@ -81,7 +81,7 @@ export default (React, PageCtx, page, mount) => {
           topRight: nav
         })),
         sections: [
-          (classes) => (React.createElement(MarkdownEditor, {
+          () => (React.createElement(MarkdownEditor, {
             placeholder: 'This text here',
             rows: 5
           })),
@@ -98,8 +98,8 @@ export default (React, PageCtx, page, mount) => {
           })),
           (classes) => (React.createElement(Textfield, {
             classes,
-            onChangeHandler: (el) => {
-              console.log(el.value);
+            onChangeHandler: () => {
+              // console.log(el.value); heheheheheheheheheheheheheheheheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
             },
             shouldFloat: true
