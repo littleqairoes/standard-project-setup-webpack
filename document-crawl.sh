@@ -8,8 +8,6 @@
 #Traverses to the path specified
 cd ./src/js/modules/comp-lib/$1/components/$2
 
-<<<<<<< e7c1626070632b17a8cd9f1723185203b622b1c9
-<<<<<<< 91a0b6301f691e03e76d1a1350e6a96747c96300
 #Deletes any existing README.md or temp.txt file
 
 if [ -f README.md ];
@@ -51,11 +49,3 @@ sed -i 's/#/###/g' README.md
 sed -i 's/\*\*Extends \*\*//g' README.md
 
 rm temp.txt
-=======
-cd ./molecules/docs
-find ./ -name '*.md' ! -name 'README.md' -exec cat {} + >> ./../README.MD
->>>>>>> Change all capital extensions to lower case
-=======
-cd ./$2/docs
-find ./ -name '*.md' ! -name 'README.md' -exec cat {} + >> ./../README.MD
->>>>>>> Add the component type as a parameter in document-crawl.sh

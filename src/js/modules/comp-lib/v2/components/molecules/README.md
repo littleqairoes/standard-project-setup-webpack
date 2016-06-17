@@ -17,6 +17,7 @@ Adds an action component to CLCard.
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
 -   `padding` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the CSS padding value.
 -   `withBorder` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds Material border. (optional, default `false`)
+
 ### CLCardMenu
 
 
@@ -29,7 +30,10 @@ Adds a menu component to CLCard.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLMarkdownEditor
+
+
 
 Creates a Markdown Editor form.
 
@@ -49,17 +53,12 @@ Creates a Markdown Editor form.
 -   `rows` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the editor's initial number of rows.
 -   `shouldFloat` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**
 -   `value` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLNav
 
-**Parameters**
 
--   `addClasses` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds optional classes.
--   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
--   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
--   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
-### CLCardAction
 
-Adds an action component to CLCard.
+Creates a NavBar which can be positioned on the header or drawer.
 
 **Parameters**
 
