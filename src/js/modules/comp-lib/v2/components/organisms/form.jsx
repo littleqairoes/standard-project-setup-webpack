@@ -30,13 +30,13 @@ export class CLForm extends React.Component {
     onChangeDispatch(this.data);
   }
   onActionHandler(actionHandler = () => {}, data) {
+    console.log(data)
     actionHandler(data);
   }
   renderButtons() {
     const {
       classes,
       addClasses,
-      data,
       actionHandlers
     } = this.props;
     return actionHandlers ? actionHandlers.map((actionHandlerObject, key) => {
@@ -51,7 +51,7 @@ export class CLForm extends React.Component {
       };
       const actionAttribute = {
         actionHandler: () => {
-          this.onActionHandler(actionHandler, data);
+          this.onActionHandler(actionHandler, this.data);
         }
       };
       return spacer ? (
