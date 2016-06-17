@@ -73,7 +73,7 @@ Adds a drawer component.
 
 
 
-Serves as container of the components of a CLLayout.
+Adds a CLForm component.
 
 **Parameters**
 
