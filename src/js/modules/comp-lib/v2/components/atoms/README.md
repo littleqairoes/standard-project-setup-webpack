@@ -36,7 +36,7 @@ Adds a CLTooltip component.
 -   `isLarge` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds the large effect to the tooltip. For more information, go [here](https://getmdl.io/components/index.html###tooltips-section).
 -   `tooltip` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds the tooltip message.
 -   `tooltipPos` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the position of the tooltip. May only be `"left"`, `"right"`, `"top"`, or `"bottom"`.
--
+
 ### CLCardMedia
 
 
@@ -54,7 +54,7 @@ Makes div a card media container.
 -   `src` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**  (optional, default `"placeholders.image16x9"`)
 -   `style` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]** Adds in optional CSS.
 -   `width` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the width in px. Input a string if you want to use percentage e.g. "500%". (optional, default `"100%"`)
--
+
 ### CLCardText
 
 
