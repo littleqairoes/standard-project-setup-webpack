@@ -70,7 +70,6 @@ export class CLButton extends React.Component {
   render() {
     const r = random();
     const {
-      label,
       withRipple = true,
       isRaised = false,
       isDisabled: disabled = false,

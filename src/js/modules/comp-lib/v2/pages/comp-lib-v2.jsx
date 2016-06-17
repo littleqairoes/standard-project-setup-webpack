@@ -84,6 +84,17 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
                   slider: 76,
                   yes: false
                 }}
+                actionHandlers = {
+                  [
+                    {
+                      actionHandler: (data) => {console.log('this', data)}
+                    },
+                    {
+                      actionHandler: (data) => {alert('this' + data.body); console.log(data)}
+                    }
+                  ]
+
+                }
               >
                 <CLMarkdownEditor
                   name='body'

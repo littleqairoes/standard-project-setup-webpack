@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import {CLButton} from './../atoms';
+import {CLButton, CLSpacer} from './../atoms';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -18,6 +18,7 @@ export class CLForm extends React.Component {
     this.sections = {};
     this.data = {};
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onActionHandler = this.onActionHandler.bind(this);
     this.inputRef = this.inputRef.bind(this);
   }
   inputRef(c, name) {
@@ -27,6 +28,39 @@ export class CLForm extends React.Component {
     const {onChangeDispatch = () => {}} = this.props;
     this.data[name] = value;
     onChangeDispatch(this.data);
+  }
+  onActionHandler(actionHandler = () => {}, data) {
+    actionHandler(data);
+  }
+  renderButtons() {
+    const {
+      classes,
+      addClasses,
+      data,
+      actionHandlers
+    } = this.props;
+    return actionHandlers ? actionHandlers.map((actionHandlerObject, key) => {
+      const {
+        spacer,
+        actionHandler
+      } = actionHandlerObject;
+      const attributes = {
+        classes,
+        addClasses,
+        key
+      };
+      const actionAttribute = {
+        actionHandler: () => {
+          this.onActionHandler(actionHandler, data);
+        }
+      };
+      return spacer ? (
+        <CLSpacer {...Object.assign({}, attributes, actionHandlerObject)} />
+      ) :
+      (
+        <CLButton {...Object.assign({}, attributes, actionHandlerObject, actionAttribute)} />
+      );
+    }) : null;
   }
   renderSections() {
     const {data = {}, sections, classes} = this.props;
@@ -69,6 +103,14 @@ export class CLForm extends React.Component {
       className,
       id
     };
+    const actionListClassname = classNames(
+      `${defaultClass}-action`,
+      classList(classes, `${defaultClass}-action`),
+      classList(addClasses, `${defaultClass}-action`)
+    );
+    const actionListAttributes = {
+      className: actionListClassname
+    };
     return (
       <div {...attribtues} >
         {
@@ -81,6 +123,9 @@ export class CLForm extends React.Component {
             })
           ))
         }
+        <div {...actionListAttributes} >
+          {this.renderButtons()}
+        </div>
       </div>
     );
   }
