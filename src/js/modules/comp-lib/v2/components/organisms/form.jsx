@@ -3,6 +3,15 @@ import classNames from 'classnames';
 import {CLButton} from './../atoms';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLForm component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Object} [data] This is data that gets preloaded to the form. THis is helpful for when a user is updating and the form should already be populated.
+ * @param {string} [id]
+ * @param {Number} [shadow=0] Adds shadow to the form border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec.
+ *
+ */
+
 export class CLForm extends React.Component {
   constructor() {
     super();

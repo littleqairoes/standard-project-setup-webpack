@@ -5,6 +5,21 @@ import random from 'random-js';
 const {debounce, isEqual} = _;
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLTextField component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {string} [errorLabel="This is not a valid value"]
+ * @param {string} [expandingFonticon] Specifies the material icon the textfield will use.
+ * @param {string} [expandingMaterialIcon] Specifies the font icon the textfield will use.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {string} [pattern] Specifies the regex pattern the textfield may accept.
+ * @param {string} [placeholder="Placeholder text"]
+ * @param {Boolean} [shouldFloat=false] Applies the float effect to the textfield. For more information, go [here](https://getmdl.io/components/index.html#textfields-section).
+ * @param {string} [type] Specifies the input tag type.
+ */
+
 export class CLTextField extends React.Component {
   constructor() {
     super();

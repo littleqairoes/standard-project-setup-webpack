@@ -7,9 +7,9 @@ import {classList, prefix} from './../../libs';
  * @param {String} [addMainClasses]
  * @param {String} [addSideClasses]
  * @param {Number} [columns=1]
- * @param {string} id
- * @param {Boolean} hideOnLargeScreen parameter to hide CLCenter on large screens.
- * @param {Boolean} hideOnSmallScreen parameter to hide CLCenter on small screens.
+ * @param {string} [id]
+ * @param {Boolean} [hideOnLargeScreen] parameter to hide CLCenter on large screens.
+ * @param {Boolean} [hideOnSmallScreen] parameter to hide CLCenter on small screens.
  * @param {Boolean} [noSpacing=false] Collection of links that is placed on the NavBar.
  *
  *

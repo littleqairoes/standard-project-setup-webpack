@@ -2,6 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLLogo component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {string} [image] Specifies the image URL.
+ * @param {string} [label="Logo"]
+ * @param {string} [url="/"] Specifies the URL the Logo would redirect to once clicked.
+ */
+
 export class CLLogo extends React.Component {
   renderTitle() {
     const {image, label} = this.props;

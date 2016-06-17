@@ -2,6 +2,17 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLProgressBar component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {Boolean} [indeterminate] Applies the indeterminate style to the progress bar. For more information, go [here](https://getmdl.io/components/index.html#loading-section).
+ * @param {Number} [width] Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
+ *
+ */
+
 export class CLProgressBar extends React.Component {
   componentDidMount() {
     this.setProgressAndBuffer();

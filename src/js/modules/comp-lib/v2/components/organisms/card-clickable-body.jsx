@@ -2,6 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a clickable layer on top of CLCard.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Function} [cardActionHandler="onClick"] Specifies what action is the trigger.
+ * @param {string} [cardHref="#"]
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ */
+
 export class CLCardClickableBody extends React.Component {
   render() {
     const {

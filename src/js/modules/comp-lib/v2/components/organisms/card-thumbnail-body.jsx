@@ -2,6 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix, placeholders} from './../../libs';
 
+/**
+ * Adds a thumbnail within CLCard.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {Boolean} [noSpacing=false] Adds a padding around the thumbnail.
+ * @param {string} [thumbnail] Source of the thumbnail.
+ * @param {string} [thumbnailHref="#"] URL of where the thumbnail redirect if clicked.
+ */
+
 export class CLCardThumbnailBody extends React.Component {
   render() {
     const defaultClass = `${prefix}-card-thumbnail-body`;

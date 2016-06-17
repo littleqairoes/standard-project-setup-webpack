@@ -2,6 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a row-container in CLHeader.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ */
+
 export class CLHeaderRow extends React.Component {
   render() {
     const {
