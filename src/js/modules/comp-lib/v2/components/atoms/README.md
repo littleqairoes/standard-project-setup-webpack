@@ -36,6 +36,7 @@ Adds a CLTooltip component.
 -   `isLarge` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds the large effect to the tooltip. For more information, go [here](https://getmdl.io/components/index.html###tooltips-section).
 -   `tooltip` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds the tooltip message.
 -   `tooltipPos` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the position of the tooltip. May only be `"left"`, `"right"`, `"top"`, or `"bottom"`.
+-
 ### CLCardMedia
 
 
@@ -53,6 +54,7 @@ Makes div a card media container.
 -   `src` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**  (optional, default `"placeholders.image16x9"`)
 -   `style` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]** Adds in optional CSS.
 -   `width` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the width in px. Input a string if you want to use percentage e.g. "500%". (optional, default `"100%"`)
+-
 ### CLCardText
 
 
@@ -65,6 +67,7 @@ Adds a text component to CLCard.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLCardTitle
 
 
@@ -86,6 +89,7 @@ Adds a title component to CLCard.
 -   `subTitle` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds a subtitle to the card title.
 -   `subTitlePos` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the position of the subtitle. This may only be `"top"` or `"bottom"`. (optional, default `"bottom"`)
 -   `title` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the card title text.
+
 ### CLLogo
 
 
@@ -101,6 +105,7 @@ Adds a CLLogo component.
 -   `image` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the image URL.
 -   `label` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**  (optional, default `"Logo"`)
 -   `url` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the URL the Logo would redirect to once clicked. (optional, default `"/"`)
+
 ### CLMarkdownRenderer
 
 
@@ -117,6 +122,7 @@ Adds a CLMarkdownRenderer component that renders the input of CLMarkdown.
 -   `marked` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]**  (optional, default `markedOriginal`)
 -   `renderer` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]**
 -   `useRenderer` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `true`)
+
 ### CLNavLink
 
 
@@ -131,6 +137,7 @@ Adds a CLNavLink component to CLNav.
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
 -   `link` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]** An object containint the link's URL, name, actionHandler, or another group of links for a dropdown.
 -   `navpos` **[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)** Specifies where the link/s will be placed. May only be "header" or "drawer".
+
 ### CLProgressBar
 
 
@@ -145,6 +152,7 @@ Adds a CLProgressBar component.
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
 -   `indeterminate` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Applies the indeterminate style to the progress bar. For more information, go [here](https://getmdl.io/components/index.html###loading-section).
 -   `width` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
+
 ### CLSlider
 
 
@@ -166,6 +174,7 @@ Adds a CLSlider component.
 -   `step` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the increment the slider would move with.
 -   `tabIndex` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]**  (optional, default `0`)
 -   `width` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the width in px. Input a string if you want to use percentage e.g. "500%". (optional, default `300`)
+
 ### CLSnackbar
 
 
@@ -178,6 +187,7 @@ Adds a CLSnackbar component.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLSpacer
 
 
@@ -190,6 +200,7 @@ Adds a CLSpacer component that can act as a block of space to distance component
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLSpinner
 
 
@@ -201,6 +212,7 @@ Adds a CLSpinner component used to represent loading or fetching of data.
 -   `addClasses` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds optional classes.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
+
 ### CLTable
 
 
@@ -218,6 +230,7 @@ Adds a CLTable component.
 -   `isSelectable` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds the selectable effect on the table. For more information, go [here](https://getmdl.io/components/index.html###tables-section)
 -   `rows` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)]**
 -   `shadow` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Adds shadow to the card border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec. (optional, default `2`)
+
 ### CLTextField
 
 
@@ -237,6 +250,7 @@ Adds a CLTextField component.
 -   `placeholder` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**  (optional, default `"Placeholder text"`)
 -   `shouldFloat` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Applies the float effect to the textfield. For more information, go [here](https://getmdl.io/components/index.html###textfields-section). (optional, default `false`)
 -   `type` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the input tag type.
+
 ### CLToggle
 
 
@@ -254,6 +268,7 @@ Adds a CLToggle component.
 -   `name` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
 -   `type` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the type of toggle. It can only be `"checkbox"`, `"radio"`, or `"switch"`. (optional, default `"checkbox"`)
 -   `value` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]**
+
 ### CLTooltip
 
 
