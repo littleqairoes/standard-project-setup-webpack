@@ -3,6 +3,20 @@ import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLTable component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hasCheckbox=false]
+ * @param {Array} [headings] An array of objects that contains the different headings of the table.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {Boolean} [isSelectable] Adds the selectable effect on the table. For more information, go [here](https://getmdl.io/components/index.html#tables-section)
+ * @param {Array} [rows]
+ * @param {Number} [shadow=2] Adds shadow to the card border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec.
+ *
+ */
+
 export class CLTable extends React.Component {
   renderHeadings(headings, sort) {
     return headings ? headings.map((heading, key) => {

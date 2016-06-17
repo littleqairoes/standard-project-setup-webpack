@@ -2,6 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLSnackbar component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ */
+
 export class CLSnackbar extends React.Component {
   constructor() {
     super();

@@ -3,6 +3,19 @@ import classNames from 'classnames';
 import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLToggle component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {string} [label]
+ * @param {string} [materialIcon] Specifies the material icon the CLToggle would be.
+ * @param {string} [name]
+ * @param {string} [type="checkbox"] Specifies the type of toggle. It can only be `"checkbox"`, `"radio"`, or `"switch"`.
+ * @param {Number} [value]
+ */
+
 export class CLToggle extends React.Component {
   constructor() {
     super();
