@@ -16,7 +16,7 @@ Creates a Container to align the next element to center.
 
 
 
-###### Creates a Container to align the next element to center.
+Creates a Container to align the next element to center.
 
 **Parameters**
 

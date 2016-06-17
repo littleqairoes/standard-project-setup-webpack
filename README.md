@@ -69,19 +69,51 @@ The components are classified using [atomic design](http://atomicdesign.bradfros
 ### Atoms
 
 The basic building blocks of our project i.e. html tags.
-
+- [CLButton](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clbutton)
+- [CLCardMedia](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clcardmedia)
+- [CLCardText](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clcardtext)
+- [CLCardTitle](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clcardtitle)
+- [CLLogo](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#cllogo)
+- [CLMarkdownRenderer](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clmarkdownrenderer)
+- [CLNavLink](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clnavlink)
+- [CLProgressBar](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clprogressbar)
+- [CLSlider](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clslider)
+- [CLSnackbar](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clsnackbar)
+- [CLSpacer](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clspacer)
+- [CLSpinner](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#clspinner)
+- [CLTable](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#cltable)
+- [CLTextField](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#cltextfield)
+- [CLToggle](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#cltoggle)
+- [CLTooltip](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/atoms#cltooltip)
 ### Molecules
 
 Combinations of atoms. Such as links, logos, and buttons to form a Nav.
+- [CLCardAction](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/molecules#clcardaction)
+- [CLCardMenu](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/molecules#clcardmenu)
+- [CLMarkdownEditor](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/molecules#clmarkdowneditor)
+- [CLNav](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/molecules#clnav)
+
 
 ### Organisms
 
 Combinations of atoms *and* molecules e.g. Headers and Drawers.
+- [CLBody](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clbody)
+- [CLCardClickableBody](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clcardclickablebody)
+- [CLCardThumbnailBody](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clcardthumbnailbody)
+- [CLCard](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clcard)
+- [CLDrawer](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#cldrawer)
+- [CLForm](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clform)
+- [CLHeaderRow](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clheaderrow)
+- [CLHeader](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/organisms#clheader)
 
 ### Template
 
 Groups of organisms that together forms a page. Templates maybe layouts
 or full page design.
+- [CLCenter](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/templates#clcenter)
+- [CLGrid](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/templates#clgrid)
+- [CLLayout](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/templates#cllayout)
+- [CLSideContent](https://github.com/altusgerona/standard-project-setup-webpack/tree/commentConvention/src/js/modules/comp-lib/v2/components/templates#clsidecontent)
 
 ### Creators
 

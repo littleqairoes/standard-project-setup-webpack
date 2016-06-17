@@ -4,7 +4,7 @@ import {CLButton} from './../atoms';
 import {classList, prefix} from './../../libs';
 
 /**
- * Serves as container of the components of a CLLayout.
+ * Adds a CLForm component.
  * @param {string} [addClasses] Adds optional classes.
  * @param {Object} [data] This is data that gets preloaded to the form. THis is helpful for when a user is updating and the form should already be populated.
  * @param {string} [id]
