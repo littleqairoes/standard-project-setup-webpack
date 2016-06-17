@@ -4,7 +4,7 @@ import markedOriginal from 'marked';
 import {classList, prefix} from './../../libs';
 
 /**
- * Adds a CLLogo component..
+ * Adds a CLMarkdownRenderer component that renders the input of CLMarkdown.
  * @param {string} [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
