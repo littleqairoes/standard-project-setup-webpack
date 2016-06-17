@@ -41,25 +41,7 @@ Using a React component has never been this easy. Every part of your UI can be
 formed as follows: Import, Customize, and Assemble.
 
 ```
-import GeneralLayout from './../components/templates/general-layout.jsx';
-import Drawer from './../components/organisms/drawer.jsx';
-import Logo from './../components/atoms/logo.jsx';
 
-export default (React, PageCtx, page, mount) => {
-  page('/testing', () => {
-    mount(PageCtx, {
-      template: () => (React.createElement(GeneralLayout, {
-        fixedDrawer: true, {/* Drawer attribute flag */}
-        drawer: () => (React.createElement(Drawer, {
-          logo: (navpos) => (React.createElement(Logo, {
-            navpos
-            {/* Space for more attributes such as label or image src */}
-          }))
-        }))
-      }))
-    });
-  });
-};
 ```
 
 ## Components
