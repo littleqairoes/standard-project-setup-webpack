@@ -2,6 +2,24 @@ import React from 'react';
 import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
+/**
+ * Adds a CLSlider component.
+ * @param {string} [addClasses] Adds optional classes.
+ * @param {Object} [data] Preloads the slider with a value.
+ * @param {Boolean} [isDisabled=false]
+ * @param {Boolean} [hideOnLargeScreen=false]
+ * @param {Boolean} [hideOnSmallScreen=false]
+ * @param {string} [id]
+ * @param {Function} [inputRef]
+ * @param {Number} [max=100] Sets the upper boundary of the slider.
+ * @param {Number} [min=0] Sets the lower boundery of the slider.
+ * @param {string} [name]
+ * @param {Number} [step] Specifies the increment the slider would move with.
+ * @param {Number} [tabIndex=0]
+ * @param {Number} [width=300] Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
+ *
+ */
+
 export class CLSlider extends React.Component {
   constructor() {
     super();
@@ -52,8 +70,8 @@ export class CLSlider extends React.Component {
       step = 1,
       min = 0,
       max = 100,
-      tabindex = 0,
-      disabled = false,
+      tabIndex = 0,
+      isDisabled = false,
       width = 300,
       name,
       inputRef = () => {},
@@ -89,9 +107,9 @@ export class CLSlider extends React.Component {
       type: 'range',
       min,
       max,
-      tabindex,
+      tabIndex,
       step,
-      disabled,
+      isDisabled,
       name,
       ref,
       onChange: this.onChangeHandler
