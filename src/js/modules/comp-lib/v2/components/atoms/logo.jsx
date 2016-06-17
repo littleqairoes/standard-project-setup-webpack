@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import {classList, prefix} from './../../libs';
 
 /**
- * Adds a CLLogo component..
+ * Adds a CLLogo component.
  * @param {string} [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
