@@ -1,9 +1,6 @@
 import * as Components from './index';
 import compLibV2 from './pages/comp-lib-v2.jsx';
-import modalTester from './pages/modal-tester.jsx';
 import blogSite from './pages/blogger.jsx';
-import bannerTest from './pages/banner.jsx';
-
 export default (injectDeps, context) => {
   const {CLPage} = Components;
   const PageCtx = injectDeps(CLPage);
@@ -66,7 +63,5 @@ export default (injectDeps, context) => {
     }
   ];
   compLibV2(PageCtx, context, {Components, links});
-  modalTester(PageCtx, context, {Components});
   blogSite(PageCtx, context, {Components, links2});
-  bannerTest(PageCtx, context, {Components, links2});
 };
