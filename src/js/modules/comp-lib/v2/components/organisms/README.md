@@ -8,6 +8,7 @@ Serves as container of the components of a CLLayout.
 
 -   `addClasses` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds optional classes.
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLCardClickableBody
 
 
@@ -22,6 +23,7 @@ Adds a clickable layer on top of CLCard.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLCardThumbnailBody
 
 
@@ -36,6 +38,7 @@ Adds a thumbnail within CLCard.
 -   `noSpacing` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds a padding around the thumbnail. (optional, default `false`)
 -   `thumbnail` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Source of the thumbnail.
 -   `thumbnailHref` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** URL of where the thumbnail redirect if clicked. (optional, default `"#"`)
+
 ### CLCard
 
 
@@ -54,6 +57,7 @@ Adds a Card component.
 -   `minWidth` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the minimum width the card can be resized to. Input a string if you want to use percentage e.g. "500%".
 -   `shadow` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Adds shadow to the card border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec. (optional, default `2`)
 -   `width` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Specifies the maximum width the card can be resized to. Input a string if you want to use percentage e.g. "500%".
+
 ### CLDrawer
 
 
@@ -64,6 +68,7 @@ Adds a drawer component.
 
 -   `addClasses` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds optional classes.
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLForm
 
 
@@ -76,6 +81,7 @@ Serves as container of the components of a CLLayout.
 -   `data` **\[[Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)]** This is data that gets preloaded to the form. THis is helpful for when a user is updating and the form should already be populated.
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
 -   `shadow` **\[[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)]** Adds shadow to the form border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec. (optional, default `0`)
+
 ### CLHeaderRow
 
 
@@ -88,6 +94,7 @@ Adds a row-container in CLHeader.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
+
 ### CLHeader
 
 
