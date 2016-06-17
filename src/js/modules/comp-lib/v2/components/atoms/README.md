@@ -22,21 +22,6 @@ Adds a button component.
 -   `label` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Specifies the text on the button.
 -   `withRipple` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds the ripple effect on the button on click. For more information, go [here](https://getmdl.io/components/index.html###buttons-section). (optional, default `true`)
 
-### CLTooltip
-
-
-
-Adds a CLTooltip component.
-
-**Parameters**
-
--   `addClasses` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds optional classes.
--   `id` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]**
--   `idFor` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the target component of the tooltip.
--   `isLarge` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Adds the large effect to the tooltip. For more information, go [here](https://getmdl.io/components/index.html###tooltips-section).
--   `tooltip` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Adds the tooltip message.
--   `tooltipPos` **\[[string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)]** Specifies the position of the tooltip. May only be `"left"`, `"right"`, `"top"`, or `"bottom"`.
-
 ### CLCardMedia
 
 
