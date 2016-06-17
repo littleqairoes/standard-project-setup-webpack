@@ -3,7 +3,7 @@ export default {
     console.log('articl', data);
     mainStore.dispatch({
       type: 'UPDATE_ARTICLE',
-      key: 'this-article',
+      key: data.id,
       data
     });
   }
