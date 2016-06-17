@@ -1,0 +1,27 @@
+@import './../prefix';
+
+.#{$prefix}-banner {
+  .#{$prefix}-banner-image {
+    img {
+
+    }
+  }
+  .#{$prefix}-banner-content {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    .#{$prefix}-banner-headline {
+      span {
+        font-size: 12px;
+      }
+      img {
+        height: 20px;
+      }
+    }
+    .#{$prefix}-banner-title {
+      h1 {
+        margin-top: 0px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

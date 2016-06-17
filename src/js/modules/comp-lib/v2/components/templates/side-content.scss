@@ -1,0 +1,6 @@
+@import './../prefix';
+
+.#{$prefix}-side-content {
+  .#{$prefix}-side-content-side {}
+  .#{$prefix}-side-content-main {}
+}
