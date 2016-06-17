@@ -10,7 +10,6 @@ import {classList, prefix} from './../../libs';
  * @param {Boolean} [fixedHeader=true]
  * @param {Boolean} [noSpacing=false] Collection of links that is placed on the NavBar.
  *
- *
  */
 export class CLLayout extends React.Component {
   render() {

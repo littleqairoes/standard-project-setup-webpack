@@ -11,11 +11,12 @@ Creates a Container to align the next element to center.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** parameter to hide CLCenter on large screens.
 -   `hideOnSmallScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** parameter to hide CLCenter on small screens.
 -   `noSpacing` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** collection of links that is placed on the NavBar.
+
 ### CLGrid
 
 
 
-###### Creates a Container to align the next element to center.
+Creates a Container to align the next element to center.
 
 **Parameters**
 
@@ -25,6 +26,7 @@ Creates a Container to align the next element to center.
 -   `hideOnLargeScreen` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** parameter to hide CLCenter on large screens.
 -   `Boolean` **[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** \[ parameter to hide CLCenter on small screens.
 -   `noSpacing` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** collection of links that is placed on the NavBar. (optional, default `false`)
+
 ### CLLayout
 
 
@@ -38,6 +40,7 @@ Creates a Layout Container containing the header and drawer.
 -   `fixedDrawer` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `false`)
 -   `fixedHeader` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]**  (optional, default `true`)
 -   `noSpacing` **\[[Boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)]** Collection of links that is placed on the NavBar. (optional, default `false`)
+
 
 ### CLSideContent
 
