@@ -1,0 +1,10 @@
+@import './../prefix';
+
+.#{$prefix}-list-item {
+  .#{$prefix}-toggle,
+  .#{$prefix}-switch,
+  .#{$prefix}-radio,
+  .#{$prefix}-checkbox, {
+    padding-top: 20px;
+  }
+}

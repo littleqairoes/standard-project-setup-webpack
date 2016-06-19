@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import {CLButton, CLSpacer} from './../atoms';
+import {debounce} from 'underscore';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -25,9 +26,8 @@ export class CLForm extends React.Component {
     this.sections[name] = c;
   }
   onChangeHandler(value, name, event) {
-    const {onChangeDispatch = () => {}} = this.props;
     this.data[name] = value;
-    onChangeDispatch(this.data);
+    this.onChangeDispatch(this.data);
   }
   onActionHandler(actionHandler = () => {}, data) {
     actionHandler(data);
@@ -84,6 +84,7 @@ export class CLForm extends React.Component {
       shadow,
       id,
       children,
+      onChangeDispatch = () => {},
       data = {}
     } = this.props;
     const defaultClass = `${prefix}-form`;
@@ -111,6 +112,7 @@ export class CLForm extends React.Component {
     const actionListAttributes = {
       className: actionListClassname
     };
+    this.onChangeDispatch = debounce(onChangeDispatch, 500);
     return (
       <div {...attribtues} >
         {

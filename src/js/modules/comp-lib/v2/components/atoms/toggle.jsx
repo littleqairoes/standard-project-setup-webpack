@@ -120,7 +120,6 @@ export class CLToggle extends React.Component {
         addClasses,
         id = r.string(10),
     } = this.props;
-
     const defaultClass = `${prefix}-${type}`;
     const idFor = `${defaultClass}-${id}-${r.string(10)}`;
     const className = classNames(

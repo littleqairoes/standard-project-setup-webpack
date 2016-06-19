@@ -7,3 +7,4 @@ export * from './card-clickable-body.jsx';
 export * from './card-thumbnail-body.jsx';
 export * from './form.jsx';
 export * from './modal.jsx';
+export * from './list.jsx';
