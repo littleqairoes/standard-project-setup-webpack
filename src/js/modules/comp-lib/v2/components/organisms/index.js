@@ -8,3 +8,4 @@ export * from './card-thumbnail-body.jsx';
 export * from './form.jsx';
 export * from './modal.jsx';
 export * from './list.jsx';
+export * from './carousel.jsx';

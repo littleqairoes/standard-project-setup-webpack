@@ -1,0 +1,7 @@
+@import './../prefix';
+
+.#{$prefix}-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
