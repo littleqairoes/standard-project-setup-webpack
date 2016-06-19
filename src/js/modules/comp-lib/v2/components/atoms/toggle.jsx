@@ -36,7 +36,7 @@ export class CLToggle extends React.Component {
   }
   updateForm() {
     const {
-      data,
+      data = {},
       name,
       inputRef = () => {},
       checked,
@@ -47,6 +47,9 @@ export class CLToggle extends React.Component {
       this.checkValue(true);
     }
     this.onChangeHandler();
+    if (componentHandler) {
+      componentHandler.upgradeElement(this.toggleContainer);
+    }
   }
   getElement() {
     return this.toggle;
@@ -111,6 +114,7 @@ export class CLToggle extends React.Component {
     const {
         type = 'checkbox',
         label,
+        isItemPrimary = false,
         name,
         value,
         materialIcon,
@@ -156,9 +160,22 @@ export class CLToggle extends React.Component {
       this.toggle = c;
     };
 
+    const containerRef = (c) => {
+      this.toggleContainer = c;
+    };
+
+    const style = {
+      paddingTop: isItemPrimary && type === 'radio' && (!label || label.trim() === '') ?
+        22 : 0,
+      width: isItemPrimary && type === 'checkbox' && (!label || label.trim() === '') ?
+        0 : null
+    };
+
     const labelAttributes = {
       className,
-      htmlFor: idFor
+      htmlFor: idFor,
+      ref: containerRef,
+      style
     };
 
     const inputAttributes = {

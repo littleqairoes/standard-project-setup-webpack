@@ -18,6 +18,7 @@ export class CLList extends React.Component {
       div = false,
       twoLine = false,
       threeLine = false,
+      width = 300,
       classes,
       addClasses,
       id,
@@ -34,9 +35,13 @@ export class CLList extends React.Component {
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );
+    const style = {
+      width
+    };
     const attributes = {
       className,
-      id
+      id,
+      width
     };
     return div ? (
       <div {...attributes} >
@@ -65,6 +70,7 @@ export class CLList extends React.Component {
               </span>
             </li>
           ) : React.cloneElement(child, {
+            className: 'mdl-list__item',
             classes,
             div,
             twoLine,

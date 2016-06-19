@@ -30,7 +30,7 @@ export class CLListItemSecondary extends React.Component {
     const defaultClass = `${prefix}-list-item-secondary`;
     const className = classNames(
       {
-        'mdl-list__item-secondary-content': !isAction,
+        'mdl-list__item-secondary-content': !(isAction || actionIcon),
         'mdl-list__item-secondary-action': isAction || actionIcon,
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen

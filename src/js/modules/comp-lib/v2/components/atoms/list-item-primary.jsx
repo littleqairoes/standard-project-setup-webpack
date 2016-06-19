@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import {CLIcon} from './icon.jsx';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -20,6 +21,8 @@ export class CLListItemPrimary extends React.Component {
       label,
       subTitle,
       bodyInfo,
+      itemIcon = true,
+      itemAvatar,
       classes,
       addClasses,
       id,
@@ -40,16 +43,22 @@ export class CLListItemPrimary extends React.Component {
       className,
       id
     };
+    const iconAttributes = {
+      itemIcon,
+      itemAvatar,
+      classes
+    };
     const [ child ] = children && React.Children.count(children) > 1 ?
       children : [ children ];
     return (
       <span {...attributes}>
         {
           !child ? null : typeof child === 'string' ? (
-            <i className="material-icons mdl-list__item-avatar">
-              {child}
-            </i>
+            <CLIcon {...iconAttributes} icon={child} />
           ) : React.cloneElement(child, {
+            itemIcon,
+            itemAvatar,
+            isItemPrimary: true,
             classes
           })
         }

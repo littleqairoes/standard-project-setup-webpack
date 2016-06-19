@@ -22,7 +22,13 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
     CLCardAction,
     CLButton,
     CLSnackbar,
-    CLMarkdownRenderer
+    CLMarkdownRenderer,
+    CLList,
+    CLListItem,
+    CLIcon,
+    CLListItemPrimary,
+    CLListItemSecondary,
+    CLListItemSecondaryAction
   } = Components;
 
   let snackbar;
@@ -61,7 +67,10 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
               renderer={renderer}
               useRenderer={true}
             />
-
+            <CLToggle type="radio" label="Radio" />
+            <CLToggle type="checkbox" label="Radio" />
+            <CLToggle type="toggle" materialIcon="search" label="Radio" />
+            <CLToggle type="switch" label="Radio" />
             <CLButton actionHandler={() => {if (snackbar) {snackbar.showNotification('Hello')}}} />
             <CLGrid columns={2} forceSingleColumnPhone={true}>
               <CLCard width={300}>
@@ -108,6 +117,49 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
                   label='Gauven'
                 />
               </CLForm>
+              <CLList>
+                <span>Item 1</span>
+                <span>Item 2</span>
+                <span>Item 3</span>
+              </CLList>
+              <CLList>
+                <CLListItem>Item 4</CLListItem>
+                <CLListItem>Item 5</CLListItem>
+                <CLListItem>Item 6</CLListItem>
+              </CLList>
+              <CLList>
+                <CLListItem>
+                  <span>Primary 1</span>
+                  <span>Sec</span>
+                </CLListItem>
+                <CLListItem>
+                  <span>Primary 2</span>
+                  <span>Sec</span>
+                </CLListItem>
+                <CLListItem>
+                  <span>Primary 3</span>
+                  <span>Sec</span>
+                </CLListItem>
+              </CLList>
+              <CLList>
+                <CLListItem twoLine={true} >
+                  <CLListItemPrimary label="Primary 4">
+                    <CLIcon itemAvatar={true} icon="person" />
+                  </CLListItemPrimary>
+                  <CLListItemSecondary actionIcon="star" />
+                </CLListItem>
+                <CLListItem twoLine={true}>
+                  <CLListItemPrimary label="Primary 43">
+                    <CLToggle type="checkbox" label="label 2"/>
+                  </CLListItemPrimary>
+                </CLListItem>
+                <CLListItem>
+                  <CLListItemPrimary label="Primary 23">
+                    <CLToggle type="radio" label = "label 1" />
+                  </CLListItemPrimary>
+                </CLListItem>
+              </CLList>
+
             </CLGrid>
           </CLBody>
           <CLSnackbar ref={snackbarRef}/>

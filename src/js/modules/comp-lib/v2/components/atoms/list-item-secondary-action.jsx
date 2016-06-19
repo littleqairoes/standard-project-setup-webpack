@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import {CLIcon} from './index';
+import {CLIcon} from './icon.jsx';
 import {classList, prefix} from './../../libs';
 
 /**

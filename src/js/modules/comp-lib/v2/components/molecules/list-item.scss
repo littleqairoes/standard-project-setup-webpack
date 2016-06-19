@@ -4,9 +4,8 @@
   .#{$prefix}-list-item-primary {
     .#{$prefix}-toggle,
     .#{$prefix}-switch,
-    .#{$prefix}-radio,
-    .#{$prefix}-checkbox, {
-      padding-top: 20px;
+    .#{$prefix}-radio {
+      // padding-top: 20px;
     }
   }
 }
