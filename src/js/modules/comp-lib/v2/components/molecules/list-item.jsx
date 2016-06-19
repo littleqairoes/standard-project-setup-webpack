@@ -62,7 +62,9 @@ export class CLListItem extends React.Component {
               {primary}
             </span>
           ) : React.cloneElement(primary, {
-            classes
+            classes,
+            twoLine,
+            threeLine
           })
         }
         {
@@ -71,7 +73,9 @@ export class CLListItem extends React.Component {
               {secondary}
             </span>
           ) : React.cloneElement(secondary, {
-            classes
+            classes,
+            twoLine,
+            threeLine
           })
         }
       </div>
@@ -83,7 +87,9 @@ export class CLListItem extends React.Component {
               {primary}
             </span>
           ) : React.cloneElement(primary, {
-            classes
+            classes,
+            twoLine,
+            threeLine
           })
         }
         {
@@ -92,7 +98,9 @@ export class CLListItem extends React.Component {
               {secondary}
             </span>
           ) : React.cloneElement(secondary, {
-            classes
+            classes,
+            twoLine,
+            threeLine
           })
         }
       </ul>
