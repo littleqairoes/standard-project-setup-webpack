@@ -24,10 +24,10 @@ export class CLBanner extends React.Component {
     }
   }
   bannerResize() {
-    const {height = 0.5} = this.props;
+    const {minHeight = 0.5} = this.props;
     const {winHeight} = windowSize();
-    const minHeight = (height - 16) * winHeight;
-    this.banner.style['min-height'] = `${minHeight}px`;
+    const newMinHeight = (minHeight - 16) * winHeight;
+    this.banner.style['min-height'] = `${newMinHeight}px`;
   }
   render() {
     const {
@@ -54,6 +54,7 @@ export class CLBanner extends React.Component {
       headlinepos = textpos,
       imageUrl,
       width = '100%',
+      height,
       color,
       title,
       subtitle,
@@ -63,7 +64,8 @@ export class CLBanner extends React.Component {
     const style = {
       background,
       width,
-      color
+      color,
+      height
     };
     const ref = (c) => {
       this.banner = c;
@@ -117,7 +119,9 @@ export class CLBanner extends React.Component {
       classList(addClasses, `${defaultClass}-content`)
     );
     const innerStyle = {
-      textAlign: textpos
+      textAlign: textpos,
+      paddingLeft: textpos !== 'center' ? 50 : null,
+      paddingRight: textpos !== 'center' ? 50 : null
     };
     const attributes = {
       className,

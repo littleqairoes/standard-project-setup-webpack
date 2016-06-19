@@ -82,6 +82,7 @@ export class CLButton extends React.Component {
       href = '#',
       hideOnLargeScreen,
       hideOnSmallScreen,
+      style,
       classes,
       addClasses,
       id = r.string(5)
@@ -111,7 +112,8 @@ export class CLButton extends React.Component {
       onClick,
       disabled,
       id: idFor,
-      href
+      href,
+      style
     };
 
     return anchor ? (

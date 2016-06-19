@@ -4,11 +4,44 @@ import {CLButton} from './../atoms';
 import {classList, prefix} from './../../libs';
 
 export class CLCarousel extends React.Component {
+  constructor() {
+    super();
+    this.goLeft = this.goLeft.bind(this);
+    this.goRight = this.goRight.bind(this);
+    this.changeSlide = this.changeSlide.bind(this);
+  }
+  goRight() {
+    if (this.slider) {
+      const left = this.slider.style.left;
+      const newLeft = isNaN(left) ?
+        parseInt(left.replace('%', '').trim(), 10) - 100 :
+        left - 100;
+      this.changeSlide(newLeft);
+    }
+  }
+  goLeft() {
+    if (this.slider) {
+      const left = this.slider.style.left;
+      const newLeft = isNaN(left) ?
+        parseInt(left.replace('%', '').trim(), 10) + 100 :
+        left + 100;
+      this.changeSlide(newLeft);
+    }
+  }
+  changeSlide(newLeft) {
+    if (this.slider) {
+      const width = parseInt(this.slider.style.width.replace('%', '').trim(), 10);
+      this.slider.style.left = newLeft > 0 ? `-${width - 100}%` :
+        Math.abs(newLeft) >= width ? '0%' : `${newLeft}%`;
+    }
+  }
   render() {
     const {
       classes,
       addClasses,
+      height = 'auto !important',
       float = 'left',
+      buttonColor: color,
       id,
       children
     } = this.props;
@@ -24,20 +57,18 @@ export class CLCarousel extends React.Component {
       left: '0%',
       position: 'relative'
     };
-    const leftRef = (c) => {
-      this.leftButton = c;
-    };
-    const rightRef = (c) => {
-      this.rightButton = c;
-    };
     const ref = (c) => {
       this.slider = c;
     };
     const attributes = {
       className,
-      id
+      id,
+      style: {
+        height
+      }
     };
     const sliderAttributes = {
+      className: `${defaultClass}-slider`,
       style,
       ref
     };
@@ -45,10 +76,45 @@ export class CLCarousel extends React.Component {
     const width = React.Children.count(children) > 0 ?
       `${(1 / React.Children.count(children)) * 100}%` : '100%';
 
-    const slideAttribute = {
+    const slideAttributes = {
       style: {
         width,
         float
+      }
+    };
+
+    const leftAttributes = {
+      style: {
+        position: 'absolute',
+        left: 0,
+        top: '40%',
+        color
+      },
+      isFab: true,
+      isMiniFab: true,
+      materialIcon: 'keyboard_arrow_left',
+      actionHandler: this.goLeft
+    };
+
+    const rightAttributes = {
+      style: {
+        position: 'absolute',
+        right: 0,
+        top: '40%',
+        color
+      },
+      isFab: true,
+      isMiniFab: true,
+      materialIcon: 'keyboard_arrow_right',
+      actionHandler: this.goRight
+    };
+
+    const bottomAttributes = {
+      style: {
+        textAlign: 'center',
+        position: 'absolute',
+        bottom: 0,
+        width: '100%'
       }
     };
 
@@ -56,60 +122,43 @@ export class CLCarousel extends React.Component {
       <div {...attributes} >
         <div {...sliderAttributes}>
           {
-            React.Children.map(children, child => (typeof child === 'string' ? (
-              <div {...slideAttribute}>
-                {child}
-              </div>
-            ) : (
-              <div {...slideAttribute}>
-                {
-                  React.cloneElement(child, {
-                    classes
-                  })
-                }
-              </div>
-            )))
+            React.Children.map(children, child => {
+              if (typeof child === 'string') {
+                return (
+                  <div {...slideAttributes}>
+                    {child}
+                  </div>
+                );
+              }
+              return (
+                <div {...slideAttributes}>
+                  {
+                    React.cloneElement(child, {
+                      classes,
+                      height
+                    })
+                  }
+                </div>
+              );
+
+            })
           }
         </div>
-        <div
-          style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: 50,
-            height: 400,
-            cursor: 'pointer'
-          }}
-          ref= {leftRef}
-          onClick = { () => {
-            if (this.slider) {
-              const left = this.slider.style.left;
-              const newLeft = isNaN(left) ? parseInt(left.replace('%', '').trim(), 10) - 100 : left - 100;
-              this.slider.style.left = Math.abs(newLeft) >= parseInt(this.slider.style.width.replace('%', '').trim(), 10) ? `0%` : `${newLeft}%`;
-            }
-          }}
-        >
-        </div>
-        <div
-          style={{
-            position: 'absolute',
-            right: 0,
-            top: 0,
-            bottom: 0,
-            width: 50,
-            height: 400,
-            cursor: 'pointer'
-          }}
-          ref= {rightRef}
-          onClick = { () => {
-            if (this.slider) {
-              const left = this.slider.style.left;
-              const newLeft = isNaN(left) ? parseInt(left.replace('%', '').trim(), 10) + 100 : left + 100;
-              this.slider.style.left = newLeft > 0 ? `-${parseInt(this.slider.style.width.replace('%', '').trim(), 10) - 100}%` : `${newLeft}%`;
-            }
-          }}
-        >
+        <CLButton {...leftAttributes}/>
+        <CLButton {...rightAttributes}/>
+        <div {...bottomAttributes} >
+          {
+            React.Children.count(children) > 1 ? children.map((child, key) => {
+              const buttonAttribute = {
+                isIcon: true,
+                materialIcon: 'radio_button_checked',
+                actionHandler: () => {
+                  this.changeSlide(-(key * 100));
+                }
+              };
+              return (<CLButton {...buttonAttribute}/>);
+            }) : null
+          }
         </div>
       </div>
     );

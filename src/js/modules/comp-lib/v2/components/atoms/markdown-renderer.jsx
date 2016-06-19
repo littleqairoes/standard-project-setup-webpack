@@ -20,7 +20,7 @@ export class CLMarkdownRenderer extends React.Component {
     const {
       markdown = '',
       marked = markedOriginal,
-      renderer = markedOriginal.Renderer(),
+      renderer = new markedOriginal.Renderer(),
       useRenderer = true,
       gfm = true,
       tables = true,

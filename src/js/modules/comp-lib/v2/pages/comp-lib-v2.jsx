@@ -28,7 +28,9 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
     CLIcon,
     CLListItemPrimary,
     CLListItemSecondary,
-    CLListItemSecondaryAction
+    CLListItemSecondaryAction,
+    CLBanner,
+    CLCarousel
   } = Components;
 
   let snackbar;
@@ -62,6 +64,54 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
+            <CLCarousel buttonColor="white" >
+              <CLBanner
+                id='1'
+                headlineText='HEADLINE 1'
+                title='TITLE GOES HERE 1'
+                subtitle={` Lorem Ipsum has been
+                the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took
+                a galley of type and scrambled it to make a type specimen book.`}
+                textpos='right'
+                backgroundImage='url("http://tiny.cc/mtw9by")'
+                imageUrl='http://goo.gl/ZLiGjA'
+                color='white'
+              />
+              <CLBanner
+                id='2'
+                headlineText='HEADLINE 2'
+                title='TITLE GOES HERE 2'
+                subtitle={`Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. `}
+                textpos='right'
+                backgroundImage='url("http://tiny.cc/mtw9by")'
+                imageUrl='http://goo.gl/ZLiGjA'
+                color='white'
+              />
+              <CLBanner
+                id='3'
+                headlineText='HEADLINE 2'
+                title='TITLE GOES HERE 2'
+                subtitle={`Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. `}
+                textpos='right'
+                backgroundImage='url("http://tiny.cc/mtw9by")'
+                imageUrl='http://goo.gl/ZLiGjA'
+                color='white'
+              />
+              <CLBanner
+                id='4'
+                headlineText='HEADLINE 2'
+                title='TITLE GOES HERE 2'
+                subtitle={`Lorem Ipsum is simply dummy text of the
+                printing and typesetting industry. `}
+                textpos='right'
+                backgroundImage='url("http://tiny.cc/mtw9by")'
+                imageUrl='http://goo.gl/ZLiGjA'
+                color='white'
+              />
+            </CLCarousel>
             <CLMarkdownRenderer
               markdown={text} marked={marked}
               renderer={renderer}
