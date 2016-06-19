@@ -20,14 +20,40 @@ export class CLMarkdownRenderer extends React.Component {
     const {
       markdown = '',
       marked = markedOriginal,
-      renderer,
+      renderer = markedOriginal.Renderer(),
       useRenderer = true,
+      gfm = true,
+      tables = true,
+      breaks = false,
+      pedantic = false,
+      smartLists = true,
+      smartypants = false,
       hideOnLargeScreen,
       hideOnSmallScreen,
       classes,
       addClasses,
       id
     } = this.props;
+
+    marked.setOptions({
+      renderer,
+      gfm,
+      tables,
+      breaks,
+      pedantic,
+      smartLists,
+      smartypants
+    });
+
+    renderer.table = (header, body) => {
+      return `
+        <table class="mdl-data-table mdl-js-data-table">
+          ${header}
+          ${body}
+        </table>
+      `;
+    };
+
     const defaultClass = `${prefix}-spacer`;
     const className = classNames(
       'mdl-layout-spacer',
