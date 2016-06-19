@@ -19,6 +19,7 @@ export class CLCenter extends React.Component {
       noSpacing,
       classes,
       addClasses,
+      centerSize = 'half',
       id,
       children
     } = this.props;
@@ -38,17 +39,63 @@ export class CLCenter extends React.Component {
       className,
       id
     };
+    const [ center, left, right ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    const centerClassName = classNames(
+      'mdl-cell',
+      {
+        'mdl-cell--6-col-desktop mdl-cell--6-col-tablet': centerSize === 'half',
+        'mdl-cell--8-col-desktop': centerSize === 'quarter',
+        'mdl-cell--10-col-desktop': centerSize === 'eight',
+        'mdl-cell--12-col': centerSize === 'full',
+        'mdl-cell--8-col-tablet':
+          centerSize === 'quarter' ||
+          centerSize === 'eight' ||
+          centerSize === 'full',
+        'mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet': !left,
+        'mdl-cell--2-offset-desktop': !left,
+        'mdl-cell--1-offset-desktop': !left
+      },
+      'mdl-cell--4-col-phone'
+    );
+
+    const sideClassName = classNames(
+      'mdl-cell',
+      {
+        'mdl-cell--3-col-desktop mdl-cell--1-col-tablet': centerSize === 'half',
+        'mdl-cell--2-col-desktop': centerSize === 'quarter',
+        'mdl-cell--1-col-desktop': centerSize === 'eight',
+        'mdl-cell--12-col': centerSize === 'full',
+        'mdl-cell--8-col-tablet': centerSize === 'quarter' ||
+          centerSize === 'eight' ||
+          centerSize === 'full'
+      },
+      'mdl-cell--4-col-phone'
+    );
     return (
       <div {...attributes} >
-        {
-          React.Children.map(children, child => {
-
-            React.cloneElement(child, {
-              classes,
-              navpos: 'header'
-            });
-          })
-        }
+        <div className={sideClassName} >
+          {
+            left && typeof left !== 'string' ? React.cloneElement(center, {
+              classes
+            }) : left
+          }
+        </div>
+        <div className={centerClassName} >
+          {
+            center && typeof center !== 'string' ? React.cloneElement(center, {
+              classes
+            }) : center
+          }
+        </div>
+        <div className={sideClassName} >
+          {
+            right && typeof right !== 'string' ? React.cloneElement(center, {
+              classes
+            }) : right
+          }
+        </div>
       </div>
     );
   }
