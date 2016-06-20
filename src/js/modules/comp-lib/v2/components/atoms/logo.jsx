@@ -14,22 +14,6 @@ import {classList, prefix} from './../../libs';
  */
 
 export class CLLogo extends React.Component {
-  renderTitle() {
-    const {image, label} = this.props;
-    if (image) {
-      return (
-        <img
-          src={image}
-          alt={label}
-        />
-      );
-    }
-    return (
-      <h1>
-        {label && typeof label === 'string' ? label : 'Logo'}
-      </h1>
-    );
-  }
   render() {
     const {
       url = '/',
@@ -66,8 +50,10 @@ export class CLLogo extends React.Component {
       <span {...attributes} >
         <a href={url}>
           {
-            image && typeof image === 'string' ? (<img {...imageAttribtues} />) :
-              (<h1>{label}</h1>)
+            image && typeof image === 'string' ? (<img {...imageAttribtues} />) : null
+          }
+          {
+            label && typeof label === 'string' ? (<span>{label}</span>) : null
           }
         </a>
       </span>
