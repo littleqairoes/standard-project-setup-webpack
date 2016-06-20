@@ -114,7 +114,8 @@ export class CLCarousel extends React.Component {
         textAlign: 'center',
         position: 'absolute',
         bottom: 0,
-        width: '100%'
+        width: '100%',
+        color
       }
     };
 
@@ -149,9 +150,13 @@ export class CLCarousel extends React.Component {
         <div {...bottomAttributes} >
           {
             React.Children.count(children) > 1 ? children.map((child, key) => {
+
+              const left = this.slider && this.slider.style && this.slider.style.left ?
+                parseInt(this.slider.style.left.replace('%', '').trim(), 10) : 0;
               const buttonAttribute = {
                 isIcon: true,
-                materialIcon: 'radio_button_checked',
+                materialIcon: Math.abs(left) / 100 === key ? 'radio_button_checked' :
+                  'radio_button_unchecked',
                 actionHandler: () => {
                   this.changeSlide(-(key * 100));
                 }
