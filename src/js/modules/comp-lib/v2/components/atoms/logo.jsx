@@ -18,6 +18,7 @@ export class CLLogo extends React.Component {
     const {
       url = '/',
       image,
+      imageHeight = 30,
       label = 'Logo',
       hideOnLargeScreen,
       hideOnSmallScreen,
@@ -43,7 +44,10 @@ export class CLLogo extends React.Component {
 
     const imageAttribtues = {
       src: image,
-      alt: label
+      alt: label,
+      style: {
+        height: imageHeight
+      }
     };
 
     return (
