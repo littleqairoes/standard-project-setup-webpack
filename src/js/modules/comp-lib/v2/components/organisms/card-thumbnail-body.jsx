@@ -25,7 +25,8 @@ export class CLCardThumbnailBody extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
 
     const className = classNames(
@@ -69,7 +70,8 @@ export class CLCardThumbnailBody extends React.Component {
         <div className='mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet mdl-cell--3-col-phone'>
           {
             React.Children.map(children, child => (React.cloneElement(child, {
-              classes
+              classes,
+              snackbar
             })))
           }
         </div>

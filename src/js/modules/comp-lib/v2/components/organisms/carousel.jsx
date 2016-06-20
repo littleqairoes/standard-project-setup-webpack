@@ -43,7 +43,8 @@ export class CLCarousel extends React.Component {
       float = 'left',
       buttonColor: color,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-carousel`;
     const className = classNames(
@@ -136,7 +137,8 @@ export class CLCarousel extends React.Component {
                   {
                     React.cloneElement(child, {
                       classes,
-                      height
+                      height,
+                      snackbar
                     })
                   }
                 </div>
@@ -159,7 +161,8 @@ export class CLCarousel extends React.Component {
                   'radio_button_unchecked',
                 actionHandler: () => {
                   this.changeSlide(-(key * 100));
-                }
+                },
+                snackbar
               };
               return (<CLButton {...buttonAttribute}/>);
             }) : null

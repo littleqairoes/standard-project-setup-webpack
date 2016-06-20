@@ -145,7 +145,8 @@ export class CLMarkdownEditor extends React.Component {
       hideOnLargeScreen,
       hideOnSmallScreen,
       inputRef,
-      data
+      data,
+      snackbar
     } = this.props;
 
     const defaultClass = `${prefix}-markdown-editor`;
@@ -180,7 +181,8 @@ export class CLMarkdownEditor extends React.Component {
       onChangeHandler,
       name,
       inputRef,
-      data
+      data,
+      snackbar
     };
 
     return (

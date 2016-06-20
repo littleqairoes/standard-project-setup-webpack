@@ -26,7 +26,8 @@ export class CLListItemPrimary extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-list-item-primary`;
     const className = classNames(
@@ -59,7 +60,8 @@ export class CLListItemPrimary extends React.Component {
             itemIcon,
             itemAvatar,
             isItemPrimary: true,
-            classes
+            classes,
+            snackbar
           })
         }
         <span>{label}</span>

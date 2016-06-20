@@ -37,7 +37,8 @@ export class CLForm extends React.Component {
       classes,
       addClasses,
       data,
-      actionHandlers
+      actionHandlers,
+      snackbar
     } = this.props;
     return actionHandlers ? actionHandlers.map((actionHandlerObject, key) => {
       const {
@@ -47,7 +48,8 @@ export class CLForm extends React.Component {
       const attributes = {
         classes,
         addClasses,
-        key
+        key,
+        snackbar
       };
       const actionAttribute = {
         actionHandler: () => {
@@ -85,7 +87,8 @@ export class CLForm extends React.Component {
       id,
       children,
       onChangeDispatch = () => {},
-      data = {}
+      data = {},
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-form`;
     const className = classNames(
@@ -121,7 +124,8 @@ export class CLForm extends React.Component {
               classes,
               inputRef: this.inputRef,
               onChangeHandler: this.onChangeHandler,
-              data
+              data,
+              snackbar
             })
           ))
         }

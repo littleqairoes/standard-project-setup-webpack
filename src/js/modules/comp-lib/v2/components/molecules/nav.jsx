@@ -21,7 +21,8 @@ export class CLNav extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props; // Instantiates the attributes attached to this component.
     const defaultClass = `${prefix}-nav`;
     const className = classNames(
@@ -62,7 +63,8 @@ export class CLNav extends React.Component {
               key,
               navpos,
               classes,
-              addClasses
+              addClasses,
+              snackbar
             };
             // console.log(navLink)
             return navLink ? React.cloneElement(navLink, {...linkAttributes}) :

@@ -14,7 +14,8 @@ export class CLDrawer extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-drawer`;
     const className = classNames(
@@ -33,7 +34,8 @@ export class CLDrawer extends React.Component {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
               classes,
-              navpos: 'drawer'
+              navpos: 'drawer',
+              snackbar
             })
           ))
         }

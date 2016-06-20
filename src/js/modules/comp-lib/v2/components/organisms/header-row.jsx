@@ -18,7 +18,8 @@ export class CLHeaderRow extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-header-row`;
     const className = classNames(
@@ -41,7 +42,8 @@ export class CLHeaderRow extends React.Component {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
               classes,
-              navpos: 'header'
+              navpos: 'header',
+              snackbar
             })
           ))
         }

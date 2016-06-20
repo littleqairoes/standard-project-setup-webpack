@@ -25,7 +25,8 @@ export class CLListItemSecondary extends React.Component {
       infoTop,
       infoBottom,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-list-item-secondary`;
     const className = classNames(
@@ -73,7 +74,8 @@ export class CLListItemSecondary extends React.Component {
           !child ? null : typeof child === 'string' ? (
             <CLIcon {...iconAttributes} icon={child} />
           ) : React.cloneElement(child, {
-            classes
+            classes,
+            snackbar
           })
         }
         {

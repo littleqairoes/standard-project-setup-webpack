@@ -37,7 +37,8 @@ export class CLModal extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-modal`;
     const className = classNames(
@@ -83,7 +84,8 @@ export class CLModal extends React.Component {
             React.Children.map(children, child => (typeof child === 'string' ? child :
               React.cloneElement(child, {
                 classes,
-                closeModal: this.closeModal
+                closeModal: this.closeModal,
+                snackbar
               })
             ))
           }

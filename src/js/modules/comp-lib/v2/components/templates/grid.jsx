@@ -19,6 +19,7 @@ export class CLGrid extends React.Component {
       classes,
       addCellClasses,
       forceSingleColumnPhone,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-cell`;
     const className = classNames(
@@ -58,7 +59,7 @@ export class CLGrid extends React.Component {
     };
     return (
       <div {...attributes} >
-        { typeof child === 'string' ? React.cloneElement(child, {classes}) : child }
+        { typeof child === 'string' ? React.cloneElement(child, {classes, snackbar}) : child }
       </div>
     );
   }

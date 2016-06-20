@@ -21,7 +21,8 @@ export class CLCenter extends React.Component {
       addClasses,
       centerSize = 'half',
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-center`;
     const className = classNames(
@@ -78,21 +79,24 @@ export class CLCenter extends React.Component {
         <div className={sideClassName} >
           {
             left && typeof left !== 'string' ? React.cloneElement(center, {
-              classes
+              classes,
+              snackbar
             }) : left
           }
         </div>
         <div className={centerClassName} >
           {
             center && typeof center !== 'string' ? React.cloneElement(center, {
-              classes
+              classes,
+              snackbar
             }) : center
           }
         </div>
         <div className={sideClassName} >
           {
             right && typeof right !== 'string' ? React.cloneElement(center, {
-              classes
+              classes,
+              snackbar
             }) : right
           }
         </div>

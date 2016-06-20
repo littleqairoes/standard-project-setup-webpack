@@ -22,7 +22,8 @@ export class CLCardClickableBody extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-card-clickable-body`;
     const className = classNames(
@@ -45,7 +46,8 @@ export class CLCardClickableBody extends React.Component {
         {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
-              classes
+              classes,
+              snackbar
             })
           ))
         }

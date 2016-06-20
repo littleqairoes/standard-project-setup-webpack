@@ -24,7 +24,8 @@ export class CLHeader extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-header`;
     const className = classNames(
@@ -51,13 +52,15 @@ export class CLHeader extends React.Component {
         {
           row1 && typeof row1 !== 'string' ? React.cloneElement(row1, {
             classes,
-            navpos: 'header'
+            navpos: 'header',
+            snackbar
           }) : row1
         }
         {
           row2 && typeof row !== 'string' ? React.cloneElement(row2, {
             classes,
-            navpos: 'header'
+            navpos: 'header',
+            snackbar
           }) : row2
         }
       </header>

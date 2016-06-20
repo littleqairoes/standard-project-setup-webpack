@@ -58,7 +58,8 @@ export class CLBanner extends React.Component {
       color,
       title,
       subtitle,
-      children
+      children,
+      snackbar
     } = this.props;
 
     const style = {
@@ -236,7 +237,8 @@ export class CLBanner extends React.Component {
                 {
                   React.Children.map(children, child => (typeof child === 'string' ? child :
                     React.cloneElement(child, {
-                      classes
+                      classes,
+                      snackbar
                     })
                   ))
                 }

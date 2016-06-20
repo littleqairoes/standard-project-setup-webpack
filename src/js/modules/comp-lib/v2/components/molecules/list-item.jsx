@@ -21,7 +21,8 @@ export class CLListItem extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-list-item`;
     const className = classNames(
@@ -64,7 +65,8 @@ export class CLListItem extends React.Component {
           ) : React.cloneElement(primary, {
             classes,
             twoLine,
-            threeLine
+            threeLine,
+            snackbar
           })
         }
         {
@@ -75,7 +77,8 @@ export class CLListItem extends React.Component {
           ) : React.cloneElement(secondary, {
             classes,
             twoLine,
-            threeLine
+            threeLine,
+            snackbar
           })
         }
       </div>
@@ -89,7 +92,8 @@ export class CLListItem extends React.Component {
           ) : React.cloneElement(primary, {
             classes,
             twoLine,
-            threeLine
+            threeLine,
+            snackbar
           })
         }
         {
@@ -100,7 +104,8 @@ export class CLListItem extends React.Component {
           ) : React.cloneElement(secondary, {
             classes,
             twoLine,
-            threeLine
+            threeLine,
+            snackbar
           })
         }
       </ul>

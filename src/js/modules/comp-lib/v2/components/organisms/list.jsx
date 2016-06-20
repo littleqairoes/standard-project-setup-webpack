@@ -22,7 +22,8 @@ export class CLList extends React.Component {
       classes,
       addClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-list`;
     const className = classNames(
@@ -41,7 +42,7 @@ export class CLList extends React.Component {
     const attributes = {
       className,
       id,
-      width
+      style
     };
     return div ? (
       <div {...attributes} >
@@ -56,7 +57,8 @@ export class CLList extends React.Component {
             classes,
             div,
             twoLine,
-            threeLine
+            threeLine,
+            snackbar
           })))
         }
       </div>
@@ -74,7 +76,8 @@ export class CLList extends React.Component {
             classes,
             div,
             twoLine,
-            threeLine
+            threeLine,
+            snackbar
           })))
         }
       </ul>

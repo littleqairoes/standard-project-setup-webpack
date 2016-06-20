@@ -26,7 +26,8 @@ export class CLSideContent extends React.Component {
       addSideClasses,
       addMainClasses,
       id,
-      children
+      children,
+      snackbar
     } = this.props;
     const defaultClass = `${prefix}-side-content`;
     const [ left, right ] = children && React.Children.count(children) > 1 ?
@@ -69,14 +70,16 @@ export class CLSideContent extends React.Component {
         <div {...leftAttributes} >
           {
             left && typeof left !== 'string' ? React.cloneElement(left, {
-              classes
+              classes,
+              snackbar
             }) : left
           }
         </div>
         <div {...rightAttributes} >
           {
             right && typeof right !== 'string' ? React.cloneElement(right, {
-              classes
+              classes,
+              snackbar
             }) : right
           }
         </div>
