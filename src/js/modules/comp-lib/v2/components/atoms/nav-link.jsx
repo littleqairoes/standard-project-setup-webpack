@@ -73,7 +73,13 @@ export class CLNavLink extends React.Component {
     ) => {
       const linkAttributes = {
         href: subUrl,
-        onClick: subActionHandler,
+        onClick: () => {
+          subActionHandler();
+          if (navpos === 'drawer') {
+            const d = document.querySelector('.mdl-layout');
+            d.MaterialLayout.toggleDrawer();
+          }
+        },
         className: classNames(
           {
             'mdl-navigation__link': !isSubMenu,
