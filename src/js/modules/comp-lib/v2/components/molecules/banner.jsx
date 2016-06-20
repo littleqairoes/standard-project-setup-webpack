@@ -26,7 +26,7 @@ export class CLBanner extends React.Component {
   }
   bannerResize() {
     const {minHeight = 0.5} = this.props;
-    const {winHeight} = windowSize();
+    const {height: winHeight} = windowSize();
     const newMinHeight = (minHeight - 16) * winHeight;
     this.banner.style['min-height'] = `${newMinHeight}px`;
   }
