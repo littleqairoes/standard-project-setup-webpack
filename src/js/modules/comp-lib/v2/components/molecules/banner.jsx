@@ -20,7 +20,6 @@ export class CLBanner extends React.Component {
   }
   componentWillUnmount() {
     if (window) {
-      this.bannerResize();
       window.removeEventListener('resize', this.bannerResize);
     }
   }
