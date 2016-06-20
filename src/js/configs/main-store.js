@@ -15,7 +15,6 @@ export default createStore((state = defaultState, action) => {
           ...newArticle
         }
       });
-      console.log(obj)
       return obj;
     default:
       return state;
