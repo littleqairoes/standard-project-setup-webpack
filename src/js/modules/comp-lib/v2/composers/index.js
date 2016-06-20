@@ -1,1 +1,1 @@
-export * from './composer-parameter';
+export * from './compose-parameter';
