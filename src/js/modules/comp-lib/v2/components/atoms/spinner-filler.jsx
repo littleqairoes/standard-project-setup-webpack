@@ -10,10 +10,6 @@ import {classList, prefix} from './../../libs';
  */
 
 export class CLSpinnerFiller extends React.Component {
-  constructor() {
-    super();
-    this.resize = this.resize.bind(this);
-  }
   componentDidMount() {
     this.componentUpgrade();
   }
