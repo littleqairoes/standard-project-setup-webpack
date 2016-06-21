@@ -29,8 +29,11 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
     CLListItemPrimary,
     CLListItemSecondary,
     CLListItemSecondaryAction,
+    CLTextField,
     CLBanner,
-    CLCarousel
+    CLCarousel,
+    CLSpinnerDiv,
+    CLFileButton
   } = Components;
 
   let snackbar;
@@ -65,6 +68,10 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
             <CLNav links={links} />
           </CLDrawer>
           <CLBody>
+            <CLTextField />
+            <CLGrid>
+            <CLFileButton isRaised={true} multiple={true} />
+            </CLGrid>
             <CLCarousel buttonColor="white" >
               <CLBanner
                 id='1'
