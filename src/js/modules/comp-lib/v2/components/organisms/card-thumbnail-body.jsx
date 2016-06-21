@@ -18,6 +18,7 @@ export class CLCardThumbnailBody extends React.Component {
 
     const {
       thumbnail: src = placeholders.image4x3,
+      thumbnailPos = 'right',
       thumbnailHref: href = '#',
       noSpacing = false,
       hideOnLargeScreen,
@@ -67,6 +68,15 @@ export class CLCardThumbnailBody extends React.Component {
 
     return (
       <div {...attributes} >
+        {
+          thumbnailPos === 'left' ? (
+            <div className='mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--1-col-phone'>
+              <a {...anchorAttributes} >
+                <img {...imageAttribtues} />
+              </a>
+            </div>
+          ) : null
+        }
         <div className='mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet mdl-cell--3-col-phone'>
           {
             React.Children.map(children, child => (React.cloneElement(child, {
@@ -75,11 +85,15 @@ export class CLCardThumbnailBody extends React.Component {
             })))
           }
         </div>
-        <div className='mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--1-col-phone'>
-          <a {...anchorAttributes} >
-            <img {...imageAttribtues} />
-          </a>
-        </div>
+        {
+          thumbnailPos === 'right' ? (
+            <div className='mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--1-col-phone'>
+              <a {...anchorAttributes} >
+                <img {...imageAttribtues} />
+              </a>
+            </div>
+          ) : null
+        }
       </div>
     );
   }
