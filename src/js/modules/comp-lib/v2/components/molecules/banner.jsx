@@ -35,6 +35,14 @@ export class CLBanner extends React.Component {
       addClasses,
       classes,
       noSpacing,
+      contentMarginBottom,
+      contentMarginTop,
+      contentMarginLeft,
+      contentMarginRight,
+      contentPaddingTop,
+      contentPaddingBottom,
+      contentPaddingLeft,
+      contentPaddingRight,
       backgroundGradient = '',
       backgroundColor = '',
       backgroundImage = '',
@@ -144,7 +152,17 @@ export class CLBanner extends React.Component {
       }
     };
     const contentAttributes = {
-      className: contentClassName
+      className: contentClassName,
+      style: {
+        marginTop: contentMarginTop,
+        marginBottom: contentMarginBottom,
+        marginLeft: contentMarginLeft,
+        marginRight: contentMarginRight,
+        paddingTop: contentPaddingTop,
+        paddingBottom: contentPaddingBottom,
+        paddingRight: contentPaddingRight,
+        paddingLeft: contentPaddingLeft
+      }
     };
     const headlineAttributes = {
       className: classNames(
