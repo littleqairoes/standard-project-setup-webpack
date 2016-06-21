@@ -20,6 +20,7 @@ export class CLCardThumbnailBody extends React.Component {
       thumbnail: src = placeholders.image4x3,
       thumbnailPos = 'right',
       thumbnailHref: href = '#',
+      thumbnailWidth = 200,
       noSpacing = false,
       hideOnLargeScreen,
       hideOnSmallScreen,
@@ -57,7 +58,7 @@ export class CLCardThumbnailBody extends React.Component {
         classList(addClasses, `${defaultClass}-thumbnail`)
       ),
       src,
-      width: '100%'
+      width: thumbnailWidth
     };
 
     const anchorAttributes = {
@@ -69,14 +70,22 @@ export class CLCardThumbnailBody extends React.Component {
       href
     };
 
+    const thumbnailPosAttributes = {
+      style: {
+        textAlign: thumbnailPos,
+      }
+    };
+
     return (
       <div {...attributes} >
         {
           thumbnailPos === 'left' ? (
             <div className='mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--1-col-phone'>
-              <a {...anchorAttributes} >
-                <img {...imageAttribtues} />
-              </a>
+              <div {...thumbnailPosAttributes} >
+                <a {...anchorAttributes} >
+                  <img {...imageAttribtues} />
+                </a>
+              </div>
             </div>
           ) : null
         }
@@ -91,9 +100,11 @@ export class CLCardThumbnailBody extends React.Component {
         {
           thumbnailPos === 'right' ? (
             <div className='mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--1-col-phone'>
-              <a {...anchorAttributes} >
-                <img {...imageAttribtues} />
-              </a>
+              <div {...thumbnailPosAttributes} >
+                <a {...anchorAttributes} >
+                  <img {...imageAttribtues} />
+                </a>
+              </div>
             </div>
           ) : null
         }
