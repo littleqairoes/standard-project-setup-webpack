@@ -57,6 +57,7 @@ export default (PageCtx, {page, mount, marked, renderer}, {Components, links}) =
               <CLLogo />
               <CLSpacer />
               <CLNav links={links} />
+              <CLButton isRaised={true}/>
             </CLHeaderRow>
           </CLHeader>
           <CLDrawer>

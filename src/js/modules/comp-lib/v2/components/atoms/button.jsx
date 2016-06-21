@@ -85,6 +85,7 @@ export class CLButton extends React.Component {
       style,
       classes,
       addClasses,
+      target,
       id = r.string(5)
     } = this.props;
     const defaultClass = `${prefix}-button`;
@@ -113,7 +114,8 @@ export class CLButton extends React.Component {
       disabled,
       id: idFor,
       href,
-      style
+      style,
+      target
     };
 
     return anchor ? (
