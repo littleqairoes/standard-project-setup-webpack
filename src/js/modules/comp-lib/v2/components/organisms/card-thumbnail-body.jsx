@@ -45,6 +45,9 @@ export class CLCardThumbnailBody extends React.Component {
     const attributes = {
       className,
       id,
+      style: {
+        width: '100%'
+      }
     };
 
     const imageAttribtues = {
