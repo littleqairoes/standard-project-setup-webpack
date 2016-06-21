@@ -23,6 +23,10 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     CLButton,
     CLVideoPlayer
   } = Components;
+  let videoPlayer;
+  const videoPlayerRef = (r) => {
+    videoPlayer = r;
+  };
 
   page('/testing-blog', () => {
     mount(PageCtx, {
@@ -43,7 +47,19 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           <CLBody>
             <CLGrid columns={1}>
               <p>damn</p>
-              <CLVideoPlayer id="player-1" videoId="dQw4w9WgXcQ"/>
+              <CLVideoPlayer id="player-1" videoId="dQw4w9WgXcQ" ref={videoPlayerRef}/>
+              <CLButton
+                label="play"
+                actionHandler={() => {if (videoPlayer) {videoPlayer.playVideo()}}}
+              />
+              <CLButton
+                label="pause"
+                actionHandler={() => {if (videoPlayer) {videoPlayer.pauseVideo()}}}
+              />
+              <CLButton
+                label="stop"
+                actionHandler={() => {if (videoPlayer) {videoPlayer.stopVideo()}}}
+              />
             </CLGrid>
           </CLBody>
         </CLLayout>
