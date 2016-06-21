@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import {classList, prefix, windowSize} from './../../libs';
+import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLSpinnerDiv component used to represent loading or fetching of data.
@@ -9,37 +9,20 @@ import {classList, prefix, windowSize} from './../../libs';
  * @param {Boolean} [hideOnSmallScreen=false]
  */
 
-export class CLSpinnerDiv extends React.Component {
+export class CLSpinnerFiller extends React.Component {
   constructor() {
     super();
     this.resize = this.resize.bind(this);
   }
   componentDidMount() {
-    if (window) {
-      this.resize();
-      window.addEventListener('resize', this.resize);
-    }
     this.componentUpgrade();
   }
-  componentDidUpdate() {
-    this.componentUpgrade();
-  }
-  componentWillUnmount() {
-    if (window) {
-      window.removeEventListener('resize', this.resize);
-    }
+  componentWillUpdate() {
     this.componentUpgrade();
   }
   componentUpgrade() {
     if (componentHandler) {
       componentHandler.upgradeElement(this.spinner);
-    }
-  }
-  resize() {
-    if (this.container) {
-      const {height} = windowSize();
-      const newMinHeight = (height - 150);
-      this.container.style.height = `${newMinHeight}px`;
     }
   }
   render() {
@@ -65,7 +48,8 @@ export class CLSpinnerDiv extends React.Component {
     };
     const attributes = {
       style: {
-        width: '100%'
+        width: '100%',
+        height: 'inherit'
       },
       ref
     };
