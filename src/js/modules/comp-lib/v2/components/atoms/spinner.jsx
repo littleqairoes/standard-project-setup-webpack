@@ -10,6 +10,17 @@ import {classList, prefix} from './../../libs';
  */
 
 export class CLSpinner extends React.Component {
+  componentDidMount() {
+    this.componentUpgrade();
+  }
+  componentDidUpdate() {
+    this.componentUpgrade();
+  }
+  componentUpgrade() {
+    if (componentHandler) {
+      componentHandler.upgradeElement(this.spinner);
+    }
+  }
   render() {
     const {
       classes,
@@ -28,8 +39,11 @@ export class CLSpinner extends React.Component {
       classList(classes, defaultClass),
       classList(addClasses, defaultClass)
     );
+    const ref = (c) => {
+      this.spinner = c;
+    };
     return (
-      <div className = {className}>
+      <div className = {className} ref={ref}>
       </div>
     );
   }

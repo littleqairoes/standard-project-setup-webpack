@@ -19,10 +19,17 @@ export class CLSpinnerDiv extends React.Component {
       this.resize();
       window.addEventListener('resize', this.resize);
     }
+    this.componentUpgrade();
   }
   componentWillUnmount() {
     if (window) {
       window.removeEventListener('resize', this.resize);
+    }
+    this.componentUpgrade();
+  }
+  componentUpgrade() {
+    if (componentHandler) {
+      componentHandler.upgradeElement(this.spinner);
     }
   }
   resize() {
@@ -59,6 +66,9 @@ export class CLSpinnerDiv extends React.Component {
       },
       ref
     };
+    const ref2 = (c) => {
+      this.spinner = c;
+    };
     return (
       <div {...attributes} >
         <div className="mdl-grid" style={{height: 'inherit'}}>
@@ -68,7 +78,7 @@ export class CLSpinnerDiv extends React.Component {
             mdl-cell--2-offset-phone mdl-cell--middle"
           >
             <div style={{marginLeft: -30}}>
-            <div className = {className} style={{width: 100, height: 100}}>
+            <div className = {className} style={{width: 100, height: 100}} ref = {ref2}>
             </div>
             </div>
           </div>

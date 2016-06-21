@@ -54,9 +54,9 @@ export class CLCenter extends React.Component {
           centerSize === 'quarter' ||
           centerSize === 'eight' ||
           centerSize === 'full',
-        'mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet': !left,
-        'mdl-cell--2-offset-desktop': !left,
-        'mdl-cell--1-offset-desktop': !left
+        'mdl-cell--3-offset-desktop mdl-cell--1-offset-tablet': !left && centerSize === 'half',
+        'mdl-cell--2-offset-desktop': !left && centerSize === 'quarter',
+        'mdl-cell--1-offset-desktop': !left && centerSize === 'eight'
       },
       'mdl-cell--4-col-phone'
     );
