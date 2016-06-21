@@ -1,6 +1,7 @@
 import * as Components from './index';
 import compLibV2 from './pages/comp-lib-v2.jsx';
 import blogSite from './pages/blogger.jsx';
+import testing from './pages/testing.jsx';
 export default (injectDeps, context) => {
   const {CLPage} = Components;
   const PageCtx = injectDeps(CLPage);
@@ -64,4 +65,5 @@ export default (injectDeps, context) => {
   ];
   compLibV2(PageCtx, context, {Components, links});
   blogSite(PageCtx, context, {Components, links2});
+  testing(PageCtx, context, {Components, links2});
 };

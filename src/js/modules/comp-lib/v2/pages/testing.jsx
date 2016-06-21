@@ -20,7 +20,8 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     CLCardTitle,
     CLCardText,
     CLCardAction,
-    CLButton
+    CLButton,
+    CLVideoPlayer
   } = Components;
 
   page('/testing-blog', () => {
@@ -41,34 +42,8 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           </CLDrawer>
           <CLBody>
             <CLGrid columns={1}>
-              <CLCard>
-                <CLCardThumbnailBody>
-                  <CLCardTitle title="title" subTitle="This is something"/>
-                  <CLCardText>
-                    <p>
-                      Hello this is a body of text
-                    </p>
-                  </CLCardText>
-                  <CLCardAction>
-                    <CLButton />
-                  </CLCardAction>
-                </CLCardThumbnailBody>
-              </CLCard>
-              <CLCard>
-                <CLCardThumbnailBody>
-                  <CLCardTitle title="title" subTitle="This is something"/>
-                  <CLCardText>
-                    <p>
-                      Hello this is a body of text
-                    </p>
-                  </CLCardText>
-                  <CLCardAction>
-                    <CLButton />
-                    <CLButton />
-                  </CLCardAction>
-                </CLCardThumbnailBody>
-              </CLCard>
-
+              <p>damn</p>
+              <CLVideoPlayer id="player-1" videoId="dQw4w9WgXcQ"/>
             </CLGrid>
           </CLBody>
         </CLLayout>
