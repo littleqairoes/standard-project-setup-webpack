@@ -1,0 +1,34 @@
+// From @nickretallack - http://nickretallack.com/experiments/mdl/collapse/index.html
+.beta-mdlaccordion.beta-mdlaccordion--opened
+  border-top: 1px solid #e0e0e0
+  border-bottom: 1px solid #e0e0e0
+  margin-top: -1px
+
+.beta-mdlaccordion.beta-mdlaccordion--opened + .beta-mdlaccordion.beta-mdlaccordion--opened
+  border-top: none
+  margin-top: 0
+
+.beta-mdlaccordion .beta-mdlaccordion__content-wrapper
+  overflow: hidden
+
+.beta-mdlaccordion .beta-mdlaccordion__content
+  transition-property: margin-top
+  transition-duration: 0.2s
+
+.beta-mdlaccordion .beta-mdlaccordion__icon
+  transition-property: transform
+  transition-duration: 0.2s
+  color: rgba(0,0,0,0.3)
+
+  position: absolute
+  right: 6px
+  margin-top: -3px
+
+.beta-mdlaccordion.beta-mdlaccordion--opened .beta-mdlaccordion__icon
+  transform: rotate(-180deg)
+
+.beta-mdlaccordion.beta-mdlaccordion--opened .beta-mdlaccordion__button
+  color: inherit
+
+.beta-mdlaccordion.beta-mdlaccordion--opened .beta-mdlaccordion__content
+  margin-top: 0 !important

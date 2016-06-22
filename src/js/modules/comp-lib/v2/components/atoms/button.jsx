@@ -120,7 +120,6 @@ export class CLButton extends React.Component {
 
       const attributes = {
         idFor: c,
-        classes,
         isLarge,
         tooltip,
         tooltipPos

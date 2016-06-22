@@ -53,21 +53,11 @@ export class CLNav extends React.Component {
 
     // Classnames
 
-    const className = navpos === 'header' ? classNames(
+    const className = classNames(
       'mdl-navigation',
       {
         'mdl-layout--large-screen-only': navpos && navpos === 'header' && !alwaysVisible
       },
-      {
-        'mdl-layout--small-screen-only': hideOnLargeScreen,
-        'mdl-layout--large-screen-only': hideOnSmallScreen
-      },
-      defaultClass,
-      classList(generalClassName, 'nav'),
-      specificClassName
-    ) : classNames(
-      'mdlext-accordion mdlext-accordion--vertical mdlext-js-accordion',
-      'mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events',
       {
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen
@@ -89,16 +79,9 @@ export class CLNav extends React.Component {
       style,
     };
 
-    const containerAttributes = {
-      style: {
-        width: '100%',
-        height: 200
-      },
-    };
-
     // Render return
 
-    return navpos === 'header' ? (
+    return (
       <nav {...attributes} >
         {
           /*
@@ -122,32 +105,6 @@ export class CLNav extends React.Component {
           }) : null
         }
       </nav>
-    ) : (
-      <div {...containerAttributes} >
-        <ul {...attributes} >
-          {
-          /*
-            Returns a clone of each NavLink that contains
-            its own link attributes for every entry passed with this
-            component.
-          */
-            links ? links.map((link, key) => {
-
-              const linkAttributes = {
-                generalClassName,
-                specificClassName: `${specificClassName}-inner`,
-                snackbar,
-                link,
-                navpos,
-                key,
-              };
-
-              return navLink ? React.cloneElement(navLink, {...linkAttributes}) :
-                (<CLNavLink {...linkAttributes} />);
-            }) : null
-          }
-        </ul>
-      </div>
     );
   }
 }

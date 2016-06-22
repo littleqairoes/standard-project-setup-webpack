@@ -15,6 +15,32 @@ import {classList, prefix} from './../../libs';
  */
 
 export class CLNavLink extends React.Component {
+  constructor() {
+    super();
+    this.openDrawer = this.openDrawer.bind(this);
+  }
+  componentDidMount() {
+    this.componentUpgrade();
+  }
+  componentDidUpdate() {
+    this.componentUpgrade();
+  }
+  componentUpgrade() {
+    if (this.drawerContent) {
+      // console.log(this.drawerContent.clientHeight)
+      this.drawerContent.style.display = 'none';
+    }
+  }
+  openDrawer() {
+    if (this.accordion) {
+      if (this.drawerContent.style.display === 'none') {
+        this.drawerContent.style.display = 'block';
+      } else {
+        this.drawerContent.style.display = 'none';
+      }
+
+    }
+  }
   render() {
     const r = random();
 
@@ -71,7 +97,7 @@ export class CLNavLink extends React.Component {
       classList(generalClassName, 'nav-link'),
       specificClassName
     ) : classNames(
-      'mdlext-accordion__panel',
+      'beta-mdl-accordion',
       {
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen
@@ -89,7 +115,7 @@ export class CLNavLink extends React.Component {
     );
 
     const drawerClassName = classNames(
-      'mdlext-accordion__panel__content',
+      'beta-mdl-accordion__content mdl-animation--default',
       `${defaultClass}-drawer`,
       classList(generalClassName, 'nav-link-drawer'),
       classList(specificClassName, 'nav-link-drawer')
@@ -98,6 +124,13 @@ export class CLNavLink extends React.Component {
     // Styles
 
     // Refs
+    const drawerContentRef = (c) => {
+      this.drawerContent = c;
+    };
+
+    const ref = (c) => {
+      this.accordion = c;
+    };
 
     // Attributes
 
@@ -109,7 +142,7 @@ export class CLNavLink extends React.Component {
     } : {
       className,
       style,
-      'aria-multiselectable': false
+      ref
     };
 
     const listHeaderAttributes = {
@@ -121,6 +154,12 @@ export class CLNavLink extends React.Component {
     const listDrawerAttributes = {
       className: drawerClassName,
       style: drawerSubStyle,
+      ref: drawerContentRef
+    };
+
+    const drawerButtonAttributes = {
+      className: 'mdl-navigation__link beta-mdl-accordion__button',
+      onClick: this.openDrawer
     };
 
     // Functions
@@ -136,7 +175,7 @@ export class CLNavLink extends React.Component {
 
       const linkClassName = classNames(
         {
-          'mdl-navigation__link': !isSubMenu,
+          'mdl-navigation__link': !isSubMenu || navpos === 'drawer',
           'mdl-layout--small-screen-only': hideOnLargeScreen,
           'mdl-layout--large-screen-only': hideOnSmallScreen
         },
@@ -148,7 +187,9 @@ export class CLNavLink extends React.Component {
       );
 
       const itemClassName = classNames(
-        'mdl-menu__item',
+        {
+          'mdl-menu__item': navpos === 'header'
+        },
         `${defaultClass}-tag-item`,
         classList(generalClassName, 'nav-link-tag-item'),
         classList(specificClassName, 'nav-link-tag-item')
@@ -179,11 +220,15 @@ export class CLNavLink extends React.Component {
         style: itemStyle
       };
 
-      return (
+      return navpos === 'header' ? (
         <a {...linkAttributes} >
           <li {...itemAttributes} >
             {subName}
           </li>
+        </a>
+      ) : (
+        <a {...linkAttributes} >
+          {subName}
         </a>
       );
     };
@@ -206,20 +251,22 @@ export class CLNavLink extends React.Component {
 
     } else if (navpos === 'drawer') {
       return links ? (
-        <li {...attributes} >
-           <header className="mdlext-accordion__panel__header">
-             <div className="mdlext-accordion__panel__header__transform">
-               <span>{name}</span>
-             </div>
-           </header>
-           <section {...listDrawerAttributes}>
-             <nav className="mdl-navigation">
-               {
-                 links ? links.map((item, key) => (renderLink(item, key, true))) : null
-               }
-             </nav>
-           </section>
-         </li>
+        <div {...attributes} >
+          <a {...drawerButtonAttributes} >
+            <i className="material-icons beta-mdl-accordion__icon mdl-animation--default">
+              expand_more
+            </i>
+            {name}
+          </a>
+          <div className="beta-mdl-accordion__content-wrapper">
+            <div {...listDrawerAttributes} >
+
+              {
+                links ? links.map((item, key) => (renderLink(item, key, true))) : null
+              }
+            </div>
+          </div>
+        </div>
       ) : renderLink({name, url, actionHandler});
     }
     return (
@@ -227,20 +274,3 @@ export class CLNavLink extends React.Component {
     );
   }
 }
-
-// <ul {...listDrawerAttributes} >
-//           <li className="mdlext-accordion__panel">
-//             <header className="mdlext-accordion__panel__header">
-//               <div className="mdlext-accordion__panel__header__transform">
-//                 {name}
-//               </div>
-//             </header>
-//             <section className="mdlext-accordion__panel__content">
-//               <ul>
-//                 {
-//                   links ? links.map((item, key) => (renderLink(item, key, true))) : null
-//                 }
-//               </ul>
-//             </section>
-//           </li>
-//         </ul>
