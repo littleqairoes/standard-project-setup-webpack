@@ -76,14 +76,18 @@ export class CLCenter extends React.Component {
     );
     return (
       <div {...attributes} >
-        <div className={sideClassName} >
-          {
-            left && typeof left !== 'string' ? React.cloneElement(center, {
-              classes,
-              snackbar
-            }) : left
-          }
-        </div>
+        {
+          left ? (
+            <div className={sideClassName} >
+              {
+                typeof left !== 'string' ? React.cloneElement(center, {
+                  classes,
+                  snackbar
+                }) : left
+              }
+            </div>
+          ) : null
+        }
         <div className={centerClassName} >
           {
             center && typeof center !== 'string' ? React.cloneElement(center, {
@@ -92,14 +96,18 @@ export class CLCenter extends React.Component {
             }) : center
           }
         </div>
-        <div className={sideClassName} >
-          {
-            right && typeof right !== 'string' ? React.cloneElement(center, {
-              classes,
-              snackbar
-            }) : right
-          }
-        </div>
+        {
+          right ? (
+            <div className={sideClassName} >
+              {
+                typeof right !== 'string' ? React.cloneElement(center, {
+                  classes,
+                  snackbar
+                }) : right
+              }
+            </div>
+          ) : null
+        }
       </div>
     );
   }
