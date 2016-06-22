@@ -18,12 +18,9 @@ export * from './list-item-primary.jsx';
 export * from './icon.jsx';
 export * from './list-item-secondary.jsx';
 export * from './list-item-secondary-action.jsx';
-<<<<<<< 3ff8f2e841acc0257225f5e851cc5fa62bd088fd
+export * from './video-player.jsx';
 export * from './blank-span.jsx';
 export * from './blank-div.jsx';
 export * from './spinner-div.jsx';
 export * from './spinner-filler.jsx';
 export * from './file-button.jsx';
-=======
-export * from './video-player.jsx';
->>>>>>> Create CLVideoPlayer component

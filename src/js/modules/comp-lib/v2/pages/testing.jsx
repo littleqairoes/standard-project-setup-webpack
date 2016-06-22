@@ -47,6 +47,7 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           <CLBody>
             <CLGrid columns={1}>
               <p>damn</p>
+<<<<<<< 31a3630d792005311f348620f99d063d7d8d49b7
               <CLVideoPlayer id="player-1" videoId="dQw4w9WgXcQ" ref={videoPlayerRef}/>
               <CLButton
                 label="play"
@@ -60,6 +61,9 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
                 label="stop"
                 actionHandler={() => {if (videoPlayer) {videoPlayer.stopVideo()}}}
               />
+=======
+              <CLVideoPlayer id="player-1" videoId="dQw4w9WgXcQ"/>
+>>>>>>> Create CLVideoPlayer component
             </CLGrid>
           </CLBody>
         </CLLayout>

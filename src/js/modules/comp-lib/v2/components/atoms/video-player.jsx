@@ -6,6 +6,7 @@ import YouTubePlayer from 'youtube-player';
 import random from 'random-js';
 
 export class CLVideoPlayer extends React.Component {
+<<<<<<< 31a3630d792005311f348620f99d063d7d8d49b7
   constructor() {
     super();
     this.playVideo = this.playVideo.bind(this);
@@ -25,11 +26,14 @@ export class CLVideoPlayer extends React.Component {
   seekTo(seconds, allowSeekAhead) {
     window.player.seekTo(seconds, allowSeekAhead);
   }
+=======
+>>>>>>> Create CLVideoPlayer component
   componentDidMount() {
     const {
       id,
       videoId
     } = this.props;
+<<<<<<< 31a3630d792005311f348620f99d063d7d8d49b7
     window.player = YouTubePlayer(id, {
       videoId,
       playerVars: {
@@ -39,6 +43,10 @@ export class CLVideoPlayer extends React.Component {
         modestbranding: 1,
         disablekb: 1
       }
+=======
+    let player = YouTubePlayer(id, {
+      videoId
+>>>>>>> Create CLVideoPlayer component
     });
   }
   render() {
