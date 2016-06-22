@@ -29,6 +29,7 @@ export class CLCardMedia extends React.Component {
       generalClassName,
       specificClassName,
       style,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 
@@ -63,6 +64,13 @@ export class CLCardMedia extends React.Component {
       specificClassName
     );
 
+    const imageClassName = classNames(
+      'mdl-cell mdl-cell--12-col',
+      `${defaultClass}-image`,
+      classList(generalClassName, 'card-media-image'),
+      classList(specificClassName, 'image')
+    );
+
     // Styles
 
     // Functions
@@ -77,6 +85,7 @@ export class CLCardMedia extends React.Component {
 
     const imageAttribtues = {
       id,
+      imageClassName,
       style,
       alt,
       height,

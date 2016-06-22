@@ -54,7 +54,11 @@ export class CLButton extends React.Component {
       isMiniFab = false,
       isRaised = false,
       target,
-      withRipple = true
+      withRipple = true,
+
+      fontIcon,
+      label = 'Button',
+      materialIcon
     } = this.props;
 
     // Other imports and initialization
@@ -95,9 +99,7 @@ export class CLButton extends React.Component {
 
     const renderFabLabel = () => {
       const {
-        fontIcon,
-        label = 'Button',
-        materialIcon
+
       } = this.props;
 
       if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
