@@ -104,9 +104,9 @@ export class CLStackGrid extends React.Component {
     // Attributes
 
     const attributes = {
+      id,
       className,
-      style,
-      id
+      style
     };
 
     const columnAttributes = {
