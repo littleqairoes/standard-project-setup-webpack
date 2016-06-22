@@ -55,22 +55,62 @@ export class CLVideoPlayer extends React.Component {
   }
   render() {
     const r = random();
+    // Params
+
     const {
-      addClasses,
-      classes,
-      id = r.string(5),
+
+      // general params
+
+      id = `video-player-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+
+      // other params
       videoId
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-video-player`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
-        defaultClass,
-        classList(classes, defaultClass),
-        classList(addClasses, defaultClass)
-      );
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
+      defaultClass,
+      classList(generalClassName, 'video-player'),
+      specificClassName
+    );
+
+   // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
       id,
-      className
+      className,
+      style
     };
+
+    // Functions
+
+    // Render return
+
     return (
       <div {...attributes}></div>
     );
