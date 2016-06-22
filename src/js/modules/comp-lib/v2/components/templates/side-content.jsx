@@ -16,22 +16,39 @@ import {classList, prefix} from './../../libs';
  */
 export class CLSideContent extends React.Component {
   render() {
+
+    // Params
+
     const {
+      id,
+      generalClassName,
+      specificClassName,
+      style,
+      leftStyle,
+      rightStyle,
+      children,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
       mainContent = 'right',
       noSpacing = false,
-      classes,
-      addClasses,
-      addSideClasses,
-      addMainClasses,
-      id,
-      children,
-      snackbar
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-side-content`;
+
+    // Children manipulation and checking
+
     const [ left, right ] = children && React.Children.count(children) > 1 ?
       children : mainContent === 'right' ? [ null , children ] : [ children ];
+
+    // Classnames
+
     const className = classNames(
       'mdl-grid',
       {
@@ -40,37 +57,56 @@ export class CLSideContent extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      addClasses
+      classList(generalClassName, 'stack-grid'),
+      specificClassName
     );
-    const sideContentClassName = classNames(
+
+    const sideClassName = classNames(
       'mdl-cell mdl-cell--4-col mdl-cell--2-col-tablet mdl-cell--4-col-phone',
       `${defaultClass}-side`,
-      classList(classes, `${defaultClass}-side`),
-      classList(addSideClasses, `${defaultClass}-side`)
+      classList(generalClassName, 'side'),
+      classList(specificClassName, 'side')
     );
-    const mainContentClassName = classNames(
+
+    const mainClassName = classNames(
       'mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet mdl-cell--4-col-phone',
-      `${defaultClass}-side`,
-      classList(classes, `${defaultClass}-main`),
-      classList(addMainClasses, `${defaultClass}-main`)
+      `${defaultClass}-main`,
+      classList(generalClassName, 'main'),
+      classList(specificClassName, 'main')
     );
+
+    // Styles
+
+    // Functions
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
       id,
-      className
+      className,
+      style
     };
+
     const leftAttributes = {
-      className: mainContent === 'left' ? mainContentClassName : sideContentClassName
+      className: mainContent === 'left' ? mainClassName : sideClassName,
+      style: leftStyle
     };
+
     const rightAttributes = {
-      className: mainContent === 'right' ? mainContentClassName : sideContentClassName
+      className: mainContent === 'right' ? mainClassName : sideClassName,
+      style: rightStyle
     };
+
+    // Render return
+
     return (
       <div {...attributes} >
         <div {...leftAttributes} >
           {
             left && typeof left !== 'string' ? React.cloneElement(left, {
-              classes,
+              generalClassName,
               snackbar
             }) : left
           }
@@ -78,7 +114,7 @@ export class CLSideContent extends React.Component {
         <div {...rightAttributes} >
           {
             right && typeof right !== 'string' ? React.cloneElement(right, {
-              classes,
+              generalClassName,
               snackbar
             }) : right
           }
