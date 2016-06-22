@@ -34,11 +34,10 @@ export class CLButton extends React.Component {
 
       // general params
 
-      id = r.string(5),
+      id = `button-${r.string(5)}`,
       generalClassName,
       specificClassName,
       style,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 
@@ -47,25 +46,27 @@ export class CLButton extends React.Component {
       actionHandler: onClick = () => {},
       anchor = true,
       colored,
+      fontIcon,
       href = '#',
       isDisabled: disabled = false,
       isFab = false,
       isIcon = false,
+      isLarge = false,
       isMiniFab = false,
       isRaised = false,
-      target,
-      withRipple = true,
-
-      fontIcon,
       label = 'Button',
-      materialIcon
+      materialIcon,
+      target,
+      tooltip,
+      tooltipPos,
+      withRipple = true
     } = this.props;
 
     // Other imports and initialization
 
     // ID manipulation
 
-    const idFor = `${defaultClass}-${id}-${r.string(5)}`;
+    const idFor = `${id}-${r.string(5)}`;
 
     // Default Class
 
@@ -117,10 +118,8 @@ export class CLButton extends React.Component {
 
     const renderTooltip = (c) => {
       const {
-        classes,
-        isLarge,
-        tooltip,
-        tooltipPos
+
+
       } = this.props;
 
       const attributes = {

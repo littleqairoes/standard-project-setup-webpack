@@ -17,7 +17,7 @@ export class CLIcon extends React.Component {
       hideOnSmallScreen,
       itemAvatar,
       itemIcon,
-      icon = 'avatar',
+      icon = 'warning',
       classes,
       addClasses,
       id

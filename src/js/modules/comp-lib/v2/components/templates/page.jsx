@@ -52,8 +52,6 @@ export class CLPage extends React.Component {
 
     // Styles
 
-    // Functions
-
     // Refs
 
     // Attributes
@@ -63,6 +61,8 @@ export class CLPage extends React.Component {
       className,
       style
     };
+
+    // Functions
 
     // Render return
 
