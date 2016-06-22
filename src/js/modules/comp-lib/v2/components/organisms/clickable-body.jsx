@@ -5,8 +5,8 @@ import {classList, prefix} from './../../libs';
 /**
  * Adds a clickable layer on top of any component.
  * @param {string} [addClasses] Adds optional classes.
- * @param {Function} [cardActionHandler="onClick"] Specifies what action is the trigger.
- * @param {string} [cardHref="#"]
+ * @param {Function} [actionHandler="onClick"] Specifies what action is the trigger.
+ * @param {string} [href="#"]
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
  * @param {string} [id]
@@ -15,8 +15,8 @@ import {classList, prefix} from './../../libs';
 export class CLClickableBody extends React.Component {
   render() {
     const {
-      cardHref: href = '#',
-      cardActionHandler: onClick,
+      href: href = '#',
+      actionHandler: onClick,
       hideOnLargeScreen,
       hideOnSmallScreen,
       classes,
