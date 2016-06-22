@@ -99,27 +99,50 @@ export class CLFileButton extends React.Component {
   }
   render() {
     const r = random();
+
+    // Params
+
     const {
-      withRipple = true,
-      isRaised = false,
-      isDisabled: disabled = false,
-      isFab = false,
-      isMiniFab = false,
-      isIcon = false,
-      colored,
-      shouldFloat = false,
+      // general params
+
+      id,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      style,
-      classes,
-      addClasses,
-      target,
+
+      // other params
+
+      colored,
+      isDisabled: disabled = false,
+      isFab = false,
+      isIcon = false,
+      isMiniFab = false,
+      isRaised = false,
       multiple = false,
       name,
-      id = r.string(5)
+      shouldFloat = false,
+      target,
+      withRipple = true
     } = this.props;
-    const defaultClass = `${prefix}-file-button`;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
     const idFor = `${defaultClass}-${id}-${r.string(5)}`;
+
+    // Default Clas
+
+    const defaultClass = `${prefix}-file-button`;
+    const defaultClass2 = `${prefix}-file-button-button`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const containerClassName = classNames(
       'mdl-textfield mdl-js-textfield',
       {
@@ -128,10 +151,10 @@ export class CLFileButton extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'file-button'),
+      specificClassName
     );
-    const defaultClass2 = `${prefix}-file-button-button`;
+
     const className = classNames(
       'mdl-button mdl-js-button mdl-button--file',
       {
@@ -141,19 +164,29 @@ export class CLFileButton extends React.Component {
         'mdl-button--icon': isIcon,
         'mdl-button--mini-fab': isMiniFab,
       },
-      defaultClass2,
       colored && colored === 'primary' ? `${defaultClass}-primary mdl-button--colored` : null,
       colored && colored === 'accent' ? `${defaultClass}-accent mdl-button--accent` : null,
-      classList(classes, defaultClass2),
-      classList(addClasses, defaultClass2)
+      defaultClass2,
+      classList(generalClassName, 'file-button-button'),
+      classList(specificClassName, 'button')
     );
 
-    const containerAttributes = {
-      className: containerClassName
-    };
+    // Styles
+
+    // Refs
 
     const inputRef = (c) => {
       this.inputText = c;
+    };
+
+    const ref = (c) => {
+      this.fileButton = c;
+    };
+
+    // Attributes
+
+    const containerAttributes = {
+      className: containerClassName
     };
 
     const inputAttributes = {
@@ -164,25 +197,25 @@ export class CLFileButton extends React.Component {
     };
 
     const attributes = {
-      className,
-      disabled,
       id: idFor,
       style,
+      className,
+      disabled,
       target
     };
 
-    const ref = (c) => {
-      this.fileButton = c;
-    };
-
     const fileAttributes = {
-      type: 'file',
       id,
       name,
       multiple,
+      onChange: this.onChangeHandler,
       ref,
-      onChange: this.onChangeHandler
+      type: 'file'
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <span>
