@@ -14,6 +14,9 @@ export class CLStackGrid extends React.Component {
     // Params
 
     const {
+
+      // general params
+
       id,
       generalClassName,
       specificClassName,
@@ -25,6 +28,9 @@ export class CLStackGrid extends React.Component {
       snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
+
+      // other params
+
       stackHeight = 400,
     } = this.props;
 

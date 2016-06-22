@@ -20,6 +20,9 @@ export class CLSideContent extends React.Component {
     // Params
 
     const {
+
+      // general params
+
       id,
       generalClassName,
       specificClassName,
@@ -30,8 +33,11 @@ export class CLSideContent extends React.Component {
       snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
+
+      // other params
+
       mainContent = 'right',
-      noSpacing = false,
+      noSpacing = false
     } = this.props;
 
     // Other imports and initialization
