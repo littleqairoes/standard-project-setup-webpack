@@ -83,21 +83,30 @@ export class CLButton extends React.Component {
       actionHandler: onClick = () => {},
       anchor = true,
       colored,
-
-
-      withRipple = true,
-      isRaised = false,
+      href = '#',
       isDisabled: disabled = false,
       isFab = false,
-      isMiniFab = false,
       isIcon = false,
-      href = '#',
-
-      target
-
+      isMiniFab = false,
+      isRaised = false,
+      target,
+      withRipple = true
     } = this.props;
-    const defaultClass = `${prefix}-button`;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
     const idFor = `${defaultClass}-${id}-${r.string(5)}`;
+
+    // Default Class
+
+    const defaultClass = `${prefix}-button`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-button mdl-js-button',
       {
