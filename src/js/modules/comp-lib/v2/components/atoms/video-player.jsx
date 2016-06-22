@@ -36,7 +36,6 @@ export class CLVideoPlayer extends React.Component {
     window.player.seekTo(seconds, allowSeekAhead);
   }
 
-
   componentDidMount() {
     const {
       id,
