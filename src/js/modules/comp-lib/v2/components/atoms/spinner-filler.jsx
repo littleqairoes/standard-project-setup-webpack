@@ -31,7 +31,7 @@ export class CLSpinnerFiller extends React.Component {
 
       // general params
 
-      id = `logo-${r.string(10)}`,
+      id = `spinner-filler-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,
