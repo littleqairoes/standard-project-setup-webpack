@@ -115,9 +115,9 @@ export class CLNavLink extends React.Component {
 
     const renderLink = (item, key, isSubMenu) => {
       const {
-        subName = 'Link',
-        subUrl = '#',
-        subActionHandler = () => {},
+        name: subName = 'Link',
+        url: subUrl = '#',
+        actionHandler: subActionHandler = () => {},
       } = item;
 
       // Classnames
