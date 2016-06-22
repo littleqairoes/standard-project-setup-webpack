@@ -64,7 +64,7 @@ export class CLCenter extends React.Component {
       specificClassName
     );
 
-    const centerClassName = classNames(
+    const mainClassName = classNames(
       'mdl-cell',
       {
         'mdl-cell--6-col-desktop mdl-cell--6-col-tablet': centerSize === 'half',
@@ -80,9 +80,9 @@ export class CLCenter extends React.Component {
         'mdl-cell--1-offset-desktop': !left && centerSize === 'eight'
       },
       'mdl-cell--4-col-phone',
-      `${defaultClass}-center`,
-      classList(generalClassName, 'center'),
-      classList(specificClassName, 'center')
+      `${defaultClass}-main`,
+      classList(generalClassName, 'main'),
+      classList(specificClassName, 'main')
     );
 
     const sideClassName = classNames(
@@ -117,7 +117,7 @@ export class CLCenter extends React.Component {
     };
 
     const centerAttributes = {
-      className: centerClassName,
+      className: mainClassName,
       style: centerStyle
     };
 
