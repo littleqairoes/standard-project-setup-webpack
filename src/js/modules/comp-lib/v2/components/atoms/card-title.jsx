@@ -33,22 +33,21 @@ export class CLCardTitle extends React.Component {
       id = `card-title-${r.string(10)}`,
       generalClassName,
       specificClassName,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
+      style,
 
       // other params
 
-      headerLevel = 2,
-      expand = false,
-      title,
-      subTitle,
-      subTitlePos = 'bottom',
-      height,
+      background,
       color,
       display = 'block',
-      background,
-
+      expand = false,
+      headerLevel = 2,
+      height,
+      subTitle,
+      subTitlePos = 'bottom',
+      title
     } = this.props;
 
     // Other imports and initialization
@@ -84,12 +83,12 @@ export class CLCardTitle extends React.Component {
 
     // Styles
 
-    const style = {
+    const styleEdited = Object.assign({}, {
       height,
       background,
       color,
       display
-    };
+    }, style);
 
     // Refs
 
@@ -98,7 +97,7 @@ export class CLCardTitle extends React.Component {
     const attributes = {
       id,
       className,
-      style
+      style: styleEdited
     };
 
     const headerAttributes = {

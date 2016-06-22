@@ -24,6 +24,15 @@
   text-decoration: none;
 }
 
+.#{$prefix}-nav-sub-link-drawer {
+  margin-left: 20px !important;
+}
+
+.beta-mdl-accordion__button {
+  cursor: pointer;
+  display: flex !important;
+}
+
 // .beta-mdl-accordion.beta-mdl-accordion--opened {
 //   border-top: 1px solid #e0e0e0;
 //   border-bottom: 1px solid #e0e0e0;

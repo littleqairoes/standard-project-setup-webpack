@@ -77,6 +77,8 @@ export class CLNav extends React.Component {
       id,
       className,
       style,
+      role: 'tablist',
+      multiselectable: true
     };
 
     // Render return
@@ -93,7 +95,7 @@ export class CLNav extends React.Component {
 
             const linkAttributes = {
               generalClassName,
-              specificClassName: `${specificClassName}-inner`,
+              specificClassName: specificClassName ? `${specificClassName}-inner` : null,
               snackbar,
               link,
               navpos,

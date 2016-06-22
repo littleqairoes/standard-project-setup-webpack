@@ -128,9 +128,9 @@ export class CLStackGrid extends React.Component {
       style: styleSmallEdited
     };
 
-    // Functions
+    // Render Functions
 
-    // Render return
+    // Render Return
 
     return (
       <div {...attributes} >

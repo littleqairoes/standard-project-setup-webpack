@@ -38,7 +38,6 @@ export class CLNavLink extends React.Component {
       } else {
         this.drawerContent.style.display = 'none';
       }
-
     }
   }
   render() {
@@ -149,7 +148,8 @@ export class CLNavLink extends React.Component {
     const listHeaderAttributes = {
       className: headerClassName,
       htmlFor: idFor,
-      style: headerSubStyle
+      style: headerSubStyle,
+      tabIndex: 0
     };
 
     const listDrawerAttributes = {
@@ -160,7 +160,14 @@ export class CLNavLink extends React.Component {
 
     const drawerButtonAttributes = {
       className: 'mdl-navigation__link beta-mdl-accordion__button',
-      onClick: this.openDrawer
+      onClick: this.openDrawer,
+      tabIndex: 0,
+      // onKeyUp: () => {
+      //   console.log(name)
+      // },
+      // onBlur: () => {
+      //   console.log('blur', name)
+      // }
     };
 
     // Functions
@@ -184,6 +191,7 @@ export class CLNavLink extends React.Component {
         classList(generalClassName, 'nav-link-tag'),
         classList(specificClassName, 'nav-link-tag'),
         isSubMenu ? `${prefix}-nav-sub-link` : null,
+        isSubMenu && navpos === 'drawer' ? `${prefix}-nav-sub-link-drawer`: null,
         navpos === 'header' && isSubMenu ? `${prefix}-nav-sub-link-header` : null
       );
 
@@ -254,10 +262,11 @@ export class CLNavLink extends React.Component {
       return links ? (
         <div {...attributes} >
           <a {...drawerButtonAttributes} >
+            {name}
+            <span className="mdl-layout-spacer" />
             <i className="material-icons beta-mdl-accordion__icon mdl-animation--default">
               expand_more
             </i>
-            {name}
           </a>
           <div className="beta-mdl-accordion__content-wrapper">
             <div {...listDrawerAttributes} >

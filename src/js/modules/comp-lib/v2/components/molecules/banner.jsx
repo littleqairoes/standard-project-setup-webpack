@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {CLMarkdownRenderer} from './../atoms';
 import {classList, prefix, windowSize} from './../../libs';
 
@@ -10,50 +11,55 @@ import {classList, prefix, windowSize} from './../../libs';
 export class CLBanner extends React.Component {
   constructor() {
     super();
-    this.bannerResize = this.bannerResize.bind(this);
+    this.resize = this.resize.bind(this);
   }
   componentDidMount() {
     if (window) {
-      this.bannerResize();
-      window.addEventListener('resize', this.bannerResize);
+      this.resize();
+      window.addEventListener('resize', this.resize);
     }
   }
   componentWillUnmount() {
     if (window) {
-      window.removeEventListener('resize', this.bannerResize);
+      window.removeEventListener('resize', this.resize);
     }
   }
-  bannerResize() {
-    const {minHeight = 0.5} = this.props;
-    const {height: winHeight} = windowSize();
-    const newMinHeight = (minHeight - 16) * winHeight;
-    this.banner.style['min-height'] = `${newMinHeight}px`;
+  resize() {
+    const {
+      percentHeight = 0.5,
+      height
+    } = this.props;
+
+    if (!height) {
+      const {height: winHeight} = windowSize();
+      const newMinHeight = (winHeight - 16) * percentHeight;
+      this.banner.style.height = `${newMinHeight}px`;
+    }
   }
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      id,
-      addClasses,
-      classes,
-      noSpacing,
-      contentMarginBottom,
-      contentMarginTop,
-      contentMarginLeft,
-      contentMarginRight,
-      contentPaddingTop,
-      contentPaddingBottom,
-      contentPaddingLeft,
-      contentPaddingRight,
-      backgroundGradient = '',
-      backgroundColor = '',
-      backgroundImage = '',
-      backgroundPosition = 'center',
-      backgroundSize = 'cover',
-      backgroundRepeat = 'no-repeat',
-      backgroundAttachment = '',
-      background = `${backgroundGradient}
-        ${backgroundGradient.trim() !== '' ? ', ' : ''}${backgroundImage}
-        ${backgroundPosition}/${backgroundSize} ${backgroundRepeat}
-        ${backgroundAttachment} ${backgroundColor}`.replace('\n',''),
+      // general params
+
+      id = `blank-div-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      contentStyle,
+      innerStyle,
+      headlineStyle,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+      children,
+      snackbar,
+
+      // other params
+
+      background,
+      noSpacing = false,
       contentWidth = 'half',
       textpos = 'center',
       headlineText,
@@ -65,26 +71,29 @@ export class CLBanner extends React.Component {
       height,
       color,
       title,
-      subtitle,
-      children,
-      snackbar
+      subTitle
     } = this.props;
 
-    const style = {
-      background,
-      width,
-      color,
-      height
-    };
-    const ref = (c) => {
-      this.banner = c;
-    };
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-banner`;
+
+    // Classnames
+
     const className = classNames(
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'banner'),
+      specificClassName
     );
+
     const innerClassName = classNames(
       'mdl-grid',
       {
@@ -104,9 +113,10 @@ export class CLBanner extends React.Component {
       },
       'mdl-cell--middle',
       `${defaultClass}-image`,
-      classList(classes, `${defaultClass}-image`),
-      classList(addClasses, `${defaultClass}-image`)
+      classList(generalClassName, 'image'),
+      classList(specificClassName, 'image')
     );
+
     const contentClassName = classNames(
       'mdl-cell',
       {
@@ -124,79 +134,109 @@ export class CLBanner extends React.Component {
       },
       'mdl-cell--middle',
       `${defaultClass}-content`,
-      classList(classes, `${defaultClass}-content`),
-      classList(addClasses, `${defaultClass}-content`)
+      classList(generalClassName, 'content'),
+      classList(specificClassName, 'content')
     );
-    const innerStyle = {
+
+    const headlineClassName = classNames(
+      'mdl-cell mdl-cell--12-col',
+      `${defaultClass}-headline`,
+      classList(generalClassName, 'headline'),
+      classList(specificClassName, 'headline')
+    );
+
+    const titleClassName = classNames(
+      'mdl-cell mdl-cell--12-col',
+      `${defaultClass}-title`,
+      classList(generalClassName, 'title'),
+      classList(specificClassName, 'title')
+    );
+
+    const subTitleClassName = classNames(
+      'mdl-cell mdl-cell--12-col',
+      `${defaultClass}-sub-title`,
+      classList(generalClassName, 'sub-title'),
+      classList(specificClassName, 'sub-title')
+    );
+
+    // Styles
+
+    const styleEdited = Object.assign({}, {
+      background,
+      width,
+      color,
+      height
+    }, style);
+
+    const innerStyleEdited = Object.assign({}, {
       textAlign: textpos
-      // paddingLeft: textpos !== 'center' ? 50 : null,
-      // paddingRight: textpos !== 'center' ? 50 : null
+    }, innerStyle);
+
+    const headlineStyleEdited = Object.assign({}, {
+      textAlign: headlinepos
+    }, headlineStyle);
+
+    // Functions
+
+    // Refs
+
+    const ref = (c) => {
+      this.banner = c;
     };
+
+    // Attributes
+
     const attributes = {
-      className,
       id,
-      style,
+      className,
+      style: styleEdited,
       ref
     };
+
     const innerAttributes = {
       className: innerClassName,
-      style: innerStyle
+      style: innerStyleEdited
     };
+
     const imageAttributes = {
       className: imageClassName
     };
+
     const imageTagAttributes = {
       src: imageUrl,
       style: {
         width: '100%'
       }
     };
+
     const contentAttributes = {
       className: contentClassName,
-      style: {
-        marginTop: contentMarginTop,
-        marginBottom: contentMarginBottom,
-        marginLeft: contentMarginLeft,
-        marginRight: contentMarginRight,
-        paddingTop: contentPaddingTop,
-        paddingBottom: contentPaddingBottom,
-        paddingRight: contentPaddingRight,
-        paddingLeft: contentPaddingLeft
-      }
+      style: contentStyle
     };
+
     const headlineAttributes = {
-      className: classNames(
-        'mdl-cell mdl-cell--12-col',
-        `${defaultClass}-headline`,
-        classList(classes, `${defaultClass}-headline`),
-        classList(addClasses, `${defaultClass}-headline`)
-      ),
-      style: {
-        textAlign: headlinepos
-      }
+      className: headlineClassName,
+      style: headlineStyleEdited
     };
+
     const headlineImageAttributes = {
       src: headlineImage,
       style: {
         height: headlineImageHeight
       }
     };
+
     const titleAttributes = {
-      className: classNames(
-        'mdl-cell mdl-cell--12-col',
-        `${defaultClass}-title`,
-        classList(classes, `${defaultClass}-title`),
-        classList(addClasses, `${defaultClass}-title`)
-      )
+      className: titleClassName
     };
-    const subtitleAttributes = {
-      className: classNames(
-        'mdl-cell mdl-cell--12-col',
-        `${defaultClass}-sub-title`,
-        classList(classes, `${defaultClass}-sub-title`),
-        classList(addClasses, `${defaultClass}-sub-title`)
-      )
+
+    const subTitleAttributes = {
+      className: subTitleClassName
     };
+
+    // Render Functions
+
+    // Render return
 
     return (
       <div {...attributes}>
@@ -241,11 +281,11 @@ export class CLBanner extends React.Component {
               }
 
               {
-                (subtitle && typeof subtitle === 'string') ? (
-                  <div {...subtitleAttributes} >
+                (subTitle && typeof subTitle === 'string') ? (
+                  <div {...subTitleAttributes} >
                     {
-                      subtitle ? (
-                        <CLMarkdownRenderer markdown={subtitle}/>
+                      subTitle ? (
+                        <CLMarkdownRenderer markdown={subTitle}/>
                       ) : null
                     }
                   </div>
@@ -255,7 +295,7 @@ export class CLBanner extends React.Component {
                 {
                   React.Children.map(children, child => (typeof child === 'string' ? child :
                     React.cloneElement(child, {
-                      classes,
+                      generalClassName,
                       snackbar
                     })
                   ))

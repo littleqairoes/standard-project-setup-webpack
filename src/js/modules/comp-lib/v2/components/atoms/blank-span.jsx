@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -12,27 +13,62 @@ import {classList, prefix} from './../../libs';
 
 export class CLBlankSpan extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `blank-span-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-blank`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       {
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'blank'),
+      specificClassName
     );
+
+    // Styles
+
+    // Functions
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Render Functions
+
+    // Render return
+
     return (
       <span {...attributes}></span>
     );
