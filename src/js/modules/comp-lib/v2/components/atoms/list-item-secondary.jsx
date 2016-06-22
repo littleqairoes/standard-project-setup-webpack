@@ -5,30 +5,54 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLListItemSecondary component that acts as the items secondary component for CLListItem
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  */
 
 export class CLListItemSecondary extends React.Component {
   render() {
+
+    // Params
+
     const {
+
+      // general params
+
+      id,
+      generalClassName,
+      specificClassName,
+      style,
+      children,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      isAction = false,
-      actionIcon,
+
+      // other params
+
       actionHandler,
       actionHref = '#',
-      infoTop,
+      actionIcon,
+      isAction = false,
       infoBottom,
-      id,
-      children,
-      snackbar
+      infoTop
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-list-item-secondary`;
+
+    // Children manipulation and checking
+    const [ child ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    // Classnames
+
     const className = classNames(
       {
         'mdl-list__item-secondary-content': !(isAction || actionIcon),
@@ -37,17 +61,28 @@ export class CLListItemSecondary extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'list-item-secondary'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
     const iconAttributes = {
-      icon: actionIcon,
-      classes
+      generalClassName,
+      icon: actionIcon
     };
+
+    // Functions
 
     if (actionIcon) {
       attributes.href = actionHref;
@@ -55,8 +90,8 @@ export class CLListItemSecondary extends React.Component {
         actionHandler : null;
     }
 
-    const [ child ] = children && React.Children.count(children) > 1 ?
-      children : [ children ];
+    // Render return
+
     return actionIcon && typeof actionIcon === 'string' ? (
       <a {...attributes} >
         <CLIcon {...iconAttributes} />
@@ -74,7 +109,7 @@ export class CLListItemSecondary extends React.Component {
           !child ? null : typeof child === 'string' ? (
             <CLIcon {...iconAttributes} icon={child} />
           ) : React.cloneElement(child, {
-            classes,
+            generalClassName,
             snackbar
           })
         }
