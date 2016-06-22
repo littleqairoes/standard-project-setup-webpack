@@ -69,7 +69,21 @@ export class CLButton extends React.Component {
   }
   render() {
     const r = random();
+
+    // Params
+
     const {
+      id = r.string(5),
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+      actionHandler: onClick = () => {},
+      anchor = true,
+
+
       withRipple = true,
       isRaised = false,
       isDisabled: disabled = false,
@@ -77,16 +91,12 @@ export class CLButton extends React.Component {
       isMiniFab = false,
       isIcon = false,
       colored,
-      actionHandler: onClick = () => {},
-      anchor = true,
       href = '#',
-      hideOnLargeScreen,
-      hideOnSmallScreen,
-      style,
+
       classes,
       addClasses,
-      target,
-      id = r.string(5)
+      target
+
     } = this.props;
     const defaultClass = `${prefix}-button`;
     const idFor = `${defaultClass}-${id}-${r.string(5)}`;
