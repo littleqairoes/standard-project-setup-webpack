@@ -1,25 +1,48 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLSpacer component that can act as a block of space to distance components.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  */
 
 export class CLSpacer extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `spacer-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+
+      // other params
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-spacer`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-layout-spacer',
       {
@@ -27,13 +50,26 @@ export class CLSpacer extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'spacer'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Functions
+
+    // Render return
+
     return (
       <div {...attributes}></div>
     );

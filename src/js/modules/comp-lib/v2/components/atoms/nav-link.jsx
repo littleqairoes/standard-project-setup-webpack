@@ -5,12 +5,12 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLNavLink component to CLNav.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {Object} [link] An object containint the link's URL, name, actionHandler, or another group of links for a dropdown.
- * @param {string} navpos Specifies where the link/s will be placed. May only be "header" or "drawer".
+ * @param {string}  [id]
+ * @param {Object}  [link] An object containint the link's URL, name, actionHandler, or another group of links for a dropdown.
+ * @param {string}  [navpos] Specifies where the link/s will be placed. May only be "header" or "drawer".
  *
  */
 

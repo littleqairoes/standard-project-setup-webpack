@@ -1,13 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLSnackbar component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  */
 
 export class CLSnackbar extends React.Component {
@@ -35,14 +36,36 @@ export class CLSnackbar extends React.Component {
     }
   }
   render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `snackbar-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+
+      // other params
     } = this.props;
-    const defaultClass = `${prefix}-spacer`;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
+    const defaultClass = `${prefix}-snackbar`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-js-snackbar mdl-snackbar',
       {
@@ -50,17 +73,31 @@ export class CLSnackbar extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'snackbar'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
     const ref = (c) => {
       this.snackbar = c;
     };
+
+    // Attributes
+
     const attributes = {
-      ref,
+      id,
       className,
-      id
+      style,
+      ref
     };
+
+    // Functions
+
+    // Render return
+
     return (
       <div {...attributes}>
         <div className="mdl-snackbar__text"></div>

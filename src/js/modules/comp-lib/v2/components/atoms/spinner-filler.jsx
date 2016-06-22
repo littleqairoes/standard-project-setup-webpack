@@ -1,10 +1,11 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLSpinnerDiv component used to represent loading or fetching of data.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
  */
@@ -22,13 +23,36 @@ export class CLSpinnerFiller extends React.Component {
     }
   }
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      classes,
-      addClasses,
+
+      // general params
+
+      id = `spinner-filler-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
       hideOnLargeScreen,
-      hideOnSmallScreen
+      hideOnSmallScreen,
+
+      // other params
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-spinner`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-spinner mdl-js-spinner is-active',
       {
@@ -36,22 +60,40 @@ export class CLSpinnerFiller extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'spinner'),
+      specificClassName
     );
+
+    // Styles
+
+    const styleSpinner = Object.assign({}, {
+      width: '100%',
+      height: 'inherit'
+    }, style);
+
+    // Refs
+
     const ref = (c) => {
       this.container = c;
     };
-    const attributes = {
-      style: {
-        width: '100%',
-        height: 'inherit'
-      },
-      ref
-    };
+
     const ref2 = (c) => {
       this.spinner = c;
     };
+
+    // Attributes
+
+    const attributes = {
+      id,
+      className,
+      style: styleSpinner,
+      ref
+    };
+
+    // Functions
+
+    // Render return
+
     return (
       <div {...attributes} >
         <div className="mdl-grid" style={{height: 'inherit'}}>

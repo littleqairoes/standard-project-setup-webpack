@@ -7,17 +7,17 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLTextField component.
- * @param {string} [addClasses] Adds optional classes.
- * @param {string} [errorLabel="This is not a valid value"]
- * @param {string} [expandingFonticon] Specifies the material icon the textfield will use.
- * @param {string} [expandingMaterialIcon] Specifies the font icon the textfield will use.
+ * @param {string}  [addClasses] Adds optional classes.
+ * @param {string}  [errorLabel="This is not a valid value"]
+ * @param {string}  [expandingFonticon] Specifies the material icon the textfield will use.
+ * @param {string}  [expandingMaterialIcon] Specifies the font icon the textfield will use.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {string} [pattern] Specifies the regex pattern the textfield may accept.
- * @param {string} [placeholder="Placeholder text"]
+ * @param {string}  [id]
+ * @param {string}  [pattern] Specifies the regex pattern the textfield may accept.
+ * @param {string}  [placeholder="Placeholder text"]
  * @param {Boolean} [shouldFloat=false] Applies the float effect to the textfield. For more information, go [here](https://getmdl.io/components/index.html#textfields-section).
- * @param {string} [type] Specifies the input tag type.
+ * @param {string}  [type] Specifies the input tag type.
  */
 
 export class CLTextField extends React.Component {
@@ -60,85 +60,39 @@ export class CLTextField extends React.Component {
     const {onChangeHandler = () => {}, name} = this.props;
     onChangeHandler(this.textfield.value, name, e, this.textfield);
   }
-  renderTextField(type, inputId, pattern) {
-    const {
-      name,
-      rows = 1,
-      maxRows
-    } = this.props;
-    const ref = (c) => {
-      this.textfield = c;
-    };
-
-    const attributes = {
-      className: 'mdl-textfield__input',
-      type,
-      id: inputId,
-      ref,
-      name,
-      pattern,
-      onChange: debounce(this.onChangeHandler, 250)
-    };
-
-    return type === 'textarea' ? (
-      <textarea {...Object.assign({}, attributes, {
-        type: 'text',
-        rows,
-        maxRows: maxRows && !isNaN(maxRows) ? maxRows : null
-      })}>
-      </textarea>
-    ) : (<input {...attributes} />);
-  }
-  renderExpandingIcon(htmlFor) {
-    const {
-      expandingMaterialIcon,
-      expandingFontIcon
-    } = this.props;
-    const className = expandingMaterialIcon ? 'material-icons' :
-      `fa ${expandingFontIcon ? expandingFontIcon : 'fa-search'}`;
-    const labelAttributes = {
-      className: 'mdl-button mdl-js-button mdl-button--icon',
-      htmlFor
-    };
-    return (expandingMaterialIcon && typeof expandingMaterialIcon === 'string') ||
-      (expandingFontIcon && typeof expandingFontIcon === 'string') ? (
-      <label {...labelAttributes} >
-        <i className={className} >
-          {expandingMaterialIcon ? expandingMaterialIcon : ''}
-        </i>
-      </label>
-    ) : null;
-  }
   render() {
     const r = random();
+
+    // Params
+
     const {
-      placeholder = 'Placeholder Text',
-      expandingMaterialIcon,
-      expandingFontIcon,
-      errorLabel = 'This is not a valid value',
-      pattern,
+
+      // general params
+
+      id = `${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
+
+      // other params
+
+      errorLabel = 'This is not a valid value',
+      expandingFontIcon,
+      expandingMaterialIcon,
+      maxRows,
+      name,
+      pattern,
+      placeholder = 'Placeholder Text',
+      rows = 1,
       shouldFloat,
-      id = r.string(10),
-      type
+      type,
     } = this.props;
-    const inputId = `text-field-${id}`;
-    const defaultClass = `${prefix}-text-field`;
-    const className = classNames(
-      'mdl-textfield mdl-js-textfield',
-      {
-        'mdl-textfield--floating-label': shouldFloat,
-        'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon,
-        'mdl-layout--small-screen-only': hideOnLargeScreen,
-        'mdl-layout--large-screen-only': hideOnSmallScreen
-      },
-      defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
-    );
+
+    // Other imports and initialization
+
     const trueType = type &&
       typeof type === 'string' && (
         type === 'text' ||
@@ -151,30 +105,107 @@ export class CLTextField extends React.Component {
         type === 'url'
       ) ? type : 'text';
 
+    // ID manipulation
+
+    const inputId = `text-field-${id}`;
+
+    // Default Class
+
+    const defaultClass = `${prefix}-text-field`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
+    const className = classNames(
+      'mdl-textfield mdl-js-textfield',
+      {
+        'mdl-textfield--floating-label': shouldFloat,
+        'mdl-textfield--expandable': expandingMaterialIcon || expandingFontIcon,
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
+      defaultClass,
+      classList(generalClassName, 'text-field'),
+      specificClassName
+    );
+
+    const innerClassName = expandingFontIcon || expandingMaterialIcon ?
+      'mdl-textfield__expandable-holder' : null;
+
+    // Styles
+
+    const styleTextField = Object.assign({}, {
+      width: '100%'
+    }, style);
+
+    // Refs
+
+    // Attributes
+
+    const attributes = {
+      className,
+      style: styleTextField
+    };
+
     const labelAttributes = {
       className: 'mdl-textfield__label',
       htmlFor: inputId
     };
 
-    const innerClassName = expandingFontIcon || expandingMaterialIcon ?
-      'mdl-textfield__expandable-holder' : null;
+    // Functions
 
-    const style = {
-      width: '100%'
+    const renderTextField = (typeTrue, idInput, p) => {
+      const ref = (c) => {
+        this.textfield = c;
+      };
+
+      const textFieldAttributes = {
+        className: 'mdl-textfield__input',
+        type: typeTrue,
+        id: idInput,
+        ref,
+        name,
+        pattern: p,
+        onChange: debounce(this.onChangeHandler, 250)
+      };
+
+      return typeTrue === 'textarea' ? (
+        <textarea {...Object.assign({}, textFieldAttributes, {
+          type: 'text',
+          rows,
+          maxRows: maxRows && !isNaN(maxRows) ? maxRows : null
+        })}>
+        </textarea>
+      ) : (<input {...textFieldAttributes} />);
     };
 
-    const attributes = {
-      className,
-      style
+    const renderExpandingIcon = (htmlFor) => {
+      const expandingIconClassName = expandingMaterialIcon ? 'material-icons' :
+        `fa ${expandingFontIcon ? expandingFontIcon : 'fa-search'}`;
+      const expandingIconLabelAttributes = {
+        className: 'mdl-button mdl-js-button mdl-button--icon',
+        htmlFor
+      };
+      return (expandingMaterialIcon && typeof expandingMaterialIcon === 'string') ||
+        (expandingFontIcon && typeof expandingFontIcon === 'string') ? (
+        <label {...expandingIconLabelAttributes} >
+          <i className={expandingIconClassName} >
+            {expandingMaterialIcon ? expandingMaterialIcon : ''}
+          </i>
+        </label>
+      ) : null;
     };
+
+    // Render return
 
     return (
       <div {...attributes} >
 
-        {this.renderExpandingIcon(inputId)}
+        {renderExpandingIcon(inputId)}
 
         <div className = {innerClassName} >
-          {this.renderTextField(trueType, inputId, pattern)}
+          {renderTextField(trueType, inputId, pattern)}
           <label {...labelAttributes}>
             {placeholder}
           </label>

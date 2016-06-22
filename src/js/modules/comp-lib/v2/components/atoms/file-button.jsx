@@ -7,20 +7,20 @@ import {classList, prefix} from './../../libs';
 /**
  * Adds a CLFileButton component.
  * @param {Function} [actionHandler] Specifies happens when the button is clicked.
- * @param {string} [addClasses] Adds optional classes.
- * @param {Boolean} [anchor=true] Uses an anchor tag for the button. If false, uses a button tag instead.
- * @param {string} [colored] Specifies the button's color type. This may only be `"primary"` or `"accent"`. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [hideOnLargeScreen=false]
- * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [href="#"]
- * @param {string} [id]
- * @param {Boolean} [isDisabled=false]
- * @param {Boolean} [isFab=false] Specifies whether the button is a fab button or not. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [isIcon=false] Specifies whether the button is an icon or not.
- * @param {Boolean} [isMiniFab=false] Specifies whether the fab button a MiniFab type. `isFab` should be set to true. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [isRaised=false] Adds the raised effect on the button. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [label] Specifies the text on the button.
- * @param {Boolean} [withRipple=true] Adds the ripple effect on the button on click. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {string}   [addClasses] Adds optional classes.
+ * @param {Boolean}  [anchor=true] Uses an anchor tag for the button. If false, uses a button tag instead.
+ * @param {string}   [colored] Specifies the button's color type. This may only be `"primary"` or `"accent"`. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [hideOnLargeScreen=false]
+ * @param {Boolean}  [hideOnSmallScreen=false]
+ * @param {string}   [href="#"]
+ * @param {string}   [id]
+ * @param {Boolean}  [isDisabled=false]
+ * @param {Boolean}  [isFab=false] Specifies whether the button is a fab button or not. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [isIcon=false] Specifies whether the button is an icon or not.
+ * @param {Boolean}  [isMiniFab=false] Specifies whether the fab button a MiniFab type. `isFab` should be set to true. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [isRaised=false] Adds the raised effect on the button. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [label] Specifies the text on the button.
+ * @param {Boolean}  [withRipple=true] Adds the ripple effect on the button on click. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
  *
  */
 
@@ -55,71 +55,60 @@ export class CLFileButton extends React.Component {
       onChangeHandler(this.fileButton.files, name, e, this.fileButton);
     }
   }
-  renderTooltip(id) {
-    const {
-      tooltip,
-      classes,
-      tooltipPos,
-      isLarge
-    } = this.props;
 
-    const attributes = {
-      tooltip,
-      classes,
-      idFor: id,
-      tooltipPos,
-      isLarge
-    };
-
-    return tooltip && typeof tooltip === 'string' ? (
-      <CLTooltip {...attributes} />
-    ) : null;
-  }
-  renderFabLabel() {
-    const {
-      label = 'Button',
-      isIcon = false,
-      isFab = false,
-      isMiniFab = false,
-      materialIcon,
-      fontIcon
-    } = this.props;
-
-    if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
-      const iconAttribute = {
-        className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
-      };
-      return (
-        <i {...iconAttribute} >
-          {materialIcon ? materialIcon : ''}
-        </i>
-      );
-    }
-    return label;
-  }
   render() {
     const r = random();
+
+    // Params
+
     const {
-      withRipple = true,
-      isRaised = false,
-      isDisabled: disabled = false,
-      isFab = false,
-      isMiniFab = false,
-      isIcon = false,
-      colored,
-      shouldFloat = false,
+      // general params
+
+      id = `file-button-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      style,
+
+      // other params
+
       classes,
-      addClasses,
-      target,
+      colored,
+      fontIcon,
+      isDisabled: disabled = false,
+      isFab = false,
+      isIcon = false,
+      isMiniFab = false,
+      isLarge,
+      isRaised = false,
+      label = 'Button',
+      materialIcon,
       multiple = false,
       name,
-      id = r.string(5)
+      shouldFloat = false,
+      target,
+      tooltip,
+      tooltipPos,
+      withRipple = true
     } = this.props;
-    const defaultClass = `${prefix}-file-button`;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
     const idFor = `${defaultClass}-${id}-${r.string(5)}`;
+
+    // Default Class
+
+    const defaultClass = `${prefix}-file-button`;
+    const defaultClass2 = `${prefix}-file-button-button`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const containerClassName = classNames(
       'mdl-textfield mdl-js-textfield',
       {
@@ -128,10 +117,10 @@ export class CLFileButton extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'file-button'),
+      specificClassName
     );
-    const defaultClass2 = `${prefix}-file-button-button`;
+
     const className = classNames(
       'mdl-button mdl-js-button mdl-button--file',
       {
@@ -141,19 +130,29 @@ export class CLFileButton extends React.Component {
         'mdl-button--icon': isIcon,
         'mdl-button--mini-fab': isMiniFab,
       },
-      defaultClass2,
       colored && colored === 'primary' ? `${defaultClass}-primary mdl-button--colored` : null,
       colored && colored === 'accent' ? `${defaultClass}-accent mdl-button--accent` : null,
-      classList(classes, defaultClass2),
-      classList(addClasses, defaultClass2)
+      defaultClass2,
+      classList(generalClassName, 'file-button-button'),
+      classList(specificClassName, 'button')
     );
 
-    const containerAttributes = {
-      className: containerClassName
-    };
+    // Styles
+
+    // Refs
 
     const inputRef = (c) => {
       this.inputText = c;
+    };
+
+    const ref = (c) => {
+      this.fileButton = c;
+    };
+
+    // Attributes
+
+    const containerAttributes = {
+      className: containerClassName
     };
 
     const inputAttributes = {
@@ -164,35 +163,63 @@ export class CLFileButton extends React.Component {
     };
 
     const attributes = {
-      className,
-      disabled,
       id: idFor,
       style,
+      className,
+      disabled,
       target
     };
 
-    const ref = (c) => {
-      this.fileButton = c;
-    };
-
     const fileAttributes = {
-      type: 'file',
       id,
       name,
       multiple,
+      onChange: this.onChangeHandler,
       ref,
-      onChange: this.onChangeHandler
+      type: 'file'
     };
+
+    // Functions
+
+    const renderFabLabel = () => {
+      if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
+        const iconAttribute = {
+          className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
+        };
+        return (
+          <i {...iconAttribute} >
+            {materialIcon ? materialIcon : ''}
+          </i>
+        );
+      }
+      return label;
+    };
+
+    const renderTooltip = (c) => {
+      const tooltipAttributes = {
+        tooltip,
+        classes,
+        idFor: c,
+        tooltipPos,
+        isLarge
+      };
+
+      return tooltip && typeof tooltip === 'string' ? (
+        <CLTooltip {...tooltipAttributes} />
+      ) : null;
+    };
+
+    // Render return
 
     return (
       <span>
       <div {...containerAttributes}>
         <input {...inputAttributes} />
         <button {...attributes}>
-          {this.renderFabLabel(idFor)}
+          {renderFabLabel()}
           <input {...fileAttributes} />
         </button>
-        {this.renderTooltip(idFor)}
+        {renderTooltip(idFor)}
       </div>
 
       </span>

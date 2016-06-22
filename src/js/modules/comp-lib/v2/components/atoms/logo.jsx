@@ -1,32 +1,57 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLLogo component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {string} [image] Specifies the image URL.
- * @param {string} [label="Logo"]
- * @param {string} [url="/"] Specifies the URL the Logo would redirect to once clicked.
+ * @param {string}  [id]
+ * @param {string}  [image] Specifies the image URL.
+ * @param {string}  [label="Logo"]
+ * @param {string}  [url="/"] Specifies the URL the Logo would redirect to once clicked.
  */
 
 export class CLLogo extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      url = '/',
+
+      // general params
+
+      id = `logo-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+
+      // other params
+
       image,
       imageHeight = 30,
       label = 'Logo',
-      hideOnLargeScreen,
-      hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+      url = '/',
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-logo`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-layout-title',
       {
@@ -34,21 +59,33 @@ export class CLLogo extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'logo'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
 
     const imageAttribtues = {
-      src: image,
       alt: label,
+      src: image,
       style: {
         height: imageHeight
       }
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <span {...attributes} >

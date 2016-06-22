@@ -1,35 +1,62 @@
 import React from 'react';
 import classNames from 'classnames';
 import {CLIcon} from './icon.jsx';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLListItemPrimary component that acts as the items primary component for CLListItem
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  */
 
 export class CLListItemPrimary extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `list-item-primary-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      children,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      twoLine = false,
-      threeLine = false,
+
+      // other params
+
+      bodyInfo,
+      itemAvatar,
+      itemIcon = true,
       label,
       subTitle,
-      bodyInfo,
-      itemIcon = true,
-      itemAvatar,
-      classes,
-      addClasses,
-      id,
-      children,
-      snackbar
+      threeLine = false,
+      twoLine = false
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-list-item-primary`;
+
+    // Children manipulation and checking
+
+    const [ child ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    // Classnames
+
     const className = classNames(
       'mdl-list__item-primary-content',
       {
@@ -37,30 +64,40 @@ export class CLListItemPrimary extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'list-item-primary'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
       className,
       id
     };
     const iconAttributes = {
+      generalClassName,
       itemIcon,
-      itemAvatar,
-      classes
+      itemAvatar
     };
-    const [ child ] = children && React.Children.count(children) > 1 ?
-      children : [ children ];
+
+    // Functions
+
+    // Render return
+
     return (
       <span {...attributes}>
         {
           !child ? null : typeof child === 'string' ? (
             <CLIcon {...iconAttributes} icon={child} />
           ) : React.cloneElement(child, {
-            itemIcon,
-            itemAvatar,
+            generalClassName,
             isItemPrimary: true,
-            classes,
+            itemAvatar,
+            itemIcon,
             snackbar
           })
         }
