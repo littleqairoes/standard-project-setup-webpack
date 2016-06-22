@@ -4,17 +4,18 @@
   color: inherit !important;
 }
 
-.#{$prefix}-nav-link-group-header {
+.#{$prefix}-nav-link-header {
   background-color: $primary-color;
 
-  .#{$prefix}-nav-sub-link-item {
+  .#{$prefix}-nav-link-tag-item {
     background-color: inherit !important;
+    color: inherit !important;
+  }
 
-    .#{$prefix}-nav-sub-link {}
+  .#{$prefix}-nav-sub-link {}
 
-    .#{$prefix}-nav-sub-link-header {
-      color: inherit;
-      text-decoration: none;
-    }
+  .#{$prefix}-nav-sub-link-header {
+    color: inherit;
+    text-decoration: none;
   }
 }
