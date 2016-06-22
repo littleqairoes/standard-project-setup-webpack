@@ -21,7 +21,7 @@ export class CLSpacer extends React.Component {
 
       // general params
 
-      id = `logo-${r.string(10)}`,
+      id = `spacer-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,
