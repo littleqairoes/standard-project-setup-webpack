@@ -55,48 +55,7 @@ export class CLFileButton extends React.Component {
       onChangeHandler(this.fileButton.files, name, e, this.fileButton);
     }
   }
-  renderTooltip(id) {
-    const {
-      tooltip,
-      classes,
-      tooltipPos,
-      isLarge
-    } = this.props;
 
-    const attributes = {
-      tooltip,
-      classes,
-      idFor: id,
-      tooltipPos,
-      isLarge
-    };
-
-    return tooltip && typeof tooltip === 'string' ? (
-      <CLTooltip {...attributes} />
-    ) : null;
-  }
-  renderFabLabel() {
-    const {
-      label = 'Button',
-      isIcon = false,
-      isFab = false,
-      isMiniFab = false,
-      materialIcon,
-      fontIcon
-    } = this.props;
-
-    if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
-      const iconAttribute = {
-        className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
-      };
-      return (
-        <i {...iconAttribute} >
-          {materialIcon ? materialIcon : ''}
-        </i>
-      );
-    }
-    return label;
-  }
   render() {
     const r = random();
 
@@ -115,16 +74,23 @@ export class CLFileButton extends React.Component {
 
       // other params
 
+      classes,
       colored,
+      fontIcon,
       isDisabled: disabled = false,
       isFab = false,
       isIcon = false,
       isMiniFab = false,
+      isLarge,
       isRaised = false,
+      label = 'Button',
+      materialIcon,
       multiple = false,
       name,
       shouldFloat = false,
       target,
+      tooltip,
+      tooltipPos,
       withRipple = true
     } = this.props;
 
@@ -134,7 +100,7 @@ export class CLFileButton extends React.Component {
 
     const idFor = `${defaultClass}-${id}-${r.string(5)}`;
 
-    // Default Clas
+    // Default Class
 
     const defaultClass = `${prefix}-file-button`;
     const defaultClass2 = `${prefix}-file-button-button`;
@@ -215,6 +181,35 @@ export class CLFileButton extends React.Component {
 
     // Functions
 
+    const renderFabLabel = () => {
+      if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
+        const iconAttribute = {
+          className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
+        };
+        return (
+          <i {...iconAttribute} >
+            {materialIcon ? materialIcon : ''}
+          </i>
+        );
+      }
+      return label;
+    };
+
+    const renderTooltip = (c) => {
+
+      const tooltipAttributes = {
+        tooltip,
+        classes,
+        idFor: c,
+        tooltipPos,
+        isLarge
+      };
+
+      return tooltip && typeof tooltip === 'string' ? (
+        <CLTooltip {...tooltipAttributes} />
+      ) : null;
+    };
+
     // Render return
 
     return (
@@ -222,10 +217,10 @@ export class CLFileButton extends React.Component {
       <div {...containerAttributes}>
         <input {...inputAttributes} />
         <button {...attributes}>
-          {this.renderFabLabel(idFor)}
+          {renderFabLabel()}
           <input {...fileAttributes} />
         </button>
-        {this.renderTooltip(idFor)}
+        {renderTooltip(idFor)}
       </div>
 
       </span>
