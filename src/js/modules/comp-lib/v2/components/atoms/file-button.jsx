@@ -196,7 +196,6 @@ export class CLFileButton extends React.Component {
     };
 
     const renderTooltip = (c) => {
-
       const tooltipAttributes = {
         tooltip,
         classes,
