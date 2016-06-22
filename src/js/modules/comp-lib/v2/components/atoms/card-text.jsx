@@ -4,24 +4,47 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Adds a text component to CLCard.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
+ *
  */
 
 export class CLCardText extends React.Component {
   render() {
+
+    // Params
+
     const {
-      hideOnLargeScreen,
-      hideOnSmallScreen,
-      classes,
-      addClasses,
+
+      // general params
+
       id,
+      generalClassName,
+      specificClassName,
+      style,
       children,
-      snackbar
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen
+
+      // other params
+
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-card-supporting-text`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-card__supporting-text',
       {
@@ -29,19 +52,32 @@ export class CLCardText extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'card-supporting-text'),
+      specificClassName
     );
+
+    // Styles
+
+    // Functions
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Render return
+
     return (
       <div {...attributes}>
         {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
-              classes,
+              generalClassName,
               snackbar
             })
           ))
