@@ -34,7 +34,7 @@ export class CLButton extends React.Component {
 
       // general params
 
-      id = `button-${r.string(5)}`,
+      id = `button-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,
@@ -99,10 +99,6 @@ export class CLButton extends React.Component {
     // Functions
 
     const renderFabLabel = () => {
-      const {
-
-      } = this.props;
-
       if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
         const iconAttribute = {
           className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
