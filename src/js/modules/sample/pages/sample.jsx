@@ -12,7 +12,7 @@ import {
   CLGrid,
   CLNav
 } from './../../comp-lib';
-import atomrender from './../resources/atoms.jsx';
+import {atomRender} from './../resources/atom-render.jsx';
 // import renderMolecules from './../resources/molecules.jsx';
 // import renderOrganisms from './../resources/organisms.jsx';
 // import renderTemplates from './../resources/templates.jsx';
@@ -20,7 +20,8 @@ import atomrender from './../resources/atoms.jsx';
 
 export default (PageCtx, {mount, page, mainStore}, {Components, links}) => {
   console.log(links);
-  console.log({atomrender});
+  const atomrender = atomRender;
+  console.log(atomrender);
   page('/sample', (ctx) => {
     const {id} = ctx.params;
     const data = {
