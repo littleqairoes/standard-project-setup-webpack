@@ -124,6 +124,7 @@ export class CLNavLink extends React.Component {
     // Styles
 
     // Refs
+
     const drawerContentRef = (c) => {
       this.drawerContent = c;
     };

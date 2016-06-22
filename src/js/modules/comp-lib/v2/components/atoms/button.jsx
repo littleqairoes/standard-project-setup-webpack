@@ -98,38 +98,6 @@ export class CLButton extends React.Component {
 
     // Functions
 
-    const renderFabLabel = () => {
-      if ((isIcon || isFab || isMiniFab) && (materialIcon || fontIcon)) {
-        const iconAttribute = {
-          className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
-        };
-        return (
-          <i {...iconAttribute} >
-            {materialIcon ? materialIcon : ''}
-          </i>
-        );
-      }
-      return label;
-    };
-
-    const renderTooltip = (c) => {
-      const {
-
-
-      } = this.props;
-
-      const attributes = {
-        idFor: c,
-        isLarge,
-        tooltip,
-        tooltipPos
-      };
-
-      return tooltip && typeof tooltip === 'string' ? (
-        <CLTooltip {...attributes} />
-      ) : null;
-    };
-
     // Refs
 
     // Attributes
@@ -144,6 +112,33 @@ export class CLButton extends React.Component {
       target
     };
 
+    const iconAttribute = {
+      className: materialIcon ? 'material-icons' : `fa ${fontIcon ? fontIcon : 'fa-search'}`
+    };
+
+    const tooltipAttributes = {
+      idFor,
+      isLarge,
+      tooltip,
+      tooltipPos
+    };
+
+    // Render Functions
+
+    const renderFabLabel = () => (
+      (isIcon || isFab || isMiniFab) && (materialIcon || fontIcon) ? (
+          <i {...iconAttribute} >
+            {materialIcon ? materialIcon : ''}
+          </i>
+      ) : label
+    );
+
+    const renderTooltip = () => (
+      tooltip && typeof tooltip === 'string' ? (
+        <CLTooltip {...tooltipAttributes} />
+      ) : null
+    );
+
     // Render return
 
     return anchor ? (
@@ -151,14 +146,14 @@ export class CLButton extends React.Component {
         <a {...attributes} >
           {renderFabLabel()}
         </a>
-        {renderTooltip(idFor)}
+        {renderTooltip()}
       </span>
     ) : (
       <span>
         <button {...attributes}>
           {renderFabLabel()}
         </button>
-        {renderTooltip(idFor)}
+        {renderTooltip()}
       </span>
     );
   }
