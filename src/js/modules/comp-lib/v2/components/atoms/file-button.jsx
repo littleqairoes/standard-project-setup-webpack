@@ -7,20 +7,20 @@ import {classList, prefix} from './../../libs';
 /**
  * Adds a CLFileButton component.
  * @param {Function} [actionHandler] Specifies happens when the button is clicked.
- * @param {string} [addClasses] Adds optional classes.
- * @param {Boolean} [anchor=true] Uses an anchor tag for the button. If false, uses a button tag instead.
- * @param {string} [colored] Specifies the button's color type. This may only be `"primary"` or `"accent"`. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [hideOnLargeScreen=false]
- * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [href="#"]
- * @param {string} [id]
- * @param {Boolean} [isDisabled=false]
- * @param {Boolean} [isFab=false] Specifies whether the button is a fab button or not. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [isIcon=false] Specifies whether the button is an icon or not.
- * @param {Boolean} [isMiniFab=false] Specifies whether the fab button a MiniFab type. `isFab` should be set to true. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [isRaised=false] Adds the raised effect on the button. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
- * @param {Boolean} [label] Specifies the text on the button.
- * @param {Boolean} [withRipple=true] Adds the ripple effect on the button on click. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {string}   [addClasses] Adds optional classes.
+ * @param {Boolean}  [anchor=true] Uses an anchor tag for the button. If false, uses a button tag instead.
+ * @param {string}   [colored] Specifies the button's color type. This may only be `"primary"` or `"accent"`. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [hideOnLargeScreen=false]
+ * @param {Boolean}  [hideOnSmallScreen=false]
+ * @param {string}   [href="#"]
+ * @param {string}   [id]
+ * @param {Boolean}  [isDisabled=false]
+ * @param {Boolean}  [isFab=false] Specifies whether the button is a fab button or not. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [isIcon=false] Specifies whether the button is an icon or not.
+ * @param {Boolean}  [isMiniFab=false] Specifies whether the fab button a MiniFab type. `isFab` should be set to true. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [isRaised=false] Adds the raised effect on the button. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
+ * @param {Boolean}  [label] Specifies the text on the button.
+ * @param {Boolean}  [withRipple=true] Adds the ripple effect on the button on click. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
  *
  */
 
