@@ -101,6 +101,8 @@ export class CLGrid extends React.Component {
 
     // Children manipulation and checking
 
+    // Classnames
+
     const className = classNames(
       'mdl-grid',
       {
@@ -114,6 +116,16 @@ export class CLGrid extends React.Component {
     );
 
     // Styles
+
+    // Refs
+
+    // Attributes
+
+    const attributes = {
+      id,
+      className,
+      style
+    };
 
     // Functions
 
@@ -186,16 +198,6 @@ export class CLGrid extends React.Component {
       return size > 1 ? children.map((child, key) =>
         (renderCell(child, c, size, key))) :
         renderCell(children, c, size, 0);
-    };
-
-    // Refs
-
-    // Attributes
-
-    const attributes = {
-      id,
-      className,
-      style
     };
 
     // Render return

@@ -62,8 +62,6 @@ export class CLLayout extends React.Component {
 
     // Styles
 
-    // Functions
-
     // Refs
 
     // Attributes
@@ -73,6 +71,8 @@ export class CLLayout extends React.Component {
       className,
       style
     };
+
+    // Functions
 
     // Render return
 

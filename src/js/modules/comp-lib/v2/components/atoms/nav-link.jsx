@@ -93,9 +93,9 @@ export class CLNavLink extends React.Component {
       };
 
       return (
-        <a {...linkAttributes} >
+        <span>
           {subName}
-        </a>
+        </span>
       );
     };
 
@@ -123,9 +123,11 @@ export class CLNavLink extends React.Component {
                   key
                 };
                 return (
-                  <li {...itemAttributes} >
-                    {renderLink(subName, subUrl, subActionHandler, className, true)}
-                  </li>
+                  <a href={subUrl}>
+                    <li {...itemAttributes} >
+                      {renderLink(subName, subUrl, subActionHandler, className, true)}
+                    </li>
+                  </a>
                 );
               }) : null
             }

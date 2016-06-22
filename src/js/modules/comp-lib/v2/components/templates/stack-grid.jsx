@@ -103,8 +103,6 @@ export class CLStackGrid extends React.Component {
       overflow: 'hidden'
     }, styleSmall);
 
-    // Functions
-
     // Refs
 
     // Attributes
@@ -129,6 +127,8 @@ export class CLStackGrid extends React.Component {
       className: smallClassName,
       style: styleSmallEdited
     };
+
+    // Functions
 
     // Render return
 

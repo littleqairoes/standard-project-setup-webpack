@@ -83,8 +83,6 @@ export class CLSideContent extends React.Component {
 
     // Styles
 
-    // Functions
-
     // Refs
 
     // Attributes
@@ -104,6 +102,8 @@ export class CLSideContent extends React.Component {
       className: mainContent === 'right' ? mainClassName : sideClassName,
       style: rightStyle
     };
+
+    // Functions
 
     // Render return
 
