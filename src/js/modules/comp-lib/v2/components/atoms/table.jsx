@@ -5,74 +5,60 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLTable component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hasCheckbox=false]
- * @param {Array} [headings] An array of objects that contains the different headings of the table.
+ * @param {Array}   [headings] An array of objects that contains the different headings of the table.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {Boolean} [isSelectable] Adds the selectable effect on the table. For more information, go [here](https://getmdl.io/components/index.html#tables-section)
- * @param {Array} [rows]
- * @param {Number} [shadow=2] Adds shadow to the card border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec.
+ * @param {string}  [id]
+ * @param {Boolean} [isSelectable=false] Adds the selectable effect on the table. For more information, go [here](https://getmdl.io/components/index.html#tables-section)
+ * @param {Array}   [rows]
+ * @param {Number}  [shadow=2] Adds shadow to the card border. The only valid inputs are 0, 2, 3, 4, 8, and 16. See [Elevation and shadows](https://material.google.com/what-is-material/elevation-shadows.html) in the Google Material Design Spec.
  *
  */
 
 export class CLTable extends React.Component {
-  renderHeadings(headings, sort) {
-    return headings ? headings.map((heading, key) => {
-      const {type, value = ''} = heading;
-      const attributes = {
-        className: type && type !== 'number' ? 'mdl-data-table__cell--non-numeric' : null,
-        key
-      };
-      return heading ? (
-        <th {...attributes} >
-          {value}
-        </th>
-       ) : null;
-    }) : null;
-  }
-  renderRows(rows) {
-    return rows ? rows.map((row,key) => {
-      return (
-        <tr>
-          {this.renderRow(row)}
-        </tr>
-      );
-    }) : null;
-  }
-  renderRow(row) {
-    const {headings} = this.props;
-    return row ? row.map((value, key) => {
-      const heading = headings[key];
-      const attributes = {
-        className: heading && heading.type && heading.type !== 'number' ?
-          'mdl-data-table__cell--non-numeric' : null,
-        key
-      };
-      return (
-        <td {...attributes}>
-          {value}
-        </td>
-      );
-    }) : null;
-  }
   render() {
     const r = random();
+
+    // Params
+
     const {
-      rows,
-      headings,
-      hasCheckbox,
-      isSelectable,
-      shadow,
-      classes,
-      addClasses,
+
+      // general params
+
+      id = `table-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      id = r.string(10)
+
+      // other params
+
+      hasCheckbox,
+      headings,
+      isSelectable = false,
+      rows,
+      shadow = 2
+
     } = this.props;
+
+    // Other imports and initialization
+
     var sort = [ 0, 0 ];
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-table`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-data-table',
       {
@@ -89,29 +75,86 @@ export class CLTable extends React.Component {
         parseInt(shadow, 10) === 16
       ) ? `mdl-shadow--${shadow}p` : null,
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'table'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
 
     const ref = (c) => {
       this.table = c;
     };
 
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id: `table-${id}-${r.string(5)}`,
+      style,
       ref
     };
+
+    // Functions
+
+    const renderRows = (c) => {
+
+      // Functions
+
+      const renderRow = (row) => {
+        return row ? row.map((value, key) => {
+          const heading = headings[key];
+          const rowAttributes = {
+            className: heading && heading.type && heading.type !== 'number' ?
+              'mdl-data-table__cell--non-numeric' : null,
+            key
+          };
+          return (
+            <td {...rowAttributes}>
+              {value}
+            </td>
+          );
+        }) : null;
+      };
+
+      // Render return
+
+      return c ? c.map((row,key) => {
+        return (
+          <tr>
+            {renderRow(row)}
+          </tr>
+        );
+      }) : null;
+    };
+
+    const renderHeadings = (c, sortAll) => {
+      return c ? c.map((heading, key) => {
+        const {type, value = ''} = heading;
+        const headingAttributes = {
+          className: type && type !== 'number' ? 'mdl-data-table__cell--non-numeric' : null,
+          key
+        };
+        return heading ? (
+          <th {...headingAttributes} >
+            {value}
+          </th>
+         ) : null;
+      }) : null;
+    };
+
+    // Render return
 
     return (
       <table {...attributes}>
         <thead>
           <tr>
-            {this.renderHeadings(headings, sort)}
+            {renderHeadings(headings, sort)}
           </tr>
         </thead>
         <tbody>
-          {this.renderRows(rows)}
+          {renderRows(rows)}
         </tbody>
       </table>
     );

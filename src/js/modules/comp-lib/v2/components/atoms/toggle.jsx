@@ -5,15 +5,15 @@ import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLToggle component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {string} [label]
- * @param {string} [materialIcon] Specifies the material icon the CLToggle would be.
- * @param {string} [name]
- * @param {string} [type="checkbox"] Specifies the type of toggle. It can only be `"checkbox"`, `"radio"`, or `"switch"`.
- * @param {Number} [value]
+ * @param {string}  [id]
+ * @param {string}  [label]
+ * @param {string}  [materialIcon] Specifies the material icon the CLToggle would be.
+ * @param {string}  [name]
+ * @param {string}  [type="checkbox"] Specifies the type of toggle. It can only be `"checkbox"`, `"radio"`, or `"switch"`.
+ * @param {Number}  [value]
  */
 
 export class CLToggle extends React.Component {
@@ -85,47 +85,49 @@ export class CLToggle extends React.Component {
     const {onChangeHandler = () => {}, name} = this.props;
     onChangeHandler(this.toggle.checked, name, e, this.toggle);
   }
-  renderLabel(type, label, materialIcon) {
-    const className = classNames(
-      {
-        'mdl-checkbox__label': type && type === 'checkbox',
-        'mdl-radio__label': type && type === 'radio',
-        'mdl-icon-toggle__label material-icons': type && type === 'toggle' &&
-        materialIcon && typeof materialIcon === 'string',
-        'mdl-switch__label': type && type === 'switch'
-      }
-      );
-    return materialIcon ? (
-      <i
-        className = {className}
-      >
-        {materialIcon}
-      </i>
-    ) : (
-      <span
-        className = {className}
-      >
-        {label && typeof label === 'string' ? label : null}
-      </span>
-    );
-  }
   render() {
     const r = random();
+
+    // Params
+
     const {
-        type = 'checkbox',
-        label,
-        isItemPrimary = false,
-        name,
-        value,
-        materialIcon,
-        hideOnLargeScreen,
-        hideOnSmallScreen,
-        classes,
-        addClasses,
-        id = r.string(10),
+
+      // general params
+
+      id = `toggle-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+
+      // other params
+
+      isItemPrimary = false,
+      label,
+      materialIcon,
+      name,
+      type = 'checkbox',
+      value
     } = this.props;
-    const defaultClass = `${prefix}-${type}`;
+
+    // Other imports and initialization
+
+    const inputType = type === 'toggle' || type === 'switch' ? 'checkbox' : type;
+
+    // ID manipulation
+
     const idFor = `${defaultClass}-${id}-${r.string(10)}`;
+
+    // Default Class
+
+    const defaultClass = `${prefix}-${type}`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       {
         'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect':
@@ -140,8 +142,8 @@ export class CLToggle extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'toggle'),
+      specificClassName
     );
 
     const inputClassName = classNames(
@@ -154,7 +156,16 @@ export class CLToggle extends React.Component {
       }
     );
 
-    const inputType = type === 'toggle' || type === 'switch' ? 'checkbox' : type;
+    // Styles
+
+    const toggleStyle = Object.assign({}, {
+      paddingTop: isItemPrimary && type === 'radio' && (!label || label.trim() === '') ?
+        22 : 0,
+      width: isItemPrimary && type === 'checkbox' && (!label || label.trim() === '') ?
+        0 : null
+    }, style);
+
+    // Refs
 
     const ref = (c) => {
       this.toggle = c;
@@ -164,18 +175,13 @@ export class CLToggle extends React.Component {
       this.toggleContainer = c;
     };
 
-    const style = {
-      paddingTop: isItemPrimary && type === 'radio' && (!label || label.trim() === '') ?
-        22 : 0,
-      width: isItemPrimary && type === 'checkbox' && (!label || label.trim() === '') ?
-        0 : null
-    };
+    // Attributes
 
     const labelAttributes = {
       className,
       htmlFor: idFor,
       ref: containerRef,
-      style
+      style: toggleStyle
     };
 
     const inputAttributes = {
@@ -188,10 +194,40 @@ export class CLToggle extends React.Component {
       ref
     };
 
+    // Functions
+
+    const renderLabel = () => {
+      // type, label, materialIcon
+      const labelClassName = classNames(
+        {
+          'mdl-checkbox__label': type && type === 'checkbox',
+          'mdl-radio__label': type && type === 'radio',
+          'mdl-icon-toggle__label material-icons': type && type === 'toggle' &&
+          materialIcon && typeof materialIcon === 'string',
+          'mdl-switch__label': type && type === 'switch'
+        }
+        );
+      return materialIcon ? (
+        <i
+          className = {labelClassName}
+        >
+          {materialIcon}
+        </i>
+      ) : (
+        <span
+          className = {labelClassName}
+        >
+          {label && typeof label === 'string' ? label : null}
+        </span>
+      );
+    };
+
+    // Render return
+
     return (
       <label {...labelAttributes} >
         <input {...inputAttributes} />
-        {this.renderLabel(type, label, materialIcon)}
+        {renderLabel()}
       </label>
     );
   }

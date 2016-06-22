@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLProgressBar component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  * @param {Boolean} [indeterminate] Applies the indeterminate style to the progress bar. For more information, go [here](https://getmdl.io/components/index.html#loading-section).
- * @param {Number} [width] Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
+ * @param {Number}  [width] Specifies the width in px. Input a string if you want to use percentage e.g. "500%".
  *
  */
 
@@ -37,16 +38,39 @@ export class CLProgressBar extends React.Component {
     }
   }
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      indeterminate,
-      width,
+
+      // general params
+
+      id = `progress-bar-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+
+      // other params
+
+      indeterminate,
+      width
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-progress-bar`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-progress mdl-js-progress',
       {
@@ -55,15 +79,23 @@ export class CLProgressBar extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'progress-bar'),
+      specificClassName
     );
+
+    // Styles
+
     const style = {
       width
     };
+
+    // Refs
+
     const ref = (c) => {
       this.progressBar = c;
     };
+
+    // Attributes
 
     const attributes = {
       className,
@@ -71,6 +103,10 @@ export class CLProgressBar extends React.Component {
       style,
       ref
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <div {...attributes}></div>
