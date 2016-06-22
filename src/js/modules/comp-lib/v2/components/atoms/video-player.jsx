@@ -55,6 +55,7 @@ export class CLVideoPlayer extends React.Component {
   }
   render() {
     const r = random();
+
     // Params
 
     const {
