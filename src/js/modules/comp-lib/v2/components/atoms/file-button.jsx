@@ -64,7 +64,7 @@ export class CLFileButton extends React.Component {
     const {
       // general params
 
-      id,
+      id = `file-button-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,

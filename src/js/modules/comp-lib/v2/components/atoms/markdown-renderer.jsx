@@ -26,7 +26,7 @@ export class CLMarkdownRenderer extends React.Component {
 
       // general params
 
-      id = `-${r.string(10)}`,
+      id = `markdown-renderer-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,

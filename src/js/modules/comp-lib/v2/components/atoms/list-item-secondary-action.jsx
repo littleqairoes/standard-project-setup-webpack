@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import {CLIcon} from './icon.jsx';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -13,6 +14,7 @@ import {classList, prefix} from './../../libs';
 
 export class CLListItemSecondaryAction extends React.Component {
   render() {
+    const r = random();
 
     // Params
 
@@ -20,7 +22,7 @@ export class CLListItemSecondaryAction extends React.Component {
 
       // general params
 
-      id,
+      id = `list-item-secondary-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,

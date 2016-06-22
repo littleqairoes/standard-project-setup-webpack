@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix, placeholders} from './../../libs';
 
 /**
@@ -18,6 +19,7 @@ import {classList, prefix, placeholders} from './../../libs';
 
 export class CLCardMedia extends React.Component {
   render() {
+    const r = random();
 
     // Params
 
@@ -25,7 +27,7 @@ export class CLCardMedia extends React.Component {
 
       // general params
 
-      id,
+      id = `card-media-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,

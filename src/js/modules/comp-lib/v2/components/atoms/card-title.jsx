@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -21,6 +22,7 @@ import {classList, prefix} from './../../libs';
 
 export class CLCardTitle extends React.Component {
   render() {
+    const r = random();
 
     // Params
 
@@ -28,7 +30,7 @@ export class CLCardTitle extends React.Component {
 
       // general params
 
-      id,
+      id = `card-title-${r.string(10)}`,
       generalClassName,
       specificClassName,
       snackbar,
