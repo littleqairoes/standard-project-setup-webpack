@@ -13,18 +13,40 @@ import {classList, prefix} from './../../libs';
  */
 export class CLLayout extends React.Component {
   render() {
+
+    // Params
+
     const {
+
+      // general params
+
+      id,
+      generalClassName,
+      specificClassName,
+      style,
+      children,
+      snackbar,
+
+      // other params
+
       fixedDrawer = false,
       fixedHeader = true,
       hideDrawerButtonWhenDesktop = true,
-      hideDrawerButton = false,
-      classes,
-      addClasses,
-      id,
-      children,
-      snackbar
+      hideDrawerButton = false
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-layout`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-layout mdl-js-layout',
       {
@@ -34,19 +56,32 @@ export class CLLayout extends React.Component {
         'mdl-layout--no-drawer-button': hideDrawerButton
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'layout'),
+      specificClassName
     );
+
+    // Styles
+
+    // Functions
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Render return
+
     return (
       <div {...attributes} >
         {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
-              classes,
+              generalClassName,
               snackbar
             })
           ))

@@ -19,11 +19,17 @@ export class CLPage extends React.Component {
     // Params
 
     const {
+
+      // general params
+
       id,
       generalClassName,
       specificClassName,
       style,
-      content
+
+      // other params
+
+      content = (<div>{'Content'}</div>)
     } = this.props;
 
     // Other imports and initialization
