@@ -82,6 +82,7 @@ export class CLButton extends React.Component {
       hideOnSmallScreen,
       actionHandler: onClick = () => {},
       anchor = true,
+      colored,
 
 
       withRipple = true,
@@ -90,11 +91,8 @@ export class CLButton extends React.Component {
       isFab = false,
       isMiniFab = false,
       isIcon = false,
-      colored,
       href = '#',
 
-      classes,
-      addClasses,
       target
 
     } = this.props;
