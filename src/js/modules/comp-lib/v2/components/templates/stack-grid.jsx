@@ -11,8 +11,11 @@ import {classList, prefix} from './../../libs';
 export class CLStackGrid extends React.Component {
   render() {
     const {
-      classes,
-      addClasses,
+      generalClassName,
+      specificClassName,
+      style,
+      styleBig,
+      styleSmall,
       id,
       children,
       stackHeight = 400,
@@ -22,11 +25,12 @@ export class CLStackGrid extends React.Component {
     const className = classNames(
       'mdl-grid mdl-grid--no-spacing',
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'stack-grid'),
+      specificClassName
     );
     const attributes = {
       className,
+      style,
       id
     };
 
@@ -51,29 +55,30 @@ export class CLStackGrid extends React.Component {
       className: classNames(
         'mdl-cell mdl-cell--12-col',
         `${defaultClass}-big`,
-        classList(classes, `${defaultClass}-big`),
-        classList(addClasses, `${defaultClass}-big`)
+        classList(generalClassName, 'stack-grid-big'),
+        classList(specificClassName, 'big')
       ),
-      style: {
+      style: Object.assign({}, {
         height: stackHeight,
         maxHeight: stackHeight,
         overflow: 'hidden'
-      }
+      }, styleBig)
     };
 
     const smallStackAttributes = {
       className: classNames(
         'mdl-cell mdl-cell--12-col',
         `${defaultClass}-small`,
-        classList(classes, `${defaultClass}-small`),
-        classList(addClasses, `${defaultClass}-small`)
+        classList(generalClassName, 'stack-grid-small'),
+        classList(specificClassName, 'small')
       ),
-      style: {
+      style: Object.assign({}, {
         height: stackHeight / 2,
         maxHeight: stackHeight / 2,
         overflow: 'hidden'
-      }
+      }, styleSmall)
     };
+
     return (
       <div {...attributes} >
         <div {...columnAttributes} >
@@ -82,7 +87,7 @@ export class CLStackGrid extends React.Component {
               {
                 typeof main === 'string' ? main :
                   React.cloneElement(main, {
-                    classes,
+                    generalClassName,
                     snackbar,
                     height: stackHeight
                   })
@@ -94,7 +99,7 @@ export class CLStackGrid extends React.Component {
                   {
                     typeof section1 === 'string' ? section1 :
                       React.cloneElement(section1, {
-                        classes,
+                        generalClassName,
                         snackbar,
                         height: stackHeight
                       })
@@ -114,7 +119,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section1 === 'string' ? section1 :
                           React.cloneElement(section1, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -129,7 +134,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section2 === 'string' ? section2 :
                           React.cloneElement(section2, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -144,7 +149,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section3 === 'string' ? section3 :
                           React.cloneElement(section3, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -159,7 +164,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section3 === 'string' ? section3 :
                           React.cloneElement(section3, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -174,7 +179,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section3 === 'string' ? section4 :
                           React.cloneElement(section4, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -189,17 +194,15 @@ export class CLStackGrid extends React.Component {
         {
           childrenCount >= 6 ? (
             <div {...columnAttributes} >
-              <div
-                className="mdl-grid mdl-grid--no-spacing mdl-cell--hide-tablet
-                  mdl-cell--hide-phone"
-              >
+              <div className="mdl-grid mdl-grid--no-spacing mdl-cell--hide-tablet
+                mdl-cell--hide-phone" >
                 {
                   section4 && (childrenCount === 6) ? (
                     <div {...bigStackAttributes} >
                       {
                         typeof section4 === 'string' ? section4 :
                           React.cloneElement(section4, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -214,7 +217,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section5 === 'string' ? section5 :
                           React.cloneElement(section5, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
@@ -229,7 +232,7 @@ export class CLStackGrid extends React.Component {
                       {
                         typeof section6 === 'string' ? section6 :
                           React.cloneElement(section6, {
-                            classes,
+                            generalClassName,
                             snackbar,
                             height: stackHeight
                           })
