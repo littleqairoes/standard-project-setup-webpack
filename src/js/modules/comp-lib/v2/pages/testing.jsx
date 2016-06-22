@@ -20,8 +20,13 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
     CLCardTitle,
     CLCardText,
     CLCardAction,
-    CLButton
+    CLButton,
+    CLVideoPlayer
   } = Components;
+  let videoPlayer;
+  const videoPlayerRef = (r) => {
+    videoPlayer = r;
+  };
 
   page('/testing-blog', () => {
     mount(PageCtx, {
@@ -41,33 +46,21 @@ export default (PageCtx, {page, mount}, {Components, links}) => {
           </CLDrawer>
           <CLBody>
             <CLGrid columns={1}>
-              <CLCard>
-                <CLCardThumbnailBody>
-                  <CLCardTitle title="title" subTitle="This is something"/>
-                  <CLCardText>
-                    <p>
-                      Hello this is a body of text
-                    </p>
-                  </CLCardText>
-                  <CLCardAction>
-                    <CLButton />
-                  </CLCardAction>
-                </CLCardThumbnailBody>
-              </CLCard>
-              <CLCard>
-                <CLCardThumbnailBody>
-                  <CLCardTitle title="title" subTitle="This is something"/>
-                  <CLCardText>
-                    <p>
-                      Hello this is a body of text
-                    </p>
-                  </CLCardText>
-                  <CLCardAction>
-                    <CLButton />
-                    <CLButton />
-                  </CLCardAction>
-                </CLCardThumbnailBody>
-              </CLCard>
+              <p>damn</p>
+
+              <CLVideoPlayer id="player-1" videoId="dQw4w9WgXcQ" ref={videoPlayerRef}/>
+              <CLButton
+                label="play"
+                actionHandler={() => {if (videoPlayer) {videoPlayer.playVideo()}}}
+              />
+              <CLButton
+                label="pause"
+                actionHandler={() => {if (videoPlayer) {videoPlayer.pauseVideo()}}}
+              />
+              <CLButton
+                label="stop"
+                actionHandler={() => {if (videoPlayer) {videoPlayer.stopVideo()}}}
+              />
 
             </CLGrid>
           </CLBody>
