@@ -21,7 +21,22 @@ import {classList, prefix} from './../../libs';
 
 export class CLCardTitle extends React.Component {
   render() {
+
+    // Params
+
     const {
+
+      // general params
+
+      id,
+      generalClassName,
+      specificClassName,
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+
+      // other params
+
       headerLevel = 2,
       expand = false,
       title,
@@ -31,19 +46,21 @@ export class CLCardTitle extends React.Component {
       color,
       display = 'block',
       background,
-      hideOnLargeScreen,
-      hideOnSmallScreen,
-      classes,
-      addClasses,
-      id
+
     } = this.props;
-    const style = {
-      height,
-      background,
-      color,
-      display
-    };
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-card-title`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-card__title',
       {
@@ -52,23 +69,43 @@ export class CLCardTitle extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'card-title'),
+      specificClassName
     );
+
+    const headerClassName = classNames(
+      'mdl-card__title-text',
+      `${defaultClass}-text`,
+      classList(generalClassName, 'card-title-text'),
+      classList(specificClassName, 'text')
+    );
+
+    // Styles
+
+    const style = {
+      height,
+      background,
+      color,
+      display
+    };
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
-      className,
       id,
+      className,
       style
     };
 
     const headerAttributes = {
-      className: classNames(
-        'mdl-card__title-text',
-        `${defaultClass}-text`,
-        classList(classes, `${defaultClass}-text`),
-        classList(addClasses, `${defaultClass}-text`)
-      )
+      className: headerClassName
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <div {...attributes}>

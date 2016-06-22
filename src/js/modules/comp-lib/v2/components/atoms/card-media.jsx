@@ -73,8 +73,6 @@ export class CLCardMedia extends React.Component {
 
     // Styles
 
-    // Functions
-
     // Refs
 
     // Attributes
@@ -92,6 +90,8 @@ export class CLCardMedia extends React.Component {
       src,
       width
     };
+
+    // Functions
 
     // Render return
 

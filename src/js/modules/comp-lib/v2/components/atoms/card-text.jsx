@@ -58,8 +58,6 @@ export class CLCardText extends React.Component {
 
     // Styles
 
-    // Functions
-
     // Refs
 
     // Attributes
@@ -69,6 +67,8 @@ export class CLCardText extends React.Component {
       className,
       style
     };
+
+    // Functions
 
     // Render return
 
