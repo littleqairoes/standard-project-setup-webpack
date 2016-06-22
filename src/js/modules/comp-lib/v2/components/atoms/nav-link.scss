@@ -6,16 +6,21 @@
 
 .#{$prefix}-nav-link-header {
   background-color: $primary-color;
-
-  .#{$prefix}-nav-link-tag-item {
-    background-color: inherit !important;
-    color: inherit !important;
-  }
-
-  .#{$prefix}-nav-sub-link {}
-
-  .#{$prefix}-nav-sub-link-header {
-    color: inherit;
-    text-decoration: none;
-  }
 }
+
+.#{$prefix}-nav-link-drawer {
+  color: black !important;
+}
+
+.#{$prefix}-nav-link-tag-item {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+.#{$prefix}-nav-sub-link {}
+
+.#{$prefix}-nav-sub-link-header {
+  color: inherit;
+  text-decoration: none;
+}
+

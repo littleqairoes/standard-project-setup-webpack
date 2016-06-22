@@ -62,7 +62,16 @@ export class CLNavLink extends React.Component {
 
     // Classnames
 
-    const className = classNames(
+    const className = navpos === 'header' ? classNames(
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
+      defaultClass,
+      classList(generalClassName, 'nav-link'),
+      specificClassName
+    ) : classNames(
+      'mdlext-accordion__panel',
       {
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen
@@ -80,7 +89,7 @@ export class CLNavLink extends React.Component {
     );
 
     const drawerClassName = classNames(
-      'mdl-menu mdl-js-menu mdl-js-ripple-effect',
+      'mdlext-accordion__panel__content',
       `${defaultClass}-drawer`,
       classList(generalClassName, 'nav-link-drawer'),
       classList(specificClassName, 'nav-link-drawer')
@@ -92,11 +101,15 @@ export class CLNavLink extends React.Component {
 
     // Attributes
 
-    const attributes = {
+    const attributes = navpos === 'header' ? {
       href: '#',
       className: `mdl-navigation__link ${className}`,
       id: idFor,
       style
+    } : {
+      className,
+      style,
+      'aria-multiselectable': false
     };
 
     const listHeaderAttributes = {
@@ -107,8 +120,7 @@ export class CLNavLink extends React.Component {
 
     const listDrawerAttributes = {
       className: drawerClassName,
-      htmlFor: idFor,
-      style: drawerSubStyle
+      style: drawerSubStyle,
     };
 
     // Functions
@@ -194,16 +206,20 @@ export class CLNavLink extends React.Component {
 
     } else if (navpos === 'drawer') {
       return links ? (
-        <span>
-          <a {...attributes} >
-            {name}
-          </a>
-          <ul {...listDrawerAttributes} >
-            {
-              links ? links.map((item, key) => (renderLink(item, key, true))) : null
-            }
-          </ul>
-        </span>
+        <li {...attributes} >
+           <header className="mdlext-accordion__panel__header">
+             <div className="mdlext-accordion__panel__header__transform">
+               <span>{name}</span>
+             </div>
+           </header>
+           <section {...listDrawerAttributes}>
+             <nav className="mdl-navigation">
+               {
+                 links ? links.map((item, key) => (renderLink(item, key, true))) : null
+               }
+             </nav>
+           </section>
+         </li>
       ) : renderLink({name, url, actionHandler});
     }
     return (
@@ -211,3 +227,20 @@ export class CLNavLink extends React.Component {
     );
   }
 }
+
+// <ul {...listDrawerAttributes} >
+//           <li className="mdlext-accordion__panel">
+//             <header className="mdlext-accordion__panel__header">
+//               <div className="mdlext-accordion__panel__header__transform">
+//                 {name}
+//               </div>
+//             </header>
+//             <section className="mdlext-accordion__panel__content">
+//               <ul>
+//                 {
+//                   links ? links.map((item, key) => (renderLink(item, key, true))) : null
+//                 }
+//               </ul>
+//             </section>
+//           </li>
+//         </ul>

@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 import {CLNavLink} from './../atoms';
-import {classList, prefix} from './../../libs';
+import random from 'random-js';
+import {classList, prefix, windowSize} from './../../libs';
 
 /**
  * Creates a NavBar which can be positioned on the header or drawer.
@@ -14,41 +15,90 @@ import {classList, prefix} from './../../libs';
 
 export class CLNav extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      navpos,
+
+      // general params
+
+      id = `nav-${r.string(8)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+      children,
+      snackbar,
+
+      // other params
+
       alwaysVisible,
       links,
-      classes,
-      addClasses,
-      id,
-      children,
-      snackbar
+      navpos = 'header'
     } = this.props; // Instantiates the attributes attached to this component.
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-nav`;
-    const className = classNames(
+
+    // Children manipulation and checking
+    const [ navLink ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    // Classnames
+
+    const className = navpos === 'header' ? classNames(
       'mdl-navigation',
       {
         'mdl-layout--large-screen-only': navpos && navpos === 'header' && !alwaysVisible
       },
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'nav'),
+      specificClassName
+    ) : classNames(
+      'mdlext-accordion mdlext-accordion--vertical mdlext-js-accordion',
+      'mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events',
+      {
+        'mdl-layout--small-screen-only': hideOnLargeScreen,
+        'mdl-layout--large-screen-only': hideOnSmallScreen
+      },
+      defaultClass,
+      classList(generalClassName, 'nav'),
+      specificClassName
     );
-    /*
-      Initializes navlink with an array of children if it exists and
-      its count is more than one; Or initialize it with an array of
-      children if its count is one since React children becomes an
-      object if there is only one parameter passed.
-    */
-    const [ navLink ] = children && React.Children.count(children) > 1 ?
-      children : [ children ];
+
+    // Styles
+
+    // Refs
+
+    // Attributes
 
     const attributes = {
+      id,
       className,
-      id
+      style,
     };
 
-    return (
+    const containerAttributes = {
+      style: {
+        width: '100%',
+        height: 200
+      },
+    };
+
+    // Render return
+
+    return navpos === 'header' ? (
       <nav {...attributes} >
         {
           /*
@@ -59,19 +109,45 @@ export class CLNav extends React.Component {
           links ? links.map((link, key) => {
 
             const linkAttributes = {
+              generalClassName,
+              specificClassName: `${specificClassName}-inner`,
+              snackbar,
               link,
-              key,
               navpos,
-              classes,
-              addClasses,
-              snackbar
+              key,
             };
-            // console.log(navLink)
+
             return navLink ? React.cloneElement(navLink, {...linkAttributes}) :
               (<CLNavLink {...linkAttributes} />);
           }) : null
         }
       </nav>
+    ) : (
+      <div {...containerAttributes} >
+        <ul {...attributes} >
+          {
+          /*
+            Returns a clone of each NavLink that contains
+            its own link attributes for every entry passed with this
+            component.
+          */
+            links ? links.map((link, key) => {
+
+              const linkAttributes = {
+                generalClassName,
+                specificClassName: `${specificClassName}-inner`,
+                snackbar,
+                link,
+                navpos,
+                key,
+              };
+
+              return navLink ? React.cloneElement(navLink, {...linkAttributes}) :
+                (<CLNavLink {...linkAttributes} />);
+            }) : null
+          }
+        </ul>
+      </div>
     );
   }
 }

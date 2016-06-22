@@ -48,6 +48,56 @@ export default (PageCtx, {mount, page}, {Components, Nav}) => {
     return elements.map((Element, key) => (<Element key={key} />));
   };
 
+  page('/test', () => {
+    mount(PageCtx, {
+      content: (
+        <Layout {...layoutAttributes} >
+          <div style={{height: 300}}>
+            <ul className="mdlext-accordion mdlext-accordion--vertical
+              mdlext-js-accordion mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events"
+              aria-multiselectable="false">
+              <li className="mdlext-accordion__panel">
+                <header className="mdlext-accordion__panel__header">
+                  <div className="mdlext-accordion__panel__header__transform">
+                    <span>First section</span>
+                  </div>
+                </header>
+                <section className="mdlext-accordion__panel__content">
+                  <p>Content first section ...</p>
+                </section>
+              </li>
+              <li className="mdlext-accordion__panel">
+                <header className="mdlext-accordion__panel__header">
+                  <div className="mdlext-accordion__panel__header__transform">
+                    <span>Third section</span>
+                  </div>
+                </header>
+              </li>
+
+            </ul>
+          </div>
+          <div style={{height: 100}}>
+            <ul className="mdlext-accordion mdlext-accordion--vertical
+              mdlext-js-accordion mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events"
+              aria-multiselectable="false">
+              <li className="mdlext-accordion__panel">
+                <header className="mdlext-accordion__panel__header">
+                  <div className="mdlext-accordion__panel__header__transform">
+                    <span>Second section</span>
+                  </div>
+                </header>
+                <section className="mdlext-accordion__panel__content">
+                  <p>Content first section ...</p>
+                </section>
+              </li>
+
+            </ul>
+          </div>
+        </Layout>
+      )
+    });
+  });
+
   page('/:group', (ctx) => {
     const {group} = ctx.params;
     mount(PageCtx, {
@@ -71,9 +121,12 @@ export default (PageCtx, {mount, page}, {Components, Nav}) => {
         <Layout {...layoutAttributes} >
           <CLCenter {...centerAttributes} >
             <Element />
+
           </CLCenter>
         </Layout>
       )
     });
   });
+
+
 };
