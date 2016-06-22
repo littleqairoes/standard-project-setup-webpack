@@ -13,18 +13,45 @@ import {classList, prefix} from './../../libs';
  */
 export class CLCenter extends React.Component {
   render() {
+
+    // Params
+
     const {
+
+      // general params
+
+      id,
+      generalClassName,
+      specificClassName,
+      style,
+      centerStyle,
+      sideStyle,
+      children,
+      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      noSpacing,
-      classes,
-      addClasses,
+
+      // other params
+
       centerSize = 'half',
-      id,
-      children,
-      snackbar
+      noSpacing = false
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-center`;
+
+    // Children manipulation and checking
+
+    const [ center, left, right ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    // Classnames
+
     const className = classNames(
       'mdl-grid',
       {
@@ -33,17 +60,11 @@ export class CLCenter extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'center'),
+      specificClassName
     );
-    const attributes = {
-      className,
-      id
-    };
-    const [ center, left, right ] = children && React.Children.count(children) > 1 ?
-      children : [ children ];
 
-    const centerClassName = classNames(
+    const mainClassName = classNames(
       'mdl-cell',
       {
         'mdl-cell--6-col-desktop mdl-cell--6-col-tablet': centerSize === 'half',
@@ -58,7 +79,10 @@ export class CLCenter extends React.Component {
         'mdl-cell--2-offset-desktop': !left && centerSize === 'quarter',
         'mdl-cell--1-offset-desktop': !left && centerSize === 'eight'
       },
-      'mdl-cell--4-col-phone'
+      'mdl-cell--4-col-phone',
+      `${defaultClass}-main`,
+      classList(generalClassName, 'main'),
+      classList(specificClassName, 'main')
     );
 
     const sideClassName = classNames(
@@ -72,36 +96,66 @@ export class CLCenter extends React.Component {
           centerSize === 'eight' ||
           centerSize === 'full'
       },
-      'mdl-cell--4-col-phone'
+      'mdl-cell--4-col-phone',
+      `${defaultClass}-side`,
+      classList(generalClassName, 'side'),
+      classList(specificClassName, 'side')
     );
+
+    // Styles
+
+    // Functions
+
+    // Refs
+
+    // Attributes
+
+    const attributes = {
+      id,
+      className,
+      style
+    };
+
+    const centerAttributes = {
+      className: mainClassName,
+      style: centerStyle
+    };
+
+    const sideAttributes = {
+      className: sideClassName,
+      style: sideStyle
+    };
+
+    // Render return
+
     return (
       <div {...attributes} >
         {
           left ? (
-            <div className={sideClassName} >
+            <div {...sideAttributes} >
               {
                 typeof left !== 'string' ? React.cloneElement(center, {
-                  classes,
+                  generalClassName,
                   snackbar
                 }) : left
               }
             </div>
           ) : null
         }
-        <div className={centerClassName} >
+        <div {...centerAttributes} >
           {
             center && typeof center !== 'string' ? React.cloneElement(center, {
-              classes,
+              generalClassName,
               snackbar
             }) : center
           }
         </div>
         {
           right ? (
-            <div className={sideClassName} >
+            <div {...sideAttributes} >
               {
                 typeof right !== 'string' ? React.cloneElement(center, {
-                  classes,
+                  generalClassName,
                   snackbar
                 }) : right
               }

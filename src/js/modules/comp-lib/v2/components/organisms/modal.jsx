@@ -32,48 +32,88 @@ export class CLModal extends React.Component {
     }
   }
   render() {
+
+    // Params
+
     const {
-      width = '50%',
-      classes,
-      addClasses,
+
+      // general Params
+
       id,
+      generalClassName,
+      specificClassName,
+      style,
+      contentStyle,
       children,
-      snackbar
+      snackbar,
+
+      // other params
+
+      width = '50%'
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-modal`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'modal'),
+      specificClassName
     );
     // const closeClass = `${prefix}-close`;
     const contentClassName = classNames(
       `${defaultClass}-content`,
-      classList(classes, `${defaultClass}-content`),
-      classList(addClasses, `${defaultClass}-content`)
+      classList(generalClassName, 'content'),
+      classList(specificClassName, 'content')
     );
+
+    // Styles
+
+    const contentStyleEdited = Object.assign({}, {
+      width,
+      maxHeight: '90%',
+      overflow: 'auto'
+    }, contentStyle);
+
+    // Functions
+
+    // Refs
+
     const ref = (c) => {
       this.modal = c;
     };
+
+    // Attributes
+
     const attributes = {
-      className,
       id,
+      className,
+      style,
       ref
     };
+
     const closeAttributes = {
-      materialIcon: 'close',
-      isIcon: true,
-      classes: `${classes} modal-close`,
+      id: id && typeof id === 'string' ? `${id}-modal-close` : null,
+      generalClassName: `${generalClassName} modal-close`,
+      specificClassName: classList(specificClassName, 'modal-close'),
       actionHandler: this.closeModal,
+      isIcon: true,
+      materialIcon: 'close',
       tooltip: 'close'
     };
+
     const contentAttributes = {
       className: contentClassName,
-      style: {
-        width,
-        maxHeight: '90%',
-        overflow: 'auto'
-      }
+      style: contentStyleEdited
     };
 
     return (
@@ -83,7 +123,7 @@ export class CLModal extends React.Component {
           {
             React.Children.map(children, child => (typeof child === 'string' ? child :
               React.cloneElement(child, {
-                classes,
+                generalClassName,
                 closeModal: this.closeModal,
                 snackbar
               })
