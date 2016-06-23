@@ -6,20 +6,20 @@ import {classList, prefix, textareaLib} from './../../libs';
 
 /**
  * Creates a Markdown Editor form.
- * @param {string} [addClasses] Adds optional classes.
- * @param {string} [errorLabel]
- * @param {Boolean} [hideOnLargeScreen=false]
- * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
- * @param {Number} [maxCharacters]
- * @param {Number} [maxRows]
- * @param {string} [name]
+ * @param {string}   [addClasses] Adds optional classes.
+ * @param {string}   [errorLabel]
+ * @param {Boolean}  [hideOnLargeScreen=false]
+ * @param {Boolean}  [hideOnSmallScreen=false]
+ * @param {string}   [id]
+ * @param {Number}   [maxCharacters]
+ * @param {Number}   [maxRows]
+ * @param {string}   [name]
  * @param {Function} [onChangeHandler]
- * @param {string} [pattern] Specifies a regex pattern for the editor to follow.
- * @param {string} [placeholder]
- * @param {Number} [rows] Specifies the editor's initial number of rows.
- * @param {Boolean} [shouldFloat]
- * @param {string} [value]
+ * @param {string}   [pattern] Specifies a regex pattern for the editor to follow.
+ * @param {string}   [placeholder]
+ * @param {Number}   [rows] Specifies the editor's initial number of rows.
+ * @param {Boolean}  [shouldFloat]
+ * @param {string}   [value]
  */
 
 export class CLMarkdownEditor extends React.Component {
@@ -92,8 +92,33 @@ export class CLMarkdownEditor extends React.Component {
       }
     );
   }
-  renderButtons(id) {
+  render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `markdown-editor-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      hideOnLargeScreen,
+      hideOnSmallScreen,
+
+      // other params
+
+      data,
+      errorLabel,
+      inputRef,
+      maxCharacters,
+      maxRows,
+      name,
+      pattern,
+      onChangeHandler = () => {},
       options = [
         'bold',
         'italics',
@@ -104,56 +129,24 @@ export class CLMarkdownEditor extends React.Component {
         'bulletItem',
         'numberItem',
         'headerText'
-      ]
-    } = this.props;
-    return options.map((button, key) => {
-      const option = this.optionActions(button);
-      const {label: tooltip, icon: materialIcon} = option;
-      const actionHandler = () => {
-        option.onCallback();
-        // this.textareaValueCheck();
-      };
-      const attributes = {
-        actionHandler,
-        id: `${id}-${option.icon}-markdown-editor`,
-        key,
-        tooltip,
-        materialIcon,
-        isIcon: true
-      };
-      return (
-        <CLButton {...attributes}/>
-      );
-    });
-  }
-  render() {
-    const r = random();
-    const {
-      id = r.string(10),
-      name,
+      ],
       placeholder,
-      value,
       rows,
-      maxRows,
-      classes,
-      addClasses,
-      errorLabel,
-      pattern,
-      maxCharacters,
       shouldFloat,
-      onChangeHandler = () => {},
-      hideOnLargeScreen,
-      hideOnSmallScreen,
-      inputRef,
-      data,
-      snackbar
+      value
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
 
     const defaultClass = `${prefix}-markdown-editor`;
 
-    const ref = (c) => {
-      this.textfield = c;
-    };
+    // Children manipulation and checking
+
+    // Classnames
 
     const className = classNames(
       {
@@ -161,35 +154,75 @@ export class CLMarkdownEditor extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'markdown-editor'),
+      specificClassName
     );
 
-    const attributes = {
-      shouldFloat,
-      classes,
-      type: 'textarea',
-      id,
-      placeholder,
-      errorLabel,
-      pattern,
-      rows,
-      maxRows,
-      value,
-      maxCharacters,
-      ref,
-      onChangeHandler,
-      name,
-      inputRef,
-      data,
-      snackbar
+    // Styles
+
+    // Refs
+
+    const ref = (c) => {
+      this.textfield = c;
     };
+
+    // Attributes
+
+    const attributes = {
+      id,
+      className,
+      style,
+
+      data,
+      errorLabel,
+      generalClassName,
+      inputRef,
+      maxCharacters,
+      maxRows,
+      name,
+      onChangeHandler,
+      pattern,
+      placeholder,
+      ref,
+      shouldFloat,
+      snackbar,
+      rows,
+      type: 'textarea',
+      value
+    };
+
+    // Functions
+
+    const renderButtons = (c) => {
+
+      return options.map((button, key) => {
+        const option = this.optionActions(button);
+        const {label: tooltip, icon: materialIcon} = option;
+        const actionHandler = () => {
+          option.onCallback();
+          // this.textareaValueCheck();
+        };
+        const buttonAttributes = {
+          actionHandler,
+          id: `${c}-${option.icon}-markdown-editor`,
+          key,
+          tooltip,
+          materialIcon,
+          isIcon: true
+        };
+        return (
+          <CLButton {...buttonAttributes}/>
+        );
+      });
+    };
+
+    // Render return
 
     return (
       <div className = {className} >
         <div className="mdl-grid mdl-grid--no-spacing">
           <div className="mdl-cell mdl-cell--12-col">
-            {this.renderButtons(id)}
+            {renderButtons(id)}
           </div>
           <div className="mdl-cell mdl-cell--12-col">
             <CLTextField {...attributes}/>
