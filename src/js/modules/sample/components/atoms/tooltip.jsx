@@ -1,5 +1,5 @@
 import React from 'react';
-import {CLTooltip, CLButton} from './../../../comp-lib';
+import {CLTooltip, CLButton, CLSpacer} from './../../../comp-lib';
 
 export class TooltipDemo extends React.Component {
   render() {
@@ -15,9 +15,50 @@ export class TooltipDemo extends React.Component {
         <hr/>
         <h5>String Tooltip (Large)</h5>
         <span id={'string2'}>
-          TOOLTIP LARGER!
+          LARGER TOOLTIP!
         </span>
         <CLTooltip tooltip={'This is a tooltip'} idFor={'string2'} isLarge={true}/>
+        <hr/>
+        <h5> Tooltip (Positions)</h5>
+        <span id={'top'}>
+          Tooltip top!
+        </span>
+        <span id={'bottom'}>
+          Tooltip bottom!
+        </span>
+        <span id={'left'}>
+          Tooltip left!
+        </span>
+        <span id={'right'}>
+          Tooltip right!
+        </span>
+        <CLTooltip
+          tooltip={'Tooltip'}
+          idFor={'top'}
+          isLarge={true}
+          tooltipPos={'up'}
+        />
+        <CLSpacer />
+        <CLTooltip
+          tooltip={'Tooltip'}
+          idFor={'bottom'}
+          isLarge={true}
+          tooltipPos={'bottom'}
+        />
+        <CLSpacer />
+        <CLTooltip
+          tooltip={'Tooltip'}
+          idFor={'left'}
+          isLarge={true}
+          tooltipPos={'left'}
+        />
+        <CLSpacer />
+        <CLTooltip
+          tooltip={'Tooltip'}
+          idFor={'right'}
+          isLarge={true}
+          tooltipPos={'right'}
+        />
       </div>
     );
   }
