@@ -173,8 +173,8 @@ export class CLGrid extends React.Component {
 
       const cellAttributes = {
         id: id && typeof id === 'string' ? `${id}-${key}` : null,
-        cellClassName,
-        cellStyle,
+        className: cellClassName,
+        style: cellStyle,
         key
       };
 
