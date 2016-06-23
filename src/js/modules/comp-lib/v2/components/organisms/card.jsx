@@ -88,7 +88,6 @@ export class CLCard extends React.Component {
       minWidth
     }, style);
 
-
     // Refs
 
     // Attributes
