@@ -56,7 +56,6 @@ export class CLCard extends React.Component {
 
     const defaultClass = `${prefix}-card`;
 
-
     // Children manipulation and checking
 
     // Classnames
