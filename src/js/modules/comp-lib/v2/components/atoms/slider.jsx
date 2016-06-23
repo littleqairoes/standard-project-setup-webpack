@@ -41,10 +41,18 @@ export class CLSlider extends React.Component {
       name,
       inputRef = () => {}
     } = this.props;
+
+    if (componentHandler) {
+      componentHandler.upgradeElement(this.slider);
+    }
+
     if (data[name]) {
       this.setValue(data[name]);
     }
     inputRef(this, name);
+
+
+
     this.onChangeHandler();
   }
   setValue(value) {

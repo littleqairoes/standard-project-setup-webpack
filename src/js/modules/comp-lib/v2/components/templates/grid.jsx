@@ -178,6 +178,8 @@ export class CLGrid extends React.Component {
         key
       };
 
+      console.log(snackbar)
+
       return (
         <div {...cellAttributes} >
           {

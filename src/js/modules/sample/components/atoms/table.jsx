@@ -44,7 +44,7 @@ export class TableDemo extends React.Component {
         <h4>CLTable</h4>
         <hr/>
         <h5>Table</h5>
-        <CLTable headings={headings} rows={rows}/>
+        <CLTable headings={headings} rows={rows} hasShadow={0}/>
         <hr/>
         <h5>Shadowed Table</h5>
         <CLTable headings={headings} rows={rows} isSelectable={true} hasShadow={2}/>

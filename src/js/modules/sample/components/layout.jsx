@@ -81,11 +81,15 @@ export class Layout extends React.Component {
           <Nav snackbar = {snackbar} />
         </CLDrawer>
         <CLBody>
-          {React.Children.map(children, child => (typeof child !== 'string' ?
-            React.cloneElement(child, {
-              snackbar
-            }) : child
-          ))}
+          {
+            React.Children.map(children, child => {
+              console.log(snackbar);
+              return typeof child !== 'string' ?
+                React.cloneElement(child, {
+                  snackbar
+                }) : child;
+            })
+          }
         </CLBody>
         <CLSnackbar ref={snackbarRef}/>
       </CLLayout>
