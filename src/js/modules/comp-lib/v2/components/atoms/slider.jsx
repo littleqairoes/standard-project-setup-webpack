@@ -79,14 +79,11 @@ export class CLSlider extends React.Component {
       generalClassName,
       specificClassName,
       style,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 
       // other params
 
-      data,
-      inputRef = () => {},
       isDisabled = false,
       max = 100,
       min = 0,
@@ -145,7 +142,8 @@ export class CLSlider extends React.Component {
       ref,
       step,
       tabIndex,
-      type: 'range'
+      type: 'range',
+      style
     };
 
     // Functions

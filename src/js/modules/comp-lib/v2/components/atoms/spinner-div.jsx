@@ -106,7 +106,6 @@ export class CLSpinnerDiv extends React.Component {
 
     const attributes = {
       id,
-      className,
       style: styleSpinner,
       ref
     };
