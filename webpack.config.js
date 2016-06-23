@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const plugin = new webpack.DefinePlugin({
-  'process.env.NODE_ENV': '"production"'
+  'process.env.NODE_ENV': '"development"'
 });
 
 module.exports = {
@@ -19,6 +19,10 @@ module.exports = {
       }
     ],
     loaders: [
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
       {
         test: /\.scss$/,
         include: /src/,

@@ -1,0 +1,10 @@
+@import './../prefix';
+
+.#{$prefix}-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  .#{$prefix}-carousel-slider {
+    transition: left 0.5s ease-out;
+  }
+}
