@@ -28,7 +28,6 @@ export class CLTooltip extends React.Component {
       generalClassName,
       specificClassName,
       style,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 

@@ -158,7 +158,7 @@ export class CLToggle extends React.Component {
 
     // Styles
 
-    const toggleStyle = Object.assign({}, {
+    const styleEdited = Object.assign({}, {
       paddingTop: isItemPrimary && type === 'radio' && (!label || label.trim() === '') ?
         22 : 0,
       width: isItemPrimary && type === 'checkbox' && (!label || label.trim() === '') ?
@@ -181,7 +181,7 @@ export class CLToggle extends React.Component {
       className,
       htmlFor: idFor,
       ref: containerRef,
-      style: toggleStyle
+      style: styleEdited
     };
 
     const inputAttributes = {
@@ -194,7 +194,7 @@ export class CLToggle extends React.Component {
       ref
     };
 
-    // Functions
+    // Render Functions
 
     const renderLabel = () => {
       // type, label, materialIcon
