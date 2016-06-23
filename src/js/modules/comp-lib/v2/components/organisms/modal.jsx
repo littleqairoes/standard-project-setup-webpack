@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import {CLButton} from './../atoms';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 export class CLModal extends React.Component {
@@ -35,11 +36,15 @@ export class CLModal extends React.Component {
 
     // Params
 
+    const r = random();
+
+    // Params
+
     const {
 
-      // general Params
+      // general params
 
-      id,
+      id = `card-${r.string(10)}`,
       generalClassName,
       specificClassName,
       style,
@@ -84,8 +89,6 @@ export class CLModal extends React.Component {
       overflow: 'auto'
     }, contentStyle);
 
-    // Functions
-
     // Refs
 
     const ref = (c) => {
@@ -115,6 +118,10 @@ export class CLModal extends React.Component {
       className: contentClassName,
       style: contentStyleEdited
     };
+
+    // Functions
+
+    // Render return
 
     return (
       <div {...attributes} >
