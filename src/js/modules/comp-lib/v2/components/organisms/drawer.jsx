@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
@@ -10,30 +11,66 @@ import {classList, prefix} from './../../libs';
 
 export class CLDrawer extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      classes,
-      addClasses,
-      id,
+
+      // general params
+
+      id = `drawer-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       children,
-      snackbar
+
+      // other params
+
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-drawer`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-layout__drawer',
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'drawer'),
+      specificClassName
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Functions
+
+    // Render return
+
     return (
       <div {...attributes} >
         {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
-              classes,
+              generalClassName,
               navpos: 'drawer',
               snackbar
             })

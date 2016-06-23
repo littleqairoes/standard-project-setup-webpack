@@ -1,12 +1,13 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLHeader component.
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideTopOnWaterfall=false] Makes the top row of the header disappear on slide instead of the bottom. `isWaterfall` should be set to true.
- * @param {string} [id]
+ * @param {string}  [id]
  * @param {Boolean} [isScrollable=false] The header disappears on scroll.
  * @param {Boolean} [isSeamed=false] The header loses its shadow beneath.
  * @param {Boolean} [isTransparent=false] Makes the header transparent.
@@ -15,19 +16,45 @@ import {classList, prefix} from './../../libs';
 
 export class CLHeader extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
-      isTransparent,
-      isScrollable,
-      isWaterfall,
-      hideTopOnWaterfall,
-      isSeamed,
-      classes,
-      addClasses,
-      id,
+
+      // general params
+
+      id = `header-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
       children,
-      snackbar
+
+      // other params
+
+      hideTopOnWaterfall,
+      isScrollable,
+      isSeamed,
+      isTransparent,
+      isWaterfall
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-header`;
+
+    // Children manipulation and checking
+
+    const [ row1, row2 ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    // Classnames
+
     const className = classNames(
       'mdl-layout__header',
       {
@@ -38,27 +65,38 @@ export class CLHeader extends React.Component {
         'mdl-layout__header--seamed': isSeamed
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'header'),
+      specificClassName
     );
-    const [ row1, row2 ] = children && React.Children.count(children) > 1 ?
-      children : [ children ];
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
+
+    // Functions
+
+    // Render return
+
     return (
       <header {...attributes} >
         {
           row1 && typeof row1 !== 'string' ? React.cloneElement(row1, {
-            classes,
+            generalClassName,
             navpos: 'header',
             snackbar
           }) : row1
         }
         {
           row2 && typeof row !== 'string' ? React.cloneElement(row2, {
-            classes,
+            generalClassName,
             navpos: 'header',
             snackbar
           }) : row2

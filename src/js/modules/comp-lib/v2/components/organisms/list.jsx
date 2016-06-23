@@ -1,49 +1,86 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLList component that can act as a homogenous list of data items
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  */
 
 export class CLList extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `list-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      children,
       hideOnLargeScreen,
       hideOnSmallScreen,
+
+      // other params
+
       div = false,
-      twoLine = false,
       threeLine = false,
-      width = 300,
-      classes,
-      addClasses,
-      id,
-      children,
-      snackbar
+      twoLine = false,
+      width = 300
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-list`;
+
+    // Children manipulation and checking
+
+    // Classnames
+
     const className = classNames(
       'mdl-list',
       {
         'mdl-layout--small-screen-only': hideOnLargeScreen,
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
-      defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+       defaultClass,
+      classList(generalClassName, 'list'),
+      specificClassName
     );
-    const style = {
+
+    // Styles
+
+    const styleList = Object.assign({}, {
       width
-    };
+    }, style);
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
-      className,
       id,
-      style
+      className,
+      style: styleList
     };
+
+    // Functions
+
+    // Render return
+
     return div ? (
       <div {...attributes} >
         {
@@ -54,7 +91,7 @@ export class CLList extends React.Component {
               </span>
             </div>
           ) : React.cloneElement(child, {
-            classes,
+            generalClassName,
             div,
             twoLine,
             threeLine,
@@ -73,7 +110,7 @@ export class CLList extends React.Component {
             </li>
           ) : React.cloneElement(child, {
             className: 'mdl-list__item',
-            classes,
+            generalClassName,
             div,
             twoLine,
             threeLine,

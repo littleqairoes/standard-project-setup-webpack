@@ -92,9 +92,11 @@ export class CLMarkdownRenderer extends React.Component {
     // Attributes
 
     const attributes = {
-      dangerouslySetInnerHTML,
+      id,
       className,
-      id
+      style,
+      dangerouslySetInnerHTML
+
     };
 
     // Functions
