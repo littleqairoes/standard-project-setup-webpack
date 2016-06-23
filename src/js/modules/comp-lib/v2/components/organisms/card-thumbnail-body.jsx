@@ -1,35 +1,58 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix, placeholders} from './../../libs';
 
 /**
  * Adds a thumbnail within CLCard.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  * @param {Boolean} [noSpacing=false] Adds a padding around the thumbnail.
- * @param {string} [thumbnail] Source of the thumbnail.
- * @param {string} [thumbnailHref="#"] URL of where the thumbnail redirect if clicked.
+ * @param {string}  [thumbnail] Source of the thumbnail.
+ * @param {string}  [thumbnailHref="#"] URL of where the thumbnail redirect if clicked.
  */
 
 export class CLCardThumbnailBody extends React.Component {
   render() {
-    const defaultClass = `${prefix}-card-thumbnail-body`;
+    const r = random();
+
+    // Params
 
     const {
-      thumbnail: src = placeholders.image4x3,
-      thumbnailPos = 'right',
-      thumbnailHref: href = '#',
-      thumbnailWidth = 200,
-      noSpacing = false,
+
+      // general params
+
+      id = `card-thumbnail-body-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      styleThumbnailPos,
+      snackbar,
+      children,
       hideOnLargeScreen,
       hideOnSmallScreen,
-      classes,
-      addClasses,
-      id,
-      children,
-      snackbar
+
+      // other params
+
+      noSpacing = false,
+      thumbnail: src = placeholders.image4x3,
+      thumbnailHref: href = '#',
+      thumbnailPos = 'right',
+      thumbnailWidth = 200,
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
+    const defaultClass = `${prefix}-card-thumbnail-body`;
+
+    // Children manipulation and checking
+
+    // Classnames
 
     const className = classNames(
       'mdl-grid',
@@ -39,42 +62,60 @@ export class CLCardThumbnailBody extends React.Component {
         'mdl-layout--large-screen-only': hideOnSmallScreen
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'card-thumbnail-body'),
+      specificClassName
     );
 
+    const imageClassName = classNames(
+      `${defaultClass}-thumbnail`,
+      classList(generalClassName, 'card-thumbnail-body-thumbnail'),
+      classList(specificClassName, 'thumbnail')
+    );
+
+    const anchorClassName = classNames(
+      `${defaultClass}-thumbnail-anchor`,
+      classList(generalClassName, 'card-thumbnail-body-thumbnail-anchor'),
+      classList(specificClassName, 'thumbnail-anchor')
+    );
+
+    // Styles
+
+    const styleThumbnailBody = Object.assign({}, {
+      width: '100%'
+    }, style);
+
+    const thumbnailPosStyle = Object.assign({} ,{
+      textAlign: thumbnailPos,
+    }, styleThumbnailPos);
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
-      className,
       id,
-      style: {
-        width: '100%'
-      }
+      className,
+      style: styleThumbnailBody
     };
 
     const imageAttribtues = {
-      className: classNames(
-        `${defaultClass}-thumbnail`,
-        classList(classes, `${defaultClass}-thumbnail`),
-        classList(addClasses, `${defaultClass}-thumbnail`)
-      ),
+      className: imageClassName,
       src,
       width: thumbnailWidth
     };
 
     const anchorAttributes = {
-      className: classNames(
-        `${defaultClass}-thumbnail-anchor`,
-        classList(classes, `${defaultClass}-thumbnail-anchor`),
-        classList(addClasses, `${defaultClass}-thumbnail-anchor`)
-      ),
+      className: anchorClassName,
       href
     };
 
     const thumbnailPosAttributes = {
-      style: {
-        textAlign: thumbnailPos,
-      }
+      style: thumbnailPosStyle
     };
+
+    // Render Functions
+
+    // Render Return
 
     return (
       <div {...attributes} >
@@ -92,7 +133,7 @@ export class CLCardThumbnailBody extends React.Component {
         <div className='mdl-cell mdl-cell--8-col mdl-cell--6-col-tablet mdl-cell--3-col-phone'>
           {
             React.Children.map(children, child => (React.cloneElement(child, {
-              classes,
+              generalClassName,
               snackbar
             })))
           }
