@@ -37,7 +37,7 @@ export class CLSlider extends React.Component {
   }
   updateForm() {
     const {
-      data,
+      data = {},
       name,
       inputRef = () => {}
     } = this.props;
