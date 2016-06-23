@@ -8,3 +8,4 @@ export * from './markdown-renderer.jsx';
 export * from './navlink.jsx';
 export * from './progress-bar.jsx';
 export * from './slider.jsx';
+export * from './snackbar.jsx';
