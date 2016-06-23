@@ -46,7 +46,11 @@ export default (PageCtx, {mount, page}, {Components, Nav}) => {
         elements.push(Group[i]);
       }
     }
-    return elements.map((Element, key) => (<Element key={key} />));
+    // return elements;
+
+    return React.Children.map(elements.map((Element, key) =>
+      (<Element key={key} />)), child => (child));
+    // return elements.map((Element, key) => (<Element key={key} />));
   };
 
   page('/test', () => {
@@ -82,7 +86,6 @@ export default (PageCtx, {mount, page}, {Components, Nav}) => {
         <Layout {...layoutAttributes} >
           <CLCenter {...centerAttributes} >
             <Element />
-
           </CLCenter>
         </Layout>
       )

@@ -181,7 +181,7 @@ export class CLGrid extends React.Component {
       return (
         <div {...cellAttributes} >
           {
-            typeof child === 'string' ?
+            typeof child !== 'string' ?
               React.cloneElement(child, {
                 generalClassName,
                 snackbar
