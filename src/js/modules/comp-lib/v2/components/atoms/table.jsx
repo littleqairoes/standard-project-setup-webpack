@@ -31,7 +31,6 @@ export class CLTable extends React.Component {
       generalClassName,
       specificClassName,
       style,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 
@@ -122,7 +121,7 @@ export class CLTable extends React.Component {
 
       return c ? c.map((row,key) => {
         return (
-          <tr>
+          <tr key={key}>
             {renderRow(row)}
           </tr>
         );
