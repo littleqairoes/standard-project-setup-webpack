@@ -9,6 +9,7 @@ export class IconDemo extends React.Component {
         <hr/>
         <CLIcon />
         <CLIcon icon = "people" />
+        <h5>people</h5>
       </div>
     );
   }
