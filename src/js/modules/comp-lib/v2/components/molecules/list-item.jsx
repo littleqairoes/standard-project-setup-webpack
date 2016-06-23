@@ -1,30 +1,57 @@
 import React from 'react';
 import classNames from 'classnames';
+import random from 'random-js';
 import {classList, prefix} from './../../libs';
 
 /**
  * Adds a CLListItem component that acts as the items for CLList
- * @param {string} [addClasses] Adds optional classes.
+ * @param {string}  [addClasses] Adds optional classes.
  * @param {Boolean} [hideOnLargeScreen=false]
  * @param {Boolean} [hideOnSmallScreen=false]
- * @param {string} [id]
+ * @param {string}  [id]
  */
 
 export class CLListItem extends React.Component {
   render() {
+    const r = random();
+
+    // Params
+
     const {
+
+      // general params
+
+      id = `list-item-${r.string(10)}`,
+      generalClassName,
+      specificClassName,
+      style,
+      snackbar,
+      children,
       hideOnLargeScreen,
       hideOnSmallScreen,
+
+      // other params
+
       div = false,
-      twoLine = false,
       threeLine = false,
-      classes,
-      addClasses,
-      id,
-      children,
-      snackbar
+      twoLine = false
     } = this.props;
+
+    // Other imports and initialization
+
+    // ID manipulation
+
+    // Default Class
+
     const defaultClass = `${prefix}-list-item`;
+
+    // Children manipulation and checking
+
+    const [ primary, secondary ] = children && React.Children.count(children) > 1 ?
+      children : [ children ];
+
+    // Classnames
+
     const className = classNames(
       'mdl-list__item',
       {
@@ -34,27 +61,41 @@ export class CLListItem extends React.Component {
         '.mdl-list__item--three-line': threeLine && !twoLine
       },
       defaultClass,
-      classList(classes, defaultClass),
-      classList(addClasses, defaultClass)
+      classList(generalClassName, 'list-item'),
+      specificClassName
     );
+
     const primaryClassName = classNames(
       'mdl-list__item-primary-content',
       `${defaultClass}-primary`,
-      classList(classes, `${defaultClass}-primary`),
-      classList(addClasses, `${defaultClass}-primary`)
+      classList(generalClassName, 'list-item-primary'),
+      classList(specificClassName, 'primary')
     );
+
     const secondaryClassName = classNames(
       'mdl-list__item-secondary-content',
       `${defaultClass}-secondary`,
-      classList(classes, `${defaultClass}-secondary`),
-      classList(addClasses, `${defaultClass}-secondary`)
+      classList(generalClassName, 'list-item-secondary'),
+      classList(specificClassName, 'secondary')
     );
+
+    // Styles
+
+    // Refs
+
+    // Attributes
+
     const attributes = {
+      id,
       className,
-      id
+      style
     };
-    const [ primary, secondary ] = children && React.Children.count(children) > 1 ?
-      children : [ children ];
+
+    // Functions
+
+    // Render return
+
+
     return div ? (
       <div {...attributes} >
         {
@@ -63,7 +104,7 @@ export class CLListItem extends React.Component {
               {primary}
             </span>
           ) : React.cloneElement(primary, {
-            classes,
+            generalClassName,
             twoLine,
             threeLine,
             snackbar
@@ -75,7 +116,7 @@ export class CLListItem extends React.Component {
               {secondary}
             </span>
           ) : React.cloneElement(secondary, {
-            classes,
+            generalClassName,
             twoLine,
             threeLine,
             snackbar
@@ -90,7 +131,7 @@ export class CLListItem extends React.Component {
               {primary}
             </span>
           ) : React.cloneElement(primary, {
-            classes,
+            generalClassName,
             twoLine,
             threeLine,
             snackbar
@@ -102,7 +143,7 @@ export class CLListItem extends React.Component {
               {secondary}
             </span>
           ) : React.cloneElement(secondary, {
-            classes,
+            generalClassName,
             twoLine,
             threeLine,
             snackbar
