@@ -4,3 +4,7 @@ export * from './card-text.jsx';
 export * from './card-title.jsx';
 export * from './logo.jsx';
 export * from './icon.jsx';
+export * from './markdown-renderer.jsx';
+export * from './navlink.jsx';
+export * from './progress-bar.jsx';
+export * from './slider.jsx';
