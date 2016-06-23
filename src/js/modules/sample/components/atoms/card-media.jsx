@@ -7,7 +7,7 @@ export class CardMediaDemo extends React.Component {
       <div>
         <h4>CLCardMedia</h4>
         <hr/>
-        <CLCardMedia src='url("goo.gl/Ao0H0n")'/>
+        <CLCardMedia src='https://goo.gl/Ao0H0n'/>
       </div>
     );
   }

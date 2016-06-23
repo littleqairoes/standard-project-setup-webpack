@@ -9,3 +9,5 @@ export * from './navlink.jsx';
 export * from './progress-bar.jsx';
 export * from './slider.jsx';
 export * from './snackbar.jsx';
+export * from './spinner.jsx';
+export * from './table.jsx';
