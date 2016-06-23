@@ -1,7 +1,6 @@
 import React from 'react';
 import {CLCardMedia} from './../../../comp-lib';
 
-console.log('CARD MEDIA');
 export class CardMediaDemo extends React.Component {
   render() {
     return (
