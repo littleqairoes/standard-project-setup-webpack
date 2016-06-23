@@ -54,6 +54,7 @@ export class Layout extends React.Component {
     // Functions
 
     const showNotif = (message) => {
+      console.log(this.snackbar, message)
       if (this.snackbar) {
         this.snackbar.showNotification(message);
       } else {
@@ -68,27 +69,21 @@ export class Layout extends React.Component {
     // Render return
 
     return (
-      <CLLayout fixedHeader={true}>
+      <CLLayout fixedHeader={true} snackbar = {snackbar}>
         <CLHeader>
           <CLHeaderRow>
             {Logo}
             <CLSpacer />
-            <Nav snackbar = {snackbar} />
+            <Nav />
           </CLHeaderRow>
         </CLHeader>
         <CLDrawer>
           <CLLogo {...logoAttributes} label="N.I.C.E" />
-          <Nav snackbar = {snackbar} />
+          <Nav />
         </CLDrawer>
         <CLBody>
           {
-            React.Children.map(children, child => {
-              console.log(snackbar);
-              return typeof child !== 'string' ?
-                React.cloneElement(child, {
-                  snackbar
-                }) : child;
-            })
+            React.Children.map(children, child => (child))
           }
         </CLBody>
         <CLSnackbar ref={snackbarRef}/>

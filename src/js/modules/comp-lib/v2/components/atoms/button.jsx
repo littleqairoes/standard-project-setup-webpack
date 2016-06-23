@@ -44,7 +44,7 @@ export class CLButton extends React.Component {
 
       // other params
 
-      actionHandler: onClick = () => {},
+      actionHandler: onClick = () => {console.log('no action')},
       anchor = true,
       colored,
       fontIcon,

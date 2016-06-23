@@ -128,8 +128,6 @@ export class CLCenter extends React.Component {
 
     // Render return
 
-    console.log(snackbar)
-
     return (
       <div {...attributes} >
         {
