@@ -1,5 +1,5 @@
 import React from 'react';
-import {CLTooltip, CLButton} from './../../../comp-lib';
+import {CLTooltip, CLButton, CLSpacer} from './../../../comp-lib';
 
 export class TooltipDemo extends React.Component {
   render() {
