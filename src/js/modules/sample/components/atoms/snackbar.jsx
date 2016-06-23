@@ -1,5 +1,5 @@
 import React from 'react';
-import {CLSnackbar} from './../../../comp-lib';
+import {CLButton} from './../../../comp-lib';
 
 export class SnackbarDemo extends React.Component {
   render() {
@@ -7,7 +7,12 @@ export class SnackbarDemo extends React.Component {
       <div>
         <h4>CLSnackbar</h4>
         <hr/>
-        <CLSnackbar/>
+        <h5>Click the Button to Display Snackbar</h5>
+        <CLButton actionHandler={() => {
+          if (snackbar){
+            snackbar.showNotification('Snackbar Here!')
+          }
+        }} />
       </div>
     );
   }
