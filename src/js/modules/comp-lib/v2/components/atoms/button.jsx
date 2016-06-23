@@ -22,6 +22,7 @@ import {classList, prefix} from './../../libs';
  * @param {string}   [label] Specifies the text on the button.
  * @param {Boolean}  [withRipple=true] Adds the ripple effect on the button on click. For more information, go [here](https://getmdl.io/components/index.html#buttons-section).
  *
+ *
  */
 
 export class CLButton extends React.Component {
