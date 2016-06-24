@@ -229,7 +229,7 @@ export class CLNavLink extends React.Component {
         style: itemStyle
       };
 
-      return navpos === 'header' ? (
+      return navpos === 'header' && isSubMenu ? (
         <a {...linkAttributes} >
           <li {...itemAttributes} >
             {subName}
