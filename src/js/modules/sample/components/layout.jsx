@@ -54,7 +54,7 @@ export class Layout extends React.Component {
     // Functions
 
     const showNotif = (message) => {
-      console.log(this.snackbar, message)
+      console.log(this.snackbar, message);
       if (this.snackbar) {
         this.snackbar.showNotification(message);
       } else {

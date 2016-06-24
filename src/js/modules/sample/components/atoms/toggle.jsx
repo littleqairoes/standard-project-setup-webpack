@@ -9,8 +9,10 @@ export class ToggleDemo extends React.Component {
         <hr/>
         <h5>Toggle (Radio)</h5>
         <CLToggle type={'radio'} label={'option1'} name={'opt1'}/>
-        <CLToggle type={'radio'} label={'option2'} name={'opt2'}/>
-        <CLToggle type={'radio'} label={'option3'} name={'opt3'}/>
+        <br/>
+        <CLToggle type={'radio'} label={'option2'} name={'opt1'}/>
+        <br/>
+        <CLToggle type={'radio'} label={'option3'} name={'opt1'}/>
         <hr/>
         <h5>Toggle (Checkbox)</h5>
         <CLToggle type={'checkbox'} label={'box1'} name={'boxopt1'}/>
@@ -19,8 +21,6 @@ export class ToggleDemo extends React.Component {
         <hr/>
         <h5>Toggle (Switch)</h5>
         <CLToggle type={'switch'} label={'switch1'} name={'switchopt1'}/>
-
-
       </div>
     );
   }
