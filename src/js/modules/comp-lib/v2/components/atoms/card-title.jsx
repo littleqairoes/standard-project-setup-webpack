@@ -36,6 +36,7 @@ export class CLCardTitle extends React.Component {
       hideOnLargeScreen,
       hideOnSmallScreen,
       style,
+      headerStyle,
 
       // other params
 
@@ -101,7 +102,8 @@ export class CLCardTitle extends React.Component {
     };
 
     const headerAttributes = {
-      className: headerClassName
+      className: headerClassName,
+      style: headerStyle
     };
 
     // Functions
