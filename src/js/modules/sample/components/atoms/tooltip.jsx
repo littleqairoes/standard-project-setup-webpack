@@ -38,21 +38,21 @@ export class TooltipDemo extends React.Component {
           isLarge={true}
           tooltipPos={'up'}
         />
-        <CLSpacer />
+        <br/>
         <CLTooltip
           tooltip={'Tooltip'}
           idFor={'bottom'}
           isLarge={true}
           tooltipPos={'bottom'}
         />
-        <CLSpacer />
+        <br/>
         <CLTooltip
           tooltip={'Tooltip'}
           idFor={'left'}
           isLarge={true}
           tooltipPos={'left'}
         />
-        <CLSpacer />
+        <br/>
         <CLTooltip
           tooltip={'Tooltip'}
           idFor={'right'}
