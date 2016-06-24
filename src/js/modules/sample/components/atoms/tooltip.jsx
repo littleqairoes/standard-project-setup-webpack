@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< a7343b1be805dc06923bd80dcf272dcecdbe9cec
 import {CLTooltip, CLButton, CLSpacer} from './../../../comp-lib';
+=======
+import {CLTooltip, CLButton} from './../../../comp-lib';
+>>>>>>> Create more demo examples for text-field and tooltip and create demo toggle
 
 export class TooltipDemo extends React.Component {
   render() {
@@ -15,6 +19,7 @@ export class TooltipDemo extends React.Component {
         <hr/>
         <h5>String Tooltip (Large)</h5>
         <span id={'string2'}>
+<<<<<<< a7343b1be805dc06923bd80dcf272dcecdbe9cec
           LARGER TOOLTIP!
         </span>
         <CLTooltip tooltip={'This is a tooltip'} idFor={'string2'} isLarge={true}/>
@@ -59,6 +64,11 @@ export class TooltipDemo extends React.Component {
           isLarge={true}
           tooltipPos={'right'}
         />
+=======
+          TOOLTIP LARGER!
+        </span>
+        <CLTooltip tooltip={'This is a tooltip'} idFor={'string2'} isLarge={true}/>
+>>>>>>> Create more demo examples for text-field and tooltip and create demo toggle
       </div>
     );
   }
