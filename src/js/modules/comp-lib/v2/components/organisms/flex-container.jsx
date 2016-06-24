@@ -97,7 +97,7 @@ export class CLFlexContainer extends React.Component {
         {
           React.Children.map(children, child => (typeof child === 'string' ? child :
             React.cloneElement(child, {
-              generalClassName
+              specificClassName: 'flex-item'
             })
           ))
         }
