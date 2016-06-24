@@ -19,6 +19,10 @@ export class ToggleDemo extends React.Component {
         <hr/>
         <h5>Toggle (Switch)</h5>
         <CLToggle type={'switch'} label={'switch1'} name={'switchopt1'}/>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f013bc3e749b3f26258597a0950b2e54936ddd4
       </div>
     );
   }
