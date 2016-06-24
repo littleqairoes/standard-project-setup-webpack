@@ -68,13 +68,11 @@ export class CLFileButton extends React.Component {
       generalClassName,
       specificClassName,
       style,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 
       // other params
 
-      classes,
       colored,
       fontIcon,
       isDisabled: disabled = false,
@@ -198,7 +196,7 @@ export class CLFileButton extends React.Component {
     const renderTooltip = (c) => {
       const tooltipAttributes = {
         tooltip,
-        classes,
+        generalClassName,
         idFor: c,
         tooltipPos,
         isLarge
