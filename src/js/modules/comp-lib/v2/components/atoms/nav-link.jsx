@@ -191,13 +191,13 @@ export class CLNavLink extends React.Component {
         classList(generalClassName, 'nav-link-tag'),
         classList(specificClassName, 'nav-link-tag'),
         isSubMenu ? `${prefix}-nav-sub-link` : null,
-        isSubMenu && navpos === 'drawer' ? `${prefix}-nav-sub-link-drawer`: null,
+        isSubMenu && navpos === 'drawer' ? `${prefix}-nav-sub-link-drawer` : null,
         navpos === 'header' && isSubMenu ? `${prefix}-nav-sub-link-header` : null
       );
 
       const itemClassName = classNames(
         {
-          'mdl-menu__item': navpos === 'header'
+          'mdl-menu__item': navpos === 'header' && isSubMenu
         },
         `${defaultClass}-tag-item`,
         classList(generalClassName, 'nav-link-tag-item'),
