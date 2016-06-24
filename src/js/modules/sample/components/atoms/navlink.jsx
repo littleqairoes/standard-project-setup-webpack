@@ -1,20 +1,23 @@
 import React from 'react';
-import {CLNavLink} from './../../../comp-lib';
+import {CLNavLink, CLCenter, CLLogo, CLHeader} from './../../../comp-lib';
 
-const link = {
-  url: 'https://google.com',
-  name: 'Google'
-};
+const link = [
+  {
+    url: '/google',
+    name: 'Google'
+  }
+];
 export class NavLinkDemo extends React.Component {
   render() {
     return (
       <div>
         <h4>CLNavLink</h4>
         <hr/>
-        <p>
-          # MarkdownText
-        </p>
-        <CLNavLink link={link}/>
+        <CLHeader>
+          <CLCenter>
+            <CLNavLink link={link} navpos={'header'}/>
+          </CLCenter>
+        </CLHeader>
       </div>
     );
   }
