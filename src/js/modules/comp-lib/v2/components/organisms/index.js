@@ -9,4 +9,4 @@ export * from './form.jsx';
 export * from './modal.jsx';
 export * from './list.jsx';
 export * from './carousel.jsx';
-export * from './flex-container';
+export * from './flex-container.jsx';

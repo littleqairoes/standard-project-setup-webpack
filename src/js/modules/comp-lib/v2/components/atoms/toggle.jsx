@@ -98,7 +98,6 @@ export class CLToggle extends React.Component {
       generalClassName,
       specificClassName,
       style,
-      snackbar,
       hideOnLargeScreen,
       hideOnSmallScreen,
 
