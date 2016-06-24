@@ -36,6 +36,10 @@
     "unicodeCodePointEscapes": true
   },
 
+  "parserOptions": {
+    "sourceType": "module",
+  },
+
   "rules": {
     "array-bracket-spacing": [2, "always"],
     "arrow-spacing": 2,
@@ -68,7 +72,7 @@
     "linebreak-style": 2,
     "lines-around-comment": 0,
     "max-depth": 0,
-    "max-len": [2, 100, 4],
+    "max-len": [2, 100, 4, { "ignoreComments": true }],
     "max-nested-callbacks": 0,
     "max-params": 0,
     "max-statements": 0,
@@ -116,7 +120,6 @@
     "no-irregular-whitespace": 2,
     "no-iterator": 2,
     "no-label-var": 2,
-    "no-labels": 0,
     "no-lone-blocks": 2,
     "no-lonely-if": 2,
     "no-loop-func": 0,
@@ -189,7 +192,7 @@
     "semi": [2, "always"],
     "semi-spacing": [2, {"before": false, "after": true}],
     "sort-vars": 0,
-    "keyword-spacing": [2, "always"],
+    "keyword-spacing": [2, {"before": true, "after": true}],
     "space-before-blocks": [2, "always"],
     "space-before-function-paren": [2, {"anonymous": "always", "named": "never"}],
     "space-in-parens": 0,

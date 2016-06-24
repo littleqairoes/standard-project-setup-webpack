@@ -1,0 +1,6 @@
+@import './../prefix';
+
+.#{$prefix}-header {
+  background-color: $primary-color;
+  color: $primary-color-text;
+}
