@@ -1,0 +1,6 @@
+@import './../prefix';
+
+.#{$prefix}-flex-container {
+    display: -webkit-flex;
+    display: flex;
+}
